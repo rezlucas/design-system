@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Split — Design System</title>
+
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Demo only */
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      padding-block: var(--space-xl);
+    }
+    .demo-divider {
+      height: 1px;
+      background-color: var(--color-border);
+      margin-inline: var(--space-xl);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG sprite: ícones reutilizáveis -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <!-- Seta direita (botões) -->
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <!-- Check em círculo preenchido -->
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" style="fill: var(--color-text-strong)"/>
+      <path d="M7 12.5l3.5 3.5 6.5-7"
+        style="fill:none; stroke: var(--color-text-inverse); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#style-01">Ir para o conteúdo</a>
+
+  <!-- ═══════════════════════════════════════════
+       STYLE=01 — Checklist + 1 CTA
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Style 01 — Checklist</p>
+
+  <section class="hero-split" aria-labelledby="split-01-title" id="style-01">
+    <div class="hero-split__inner container">
+
+      <div class="hero-split__content">
+        <h2 class="hero-split__title" id="split-01-title">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </h2>
+
+        <ul class="hero-split__checklist" aria-label="Benefícios">
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+          </li>
+        </ul>
+
+        <div class="hero-split__actions">
+          <a href="#" class="button button--filled button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-split__media">
+        <img
+          class="hero-split__image"
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="produto ou ambiente relacionado ao serviço oferecido"
+          width="400"
+          height="400"
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <div class="demo-divider"></div>
+
+  <!-- ═══════════════════════════════════════════
+       STYLE=02 — Descrição + 2 CTAs
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Style 02 — Descrição</p>
+
+  <section class="hero-split" aria-labelledby="split-02-title" id="style-02">
+    <div class="hero-split__inner container">
+
+      <div class="hero-split__content">
+        <h2 class="hero-split__title" id="split-02-title">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </h2>
+
+        <p class="hero-split__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+        <div class="hero-split__actions">
+          <a href="#" class="button button--filled button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+          <a href="#" class="button button--outline button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-split__media">
+        <img
+          class="hero-split__image"
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="produto ou ambiente relacionado ao serviço oferecido"
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

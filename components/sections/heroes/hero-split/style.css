@@ -1,0 +1,140 @@
+/* ─────────────────────────────────────────
+   hero-split — section
+   Dois estilos de conteúdo à esquerda:
+     • com checklist  (Style=01)
+     • com descrição  (Style=02)
+   Imagem sempre à direita (desktop) / abaixo (mobile).
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST — coluna única
+═══════════════════════════════════════ */
+
+.hero-split {
+  background-color: var(--color-background);
+  padding-block: var(--space-3xl);
+}
+
+/* Grid interno — mobile: 1 coluna */
+.hero-split__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+/* ── Imagem ── */
+.hero-split__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-border); /* fallback */
+}
+
+.hero-split__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Título ── */
+.hero-split__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-xl);
+}
+
+/* ── Descrição (Style=02) ── */
+.hero-split__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  max-width: 52ch;
+  margin-block-end: var(--space-xl);
+}
+
+/* ── Checklist (Style=01) ── */
+.hero-split__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-block-end: var(--space-xl);
+  list-style: none;
+  padding: 0;
+}
+
+.hero-split__check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-body);
+}
+
+.hero-split__check-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px; /* alinha verticalmente com a primeira linha do texto */
+}
+
+/* ── Ações ── */
+.hero-split__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (768px+) — duas colunas iguais
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  .hero-split {
+    padding-block: var(--space-4xl);
+  }
+
+  .hero-split__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: stretch; /* colunas com mesma altura */
+  }
+
+  /* Imagem preenche toda a altura da célula no grid */
+  .hero-split__media {
+    aspect-ratio: auto;  /* libera ratio fixo do mobile */
+    min-height: 380px;
+  }
+
+  .hero-split__title {
+    font-size: clamp(var(--font-size-3xl), 3vw, var(--font-size-4xl));
+  }
+
+  /* Conteúdo centralizado verticalmente */
+  .hero-split__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP LARGE (1024px+)
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .hero-split__inner {
+    gap: var(--space-4xl);
+  }
+
+  .hero-split__media {
+    min-height: 440px;
+  }
+}
