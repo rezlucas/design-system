@@ -94,7 +94,7 @@ Executado em 2026-05-19:
 - [x] `features/feature-split` — 2 colunas (conteúdo + imagem). Modifier `--reverse` para trocar o lado da imagem. Inclui checklist rico (ícone + subtítulo bold + corpo). Style=01 Direita e Esquerda.
 - [x] `features/feature-overview` — header centralizado (eyebrow + título + descrição) acima + checklist+imagem abaixo. Modifier `--reverse` e `__checklist--two-col`. Cobre Style=02, 03 e 04.
 - [x] `features/feature-cards` — 3 cards com ícone-escudo + título + corpo + link + imagem. Grade 1→2→3 colunas. Style=07.
-- [ ] `features/features-tabs`
+- [x] `tabs/tabs-section` — 5 variantes: carousel imagem+dots, peek carousel, split texto+imagem, 2-col cards CTA, steps numerados
 - [ ] `features/features-bento`
 
 #### Text Blocks
@@ -204,3 +204,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criados headers: header-simple (light+dark, hamburger) e header-utility (2 fileiras, dropdowns, accordeon mobile)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado header-megamenu: 3 breakpoints (mobile full-screen / tablet dropdown / desktop inline), accordion mobile, CTAs + social
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criados footers: footer-simple (3 variantes) e footer-full (5 variantes), totalmente responsivos mobile/tablet/desktop
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado tabs/tabs-section: barra de abas + 5 variantes de painel (carousel, peek, split, cards CTA, steps numerados) com JS acessível

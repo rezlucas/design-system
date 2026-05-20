@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs Section — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .demo-divider {
+      text-align: center;
+      padding-block: var(--space-2xl);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+    }
+  </style>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"/>
+    </symbol>
+  </svg>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Carousel de cards com imagem + dots
+       (Property 1=Default)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Carousel de Imagem + Dots</p>
+
+  <section class="tabs-section" data-js="tabs-section">
+
+    <!-- Tab bar -->
+    <div class="tabs-section__nav-wrap container">
+      <div class="tabs-section__nav" role="tablist" aria-label="Categorias" data-js="tablist">
+        <button
+          class="tabs-section__tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="v1-panel-1"
+          data-js="tab"
+          data-target="v1-panel-1"
+        >Lorem Ipsum</button>
+        <button
+          class="tabs-section__tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="v1-panel-2"
+          data-js="tab"
+          data-target="v1-panel-2"
+        >Lorem Ipsum</button>
+        <button
+          class="tabs-section__tab"
+          role="tab"
+          aria-selected="true"
+          aria-controls="v1-panel-3"
+          data-js="tab"
+          data-target="v1-panel-3"
+        >Lorem Ipsum</button>
+      </div>
+    </div>
+
+    <!-- Painéis -->
+    <div class="tabs-section__panel container" id="v1-panel-1" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__carousel" data-js="carousel">
+        <div class="tabs-section__slider">
+          <div class="tabs-section__track" data-js="track">
+
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="Lorem Ipsum">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="Lorem Ipsum">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="Lorem Ipsum">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="Lorem Ipsum">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <div class="tabs-section__dots" role="group" aria-label="Slides">
+          <button class="tabs-section__dot tabs-section__dot--active" data-js="dot" aria-label="Slide 1" aria-current="true"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 2"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 3"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 4"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v1-panel-2" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__carousel" data-js="carousel">
+        <div class="tabs-section__slider">
+          <div class="tabs-section__track" data-js="track">
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tabs-section__dots" role="group" aria-label="Slides">
+          <button class="tabs-section__dot tabs-section__dot--active" data-js="dot" aria-label="Slide 1" aria-current="true"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 2"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 3"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 4"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v1-panel-3" role="tabpanel" data-js="panel">
+      <div class="tabs-section__carousel" data-js="carousel">
+        <div class="tabs-section__slider">
+          <div class="tabs-section__track" data-js="track">
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+              </div>
+              <div class="tabs-section__card-body">
+                <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+                <p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tabs-section__dots" role="group" aria-label="Slides">
+          <button class="tabs-section__dot tabs-section__dot--active" data-js="dot" aria-label="Slide 1" aria-current="true"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 2"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 3"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 4"></button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Peek carousel (Variant2)
+       Modifier --peek: cards maiores com transbordamento
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Peek Carousel</p>
+
+  <section class="tabs-section tabs-section--peek" data-js="tabs-section">
+
+    <div class="tabs-section__nav-wrap container">
+      <div class="tabs-section__nav" role="tablist" aria-label="Categorias" data-js="tablist">
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v2-panel-1" data-js="tab" data-target="v2-panel-1">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v2-panel-2" data-js="tab" data-target="v2-panel-2">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="true"
+          aria-controls="v2-panel-3" data-js="tab" data-target="v2-panel-3">Lorem Ipsum</button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v2-panel-1" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__carousel" data-js="carousel">
+        <div class="tabs-section__slider">
+          <div class="tabs-section__track" data-js="track">
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="tabs-section__dots" role="group" aria-label="Slides">
+          <button class="tabs-section__dot tabs-section__dot--active" data-js="dot" aria-label="Slide 1" aria-current="true"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 2"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 3"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 4"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 5"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v2-panel-2" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__carousel" data-js="carousel">
+        <div class="tabs-section__slider">
+          <div class="tabs-section__track" data-js="track">
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="tabs-section__dots" role="group" aria-label="Slides">
+          <button class="tabs-section__dot tabs-section__dot--active" data-js="dot" aria-label="Slide 1" aria-current="true"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 2"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 3"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 4"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 5"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v2-panel-3" role="tabpanel" data-js="panel">
+      <div class="tabs-section__carousel" data-js="carousel">
+        <div class="tabs-section__slider">
+          <div class="tabs-section__track" data-js="track">
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+            <article class="tabs-section__card" data-js="card">
+              <div class="tabs-section__card-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+              <div class="tabs-section__card-body"><h3 class="tabs-section__card-title">Lorem Ipsum</h3><p class="tabs-section__card-text">Lorem ipsum dolor<br>Lorem ipsum dolor</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="tabs-section__dots" role="group" aria-label="Slides">
+          <button class="tabs-section__dot tabs-section__dot--active" data-js="dot" aria-label="Slide 1" aria-current="true"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 2"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 3"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 4"></button>
+          <button class="tabs-section__dot" data-js="dot" aria-label="Slide 5"></button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Split texto + imagem (Variant3 / Variant8)
+       Cada aba mostra texto diferente + imagem
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Split Texto + Imagem</p>
+
+  <section class="tabs-section" data-js="tabs-section">
+
+    <!-- Cabeçalho de seção -->
+    <div class="tabs-section__header container">
+      <p class="tabs-section__eyebrow">Lorem Ipsum</p>
+      <h2 class="tabs-section__title">Heading H4 lorem ipsum dolor sit amet</h2>
+      <p class="tabs-section__description">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    </div>
+
+    <div class="tabs-section__nav-wrap container">
+      <div class="tabs-section__nav" role="tablist" aria-label="Categorias" data-js="tablist">
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v3-panel-1" data-js="tab" data-target="v3-panel-1">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v3-panel-2" data-js="tab" data-target="v3-panel-2">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="true"
+          aria-controls="v3-panel-3" data-js="tab" data-target="v3-panel-3">Lorem Ipsum</button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v3-panel-1" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__split">
+        <div class="tabs-section__split-content">
+          <h3 class="tabs-section__split-title">Lorem Ipsum</h3>
+          <p class="tabs-section__split-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim. Gravida nec in donec ipsum dui. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla.</p>
+          <a href="#" class="button button--outline button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+        <div class="tabs-section__split-media">
+          <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v3-panel-2" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__split">
+        <div class="tabs-section__split-content">
+          <h3 class="tabs-section__split-title">Lorem Ipsum</h3>
+          <p class="tabs-section__split-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim. Gravida nec in donec ipsum dui. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla.</p>
+          <a href="#" class="button button--outline button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+        <div class="tabs-section__split-media">
+          <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v3-panel-3" role="tabpanel" data-js="panel">
+      <div class="tabs-section__split">
+        <div class="tabs-section__split-content">
+          <h3 class="tabs-section__split-title">Lorem Ipsum</h3>
+          <p class="tabs-section__split-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim. Gravida nec in donec ipsum dui. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla.</p>
+          <a href="#" class="button button--outline button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+        <div class="tabs-section__split-media">
+          <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 4 — Cards 2 colunas com CTA + setas (Variant4)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 4 — Cards com CTA + Setas</p>
+
+  <section class="tabs-section" data-js="tabs-section">
+
+    <div class="tabs-section__header container">
+      <p class="tabs-section__eyebrow">Lorem Ipsum</p>
+      <h2 class="tabs-section__title">Heading H4 lorem ipsum dolor sit amet</h2>
+      <p class="tabs-section__description">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    </div>
+
+    <div class="tabs-section__nav-wrap container">
+      <div class="tabs-section__nav" role="tablist" aria-label="Categorias" data-js="tablist">
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v4-panel-1" data-js="tab" data-target="v4-panel-1">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v4-panel-2" data-js="tab" data-target="v4-panel-2">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="true"
+          aria-controls="v4-panel-3" data-js="tab" data-target="v4-panel-3">Lorem Ipsum</button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v4-panel-1" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__card-grid">
+        <div class="tabs-section__card--cta">
+          <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+          <div class="tabs-section__card-cta-media">
+            <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+          </div>
+          <p class="tabs-section__card-text">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim. Gravida nec in donec ipsum dui. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+          <a href="#" class="button button--outline button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+        <div class="tabs-section__card--cta">
+          <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+          <div class="tabs-section__card-cta-media">
+            <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+          </div>
+          <p class="tabs-section__card-text">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim. Gravida nec in donec ipsum dui. Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+          <a href="#" class="button button--outline button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="tabs-section__arrows">
+        <button class="tabs-section__arrow" aria-label="Anterior" disabled>
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+        </button>
+        <button class="tabs-section__arrow" aria-label="Próximo">
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v4-panel-2" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__card-grid">
+        <div class="tabs-section__card--cta">
+          <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+          <div class="tabs-section__card-cta-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+          <p class="tabs-section__card-text">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="button button--outline button--md">Get stuff done <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg></a>
+        </div>
+        <div class="tabs-section__card--cta">
+          <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+          <div class="tabs-section__card-cta-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+          <p class="tabs-section__card-text">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="button button--outline button--md">Get stuff done <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs-section__arrows">
+        <button class="tabs-section__arrow" aria-label="Anterior" disabled>
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+        </button>
+        <button class="tabs-section__arrow" aria-label="Próximo">
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v4-panel-3" role="tabpanel" data-js="panel">
+      <div class="tabs-section__card-grid">
+        <div class="tabs-section__card--cta">
+          <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+          <div class="tabs-section__card-cta-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+          <p class="tabs-section__card-text">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="button button--outline button--md">Get stuff done <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg></a>
+        </div>
+        <div class="tabs-section__card--cta">
+          <h3 class="tabs-section__card-title">Lorem Ipsum</h3>
+          <div class="tabs-section__card-cta-media"><img src="../../../../assets/images/placeholders/placeholder-image.png" alt=""></div>
+          <p class="tabs-section__card-text">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="button button--outline button--md">Get stuff done <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="tabs-section__arrows">
+        <button class="tabs-section__arrow" aria-label="Anterior" disabled>
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+        </button>
+        <button class="tabs-section__arrow" aria-label="Próximo">
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 5 — Steps numerados + setas (Variant5)
+       Cabeçalho centralizado
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 5 — Steps Numerados</p>
+
+  <section class="tabs-section" data-js="tabs-section">
+
+    <div class="tabs-section__header tabs-section__header--centered container">
+      <p class="tabs-section__eyebrow">Lorem Ipsum</p>
+      <h2 class="tabs-section__title">Heading H4 lorem ipsum dolor sit amet</h2>
+      <p class="tabs-section__description">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+    </div>
+
+    <div class="tabs-section__nav-wrap container">
+      <div class="tabs-section__nav" role="tablist" aria-label="Categorias" data-js="tablist">
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v5-panel-1" data-js="tab" data-target="v5-panel-1">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="false"
+          aria-controls="v5-panel-2" data-js="tab" data-target="v5-panel-2">Lorem Ipsum</button>
+        <button class="tabs-section__tab" role="tab" aria-selected="true"
+          aria-controls="v5-panel-3" data-js="tab" data-target="v5-panel-3">Lorem Ipsum</button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v5-panel-1" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__steps-grid">
+        <div class="tabs-section__step">
+          <p class="tabs-section__step-number">1.</p>
+          <h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3>
+          <hr class="tabs-section__step-divider">
+          <p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="tabs-section__step">
+          <p class="tabs-section__step-number">2.</p>
+          <h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3>
+          <hr class="tabs-section__step-divider">
+          <p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="tabs-section__step">
+          <p class="tabs-section__step-number">3.</p>
+          <h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3>
+          <hr class="tabs-section__step-divider">
+          <p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="tabs-section__step">
+          <p class="tabs-section__step-number">4.</p>
+          <h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3>
+          <hr class="tabs-section__step-divider">
+          <p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+      </div>
+      <div class="tabs-section__arrows">
+        <button class="tabs-section__arrow" aria-label="Anterior" disabled>
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+        </button>
+        <button class="tabs-section__arrow" aria-label="Próximo">
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v5-panel-2" role="tabpanel" hidden data-js="panel">
+      <div class="tabs-section__steps-grid">
+        <div class="tabs-section__step"><p class="tabs-section__step-number">1.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="tabs-section__step"><p class="tabs-section__step-number">2.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="tabs-section__step"><p class="tabs-section__step-number">3.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="tabs-section__step"><p class="tabs-section__step-number">4.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+      </div>
+      <div class="tabs-section__arrows">
+        <button class="tabs-section__arrow" aria-label="Anterior" disabled>
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+        </button>
+        <button class="tabs-section__arrow" aria-label="Próximo">
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tabs-section__panel container" id="v5-panel-3" role="tabpanel" data-js="panel">
+      <div class="tabs-section__steps-grid">
+        <div class="tabs-section__step"><p class="tabs-section__step-number">1.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="tabs-section__step"><p class="tabs-section__step-number">2.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="tabs-section__step"><p class="tabs-section__step-number">3.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+        <div class="tabs-section__step"><p class="tabs-section__step-number">4.</p><h3 class="tabs-section__step-title">Lorem Ipsum<br>Dolor Sit</h3><hr class="tabs-section__step-divider"><p class="tabs-section__step-text">Lorem ipsum dolor sit amet consectetur.</p></div>
+      </div>
+      <div class="tabs-section__arrows">
+        <button class="tabs-section__arrow" aria-label="Anterior" disabled>
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+        </button>
+        <button class="tabs-section__arrow" aria-label="Próximo">
+          <svg class="tabs-section__arrow-icon" aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
