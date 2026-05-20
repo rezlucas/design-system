@@ -95,6 +95,7 @@ Executado em 2026-05-19:
 - [x] `features/feature-overview` — header centralizado (eyebrow + título + descrição) acima + checklist+imagem abaixo. Modifier `--reverse` e `__checklist--two-col`. Cobre Style=02, 03 e 04.
 - [x] `features/feature-cards` — 3 cards com ícone-escudo + título + corpo + link + imagem. Grade 1→2→3 colunas. Style=07.
 - [x] `tabs/tabs-section` — 5 variantes: carousel imagem+dots, peek carousel, split texto+imagem, 2-col cards CTA, steps numerados
+- [x] `features/feature-accordion` — 4 variantes: imagem esq. contida, header centralizado + imagem dir. contida, imagem esq. full-bleed, imagem dir. full-bleed
 - [ ] `features/features-bento`
 
 #### Text Blocks
@@ -205,3 +206,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criados footers: footer-simple (3 variantes) e footer-full (5 variantes), totalmente responsivos mobile/tablet/desktop
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado tabs/tabs-section: barra de abas + 5 variantes de painel (carousel, peek, split, cards CTA, steps numerados) com JS acessível
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado faq/faq-accordion: 4 variantes (enclosed, dark 3-col, cards, split) CSS-only via details/summary nativo, animação grid-row
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado features/feature-accordion: imagem+accordion split (contida e full-bleed), modifiers --reverse e --full

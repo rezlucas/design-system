@@ -1,0 +1,243 @@
+/* ─────────────────────────────────────────
+   feature-accordion — section
+   Seção com imagem + accordion de conteúdo.
+
+   Variantes:
+     • Base:             imagem esq. (contida) + conteúdo dir.
+     • --reverse:        conteúdo esq. + imagem dir. (+ header centralizado opcional)
+     • --full:           imagem esq. full-bleed + conteúdo dir.
+     • --full --reverse: conteúdo esq. + imagem dir. full-bleed
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   BASE
+═══════════════════════════════════════ */
+
+.feature-accordion {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+/* ── Cabeçalho de seção centralizado (variante --reverse com título acima) ── */
+.feature-accordion__section-header {
+  text-align: center;
+  margin-block-end: var(--space-3xl);
+}
+
+.feature-accordion__section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+/* ── Grid interno (2 colunas no desktop) ── */
+.feature-accordion__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+/* ── Imagem (variante contida) ── */
+.feature-accordion__media {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.feature-accordion__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Coluna de conteúdo ── */
+.feature-accordion__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-accordion__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-lg);
+}
+
+.feature-accordion__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-2xl);
+}
+
+/* ── Lista de accordion ── */
+.feature-accordion__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-accordion__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.feature-accordion__item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+/* Remove marcador padrão do summary */
+.feature-accordion__trigger {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  width: 100%;
+  background: none;
+  border: none;
+  padding-block: var(--space-lg);
+  text-align: left;
+}
+
+.feature-accordion__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.feature-accordion__trigger::marker {
+  display: none;
+  content: '';
+}
+
+.feature-accordion__trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.feature-accordion__question {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+  flex: 1;
+}
+
+/* Ícone chevron */
+.feature-accordion__icon-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.feature-accordion__icon-chevron {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+
+details[open] > .feature-accordion__trigger .feature-accordion__icon-chevron {
+  transform: rotate(-180deg);
+}
+
+/* Painel animado via grid-template-rows */
+.feature-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+
+details[open] > .feature-accordion__panel {
+  grid-template-rows: 1fr;
+}
+
+.feature-accordion__panel-inner {
+  overflow: hidden;
+}
+
+.feature-accordion__answer {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  padding-block-end: var(--space-lg);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 768px) — variantes contidas
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  /* 2 colunas iguais */
+  .feature-accordion__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+  }
+
+  /* --reverse: imagem vai para a direita */
+  .feature-accordion--reverse .feature-accordion__media {
+    order: 1;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --full
+   Imagem full-bleed (ocupa toda a altura), sem border-radius.
+   Não usa .container no inner — seção inteira serve de grid.
+═══════════════════════════════════════ */
+
+/* Mobile: imagem com altura fixa acima do conteúdo */
+.feature-accordion--full {
+  padding-block: 0;
+}
+
+.feature-accordion--full .feature-accordion__media {
+  border-radius: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.feature-accordion--full .feature-accordion__content {
+  padding-block: var(--space-4xl);
+  padding-inline: var(--container-padding);
+}
+
+@media (min-width: 768px) {
+
+  /* Inner full-width: sem container, sem gap */
+  .feature-accordion--full .feature-accordion__inner {
+    gap: 0;
+    min-height: 560px;
+  }
+
+  /* Imagem estica para preencher toda a altura da coluna */
+  .feature-accordion--full .feature-accordion__media {
+    aspect-ratio: auto;
+    align-self: stretch;
+  }
+
+  /* Conteúdo com padding interno proporcional */
+  .feature-accordion--full .feature-accordion__content {
+    padding-block: var(--space-5xl);
+    padding-inline: clamp(var(--space-2xl), 5vw, var(--space-5xl));
+  }
+
+  /* --full --reverse: imagem vai para a direita */
+  .feature-accordion--full.feature-accordion--reverse .feature-accordion__media {
+    order: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Em telas muito largas, limitar para leitura confortável */
+  .feature-accordion--full .feature-accordion__content {
+    padding-inline: var(--space-5xl);
+  }
+}

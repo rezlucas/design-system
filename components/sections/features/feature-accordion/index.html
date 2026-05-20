@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Accordion — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .demo-divider {
+      text-align: center;
+      padding-block: var(--space-2xl);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Imagem esq. (contida) + conteúdo dir.
+       (Property 1=depoimentos)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Imagem Esquerda Contida</p>
+
+  <section class="feature-accordion">
+    <div class="feature-accordion__inner container">
+
+      <!-- Imagem -->
+      <div class="feature-accordion__media">
+        <img
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="Lorem ipsum"
+          width="400" height="400"
+        >
+      </div>
+
+      <!-- Conteúdo + Accordion -->
+      <div class="feature-accordion__content">
+        <h2 class="feature-accordion__title">Lorem Ipsum</h2>
+        <p class="feature-accordion__description">Lorem ipsum scelerisque elementum id cursus iaculis vitae in amet congue molestie habitasse in nisl ut facilisis nisl.</p>
+
+        <div class="feature-accordion__list">
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item" open>
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+        </div><!-- /.feature-accordion__list -->
+      </div><!-- /.feature-accordion__content -->
+
+    </div><!-- /.container -->
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Header centralizado + conteúdo esq. + imagem dir. (contida)
+       (Property 1=Variant2)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Header Central + Imagem Direita Contida</p>
+
+  <section class="feature-accordion feature-accordion--reverse">
+
+    <!-- Título centralizado acima do grid -->
+    <div class="feature-accordion__section-header container">
+      <h2 class="feature-accordion__section-title">Lorem Ipsum</h2>
+    </div>
+
+    <div class="feature-accordion__inner container">
+
+      <!-- Conteúdo (fica à esquerda por ser primeiro no DOM, --reverse não afeta o conteúdo) -->
+      <div class="feature-accordion__content">
+        <h3 class="feature-accordion__title">Lorem Ipsum</h3>
+        <p class="feature-accordion__description">Lorem ipsum scelerisque elementum id cursus iaculis vitae in amet congue molestie habitasse in nisl ut facilisis nisl.</p>
+
+        <div class="feature-accordion__list">
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item" open>
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+        </div><!-- /.feature-accordion__list -->
+      </div><!-- /.feature-accordion__content -->
+
+      <!-- Imagem (--reverse move para a direita via order:1) -->
+      <div class="feature-accordion__media">
+        <img
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="Lorem ipsum"
+          width="400" height="400"
+        >
+      </div>
+
+    </div><!-- /.container -->
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Imagem esq. full-bleed + conteúdo dir.
+       (Property 1=Variant4)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Imagem Esquerda Full-Bleed</p>
+
+  <section class="feature-accordion feature-accordion--full">
+    <!-- SEM .container — imagem bleed até a borda -->
+    <div class="feature-accordion__inner">
+
+      <!-- Imagem full-bleed (esquerda) -->
+      <div class="feature-accordion__media">
+        <img
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="Lorem ipsum"
+          width="800" height="600"
+        >
+      </div>
+
+      <!-- Conteúdo (direita) -->
+      <div class="feature-accordion__content">
+        <h2 class="feature-accordion__title">Lorem Ipsum</h2>
+        <p class="feature-accordion__description">Lorem ipsum scelerisque elementum id cursus iaculis vitae in amet congue molestie habitasse in nisl ut facilisis nisl.</p>
+
+        <div class="feature-accordion__list">
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item" open>
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+        </div><!-- /.feature-accordion__list -->
+      </div><!-- /.feature-accordion__content -->
+
+    </div><!-- /.feature-accordion__inner -->
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 4 — Conteúdo esq. + imagem dir. full-bleed
+       (Property 1=Variant5)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 4 — Imagem Direita Full-Bleed</p>
+
+  <section class="feature-accordion feature-accordion--full feature-accordion--reverse">
+    <div class="feature-accordion__inner">
+
+      <!-- Conteúdo (esquerda — vem primeiro no DOM) -->
+      <div class="feature-accordion__content">
+        <h2 class="feature-accordion__title">Lorem Ipsum</h2>
+        <p class="feature-accordion__description">Lorem ipsum scelerisque elementum id cursus iaculis vitae in amet congue molestie habitasse in nisl ut facilisis nisl.</p>
+
+        <div class="feature-accordion__list">
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item">
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="feature-accordion__item" open>
+            <summary class="feature-accordion__trigger">
+              <span class="feature-accordion__question">Title accordeon</span>
+              <span class="feature-accordion__icon-wrap" aria-hidden="true">
+                <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 7.5l5 5 5-5"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="feature-accordion__panel">
+              <div class="feature-accordion__panel-inner">
+                <p class="feature-accordion__answer">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </details>
+
+        </div><!-- /.feature-accordion__list -->
+      </div><!-- /.feature-accordion__content -->
+
+      <!-- Imagem full-bleed (--reverse move para a direita) -->
+      <div class="feature-accordion__media">
+        <img
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="Lorem ipsum"
+          width="800" height="600"
+        >
+      </div>
+
+    </div><!-- /.feature-accordion__inner -->
+  </section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
