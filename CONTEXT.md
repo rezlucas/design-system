@@ -105,9 +105,7 @@ Executado em 2026-05-19:
 
 #### Social Proof
 - [ ] `social-proof/logos-grid`
-- [ ] `social-proof/testimonials-cards`
-- [ ] `social-proof/testimonials-carousel`
-- [ ] `social-proof/reviews-stars`
+- [x] `social-proof/testimonials-cards` — 5 variantes: aspas 4-col, estrelas+logo 3-col, media split, fullquote bold peek, grid estático 3×2+CTA
 
 #### Stats
 - [ ] `stats/stats-grid`
@@ -208,3 +206,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado features/feature-accordion: imagem+accordion split (contida e full-bleed), modifiers --reverse e --full
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado ctas/cta-banner: 4 variantes (card-split, overlay-left, overlay-center, split branco)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado services/services-grid: 6 variantes (base, pastel, icon-box, bento, centered, circular)
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado social-proof/testimonials-cards: 5 variantes (aspas, estrelas+logo, media split, fullquote bold, grid estático)

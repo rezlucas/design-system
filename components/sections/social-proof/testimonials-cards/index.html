@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials Cards — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .demo-divider {
+      text-align: center;
+      padding-block: var(--space-2xl);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+    }
+  </style>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"/>
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24" fill="currentColor">
+      <polygon points="5 3 19 12 5 21 5 3"/>
+    </symbol>
+  </svg>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Aspas + Carousel 4-col
+       Setas no header direito.
+       (Property=01)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Aspas + Carousel</p>
+
+  <section class="testimonials" data-js="testimonials">
+    <div class="container">
+
+      <!-- Header: texto esq. + setas dir. -->
+      <div class="testimonials__header-row">
+        <div class="testimonials__header-text">
+          <p class="testimonials__eyebrow">Lorem Ipsum</p>
+          <h2 class="testimonials__title">Lorem ipsum dolor sit amet</h2>
+          <p class="testimonials__description">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        </div>
+        <div class="testimonials__arrows">
+          <button class="testimonials__arrow" aria-label="Anterior" data-js="prev" disabled>
+            <svg><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="testimonials__arrow" aria-label="Próximo" data-js="next">
+            <svg><use href="#icon-chevron-right"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel -->
+      <div data-js="carousel">
+        <div class="testimonials__slider">
+          <div class="testimonials__track" data-js="track">
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div><!-- /carousel -->
+
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Estrelas + logo empresa + setas abaixo
+       Fundo cinza, sem fundo nos cards.
+       (Property=03)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Estrelas + Logo</p>
+
+  <section class="testimonials testimonials--stars" data-js="testimonials">
+    <div class="container">
+
+      <div class="testimonials__header-row">
+        <div class="testimonials__header-text">
+          <p class="testimonials__eyebrow">Lorem Ipsum</p>
+          <h2 class="testimonials__title">Lorem ipsum dolor sit amet</h2>
+          <p class="testimonials__description">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+      </div>
+
+      <div data-js="carousel">
+        <div class="testimonials__slider">
+          <div class="testimonials__track" data-js="track">
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+              <img class="testimonials__company-logo" src="../../../../assets/images/placeholders/placeholder-dark-logo.png" alt="Lorem ipsum">
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+              <img class="testimonials__company-logo" src="../../../../assets/images/placeholders/placeholder-dark-logo.png" alt="Lorem ipsum">
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+              <img class="testimonials__company-logo" src="../../../../assets/images/placeholders/placeholder-dark-logo.png" alt="Lorem ipsum">
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+              <img class="testimonials__company-logo" src="../../../../assets/images/placeholders/placeholder-dark-logo.png" alt="Lorem ipsum">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Setas no rodapé direito -->
+      <div class="testimonials__footer-nav testimonials__footer-nav--right">
+        <div class="testimonials__arrows">
+          <button class="testimonials__arrow" aria-label="Anterior" data-js="prev" disabled>
+            <svg><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="testimonials__arrow" aria-label="Próximo" data-js="next">
+            <svg><use href="#icon-chevron-right"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Aspas + Split mídia
+       Card dividido: texto esq. | imagem/vídeo dir.
+       (Property=04)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Aspas + Mídia Split</p>
+
+  <section class="testimonials testimonials--media" data-js="testimonials">
+    <div class="container">
+
+      <div class="testimonials__header-row">
+        <div class="testimonials__header-text">
+          <p class="testimonials__eyebrow">Lorem Ipsum</p>
+          <h2 class="testimonials__title">Lorem ipsum dolor sit amet</h2>
+          <p class="testimonials__description">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+        <div class="testimonials__arrows">
+          <button class="testimonials__arrow" aria-label="Anterior" data-js="prev" disabled>
+            <svg><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="testimonials__arrow" aria-label="Próximo" data-js="next">
+            <svg><use href="#icon-chevron-right"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div data-js="carousel">
+        <div class="testimonials__slider">
+          <div class="testimonials__track" data-js="track">
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__card-content">
+                <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+                <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <div class="testimonials__author">
+                  <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                  <div>
+                    <p class="testimonials__name">Name Surname</p>
+                    <p class="testimonials__role">Position, Company name</p>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonials__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+                <button class="testimonials__play-btn" aria-label="Reproduzir vídeo">
+                  <svg><use href="#icon-play"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__card-content">
+                <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+                <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <div class="testimonials__author">
+                  <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                  <div>
+                    <p class="testimonials__name">Name Surname</p>
+                    <p class="testimonials__role">Position, Company name</p>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonials__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+                <button class="testimonials__play-btn" aria-label="Reproduzir vídeo">
+                  <svg><use href="#icon-play"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__card-content">
+                <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+                <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <div class="testimonials__author">
+                  <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                  <div>
+                    <p class="testimonials__name">Name Surname</p>
+                    <p class="testimonials__role">Position, Company name</p>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonials__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+                <button class="testimonials__play-btn" aria-label="Reproduzir vídeo">
+                  <svg><use href="#icon-play"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__card-content">
+                <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+                <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <div class="testimonials__author">
+                  <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                  <div>
+                    <p class="testimonials__name">Name Surname</p>
+                    <p class="testimonials__role">Position, Company name</p>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonials__card-media">
+                <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="">
+                <button class="testimonials__play-btn" aria-label="Reproduzir vídeo">
+                  <svg><use href="#icon-play"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 4 — Estrelas + texto bold large + setas abaixo centralizadas
+       (Property=06)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 4 — Full Quote + Peek</p>
+
+  <section class="testimonials testimonials--fullquote" data-js="testimonials">
+    <div class="container">
+
+      <!-- Só título, centralizado -->
+      <div class="testimonials__header-row">
+        <div class="testimonials__header-text">
+          <h2 class="testimonials__title">Lorem ipsum dolor sit amet</h2>
+        </div>
+        <!-- Setas ficam abaixo — escondidas aqui via CSS -->
+        <div class="testimonials__arrows">
+          <button class="testimonials__arrow" aria-label="Anterior" data-js="prev" disabled>
+            <svg><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="testimonials__arrow" aria-label="Próximo" data-js="next">
+            <svg><use href="#icon-chevron-right"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div data-js="carousel">
+        <div class="testimonials__slider">
+          <div class="testimonials__track" data-js="track">
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+              <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+                <div>
+                  <p class="testimonials__name">Name Surname</p>
+                  <p class="testimonials__role">Position, Company name</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Setas centralizadas abaixo -->
+      <div class="testimonials__footer-nav testimonials__footer-nav--center">
+        <div class="testimonials__arrows">
+          <button class="testimonials__arrow" aria-label="Anterior" data-js="prev" disabled>
+            <svg><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="testimonials__arrow" aria-label="Próximo" data-js="next">
+            <svg><use href="#icon-chevron-right"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 5 — Grade estática 3×2 + CTA
+       (Property=Property8)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 5 — Grade Estática + CTA</p>
+
+  <section class="testimonials testimonials--grid">
+    <div class="container">
+
+      <div class="testimonials__header-row">
+        <div class="testimonials__header-text">
+          <p class="testimonials__eyebrow">Lorem Ipsum</p>
+          <h2 class="testimonials__title">Lorem ipsum dolor sit amet</h2>
+          <p class="testimonials__description">Body text, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+      </div>
+
+      <div class="testimonials__list">
+
+        <div class="testimonials__card">
+          <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="testimonials__author">
+            <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+            <div>
+              <p class="testimonials__name">Name Surname</p>
+              <p class="testimonials__role">Position, Company name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials__card">
+          <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="testimonials__author">
+            <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+            <div>
+              <p class="testimonials__name">Name Surname</p>
+              <p class="testimonials__role">Position, Company name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials__card">
+          <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="testimonials__author">
+            <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+            <div>
+              <p class="testimonials__name">Name Surname</p>
+              <p class="testimonials__role">Position, Company name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials__card">
+          <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="testimonials__author">
+            <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+            <div>
+              <p class="testimonials__name">Name Surname</p>
+              <p class="testimonials__role">Position, Company name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials__card">
+          <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="testimonials__author">
+            <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+            <div>
+              <p class="testimonials__name">Name Surname</p>
+              <p class="testimonials__role">Position, Company name</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials__card">
+          <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+          <p class="testimonials__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="testimonials__author">
+            <img class="testimonials__avatar" src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Name Surname">
+            <div>
+              <p class="testimonials__name">Name Surname</p>
+              <p class="testimonials__role">Position, Company name</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.testimonials__list -->
+
+      <div class="testimonials__footer">
+        <a href="#" class="button button--outline button--md">
+          Get stuff done
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

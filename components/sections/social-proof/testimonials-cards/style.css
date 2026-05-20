@@ -1,0 +1,445 @@
+/* ─────────────────────────────────────────
+   testimonials-cards — section
+   Seção de depoimentos com carousel ou grid.
+
+   Variantes:
+     • Base:          aspas grandes + carousel 4-col + setas no header
+     • --stars:       estrelas + logo empresa + fundo cinza + setas abaixo
+     • --media:       aspas + card split (texto | mídia/vídeo) + 3-col
+     • --fullquote:   estrelas + texto bold large + 2-col peek + setas abaixo
+     • --grid:        estrelas + grade estática 3×2 + CTA
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   BASE — ELEMENTOS COMPARTILHADOS
+═══════════════════════════════════════ */
+
+.testimonials {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+/* ── Cabeçalho com setas opcionais ── */
+.testimonials__header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  margin-block-end: var(--space-3xl);
+}
+
+.testimonials__header-text {
+  flex: 1;
+}
+
+.testimonials__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-md);
+}
+
+.testimonials__eyebrow::before {
+  content: '—';
+  font-weight: var(--font-weight-regular);
+}
+
+.testimonials__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+.testimonials__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-md);
+  max-width: 65ch;
+}
+
+/* ── Setas de navegação ── */
+.testimonials__arrows {
+  display: flex;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.testimonials__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-border-strong);
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-body);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.testimonials__arrow:hover {
+  background-color: var(--color-background-alt);
+  border-color: var(--color-text-strong);
+}
+
+.testimonials__arrow:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.testimonials__arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.testimonials__arrow:disabled:hover {
+  background-color: transparent;
+  border-color: var(--color-border-strong);
+}
+
+.testimonials__arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Setas no rodapé (--stars, --fullquote) ── */
+.testimonials__footer-nav {
+  display: flex;
+  margin-block-start: var(--space-2xl);
+}
+
+.testimonials__footer-nav--right   { justify-content: flex-end; }
+.testimonials__footer-nav--center  { justify-content: center; }
+
+/* ── Carousel ── */
+.testimonials__slider {
+  overflow: hidden;
+}
+
+.testimonials__track {
+  display: flex;
+  gap: var(--space-lg);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* ── Card base ── */
+.testimonials__card {
+  flex: none;
+  width: calc(85vw - var(--space-lg)); /* mobile: 1 card + peek */
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ── Aspas grandes ── */
+.testimonials__quote-mark {
+  display: block;
+  font-size: 3.5rem;
+  line-height: 0.7;
+  color: var(--color-text-strong);
+  font-family: Georgia, 'Times New Roman', serif;
+  user-select: none;
+}
+
+/* ── Estrelas ── */
+.testimonials__stars {
+  font-size: 1.15rem;
+  color: var(--color-text-strong);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+/* ── Texto do depoimento ── */
+.testimonials__text {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  flex: 1;
+}
+
+/* ── Autor ── */
+.testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-block-start: auto;
+}
+
+.testimonials__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.testimonials__name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+}
+
+.testimonials__role {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ── Logo da empresa (--stars) ── */
+.testimonials__company-logo {
+  height: 24px;
+  width: auto;
+  display: block;
+  opacity: 0.65;
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --stars
+   Estrelas + logo empresa + fundo cinza + setas abaixo.
+   Cards sem fundo, separados por border-top.
+   (Property=03)
+═══════════════════════════════════════ */
+
+.testimonials--stars {
+  background-color: var(--color-background-alt);
+}
+
+.testimonials--stars .testimonials__card {
+  background-color: transparent;
+  border-radius: 0;
+  border-top: 1px solid var(--color-border-strong);
+  padding-top: var(--space-xl);
+  padding-inline: 0;
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --media
+   Card split: texto esq. | imagem/vídeo dir.
+   (Property=04)
+═══════════════════════════════════════ */
+
+.testimonials--media .testimonials__card {
+  flex-direction: row;
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+
+.testimonials__card-content {
+  flex: 1;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.testimonials__card-media {
+  position: relative;
+  width: 42%;
+  flex-shrink: 0;
+  background-color: var(--color-background-dark);
+  overflow: hidden;
+}
+
+.testimonials__card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonials__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-strong);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.testimonials__play-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.testimonials__play-btn svg {
+  width: 16px;
+  height: 16px;
+  margin-inline-start: 2px; /* compensação visual do triângulo */
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --fullquote
+   Estrelas + texto bold grande + 2-col peek + setas centralizadas abaixo.
+   (Property=06)
+═══════════════════════════════════════ */
+
+.testimonials--fullquote {
+  background-color: var(--color-background-alt);
+}
+
+.testimonials--fullquote .testimonials__header-row {
+  justify-content: center;
+  text-align: center;
+}
+
+.testimonials--fullquote .testimonials__header-row .testimonials__arrows {
+  display: none; /* setas vão abaixo */
+}
+
+.testimonials--fullquote .testimonials__card {
+  background-color: transparent;
+  border-radius: 0;
+  border-top: 1px solid var(--color-border-strong);
+  padding-top: var(--space-xl);
+  padding-inline: 0;
+}
+
+.testimonials--fullquote .testimonials__text {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --grid
+   Grade estática 3×2 com CTA no rodapé.
+   (Property8)
+═══════════════════════════════════════ */
+
+.testimonials--grid .testimonials__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* Sobrescreve width do carousel */
+.testimonials--grid .testimonials__card {
+  width: auto;
+  flex: none;
+}
+
+.testimonials__footer {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--space-3xl);
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET (≥ 640px): 2 cards visíveis
+═══════════════════════════════════════ */
+@media (min-width: 640px) {
+
+  .testimonials__card {
+    width: calc((100vw - var(--container-padding) * 2 - var(--space-lg)) / 2);
+  }
+
+  .testimonials--grid .testimonials__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Media: volta ao layout horizontal */
+  .testimonials--media .testimonials__card {
+    flex-direction: row;
+    width: calc((100vw - var(--container-padding) * 2 - var(--space-lg)) / 2);
+  }
+
+  .testimonials--media .testimonials__card-media {
+    width: 40%;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 1024px): 3 ou 4 colunas
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+
+  /* Base (--quote): 4 colunas */
+  .testimonials__card {
+    width: calc(
+      (min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg) * 3) / 4
+    );
+  }
+
+  /* --stars e --media: 3 colunas */
+  .testimonials--stars .testimonials__card,
+  .testimonials--media .testimonials__card {
+    width: calc(
+      (min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg) * 2) / 3
+    );
+  }
+
+  /* --fullquote: 2 colunas (peek do 3º) */
+  .testimonials--fullquote .testimonials__card {
+    width: calc(
+      (min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg)) / 2
+    );
+  }
+
+  /* --grid: 3 colunas */
+  .testimonials--grid .testimonials__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+
+  .testimonials {
+    padding-block: var(--space-3xl);
+  }
+
+  /* Header: empilha texto e setas */
+  .testimonials__header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+
+  .testimonials__arrows {
+    align-self: flex-start;
+  }
+
+  /* Media: empilha conteúdo e imagem */
+  .testimonials--media .testimonials__card {
+    flex-direction: column;
+  }
+
+  .testimonials--media .testimonials__card-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
