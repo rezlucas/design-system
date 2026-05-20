@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header Utility — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .demo-spacer {
+      padding-block: var(--space-5xl);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+      background-color: var(--color-background-alt);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ícones -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <!-- Chevron baixo -->
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9l6 6 6-6"/>
+    </symbol>
+    <!-- Acessibilidade (pessoa em círculo) -->
+    <symbol id="icon-accessibility" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="5" r="1.5"/>
+      <path d="M4 8.5h16M8 8.5l1 10 3-5 3 5 1-10"/>
+    </symbol>
+    <!-- Globo (idioma) -->
+    <symbol id="icon-globe" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+    </symbol>
+    <!-- Busca -->
+    <symbol id="icon-search" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="M21 21l-4.35-4.35"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════ HEADER UTILITY — padrão Suzano / menu-submenu.pdf ═══════════ -->
+
+  <header class="header-utility" role="banner">
+
+    <!-- Fileira 1: barra utilitária -->
+    <div class="header-utility__topbar">
+      <div class="header-utility__topbar-inner container">
+
+        <nav aria-label="Links de suporte">
+          <ul class="header-utility__topbar-links" role="list">
+            <li><a class="header-utility__topbar-link" href="#">Fale Conosco</a></li>
+            <li><a class="header-utility__topbar-link" href="#">Ouvidoria</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-utility__topbar-icons">
+          <button class="header-utility__icon-btn" type="button" aria-label="Acessibilidade">
+            <svg width="18" height="18" aria-hidden="true" focusable="false">
+              <use href="#icon-accessibility"/>
+            </svg>
+          </button>
+          <button class="header-utility__icon-btn" type="button" aria-label="Selecionar idioma: Português">
+            <svg width="18" height="18" aria-hidden="true" focusable="false">
+              <use href="#icon-globe"/>
+            </svg>
+            <span>PT</span>
+          </button>
+          <button class="header-utility__icon-btn" type="button" aria-label="Buscar no site">
+            <svg width="18" height="18" aria-hidden="true" focusable="false">
+              <use href="#icon-search"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Fileira 2: nav principal -->
+    <div class="header-utility__main">
+      <div class="header-utility__main-inner container">
+
+        <a href="/" class="header-utility__logo" aria-label="Ir para a página inicial">
+          <img
+            class="header-utility__logo-img"
+            src="../../../../assets/images/placeholders/placeholder-dark-logo.png"
+            alt="Logo da empresa"
+            width="73" height="32"
+          >
+        </a>
+
+        <!-- Nav desktop -->
+        <nav class="header-utility__nav" aria-label="Navegação principal">
+          <ul class="header-utility__list" role="list">
+
+            <!-- Item com dropdown -->
+            <li class="header-utility__item">
+              <button
+                class="header-utility__link"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="dropdown-about"
+                data-js="dropdown-trigger"
+              >
+                A Empresa
+                <svg class="header-utility__chevron" aria-hidden="true" focusable="false">
+                  <use href="#icon-chevron-down"/>
+                </svg>
+              </button>
+              <div class="header-utility__dropdown" id="dropdown-about" hidden>
+                <ul class="header-utility__dropdown-list" role="list">
+                  <li><a class="header-utility__dropdown-link" href="#">Sobre nós</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Missão e valores</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">História</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Liderança</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="header-utility__item">
+              <button
+                class="header-utility__link"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="dropdown-products"
+                data-js="dropdown-trigger"
+              >
+                Produtos e Marcas
+                <svg class="header-utility__chevron" aria-hidden="true" focusable="false">
+                  <use href="#icon-chevron-down"/>
+                </svg>
+              </button>
+              <div class="header-utility__dropdown" id="dropdown-products" hidden>
+                <ul class="header-utility__dropdown-list" role="list">
+                  <li><a class="header-utility__dropdown-link" href="#">Linha A</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Linha B</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Linha C</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="header-utility__item">
+              <button
+                class="header-utility__link"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="dropdown-sustainability"
+                data-js="dropdown-trigger"
+              >
+                Sustentabilidade
+                <svg class="header-utility__chevron" aria-hidden="true" focusable="false">
+                  <use href="#icon-chevron-down"/>
+                </svg>
+              </button>
+              <div class="header-utility__dropdown" id="dropdown-sustainability" hidden>
+                <ul class="header-utility__dropdown-list" role="list">
+                  <li><a class="header-utility__dropdown-link" href="#">ESG</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Relatórios</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="header-utility__item">
+              <button
+                class="header-utility__link"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="dropdown-innovation"
+                data-js="dropdown-trigger"
+              >
+                Inovação
+                <svg class="header-utility__chevron" aria-hidden="true" focusable="false">
+                  <use href="#icon-chevron-down"/>
+                </svg>
+              </button>
+              <div class="header-utility__dropdown" id="dropdown-innovation" hidden>
+                <ul class="header-utility__dropdown-list" role="list">
+                  <li><a class="header-utility__dropdown-link" href="#">P&amp;D</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Startups</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="header-utility__item">
+              <button
+                class="header-utility__link"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="dropdown-news"
+                data-js="dropdown-trigger"
+              >
+                Notícias
+                <svg class="header-utility__chevron" aria-hidden="true" focusable="false">
+                  <use href="#icon-chevron-down"/>
+                </svg>
+              </button>
+              <div class="header-utility__dropdown" id="dropdown-news" hidden>
+                <ul class="header-utility__dropdown-list" role="list">
+                  <li><a class="header-utility__dropdown-link" href="#">Últimas notícias</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Assessoria de imprensa</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="header-utility__item">
+              <button
+                class="header-utility__link"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="dropdown-suppliers"
+                data-js="dropdown-trigger"
+              >
+                Fornecedores
+                <svg class="header-utility__chevron" aria-hidden="true" focusable="false">
+                  <use href="#icon-chevron-down"/>
+                </svg>
+              </button>
+              <div class="header-utility__dropdown" id="dropdown-suppliers" hidden>
+                <ul class="header-utility__dropdown-list" role="list">
+                  <li><a class="header-utility__dropdown-link" href="#">Portal do fornecedor</a></li>
+                  <li><a class="header-utility__dropdown-link" href="#">Homologação</a></li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- Item sem dropdown -->
+            <li class="header-utility__item">
+              <a class="header-utility__link" href="#">Investidores</a>
+            </li>
+
+          </ul>
+        </nav>
+
+        <!-- Hamburger mobile -->
+        <button
+          class="header-utility__toggle"
+          type="button"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="nav-panel-utility"
+          data-js="nav-toggle"
+        >
+          <span class="header-utility__toggle-bar"></span>
+          <span class="header-utility__toggle-bar"></span>
+          <span class="header-utility__toggle-bar"></span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Painel mobile -->
+    <div
+      class="header-utility__mobile-panel"
+      id="nav-panel-utility"
+      data-js="nav-panel"
+      aria-label="Menu de navegação"
+    >
+      <ul class="header-utility__mobile-list" role="list">
+
+        <li class="header-utility__mobile-item">
+          <button
+            class="header-utility__mobile-trigger"
+            type="button"
+            aria-expanded="false"
+            data-js="mobile-accordion"
+          >
+            A Empresa
+            <svg width="16" height="16" aria-hidden="true" focusable="false">
+              <use href="#icon-chevron-down"/>
+            </svg>
+          </button>
+          <ul class="header-utility__mobile-submenu" role="list">
+            <li><a class="header-utility__mobile-sublink" href="#">Sobre nós</a></li>
+            <li><a class="header-utility__mobile-sublink" href="#">Missão e valores</a></li>
+            <li><a class="header-utility__mobile-sublink" href="#">História</a></li>
+          </ul>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <button
+            class="header-utility__mobile-trigger"
+            type="button"
+            aria-expanded="false"
+            data-js="mobile-accordion"
+          >
+            Produtos e Marcas
+            <svg width="16" height="16" aria-hidden="true" focusable="false">
+              <use href="#icon-chevron-down"/>
+            </svg>
+          </button>
+          <ul class="header-utility__mobile-submenu" role="list">
+            <li><a class="header-utility__mobile-sublink" href="#">Linha A</a></li>
+            <li><a class="header-utility__mobile-sublink" href="#">Linha B</a></li>
+          </ul>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <a class="header-utility__mobile-link" href="#">Sustentabilidade</a>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <a class="header-utility__mobile-link" href="#">Inovação</a>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <a class="header-utility__mobile-link" href="#">Notícias</a>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <a class="header-utility__mobile-link" href="#">Fornecedores</a>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <a class="header-utility__mobile-link" href="#">Investidores</a>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <a class="header-utility__mobile-link" href="#">Fale Conosco</a>
+        </li>
+
+        <li class="header-utility__mobile-item">
+          <a class="header-utility__mobile-link" href="#">Ouvidoria</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </header>
+
+  <div class="demo-spacer">
+    ↕ Role para ver o sticky · Resizer o browser para ver o hambúrguer · Clique nos itens com ▾ ↕
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

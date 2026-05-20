@@ -1,0 +1,288 @@
+/* ─────────────────────────────────────────
+   header-simple — section
+   Logo + nav links + ícones opcionais + CTA.
+   Modifier --dark: fundo escuro (ex: EscolaWeb).
+   Hamburger responsivo no mobile (<1024px).
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   BASE (todos os tamanhos)
+═══════════════════════════════════════ */
+
+.header-simple {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-simple__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  height: 64px;
+}
+
+/* ── Logo ── */
+.header-simple__logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-simple__logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+/* ── Nav (oculto no mobile) ── */
+.header-simple__nav {
+  display: none;
+}
+
+.header-simple__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-simple__link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-body);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: color 0.15s ease, background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.header-simple__link:hover {
+  color: var(--color-text-strong);
+  background-color: var(--color-background-alt);
+}
+
+.header-simple__link--active {
+  color: var(--color-text-strong);
+  font-weight: var(--font-weight-semibold);
+}
+
+.header-simple__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Área de ações (ícones + CTA + hamburger) ── */
+.header-simple__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+/* Botão de ícone (WhatsApp, etc.) */
+.header-simple__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-body);
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.header-simple__icon-btn:hover {
+  background-color: var(--color-background-alt);
+}
+
+.header-simple__icon-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Hamburger (visível apenas no mobile) ── */
+.header-simple__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.header-simple__toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.header-simple__toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text-strong);
+  border-radius: var(--radius-full);
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  transform-origin: center;
+}
+
+/* Hamburger → X quando aberto */
+.header-simple__toggle[aria-expanded="true"] .header-simple__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header-simple__toggle[aria-expanded="true"] .header-simple__toggle-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.header-simple__toggle[aria-expanded="true"] .header-simple__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Painel de nav mobile ── */
+.header-simple__mobile-panel {
+  display: none;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  padding: var(--space-lg);
+}
+
+.header-simple__mobile-panel--open {
+  display: block;
+}
+
+.header-simple__mobile-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-simple__mobile-link {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-body);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: background-color 0.15s ease;
+}
+
+.header-simple__mobile-link:hover {
+  background-color: var(--color-background-alt);
+}
+
+.header-simple__mobile-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+
+/* Ações dentro do painel mobile */
+.header-simple__mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (1024px+): exibe nav, oculta hamburger
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+
+  .header-simple__nav {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .header-simple__list {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .header-simple__toggle {
+    display: none;
+  }
+
+  /* Painel nunca aparece no desktop */
+  .header-simple__mobile-panel,
+  .header-simple__mobile-panel--open {
+    display: none;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   Modifier: --dark (fundo escuro)
+   Ex: EscolaWeb
+═══════════════════════════════════════ */
+
+.header-simple--dark {
+  background-color: var(--color-background-dark);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.header-simple--dark .header-simple__link {
+  color: var(--color-text-inverse);
+}
+
+.header-simple--dark .header-simple__link:hover {
+  color: var(--color-text-inverse);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.header-simple--dark .header-simple__link--active {
+  color: var(--color-text-inverse);
+}
+
+.header-simple--dark .header-simple__icon-btn {
+  color: var(--color-text-inverse);
+}
+
+.header-simple--dark .header-simple__icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-simple--dark .header-simple__toggle-bar {
+  background-color: var(--color-text-inverse);
+}
+
+.header-simple--dark .header-simple__mobile-panel {
+  background-color: var(--color-background-dark);
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.header-simple--dark .header-simple__mobile-link {
+  color: var(--color-text-inverse);
+}
+
+.header-simple--dark .header-simple__mobile-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.header-simple--dark .header-simple__mobile-actions {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}

@@ -77,8 +77,8 @@ Executado em 2026-05-19:
 ### Sections
 
 #### Headers
-- [ ] `headers/header-simple`
-- [ ] `headers/header-with-cta`
+- [x] `headers/header-simple` — sticky, logo + nav links + CTA. Modifier `--dark` para fundo escuro. Hamburger mobile com anim. X. (Yelly + EscolaWeb)
+- [x] `headers/header-utility` — 2 fileiras: barra utilitária (links + ícones) + nav principal com dropdowns acessíveis. Accordeon mobile. (Suzano)
 - [ ] `headers/header-transparent`
 
 #### Heroes
@@ -200,3 +200,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-split: 2 colunas com checklist (Style=01) e descrição+2CTAs (Style=02) num mesmo componente
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-centered: full-bleed com overlay uniforme, conteúdo 100% centralizado, botões inverse
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criados 3 components features: feature-split (Style=01), feature-overview (Style=02/03/04), feature-cards (Style=07)
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criados headers: header-simple (light+dark, hamburger) e header-utility (2 fileiras, dropdowns, accordeon mobile)
