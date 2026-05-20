@@ -135,8 +135,7 @@ Executado em 2026-05-19:
 - [ ] `galleries/gallery-masonry`
 
 #### FAQ
-- [ ] `faq/faq-accordion`
-- [ ] `faq/faq-columns`
+- [x] `faq/faq-accordion` — 4 variantes: enclosed (+/−), dark 3-colunas (chevron), cards (chevron), split heading+lista (+/−). CSS-only via details/summary.
 - [ ] `faq/faq-grouped`
 
 #### Forms
@@ -205,3 +204,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado header-megamenu: 3 breakpoints (mobile full-screen / tablet dropdown / desktop inline), accordion mobile, CTAs + social
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criados footers: footer-simple (3 variantes) e footer-full (5 variantes), totalmente responsivos mobile/tablet/desktop
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado tabs/tabs-section: barra de abas + 5 variantes de painel (carousel, peek, split, cards CTA, steps numerados) com JS acessível
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado faq/faq-accordion: 4 variantes (enclosed, dark 3-col, cards, split) CSS-only via details/summary nativo, animação grid-row

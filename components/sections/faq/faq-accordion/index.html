@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Accordion — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .demo-divider {
+      text-align: center;
+      padding-block: var(--space-2xl);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Enclosed (V1 Prime)
+       Ícone +/−, itens em card cinza.
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Enclosed</p>
+
+  <section class="faq-accordion faq-accordion--enclosed">
+    <div class="faq-accordion__inner container">
+
+      <header class="faq-accordion__header">
+        <h2 class="faq-accordion__title">Perguntas Frequentes</h2>
+      </header>
+
+      <div class="faq-accordion__list" role="list">
+
+        <!-- Item aberto por padrão -->
+        <details class="faq-accordion__item" open>
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">O que é o V1 Prime?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Um serviço de mobilidade premium por assinatura, com motoristas exclusivos e atendimento via WhatsApp.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como funciona a assinatura?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Onde o V1 Prime está disponível?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Posso usar mais de um carro ao mesmo tempo?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como faço os agendamentos?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Existe risco de cancelamento?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Posso incluir dependentes no meu plano?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+      </div><!-- /.faq-accordion__list -->
+    </div><!-- /.container -->
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Dark Grid 3 colunas (APD)
+       Fundo escuro, ícone chevron colorido, CTA.
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Dark 3 Colunas</p>
+
+  <section class="faq-accordion faq-accordion--dark">
+    <div class="faq-accordion__inner container">
+
+      <header class="faq-accordion__header">
+        <h2 class="faq-accordion__title">
+          Perguntas <span class="faq-accordion__title-accent">frequentes</span>
+        </h2>
+        <p class="faq-accordion__subtitle">Se sua dúvida não estiver aqui, entre em contato!</p>
+      </header>
+
+      <div class="faq-accordion__list">
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Preciso pagar algo para a APD?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como faço para a APD avaliar meu caso?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Se a empresa que me contratou abrir falência, ainda consigo receber?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Se eu perder o processo, tenho que pagar algo?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Lorem ipsum is simply dummy text of the printing and typesetting?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Lorem ipsum is simply dummy text of the printing and typesetting?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Lorem ipsum is simply dummy text of the printing and typesetting?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Lorem ipsum is simply dummy text of the printing and typesetting?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Lorem ipsum is simply dummy text of the printing and typesetting?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+      </div><!-- /.faq-accordion__list -->
+
+      <div class="faq-accordion__footer">
+        <a href="#" class="button button--filled button--md">Converse com um especialista</a>
+      </div>
+
+    </div><!-- /.container -->
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Cards (Section / clube de café)
+       Cada item em card arredondado, chevron, CTA.
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Cards</p>
+
+  <section class="faq-accordion faq-accordion--cards">
+    <div class="faq-accordion__inner container">
+
+      <header class="faq-accordion__header">
+        <h2 class="faq-accordion__title">Perguntas frequentes</h2>
+      </header>
+
+      <div class="faq-accordion__list">
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como funciona o clube de assinatura?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Que tipo de cafés posso esperar receber?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Posso personalizar minha assinatura de acordo com minhas preferências?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como são selecionados os cafés para cada entrega?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Qual é a frequência de entrega das caixas?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como faço para entrar em contato com o suporte ao cliente em caso de dúvidas ou problemas?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-chevron" viewBox="0 0 20 20" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5l5 5 5-5"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+      </div><!-- /.faq-accordion__list -->
+
+      <div class="faq-accordion__footer">
+        <a href="#" class="button button--filled button--md">Entre em contato</a>
+      </div>
+
+    </div><!-- /.container -->
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 4 — Split (Yelly)
+       Título à esquerda + lista à direita, ícone +.
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 4 — Split</p>
+
+  <section class="faq-accordion faq-accordion--split">
+    <div class="faq-accordion__inner container">
+
+      <!-- Coluna esquerda: título grande -->
+      <div class="faq-accordion__split-heading">
+        <h2 class="faq-accordion__split-title">Perguntas<br>frequentes</h2>
+      </div>
+
+      <!-- Coluna direita: lista de accordion -->
+      <div class="faq-accordion__list">
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Em quanto tempo recebo o valor das vendas?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Há alguma cobrança de aluguel?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">As taxas são promocionais?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">As taxas podem ser alteradas?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">As taxas para CNPJ e CPF são diferentes nos planos presenciais?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">As máquinas funcionam sem celular e Wi-Fi?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Há mais alguma taxa cobrada por cada transação?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit.</p>
+            </div>
+          </div>
+        </details>
+
+      </div><!-- /.faq-accordion__list -->
+    </div><!-- /.container -->
+  </section>
+
+
+</body>
+</html>

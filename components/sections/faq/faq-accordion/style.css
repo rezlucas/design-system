@@ -1,0 +1,355 @@
+/* ─────────────────────────────────────────
+   faq-accordion — section
+   Seção de perguntas frequentes com accordion nativo (<details>/<summary>).
+   Animação via CSS grid-template-rows — sem JS.
+
+   Variantes:
+     • Base: coluna única com linhas separadoras
+     • --enclosed: itens em card cinza (V1 Prime)
+     • --dark: fundo escuro, grid 3 colunas (APD)
+     • --cards: cada item em card próprio (Section)
+     • --split: título à esq. + lista à dir. (Yelly)
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   BASE
+═══════════════════════════════════════ */
+
+.faq-accordion {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+/* ── Cabeçalho de seção ── */
+.faq-accordion__header {
+  text-align: center;
+  margin-block-end: var(--space-3xl);
+}
+
+.faq-accordion__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-md);
+}
+
+/* Destaque de cor na palavra do título (variant --dark) */
+.faq-accordion__title-accent {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.faq-accordion__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── Remove marcador padrão do <summary> ── */
+.faq-accordion__trigger {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  width: 100%;
+  background: none;
+  border: none;
+  padding-block: var(--space-lg);
+  text-align: left;
+}
+
+.faq-accordion__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.faq-accordion__trigger::marker {
+  display: none;
+  content: '';
+}
+
+.faq-accordion__trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.faq-accordion__question {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+  flex: 1;
+}
+
+/* ── Ícone ── */
+.faq-accordion__icon-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+/* Chevron: roda 180° quando aberto */
+.faq-accordion__icon-chevron {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+
+details[open] > .faq-accordion__trigger .faq-accordion__icon-chevron {
+  transform: rotate(-180deg);
+}
+
+/* Plus/Minus: a barra vertical some, deixando só o traço horizontal */
+.faq-accordion__icon-plus {
+  width: 18px;
+  height: 18px;
+}
+
+.faq-accordion__icon-plus .icon-plus__v {
+  transform-origin: 9px 9px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+details[open] > .faq-accordion__trigger .faq-accordion__icon-plus .icon-plus__v {
+  transform: rotate(90deg) scaleX(0);
+  opacity: 0;
+}
+
+/* ── Painel animado via grid-template-rows ── */
+.faq-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+
+details[open] > .faq-accordion__panel {
+  grid-template-rows: 1fr;
+}
+
+.faq-accordion__panel-inner {
+  overflow: hidden;
+}
+
+.faq-accordion__answer {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  padding-block-end: var(--space-lg);
+}
+
+/* ── Lista de itens (base: coluna única) ── */
+.faq-accordion__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-accordion__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-accordion__item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Rodapé com CTA ── */
+.faq-accordion__footer {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--space-3xl);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --enclosed
+   Itens dentro de um card cinza arredondado (V1 Prime).
+   Ícone +/− com cor primária.
+═══════════════════════════════════════ */
+
+.faq-accordion--enclosed .faq-accordion__list {
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-xl);
+  padding-inline: var(--space-xl);
+}
+
+.faq-accordion--enclosed .faq-accordion__item {
+  border-top: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-accordion--enclosed .faq-accordion__item:last-child {
+  border-bottom: none;
+}
+
+.faq-accordion--enclosed .faq-accordion__trigger {
+  padding-block: var(--space-xl);
+}
+
+.faq-accordion--enclosed .faq-accordion__icon-wrap {
+  color: var(--color-primary);
+}
+
+.faq-accordion--enclosed .faq-accordion__question {
+  font-size: var(--font-size-base);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --dark
+   Fundo escuro, texto claro, grid 3 colunas no desktop.
+   Título com palavra de destaque colorida.
+═══════════════════════════════════════ */
+
+.faq-accordion--dark {
+  background-color: var(--color-background-dark);
+}
+
+.faq-accordion--dark .faq-accordion__title {
+  color: var(--color-text-inverse);
+}
+
+.faq-accordion--dark .faq-accordion__subtitle {
+  color: var(--color-text-subtle);
+}
+
+.faq-accordion--dark .faq-accordion__question {
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+}
+
+.faq-accordion--dark .faq-accordion__answer {
+  color: var(--color-text-subtle);
+}
+
+.faq-accordion--dark .faq-accordion__item {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: none;
+}
+
+.faq-accordion--dark .faq-accordion__icon-wrap {
+  color: var(--color-primary);
+}
+
+/* Grid de 1 coluna mobile, 3 colunas desktop */
+.faq-accordion--dark .faq-accordion__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: var(--space-4xl);
+}
+
+.faq-accordion--dark .faq-accordion__trigger {
+  padding-block: var(--space-xl);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --cards
+   Cada item é um card arredondado com fundo cinza (Section).
+═══════════════════════════════════════ */
+
+.faq-accordion--cards .faq-accordion__list {
+  gap: var(--space-sm);
+}
+
+.faq-accordion--cards .faq-accordion__item {
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-lg);
+  border: none;
+  padding-inline: var(--space-xl);
+  overflow: hidden;
+}
+
+.faq-accordion--cards .faq-accordion__item:first-child {
+  border-top: none;
+}
+
+.faq-accordion--cards .faq-accordion__trigger {
+  padding-block: var(--space-xl);
+}
+
+.faq-accordion--cards .faq-accordion__question {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --split
+   Título grande à esquerda + lista à direita (Yelly).
+═══════════════════════════════════════ */
+
+.faq-accordion--split {
+  background-color: var(--color-background-alt);
+}
+
+/* Grid: mobile empilhado, desktop 2 colunas */
+.faq-accordion--split .faq-accordion__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.faq-accordion--split .faq-accordion__split-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+.faq-accordion--split .faq-accordion__icon-wrap {
+  color: var(--color-text-strong);
+}
+
+.faq-accordion--split .faq-accordion__item {
+  border-color: var(--color-border-strong);
+}
+
+.faq-accordion--split .faq-accordion__item:first-child {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET / DESKTOP (≥ 768px)
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  /* Dark: 3 colunas */
+  .faq-accordion--dark .faq-accordion__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Split: 2 colunas (1fr 2fr) */
+  .faq-accordion--split .faq-accordion__inner {
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-5xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+
+  .faq-accordion {
+    padding-block: var(--space-3xl);
+  }
+
+  .faq-accordion__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .faq-accordion--split .faq-accordion__split-title {
+    font-size: var(--font-size-3xl);
+  }
+}
