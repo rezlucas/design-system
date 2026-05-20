@@ -1,0 +1,14 @@
+# Claude Code runtime
+mnt/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+*.swp
+*.swo
+
+# Clientes (imagens reais não versionadas por padrão — versionar explicitamente)
+assets/images/clients/

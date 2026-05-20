@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Design System</title>
+  <link rel="stylesheet" href="../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../base/reset.css">
+  <link rel="stylesheet" href="../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Demo page only — não copie para produção ── */
+    body {
+      padding: var(--space-3xl) var(--space-xl);
+      background-color: var(--color-background-alt);
+      font-family: var(--font-body);
+    }
+
+    .demo-section {
+      margin-block-end: var(--space-3xl);
+    }
+
+    .demo-section__title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-block-end: var(--space-lg);
+    }
+
+    /* Mobile: coluna única — mostra o width: 100% dos botões */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      background-color: var(--color-background);
+      padding: var(--space-xl);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Tablet+: volta para a grade 4 colunas do PDF */
+    @media (min-width: 480px) {
+      .demo-grid {
+        grid-template-columns: 1fr auto 1fr auto;
+        gap: var(--space-lg) var(--space-xl);
+        align-items: center;
+      }
+    }
+
+    .demo-grid__header {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      font-weight: var(--font-weight-medium);
+    }
+
+    /* Cabeçalhos e divisor só aparecem na grid de 4 colunas */
+    @media (max-width: 479px) {
+      .demo-grid__header { display: none; }
+    }
+
+    .demo-divider {
+      grid-column: 1 / -1;
+      height: 1px;
+      background-color: var(--color-border);
+      margin-block: var(--space-sm);
+    }
+
+    /* Grade inverse: fundo escuro para demonstrar os botões */
+    .demo-grid--dark {
+      background-color: var(--color-background-dark);
+      border-color: transparent;
+    }
+
+    .demo-grid--dark .demo-grid__header {
+      color: var(--color-text-muted);
+    }
+
+    .demo-grid--dark .demo-divider {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── SVG reutilizável via <use> ─── -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════════
+       FILLED
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-filled">
+    <p class="demo-section__title" id="title-filled">Filled</p>
+
+    <div class="demo-grid" role="list">
+
+      <!-- Cabeçalho de colunas -->
+      <span class="demo-grid__header">Enabled — text</span>
+      <span class="demo-grid__header">Enabled — icon</span>
+      <span class="demo-grid__header">Disabled — text</span>
+      <span class="demo-grid__header">Disabled — icon</span>
+
+      <div class="demo-divider"></div>
+
+      <!-- LG -->
+      <button class="button button--filled button--lg" type="button">Get stuff done</button>
+      <button class="button button--filled button--lg button--icon-only" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--filled button--lg" type="button" disabled>Get stuff done</button>
+      <button class="button button--filled button--lg button--icon-only" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- MD -->
+      <button class="button button--filled button--md" type="button">Get stuff done</button>
+      <button class="button button--filled button--md button--icon-only" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--filled button--md" type="button" disabled>Get stuff done</button>
+      <button class="button button--filled button--md button--icon-only" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- SM -->
+      <button class="button button--filled button--sm" type="button">Get stuff done</button>
+      <button class="button button--filled button--sm button--icon-only" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--filled button--sm" type="button" disabled>Get stuff done</button>
+      <button class="button button--filled button--sm button--icon-only" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       OUTLINE
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-outline">
+    <p class="demo-section__title" id="title-outline">Outline</p>
+
+    <div class="demo-grid">
+
+      <span class="demo-grid__header">Enabled — text</span>
+      <span class="demo-grid__header">Enabled — icon</span>
+      <span class="demo-grid__header">Disabled — text</span>
+      <span class="demo-grid__header">Disabled — icon</span>
+
+      <div class="demo-divider"></div>
+
+      <!-- LG -->
+      <button class="button button--outline button--lg" type="button">Get stuff done</button>
+      <button class="button button--outline button--lg button--icon-only" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--outline button--lg" type="button" disabled>Get stuff done</button>
+      <button class="button button--outline button--lg button--icon-only" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- MD -->
+      <button class="button button--outline button--md" type="button">Get stuff done</button>
+      <button class="button button--outline button--md button--icon-only" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--outline button--md" type="button" disabled>Get stuff done</button>
+      <button class="button button--outline button--md button--icon-only" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- SM -->
+      <button class="button button--outline button--sm" type="button">Get stuff done</button>
+      <button class="button button--outline button--sm button--icon-only" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--outline button--sm" type="button" disabled>Get stuff done</button>
+      <button class="button button--outline button--sm button--icon-only" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       LINK
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-link">
+    <p class="demo-section__title" id="title-link">Link</p>
+
+    <div class="demo-grid">
+
+      <span class="demo-grid__header">Enabled — text</span>
+      <span class="demo-grid__header">Enabled — icon</span>
+      <span class="demo-grid__header">Disabled — text</span>
+      <span class="demo-grid__header">Disabled — icon</span>
+
+      <div class="demo-divider"></div>
+
+      <!-- LG -->
+      <button class="button button--link button--lg" type="button">Get stuff done</button>
+      <button class="button button--link button--lg" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--link button--lg" type="button" disabled>Get stuff done</button>
+      <button class="button button--link button--lg" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- MD -->
+      <button class="button button--link button--md" type="button">Get stuff done</button>
+      <button class="button button--link button--md" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--link button--md" type="button" disabled>Get stuff done</button>
+      <button class="button button--link button--md" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- SM -->
+      <button class="button button--link button--sm" type="button">Get stuff done</button>
+      <button class="button button--link button--sm" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--link button--sm" type="button" disabled>Get stuff done</button>
+      <button class="button button--link button--sm" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       INVERSE — Filled
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-inverse-filled">
+    <p class="demo-section__title" id="title-inverse-filled">Inverse — Filled</p>
+
+    <div class="demo-grid demo-grid--dark">
+
+      <span class="demo-grid__header">Enabled — text</span>
+      <span class="demo-grid__header">Enabled — icon</span>
+      <span class="demo-grid__header">Disabled — text</span>
+      <span class="demo-grid__header">Disabled — icon</span>
+
+      <div class="demo-divider"></div>
+
+      <!-- LG -->
+      <button class="button button--filled button--lg button--inverse" type="button">Get stuff done</button>
+      <button class="button button--filled button--lg button--icon-only button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--filled button--lg button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--filled button--lg button--icon-only button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- MD -->
+      <button class="button button--filled button--md button--inverse" type="button">Get stuff done</button>
+      <button class="button button--filled button--md button--icon-only button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--filled button--md button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--filled button--md button--icon-only button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- SM -->
+      <button class="button button--filled button--sm button--inverse" type="button">Get stuff done</button>
+      <button class="button button--filled button--sm button--icon-only button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--filled button--sm button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--filled button--sm button--icon-only button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       INVERSE — Outline
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-inverse-outline">
+    <p class="demo-section__title" id="title-inverse-outline">Inverse — Outline</p>
+
+    <div class="demo-grid demo-grid--dark">
+
+      <span class="demo-grid__header">Enabled — text</span>
+      <span class="demo-grid__header">Enabled — icon</span>
+      <span class="demo-grid__header">Disabled — text</span>
+      <span class="demo-grid__header">Disabled — icon</span>
+
+      <div class="demo-divider"></div>
+
+      <!-- LG -->
+      <button class="button button--outline button--lg button--inverse" type="button">Get stuff done</button>
+      <button class="button button--outline button--lg button--icon-only button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--outline button--lg button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--outline button--lg button--icon-only button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- MD -->
+      <button class="button button--outline button--md button--inverse" type="button">Get stuff done</button>
+      <button class="button button--outline button--md button--icon-only button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--outline button--md button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--outline button--md button--icon-only button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- SM -->
+      <button class="button button--outline button--sm button--inverse" type="button">Get stuff done</button>
+      <button class="button button--outline button--sm button--icon-only button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--outline button--sm button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--outline button--sm button--icon-only button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       INVERSE — Link
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-inverse-link">
+    <p class="demo-section__title" id="title-inverse-link">Inverse — Link</p>
+
+    <div class="demo-grid demo-grid--dark">
+
+      <span class="demo-grid__header">Enabled — text</span>
+      <span class="demo-grid__header">Enabled — icon</span>
+      <span class="demo-grid__header">Disabled — text</span>
+      <span class="demo-grid__header">Disabled — icon</span>
+
+      <div class="demo-divider"></div>
+
+      <!-- LG -->
+      <button class="button button--link button--lg button--inverse" type="button">Get stuff done</button>
+      <button class="button button--link button--lg button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--link button--lg button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--link button--lg button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- MD -->
+      <button class="button button--link button--md button--inverse" type="button">Get stuff done</button>
+      <button class="button button--link button--md button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--link button--md button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--link button--md button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+      <!-- SM -->
+      <button class="button button--link button--sm button--inverse" type="button">Get stuff done</button>
+      <button class="button button--link button--sm button--inverse" type="button" aria-label="Continuar">
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+      <button class="button button--link button--sm button--inverse" type="button" disabled>Get stuff done</button>
+      <button class="button button--link button--sm button--inverse" type="button" aria-label="Continuar" disabled>
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </button>
+
+    </div>
+  </section>
+
+</body>
+</html>

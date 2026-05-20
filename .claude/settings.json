@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\cmplu\\\\OneDrive\\\\Documentos\\\\Projetos Tegrus\\\\Design System\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(git init *)"
+    ],
+    "additionalDirectories": [
+      "skills"
+    ]
+  }
+}

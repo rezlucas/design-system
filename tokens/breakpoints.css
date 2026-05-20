@@ -1,0 +1,20 @@
+/*
+  Breakpoints documentados como tokens de referência.
+  ⚠️ CSS não permite var() dentro de @media — use os valores numéricos nos media queries.
+  Valores aqui servem apenas de documentação e referência.
+*/
+:root {
+  --bp-sm:  480px;    /* Telefones grandes */
+  --bp-md:  768px;    /* Tablets — breakpoint principal mobile→tablet */
+  --bp-lg:  1024px;   /* Desktops pequenos — breakpoint tablet→desktop */
+  --bp-xl:  1280px;   /* Desktops */
+  --bp-2xl: 1536px;   /* Telas grandes */
+}
+
+/*
+  Guia de uso em componentes:
+  @media (min-width: 480px)  { ... }   → sm
+  @media (min-width: 768px)  { ... }   → md (mais comum)
+  @media (min-width: 1024px) { ... }   → lg
+  @media (min-width: 1280px) { ... }   → xl
+*/

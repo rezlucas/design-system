@@ -1,0 +1,13 @@
+/*
+  tokens.css — ponto de entrada do sistema de tokens.
+  Importe apenas este arquivo nos componentes e páginas.
+  A ordem de importação define precedência: tokens posteriores sobrescrevem anteriores.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './breakpoints.css';
+@import './radii.css';
+@import './shadows.css';

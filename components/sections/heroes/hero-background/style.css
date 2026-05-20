@@ -1,0 +1,166 @@
+/* ─────────────────────────────────────────
+   hero-background — section
+   Mobile : bloco escuro (conteúdo) + imagem empilhados
+   Desktop: imagem full-bleed + conteúdo sobreposto à esquerda
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST — layout empilhado
+═══════════════════════════════════════ */
+
+.hero-background {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Bloco de imagem ── */
+.hero-background__media {
+  order: 2;                              /* imagem embaixo do conteúdo */
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-border); /* fallback visual sem imagem */
+}
+
+.hero-background__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Bloco de conteúdo (fundo sólido escuro no mobile) ── */
+.hero-background__overlay {
+  order: 1;                              /* conteúdo acima da imagem */
+  background-color: var(--color-background-dark);
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+/* ── Eyebrow ── */
+.hero-background__eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-block-end: var(--space-md);
+}
+
+/* ── Título (h1) ── */
+.hero-background__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 6vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-inverse);
+  margin-block-end: var(--space-lg);
+}
+
+/* ── Subtítulo ── */
+.hero-background__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-inverse);
+  opacity: 0.82;
+  max-width: 44ch;
+  margin-block-end: var(--space-xl);
+}
+
+/* ── Ações (botões) ── */
+.hero-background__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+
+/* ═══════════════════════════════════════
+   SMALL (480px) — respiro extra no overlay
+═══════════════════════════════════════ */
+@media (min-width: 480px) {
+  .hero-background__overlay {
+    padding: var(--space-3xl) var(--space-xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (768px+)
+   A imagem vira fundo absoluto (full-bleed).
+   O overlay passa a ter gradiente escuro→transparente
+   da esquerda para a direita.
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  /* Seção vira contexto de posicionamento */
+  .hero-background {
+    position: relative;
+    display: block;       /* sai do flex-column mobile */
+  }
+
+  /* Imagem ocupa toda a seção como camada de fundo */
+  .hero-background__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    aspect-ratio: auto;   /* libera o ratio fixo do mobile */
+  }
+
+  .hero-background__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  /*
+    Overlay: layer de conteúdo sobre a imagem.
+    Gradiente: sólido à esq. → transparente à dir.
+    Usa rgba(0,0,0,...) porque é uma sombra estrutural,
+    não uma cor de marca — não há token para isso.
+  */
+  .hero-background__overlay {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.80) 35%,
+      rgba(0, 0, 0, 0.25) 56%,
+      transparent 70%
+    );
+    padding: 0;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Conteúdo limitado à metade esquerda da grade */
+  .hero-background__content {
+    max-width: 520px;
+    padding-block: var(--space-4xl);
+  }
+
+  .hero-background__title {
+    font-size: clamp(var(--font-size-3xl), 3.2vw, var(--font-size-5xl));
+    margin-block-end: var(--space-xl);
+  }
+
+  .hero-background__description {
+    font-size: var(--font-size-lg);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP LARGE (1024px+)
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .hero-background__overlay {
+    min-height: 560px;
+  }
+
+  .hero-background__content {
+    max-width: 580px;
+  }
+}

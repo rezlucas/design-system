@@ -1,0 +1,198 @@
+# CONTEXT.md — Estado Vivo do Projeto
+
+> Memória persistente do projeto entre sessões e entre agentes (Claude Code, Codex, etc.).
+>
+> **Atualize este arquivo ao final de cada tarefa significativa.**
+>
+> Antes de iniciar qualquer tarefa, **leia este arquivo primeiro** — ele é mais rápido que re-ler todo o projeto e contém decisões que não estão em outros lugares.
+
+---
+
+## Status geral
+
+- **Última atualização**: 2026-05-19
+- **Fase atual**: Setup inicial concluído — pronto para construção de componentes
+- **Próxima ação**: Aguardando instrução do primeiro componente
+- **Agente em uso**: Claude Code (claude-sonnet-4-6)
+
+---
+
+## Setup inicial — Concluído ✅
+
+Executado em 2026-05-19:
+
+- [x] Estrutura de pastas criada (components/atoms, components/sections, tokens, base, skills, assets, scripts, templates)
+- [x] `.gitkeep` em todas as pastas de componentes vazias
+- [x] `tokens/colors.css` — paleta neutra com primary #0066FF
+- [x] `tokens/typography.css` — Inter como fonte, escala de 0.75rem até 4rem
+- [x] `tokens/spacing.css` — escala base 4px (xs: 4px … 5xl: 128px), container-max: 1200px
+- [x] `tokens/breakpoints.css` — sm:480, md:768, lg:1024, xl:1280, 2xl:1536
+- [x] `tokens/radii.css` — none até full (9999px)
+- [x] `tokens/shadows.css` — xs até 2xl + inner
+- [x] `tokens/tokens.css` — ponto de entrada, importa tudo + Google Fonts (Inter)
+- [x] `base/reset.css` — reset moderno Andy Bell + prefers-reduced-motion
+- [x] `base/base.css` — estilos de html, body, headings, links, focus-visible
+- [x] `base/utilities.css` — .container, .sr-only, .skip-link, .truncate, .flex-center
+- [x] `skills/bem-structure/SKILL.md` — guia completo BEM com checklist
+- [x] `skills/responsive-web-design/SKILL.md` — mobile-first, Grid vs Flexbox, breakpoints, imagens, clamp()
+- [x] `skills/accessibility-basics/SKILL.md` — WCAG AA, HTML semântico, headings, imagens, forms, teclado, contraste
+- [x] `skills/landing-page-anatomy/SKILL.md` — estrutura universal + 6 tipos de oferta + checklist
+- [x] `skills/README.md` — catálogo das skills
+- [x] `assets/images/placeholders/README.md` — tabela de dimensões, exemplos corretos e caminhos relativos
+- [x] `templates/README.md` — catálogo dos templates
+- [x] `.claude/settings.json` — `additionalDirectories: ["skills"]` configurado (discovery do Claude Code)
+- [x] `SKILL.md` na raiz preservado (conteúdo movido para `skills/bem-structure/SKILL.md`)
+
+---
+
+## Componentes criados
+
+> Marque com `[x]` ao concluir. Adicione novas variantes conforme forem criadas.
+
+### Atoms
+
+#### Buttons
+- [x] `buttons/` — componente único com todos os tipos via BEM modifiers
+  - Variantes: `--filled`, `--outline`, `--link`
+  - Modifier de contexto: `--inverse` (para fundos escuros / cor da marca)
+  - Tamanhos: `--lg` (56px), `--md` (48px), `--sm` (36px)
+  - Layouts: texto, ícone-only (`--icon-only`), texto + ícone
+  - Estados: enabled, disabled (nativo + `aria-disabled`)
+
+#### Inputs
+- [ ] `inputs/input-text`
+- [ ] `inputs/input-email`
+- [ ] `inputs/input-textarea`
+- [ ] `inputs/input-select`
+- [ ] `inputs/input-checkbox`
+- [ ] `inputs/input-radio`
+
+#### Outros atoms
+- [ ] `cards/card-basic`
+- [ ] `badges/badge-default`
+- [ ] `accordions/accordion-basic`
+- [ ] `tabs/tabs-horizontal`
+- [ ] `icons/` (popular conforme demanda)
+
+### Sections
+
+#### Headers
+- [ ] `headers/header-simple`
+- [ ] `headers/header-with-cta`
+- [ ] `headers/header-transparent`
+
+#### Heroes
+- [x] `heroes/hero-background` — imagem full-bleed. Desktop: conteúdo sobreposto à esquerda com gradiente. Mobile: empilhado (conteúdo escuro em cima, imagem embaixo).
+- [ ] `heroes/hero-centered`
+- [ ] `heroes/hero-split`
+- [ ] `heroes/hero-with-form`
+- [ ] `heroes/hero-with-video`
+- [ ] `heroes/hero-minimal`
+
+#### Features
+- [ ] `features/features-grid`
+- [ ] `features/features-alternating`
+- [ ] `features/features-tabs`
+- [ ] `features/features-bento`
+
+#### Text Blocks
+- [ ] `text-blocks/text-simple`
+- [ ] `text-blocks/text-with-image`
+- [ ] `text-blocks/text-two-column`
+
+#### Social Proof
+- [ ] `social-proof/logos-grid`
+- [ ] `social-proof/testimonials-cards`
+- [ ] `social-proof/testimonials-carousel`
+- [ ] `social-proof/reviews-stars`
+
+#### Stats
+- [ ] `stats/stats-grid`
+- [ ] `stats/stats-highlighted`
+
+#### Services
+- [ ] `services/services-grid`
+- [ ] `services/services-list`
+
+#### Pricing
+- [ ] `pricing/pricing-simple`
+- [ ] `pricing/pricing-comparison`
+- [ ] `pricing/pricing-toggle-annual`
+
+#### Steps
+- [ ] `steps/steps-horizontal`
+- [ ] `steps/steps-vertical`
+- [ ] `steps/steps-numbered`
+
+#### Team
+- [ ] `team/team-grid`
+- [ ] `team/team-detailed`
+
+#### Galleries
+- [ ] `galleries/gallery-grid`
+- [ ] `galleries/gallery-masonry`
+
+#### FAQ
+- [ ] `faq/faq-accordion`
+- [ ] `faq/faq-columns`
+- [ ] `faq/faq-grouped`
+
+#### Forms
+- [ ] `forms/form-contact`
+- [ ] `forms/form-newsletter`
+- [ ] `forms/form-lead-capture`
+- [ ] `forms/form-multi-step`
+
+#### CTAs
+- [ ] `ctas/cta-banner`
+- [ ] `ctas/cta-with-image`
+- [ ] `ctas/cta-with-form`
+
+#### Footers
+- [ ] `footers/footer-simple`
+- [ ] `footers/footer-complete`
+- [ ] `footers/footer-with-newsletter`
+
+---
+
+## Decisões importantes
+
+- **[2026-05-19]** Escala de espaçamentos: base 4px. Sequência: 4, 8, 16, 24, 32, 48, 64, 96, 128. Tokens: xs → 5xl.
+- **[2026-05-19]** Container max-width: 1200px.
+- **[2026-05-19]** Fonte padrão: Inter (system-ui como fallback). Carregada via Google Fonts em `tokens/tokens.css`.
+- **[2026-05-19]** Breakpoint mobile→tablet: 768px; tablet→desktop: 1024px.
+- **[2026-05-19]** Discovery de skills no Claude Code via `additionalDirectories: ["skills"]` em `.claude/settings.json` (symlinks não usados por exigir admin no Windows).
+
+---
+
+## Pendências e dívidas técnicas
+
+- `SKILL.md` na raiz do projeto é redundante — conteúdo já está em `skills/bem-structure/SKILL.md`. Pode ser removido quando conveniente.
+- Imagens placeholder físicas (`placeholder-square.jpg` etc.) ainda não existem — serão criadas/fornecidas quando o primeiro componente que as usa for construído.
+
+---
+
+## Convenções específicas deste projeto
+
+- **Tokens padrão**: paleta neutra (gray-scale) + primary azul #0066FF (a ser refinado por cliente)
+- **Fonte padrão**: Inter (system-ui como fallback)
+- **Escala de espaçamento**: base 4px
+- **Container max-width**: 1200px
+- **Breakpoint mobile → tablet**: 768px
+- **Breakpoint tablet → desktop**: 1024px
+- **Caminho de imagens nos componentes**: relativo, partindo da pasta do componente
+- **JS hooks**: via `data-js="..."`, nunca via classe BEM
+
+---
+
+## Projetos de clientes ativos
+
+_Nenhum cliente ativo ainda._
+
+---
+
+## Histórico de atualizações
+
+- [2026-05-19] Claude Code (claude-sonnet-4-6) — setup inicial completo: estrutura de pastas, tokens, base CSS, 4 skills, placeholders README, settings.json
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado atoms/buttons: 3 variantes × 3 tamanhos × 2 estados × 2 layouts (style.css + index.html demo + README.md)
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-background: imagem full-bleed desktop / empilhado mobile (style.css + index.html + README.md)

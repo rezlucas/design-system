@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Background — Design System</title>
+
+  <!-- Tokens, reset e utilitários globais -->
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+
+  <!-- Átomo: botão (dependência direta) -->
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+
+  <!-- Este componente -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ─────────────────────────────────────────────────────────
+       Link "skip to content" — obrigatório para acessibilidade
+       ───────────────────────────────────────────────────────── -->
+  <a class="skip-link" href="#hero-content">Ir para o conteúdo</a>
+
+  <main>
+
+    <section class="hero-background" aria-labelledby="hero-title">
+
+      <!-- Imagem de fundo (proporção landscape para desktop / 4:3 para mobile) -->
+      <div class="hero-background__media">
+        <img
+          class="hero-background__image"
+          src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+          alt="empreendedor(a) sorrindo no seu estabelecimento comercial, segurando uma maquininha de pagamento"
+          width="1920"
+          height="579"
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+
+      <!-- Camada de conteúdo
+           Mobile : fundo sólido escuro
+           Desktop: gradiente escuro→transparente sobre a imagem -->
+      <div class="hero-background__overlay">
+        <div class="hero-background__container container" id="hero-content">
+          <div class="hero-background__content">
+
+            <span class="hero-background__eyebrow">LOREM IPSUM DOLOR!</span>
+
+            <h1 class="hero-background__title" id="hero-title">
+              Lorem ipsum dolor sit amet consectetur
+            </h1>
+
+            <p class="hero-background__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore.
+            </p>
+
+            <div class="hero-background__actions">
+              <!--
+                button--inverse: fundo branco + texto escuro.
+                Correto para fundos escuros (mobile: sólido preto;
+                desktop: gradiente escuro).
+              -->
+              <a href="#" class="button button--filled button--lg button--inverse">
+                Lorem ipsum
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+:root {
+  /* Marca (substituir por cliente) */
+  --color-primary:        #0066FF;
+  --color-primary-hover:  #0052CC;
+  --color-primary-light:  #EBF2FF;
+  --color-secondary:      #FF6B35;
+  --color-secondary-hover:#E55C2A;
+
+  /* Texto */
+  --color-text-strong:    #0A0A0A;
+  --color-text-body:      #333333;
+  --color-text-muted:     #666666;
+  --color-text-subtle:    #999999;
+  --color-text-inverse:   #FFFFFF;
+
+  /* Fundos */
+  --color-background:     #FFFFFF;
+  --color-background-alt: #F7F7F7;
+  --color-background-dark:#0A0A0A;
+
+  /* Estados */
+  --color-success:        #10B981;
+  --color-warning:        #F59E0B;
+  --color-error:          #EF4444;
+  --color-info:           #3B82F6;
+
+  /* Bordas */
+  --color-border:         #E5E5E5;
+  --color-border-strong:  #CCCCCC;
+
+  /* Overlay / sombra */
+  --color-overlay:        rgba(0, 0, 0, 0.5);
+}
