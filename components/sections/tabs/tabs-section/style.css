@@ -150,7 +150,9 @@
 
 /* ── Card de imagem ── */
 .tabs-section__card {
-  flex: 0 0 85%; /* mobile: 1 card + peek do próximo */
+  /* flex-basis % não funciona no track sem largura explícita — usar width com vw */
+  flex: none;
+  width: calc(85vw - var(--space-lg)); /* mobile: 1 card + peek do próximo */
   border-radius: var(--radius-lg);
   overflow: hidden;
   background-color: var(--color-background-alt);
@@ -265,6 +267,8 @@
 }
 
 .tabs-section__card--cta {
+  flex: none;
+  width: calc(85vw - var(--space-lg)); /* mobile: 1 card + peek */
   background-color: var(--color-background-alt);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
@@ -312,6 +316,8 @@
 }
 
 .tabs-section__step {
+  flex: none;
+  width: calc(85vw - var(--space-lg)); /* mobile: 1 card + peek */
   background-color: var(--color-background-alt);
   border-radius: var(--radius-lg);
   padding: var(--space-2xl);
@@ -402,7 +408,11 @@
 @media (min-width: 640px) {
 
   .tabs-section__card {
-    flex: 0 0 calc(50% - var(--space-lg) / 2);
+    width: calc((100vw - var(--container-padding) * 2 - var(--space-lg)) / 2);
+  }
+
+  .tabs-section__step {
+    width: calc((100vw - var(--container-padding) * 2 - var(--space-lg)) / 2);
   }
 
   .tabs-section__steps-grid {
@@ -424,6 +434,11 @@
   .tabs-section__card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* CTA cards: 2 visíveis no carousel */
+  .tabs-section__card--cta {
+    width: calc((100vw - var(--container-padding) * 2 - var(--space-lg)) / 2);
+  }
 }
 
 
@@ -432,13 +447,32 @@
 ═══════════════════════════════════════ */
 @media (min-width: 1024px) {
 
+  /* 4 cards ocupam exatamente a largura do container */
   .tabs-section__card {
-    flex: 0 0 calc(25% - var(--space-lg) * 3 / 4);
+    width: calc(
+      (min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg) * 3) / 4
+    );
   }
 
-  /* Peek: mostra ~4.5 cards, parcial visível nas bordas */
+  /* Peek: cards ligeiramente menores para mostrar parcial do 5º */
   .tabs-section--peek .tabs-section__card {
-    flex: 0 0 calc(22% - var(--space-lg));
+    width: calc(
+      (min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg) * 4) / 4.5
+    );
+  }
+
+  /* Steps: 4 colunas no desktop */
+  .tabs-section__step {
+    width: calc(
+      (min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg) * 3) / 4
+    );
+  }
+
+  /* CTA cards: mantém 2 por linha no desktop */
+  .tabs-section__card--cta {
+    width: calc(
+      (min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg)) / 2
+    );
   }
 
   .tabs-section__steps-grid {
