@@ -11,47 +11,59 @@
   <link rel="stylesheet" href="../../../atoms/buttons/style.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Demo apenas */
+    /* Demo apenas — não copiar para produção */
+    body { background-color: var(--color-background-alt); }
+
     .demo-spacer {
-      padding-block: var(--space-5xl);
-      text-align: center;
-      color: var(--color-text-muted);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: var(--font-size-sm);
+      color: var(--color-text-subtle);
       background-color: var(--color-background-alt);
     }
+
     .demo-label {
       text-align: center;
-      padding-block: var(--space-xl);
+      padding-block: var(--space-lg);
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-semibold);
       letter-spacing: var(--letter-spacing-wider);
       text-transform: uppercase;
       color: var(--color-text-muted);
-      background: var(--color-background);
+      background: var(--color-background-alt);
+    }
+
+    /* No demo, o segundo header não é sticky para não sobrepor o primeiro */
+    .header-simple + .demo-spacer + .demo-label + .header-simple {
+      position: static;
     }
   </style>
 </head>
 <body>
 
-  <!-- Ícones -->
+  <!-- Ícones reutilizáveis via <use> -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M5 12h14M12 5l7 7-7 7"/>
     </symbol>
-    <!-- WhatsApp -->
     <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
       <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.975-1.407A9.963 9.963 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.963 7.963 0 01-4.073-1.118l-.291-.174-3.022.855.855-3.022-.174-.291A7.963 7.963 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
     </symbol>
   </svg>
 
-  <!-- ═══════════ VARIANT 1 — LIGHT (padrão Yelly / Navigation.pdf) ═══════════ -->
-  <p class="demo-label">Variant 1 — Light (padrão Yelly)</p>
+  <!-- ═══════════════════════════════
+       VARIANT 1 — LIGHT
+  ════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Light</p>
 
   <header class="header-simple" role="banner">
     <div class="header-simple__bar container">
 
+      <!-- Logo -->
       <a href="/" class="header-simple__logo" aria-label="Ir para a página inicial">
         <img
           class="header-simple__logo-img"
@@ -61,67 +73,89 @@
         >
       </a>
 
+      <!-- Nav desktop -->
       <nav class="header-simple__nav" aria-label="Navegação principal">
         <ul class="header-simple__list" role="list">
-          <li><a class="header-simple__link header-simple__link--active" href="#">Benefícios</a></li>
-          <li><a class="header-simple__link" href="#">Planos</a></li>
-          <li><a class="header-simple__link" href="#">Cashback</a></li>
-          <li><a class="header-simple__link" href="#">Depoimentos</a></li>
-          <li><a class="header-simple__link" href="#">Perguntas frequentes</a></li>
+          <li><a class="header-simple__link header-simple__link--active" href="#">Sobre nós</a></li>
+          <li><a class="header-simple__link" href="#">Soluções</a></li>
+          <li><a class="header-simple__link" href="#">Portfólio</a></li>
+          <li><a class="header-simple__link" href="#">Blog</a></li>
+          <li><a class="header-simple__link" href="#">Contato</a></li>
         </ul>
       </nav>
 
+      <!-- Ações -->
       <div class="header-simple__actions">
-        <a href="#" class="button button--filled button--md">
-          Garantir minha taxa baixa agora
-        </a>
-        <!-- Hamburger (mobile) -->
+
+        <!--
+          .header-simple__cta-wrap — oculto em mobile (<1024px).
+          O botão aparece completo dentro do painel mobile abaixo.
+          Substitua o texto e href conforme o cliente.
+        -->
+        <div class="header-simple__cta-wrap">
+          <a href="#" class="button button--filled button--md">
+            Fale conosco
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Hambúrguer (só aparece em mobile) -->
         <button
           class="header-simple__toggle"
           type="button"
           aria-label="Abrir menu de navegação"
           aria-expanded="false"
-          aria-controls="nav-panel-light"
+          aria-controls="nav-panel-v1"
           data-js="nav-toggle"
         >
           <span class="header-simple__toggle-bar"></span>
           <span class="header-simple__toggle-bar"></span>
           <span class="header-simple__toggle-bar"></span>
         </button>
-      </div>
 
+      </div>
     </div>
 
-    <!-- Painel mobile -->
+    <!-- Painel mobile (abre ao clicar no hambúrguer) -->
     <div
       class="header-simple__mobile-panel"
-      id="nav-panel-light"
+      id="nav-panel-v1"
       data-js="nav-panel"
-      aria-label="Menu de navegação"
+      aria-label="Menu mobile"
     >
       <ul class="header-simple__mobile-list" role="list">
-        <li><a class="header-simple__mobile-link" href="#">Benefícios</a></li>
-        <li><a class="header-simple__mobile-link" href="#">Planos</a></li>
-        <li><a class="header-simple__mobile-link" href="#">Cashback</a></li>
-        <li><a class="header-simple__mobile-link" href="#">Depoimentos</a></li>
-        <li><a class="header-simple__mobile-link" href="#">Perguntas frequentes</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Sobre nós</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Soluções</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Portfólio</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Blog</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Contato</a></li>
       </ul>
       <div class="header-simple__mobile-actions">
-        <a href="#" class="button button--filled button--lg">Garantir minha taxa baixa agora</a>
+        <a href="#" class="button button--filled button--lg">
+          Fale conosco
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
       </div>
     </div>
   </header>
 
-  <div class="demo-spacer">
-    ↕ Role para ver o sticky · Resizer o browser para ver o hambúrguer ↕
-  </div>
+  <div class="demo-spacer">Conteúdo da página — role para testar sticky</div>
 
-  <!-- ═══════════ VARIANT 2 — DARK (padrão EscolaWeb / XXL.pdf) ═══════════ -->
-  <p class="demo-label">Variant 2 — Dark (padrão EscolaWeb)</p>
+  <!-- ═══════════════════════════════
+       VARIANT 2 — DARK
+       Modifier --dark: fundo escuro, textos brancos.
+       Logos e botões usam variantes inversas.
+  ════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Dark</p>
 
   <header class="header-simple header-simple--dark" role="banner">
     <div class="header-simple__bar container">
 
+      <!-- Logo (versão clara para fundo escuro) -->
       <a href="/" class="header-simple__logo" aria-label="Ir para a página inicial">
         <img
           class="header-simple__logo-img"
@@ -131,68 +165,76 @@
         >
       </a>
 
+      <!-- Nav desktop -->
       <nav class="header-simple__nav" aria-label="Navegação principal">
         <ul class="header-simple__list" role="list">
-          <li><a class="header-simple__link" href="#">Quem somos</a></li>
-          <li><a class="header-simple__link" href="#">Planos</a></li>
-          <li><a class="header-simple__link" href="#">Conteúdos</a></li>
+          <li><a class="header-simple__link" href="#">Início</a></li>
+          <li><a class="header-simple__link" href="#">Serviços</a></li>
+          <li><a class="header-simple__link header-simple__link--active" href="#">Sobre</a></li>
           <li><a class="header-simple__link" href="#">Blog</a></li>
         </ul>
       </nav>
 
+      <!-- Ações -->
       <div class="header-simple__actions">
-        <!-- Ícone opcional (ex: WhatsApp) -->
-        <button class="header-simple__icon-btn" type="button" aria-label="Fale pelo WhatsApp">
+
+        <!-- Ícone opcional (ex: canal de contato rápido) — visível em todos os tamanhos -->
+        <button class="header-simple__icon-btn" type="button" aria-label="Contato via WhatsApp">
           <svg width="20" height="20" aria-hidden="true" focusable="false">
             <use href="#icon-whatsapp"/>
           </svg>
         </button>
+
         <!--
-          CTA: cliente define --color-primary para sobrescrever cor do botão.
-          No dark header com button--inverse: fundo branco, texto escuro.
-          Para botão na cor da marca sobre dark: usar button--filled com override via tokens.
+          CTA no dark: button--inverse usa fundo branco + texto escuro.
+          Para botão na cor da marca, o cliente sobrescreve via tokens:
+            .header-simple .button--filled { background: var(--color-primary); }
         -->
-        <a href="#" class="button button--filled button--md button--inverse">
-          Agende uma demonstração
-        </a>
-        <!-- Hamburger -->
+        <div class="header-simple__cta-wrap">
+          <a href="#" class="button button--filled button--md button--inverse">
+            Solicitar demo
+          </a>
+        </div>
+
+        <!-- Hambúrguer -->
         <button
           class="header-simple__toggle"
           type="button"
           aria-label="Abrir menu de navegação"
           aria-expanded="false"
-          aria-controls="nav-panel-dark"
+          aria-controls="nav-panel-v2"
           data-js="nav-toggle"
         >
           <span class="header-simple__toggle-bar"></span>
           <span class="header-simple__toggle-bar"></span>
           <span class="header-simple__toggle-bar"></span>
         </button>
-      </div>
 
+      </div>
     </div>
 
     <!-- Painel mobile -->
     <div
       class="header-simple__mobile-panel"
-      id="nav-panel-dark"
+      id="nav-panel-v2"
       data-js="nav-panel"
+      aria-label="Menu mobile"
     >
       <ul class="header-simple__mobile-list" role="list">
-        <li><a class="header-simple__mobile-link" href="#">Quem somos</a></li>
-        <li><a class="header-simple__mobile-link" href="#">Planos</a></li>
-        <li><a class="header-simple__mobile-link" href="#">Conteúdos</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Início</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Serviços</a></li>
+        <li><a class="header-simple__mobile-link" href="#">Sobre</a></li>
         <li><a class="header-simple__mobile-link" href="#">Blog</a></li>
       </ul>
       <div class="header-simple__mobile-actions">
-        <a href="#" class="button button--filled button--lg button--inverse">Agende uma demonstração</a>
+        <a href="#" class="button button--filled button--lg button--inverse">
+          Solicitar demo
+        </a>
       </div>
     </div>
   </header>
 
-  <div class="demo-spacer">
-    Conteúdo da página
-  </div>
+  <div class="demo-spacer">Conteúdo da página</div>
 
   <script src="script.js"></script>
 </body>
