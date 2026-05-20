@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Centered — Design System</title>
+
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ícones reutilizáveis -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#hero-content">Ir para o conteúdo</a>
+
+  <main>
+
+    <section class="hero-centered" aria-labelledby="hero-centered-title">
+
+      <!-- Imagem de fundo -->
+      <div class="hero-centered__media">
+        <img
+          class="hero-centered__image"
+          src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+          alt="cenário visual representativo do produto ou serviço oferecido"
+          width="1920"
+          height="579"
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+
+      <!-- Conteúdo centralizado sobre a imagem -->
+      <div class="hero-centered__overlay">
+        <div class="hero-centered__container container" id="hero-content">
+          <div class="hero-centered__content">
+
+            <span class="hero-centered__eyebrow">TAG LOREM IPSUM DOLOR SIT AMET</span>
+
+            <h1 class="hero-centered__title" id="hero-centered-title">
+              Lorem ipsum dolor sit amet,<br>
+              consectetur adipiscing elit sed
+            </h1>
+
+            <p class="hero-centered__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+
+            <div class="hero-centered__actions">
+              <!--
+                Fundos escuros → botões inverse.
+                Filled inverse: branco com texto escuro (CTA principal).
+                Outline inverse: borda + texto brancos (CTA secundário).
+              -->
+              <a href="#" class="button button--filled button--md button--inverse">
+                Get stuff done
+                <svg class="button__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow"/>
+                </svg>
+              </a>
+              <a href="#" class="button button--outline button--md button--inverse">
+                Get stuff done
+                <svg class="button__icon" aria-hidden="true" focusable="false">
+                  <use href="#icon-arrow"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

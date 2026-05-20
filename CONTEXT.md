@@ -84,7 +84,7 @@ Executado em 2026-05-19:
 #### Heroes
 - [x] `heroes/hero-background` — imagem full-bleed. Desktop: conteúdo sobreposto à esquerda com gradiente. Mobile: empilhado (conteúdo escuro em cima, imagem embaixo).
 - [x] `heroes/hero-split` — duas colunas (conteúdo esq. / imagem dir.). 2 variantes de conteúdo: checklist (Style=01) e descrição+2CTAs (Style=02).
-- [ ] `heroes/hero-centered`
+- [x] `heroes/hero-centered` — imagem full-bleed, overlay escuro uniforme, todo conteúdo centralizado (eyebrow + h1 + descrição + 2 CTAs inverse).
 - [ ] `heroes/hero-with-form`
 - [ ] `heroes/hero-with-video`
 - [ ] `heroes/hero-minimal`
@@ -197,3 +197,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado atoms/buttons: 3 variantes × 3 tamanhos × 2 estados × 2 layouts (style.css + index.html demo + README.md)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-background: imagem full-bleed desktop / empilhado mobile (style.css + index.html + README.md)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-split: 2 colunas com checklist (Style=01) e descrição+2CTAs (Style=02) num mesmo componente
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-centered: full-bleed com overlay uniforme, conteúdo 100% centralizado, botões inverse

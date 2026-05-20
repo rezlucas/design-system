@@ -1,0 +1,133 @@
+/* ─────────────────────────────────────────
+   hero-centered — section
+   Imagem full-bleed como fundo.
+   Todo o conteúdo centralizado (h + v).
+   Overlay escuro uniforme para legibilidade.
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   BASE — funciona em todos os breakpoints
+   (o layout centralizado não muda entre
+   mobile e desktop — só escala)
+═══════════════════════════════════════ */
+
+.hero-centered {
+  position: relative;
+}
+
+/* ── Imagem de fundo (camada 0) ── */
+.hero-centered__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--color-background-dark); /* fallback */
+}
+
+.hero-centered__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/*
+  Overlay: camada escura uniforme sobre a imagem.
+  rgba estrutural — garante legibilidade com qualquer
+  imagem de fundo, não é cor de marca.
+*/
+.hero-centered__overlay {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.42);
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-3xl);
+}
+
+/* ── Conteúdo: tudo centralizado ── */
+.hero-centered__content {
+  text-align: center;
+}
+
+/* ── Eyebrow / tag ── */
+.hero-centered__eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-inverse);
+  opacity: 0.75;
+  margin-block-end: var(--space-lg);
+}
+
+/* ── Título ── */
+.hero-centered__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 6vw, var(--font-size-6xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-inverse);
+  margin-block-end: var(--space-lg);
+}
+
+/* ── Descrição ── */
+.hero-centered__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-inverse);
+  opacity: 0.82;
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-block-end: var(--space-2xl);
+}
+
+/* ── Ações: empilhadas no mobile, linha no desktop ── */
+.hero-centered__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-md);
+  max-width: 360px;
+  margin-inline: auto;
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET (480px+) — botões em linha
+═══════════════════════════════════════ */
+@media (min-width: 480px) {
+  .hero-centered__actions {
+    flex-direction: row;
+    justify-content: center;
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .hero-centered__description {
+    font-size: var(--font-size-lg);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (768px+)
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .hero-centered__overlay {
+    min-height: 500px;
+    padding-block: var(--space-4xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP LARGE (1024px+)
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .hero-centered__overlay {
+    min-height: 580px;
+  }
+}
