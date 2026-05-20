@@ -114,7 +114,7 @@ Executado em 2026-05-19:
 - [ ] `stats/stats-highlighted`
 
 #### Services
-- [ ] `services/services-grid`
+- [x] `services/services-grid` — 6 variantes: cards-seta, pastel, icon-box horizontal, bento assimétrico, centered 4-col+CTA, circular media
 - [ ] `services/services-list`
 
 #### Pricing
@@ -207,3 +207,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado faq/faq-accordion: 4 variantes (enclosed, dark 3-col, cards, split) CSS-only via details/summary nativo, animação grid-row
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado features/feature-accordion: imagem+accordion split (contida e full-bleed), modifiers --reverse e --full
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado ctas/cta-banner: 4 variantes (card-split, overlay-left, overlay-center, split branco)
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado services/services-grid: 6 variantes (base, pastel, icon-box, bento, centered, circular)

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Grid — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .demo-divider {
+      text-align: center;
+      padding-block: var(--space-2xl);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sprite de ícones -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="12" width="4" height="9" rx="1"/><rect x="10" y="7" width="4" height="14" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/>
+    </symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+    </symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+    </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+    </symbol>
+    <symbol id="icon-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="8" width="18" height="4" rx="1"/><path d="M21 12v9H3v-9M12 8V21M12 8H7.5a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8zM12 8h4.5a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8z"/>
+    </symbol>
+    <symbol id="icon-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>
+      <path d="M12 7v4M12 11l-5.5 6.5M12 11l5.5 6.5"/>
+    </symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+  </svg>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Base (cards brancos + link-seta)
+       (Soluções — CX)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Cards Brancos + Seta</p>
+
+  <section class="services-grid">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <h2 class="services-grid__title">Lorem ipsum dolor sit</h2>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-message"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Lorem ipsum">
+            <svg><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-heart"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim gravida.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Lorem ipsum">
+            <svg><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-chart"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Lorem ipsum">
+            <svg><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-bell"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Lorem ipsum">
+            <svg><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-network"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Lorem ipsum">
+            <svg><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-settings"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Lorem ipsum">
+            <svg><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Pastel (fundo colorido por card)
+       (Aposentadoria — APD)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Cards Pastel</p>
+
+  <section class="services-grid services-grid--pastel">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <p class="services-grid__eyebrow">Lorem Ipsum</p>
+        <h2 class="services-grid__title">Lorem ipsum dolor sit amet consectetur</h2>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-user"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus.</p>
+          <a href="#" class="services-grid__card-link-text">
+            Lorem ipsum
+            <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-heart"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet consectetur</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis dui enim. Gravida nec in donec ipsum dui.</p>
+          <a href="#" class="services-grid__card-link-text">
+            Lorem ipsum
+            <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-shield"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="services-grid__card-link-text">
+            Lorem ipsum
+            <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-star"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+          <a href="#" class="services-grid__card-link-text">
+            Lorem ipsum
+            <svg width="16" height="16"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Icon-box horizontal + CTA
+       (Benefícios — APD)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Icon-Box Horizontal + CTA</p>
+
+  <section class="services-grid services-grid--icon-box">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <p class="services-grid__eyebrow">Lorem Ipsum</p>
+        <h2 class="services-grid__title">Lorem ipsum dolor sit amet consectetur</h2>
+        <p class="services-grid__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-box">
+            <svg width="24" height="24"><use href="#icon-user"/></svg>
+          </div>
+          <div class="services-grid__card-text">
+            <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet consectetur</h3>
+            <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis.</p>
+          </div>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-box">
+            <svg width="24" height="24"><use href="#icon-heart"/></svg>
+          </div>
+          <div class="services-grid__card-text">
+            <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet consectetur</h3>
+            <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis.</p>
+          </div>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-box">
+            <svg width="24" height="24"><use href="#icon-shield"/></svg>
+          </div>
+          <div class="services-grid__card-text">
+            <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet consectetur</h3>
+            <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh. Urna mauris lectus venenatis.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="services-grid__footer">
+        <a href="#" class="button button--filled button--md">Lorem ipsum</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 4 — Bento grid assimétrico
+       (Ybera — LiveShop)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 4 — Bento Grid</p>
+
+  <section class="services-grid services-grid--bento">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <p class="services-grid__eyebrow">Lorem Ipsum</p>
+        <h2 class="services-grid__title">Lorem ipsum dolor sit amet consectetur</h2>
+      </header>
+
+      <div class="services-grid__bento-layout">
+
+        <!-- Featured: card tall com imagem -->
+        <div class="services-grid__card services-grid__card--bento-featured">
+          <img
+            src="../../../../assets/images/placeholders/placeholder-image.png"
+            alt="Lorem ipsum"
+          >
+          <div class="services-grid__card-overlay">
+            <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet consectetur</h3>
+            <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+          </div>
+        </div>
+
+        <!-- Coluna direita -->
+        <div class="services-grid__bento-right">
+
+          <!-- Mini grid 2×2 -->
+          <div class="services-grid__bento-mini-grid">
+
+            <div class="services-grid__card services-grid__card--bento-mini">
+              <div class="services-grid__icon-wrap"><svg><use href="#icon-gift"/></svg></div>
+              <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+            </div>
+
+            <div class="services-grid__card services-grid__card--bento-mini">
+              <div class="services-grid__icon-wrap"><svg><use href="#icon-shield"/></svg></div>
+              <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+            </div>
+
+            <div class="services-grid__card services-grid__card--bento-mini">
+              <div class="services-grid__icon-wrap"><svg><use href="#icon-star"/></svg></div>
+              <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+            </div>
+
+            <div class="services-grid__card services-grid__card--bento-mini">
+              <div class="services-grid__icon-wrap"><svg><use href="#icon-network"/></svg></div>
+              <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+            </div>
+
+          </div><!-- /.bento-mini-grid -->
+
+          <!-- Wide banner com imagem -->
+          <div class="services-grid__card services-grid__card--bento-wide">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+              alt="Lorem ipsum"
+            >
+            <div class="services-grid__card-overlay">
+              <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+            </div>
+          </div>
+
+        </div><!-- /.bento-right -->
+
+      </div><!-- /.bento-layout -->
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 5 — Centered 4-col + CTA card
+       (Funcionalidades — App)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 5 — Centered 4 Colunas + CTA</p>
+
+  <section class="services-grid services-grid--centered">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <h2 class="services-grid__title">Lorem ipsum dolor sit amet</h2>
+        <p class="services-grid__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</p>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-user"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum nulla nulla suscipit.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-bell"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum nulla nulla suscipit.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-chart"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum nulla nulla suscipit.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-network"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum nulla nulla suscipit.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-calendar"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum nulla nulla suscipit.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-message"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum nulla nulla suscipit.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap"><svg><use href="#icon-gift"/></svg></div>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum nulla nulla suscipit.</p>
+        </div>
+
+        <!-- CTA card: sem ícone, apenas título + botão -->
+        <div class="services-grid__card services-grid__card--cta">
+          <h3 class="services-grid__card-title">Lorem ipsum dolor</h3>
+          <a href="#" class="button button--filled button--icon-only button--md" aria-label="Lorem ipsum">
+            <svg width="20" height="20"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 6 — Circular media + CTA
+       (Marmomac — Sustainable)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 6 — Circular Media + CTA</p>
+
+  <section class="services-grid services-grid--circular">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <h2 class="services-grid__title">Lorem ipsum dolor sit amet consectetur</h2>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__circle-media">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt=""
+              aria-hidden="true"
+            >
+          </div>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__circle-media">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt=""
+              aria-hidden="true"
+            >
+          </div>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet eu augue potenti nibh.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__circle-media">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt=""
+              aria-hidden="true"
+            >
+          </div>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit. Placerat sed imperdiet aliquet.</p>
+        </div>
+
+      </div>
+
+      <div class="services-grid__footer">
+        <a href="#" class="button button--filled button--md">Lorem ipsum</a>
+      </div>
+
+    </div>
+  </section>
+
+
+</body>
+</html>

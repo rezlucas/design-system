@@ -1,0 +1,512 @@
+/* ─────────────────────────────────────────
+   services-grid — section
+   Grade de cards de serviços/features.
+
+   Variantes:
+     • Base:        cards brancos, ícone + título + corpo + link-seta-círculo
+     • --pastel:    cards com fundo pastel colorido por posição, link-texto
+     • --icon-box:  layout horizontal, ícone em caixa colorida, título colorido
+     • --bento:     grid assimétrico (featured + mini-grid + banner)
+     • --centered:  4 colunas, conteúdo centralizado, ícone em caixa, CTA card
+     • --circular:  media circular + texto centralizado + CTA rodapé
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   BASE
+═══════════════════════════════════════ */
+
+.services-grid {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background-alt);
+}
+
+/* ── Cabeçalho ── */
+.services-grid__header {
+  text-align: center;
+  margin-block-end: var(--space-3xl);
+}
+
+.services-grid__eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-sm);
+}
+
+.services-grid__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-md);
+}
+
+.services-grid__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
+/* ── Grade principal ── */
+.services-grid__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* ── Card base ── */
+.services-grid__card {
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ── Ícone (linha genérica) ── */
+.services-grid__icon-wrap {
+  width: 44px;
+  height: 44px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.services-grid__icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Textos ── */
+.services-grid__card-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+.services-grid__card-body {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  flex: 1;
+}
+
+/* ── Link com seta em círculo (base) ── */
+.services-grid__card-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--color-text-body);
+  text-decoration: none;
+  align-self: flex-end;
+  margin-block-start: auto;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.services-grid__card-link:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.services-grid__card-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.services-grid__card-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Rodapé com CTA ── */
+.services-grid__footer {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--space-3xl);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --pastel
+   Cards com fundo pastel único por posição.
+   Link texto + seta embaixo.
+═══════════════════════════════════════ */
+
+.services-grid--pastel {
+  background-color: var(--color-background);
+}
+
+.services-grid--pastel .services-grid__card {
+  background-color: #F0E6FF; /* lavanda — sobrescrito por nth-child */
+}
+
+.services-grid--pastel .services-grid__card:nth-child(1) { background-color: #F0E6FF; }
+.services-grid--pastel .services-grid__card:nth-child(2) { background-color: #FFE8DC; }
+.services-grid--pastel .services-grid__card:nth-child(3) { background-color: #FFF2D8; }
+.services-grid--pastel .services-grid__card:nth-child(4) { background-color: #E8EDFF; }
+
+.services-grid--pastel .services-grid__icon-wrap {
+  color: var(--color-text-strong);
+}
+
+/* Link texto (ex: Saiba mais →) */
+.services-grid__card-link-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--color-text-strong);
+  padding-block-end: 2px;
+  align-self: flex-start;
+  margin-block-start: auto;
+  transition: opacity 0.15s ease;
+}
+
+.services-grid__card-link-text:hover {
+  opacity: 0.65;
+}
+
+.services-grid__card-link-text svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --icon-box
+   Layout horizontal: ícone em caixa colorida | texto.
+   Título colorido (cor primária). CTA no rodapé.
+═══════════════════════════════════════ */
+
+.services-grid--icon-box {
+  background-color: var(--color-background);
+}
+
+.services-grid--icon-box .services-grid__title {
+  color: var(--color-primary);
+}
+
+.services-grid--icon-box .services-grid__card {
+  background-color: var(--color-background-alt);
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.services-grid__icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  flex-shrink: 0;
+}
+
+.services-grid__icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+
+.services-grid__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.services-grid--icon-box .services-grid__card-title {
+  color: var(--color-primary);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --bento
+   Grid assimétrico: card featured (tall) |
+   mini-grid 2×2 + banner wide.
+═══════════════════════════════════════ */
+
+.services-grid--bento {
+  background-color: var(--color-background);
+}
+
+.services-grid__bento-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+}
+
+/* Featured: tall, com imagem de fundo */
+.services-grid__card--bento-featured {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-background-alt);
+  min-height: 340px;
+  padding: 0;
+  gap: 0;
+}
+
+.services-grid__card--bento-featured img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+/* Mini-grid: 2×2 de cards com ícone */
+.services-grid__bento-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.services-grid__bento-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.services-grid__card--bento-mini {
+  padding: var(--space-lg);
+  gap: var(--space-sm);
+  background-color: var(--color-background-alt);
+}
+
+.services-grid__card--bento-mini .services-grid__icon-wrap {
+  width: 36px;
+  height: 36px;
+}
+
+.services-grid__card--bento-mini .services-grid__card-title {
+  font-size: var(--font-size-sm);
+}
+
+.services-grid__card--bento-mini .services-grid__card-body {
+  font-size: var(--font-size-xs);
+}
+
+/* Wide banner: com imagem de fundo */
+.services-grid__card--bento-wide {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-background-alt);
+  min-height: 160px;
+  padding: 0;
+  gap: 0;
+}
+
+.services-grid__card--bento-wide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+/* Overlay de texto sobre imagem (featured + wide) */
+.services-grid__card-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-xl);
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  min-height: inherit;
+}
+
+.services-grid__card-overlay .services-grid__card-title {
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-lg);
+}
+
+.services-grid__card-overlay .services-grid__card-body {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--font-size-sm);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --centered
+   4 colunas, conteúdo centralizado, ícone em caixa, CTA card.
+═══════════════════════════════════════ */
+
+.services-grid--centered .services-grid__card {
+  text-align: center;
+  align-items: center;
+}
+
+/* Ícone em caixa arredondada */
+.services-grid--centered .services-grid__icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-grid--centered .services-grid__icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+.services-grid--centered .services-grid__card-title {
+  color: var(--color-primary);
+}
+
+/* Último card = CTA (sem ícone, sem body, só título + botão) */
+.services-grid__card--cta {
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  background-color: transparent;
+}
+
+.services-grid__card--cta .services-grid__card-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --circular
+   Media circular + texto centralizado + CTA no rodapé.
+═══════════════════════════════════════ */
+
+.services-grid--circular {
+  background-color: var(--color-background);
+}
+
+.services-grid--circular .services-grid__card {
+  text-align: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.services-grid__circle-media {
+  width: 120px;
+  height: 120px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-grid__circle-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.services-grid--circular .services-grid__card-title {
+  display: none; /* variante sem título — apenas corpo */
+}
+
+.services-grid--circular .services-grid__card-body {
+  font-size: var(--font-size-sm);
+  max-width: 28ch;
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET (≥ 640px): 2 colunas
+═══════════════════════════════════════ */
+@media (min-width: 640px) {
+
+  .services-grid__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Bento: desktop layout ativo */
+  .services-grid__bento-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .services-grid__card--bento-featured {
+    grid-row: 1 / 3;
+    min-height: 480px;
+  }
+
+  .services-grid__card--bento-wide {
+    min-height: 180px;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 1024px): 3 ou 4 colunas
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+
+  /* Base e icon-box: 3 colunas */
+  .services-grid__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Pastel: 4 colunas, alinha pelo topo (staggered natural) */
+  .services-grid--pastel .services-grid__list {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+  }
+
+  /* Centered: 4 colunas */
+  .services-grid--centered .services-grid__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Circular: 3 colunas */
+  .services-grid--circular .services-grid__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+
+  .services-grid {
+    padding-block: var(--space-3xl);
+  }
+
+  /* Bento: empilha tudo */
+  .services-grid__bento-mini-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Icon-box: volta para vertical no mobile */
+  .services-grid--icon-box .services-grid__card {
+    flex-direction: column;
+  }
+}
