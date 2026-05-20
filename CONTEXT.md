@@ -79,6 +79,7 @@ Executado em 2026-05-19:
 #### Headers
 - [x] `headers/header-simple` — sticky, logo + nav links + CTA. Modifier `--dark` para fundo escuro. Hamburger mobile com anim. X. (Yelly + EscolaWeb)
 - [x] `headers/header-utility` — 2 fileiras: barra utilitária (links + ícones) + nav principal com dropdowns acessíveis. Accordeon mobile. (Suzano)
+- [x] `headers/header-megamenu` — bar sticky + mega panel: <768px overlay full-screen com accordion, 768-1199px colunas abaixo da bar, ≥1200px nav inline + dropdown por item. CTAs + idioma + redes no mobile.
 - [ ] `headers/header-transparent`
 
 #### Heroes
