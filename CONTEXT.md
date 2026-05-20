@@ -10,9 +10,9 @@
 
 ## Status geral
 
-- **Última atualização**: 2026-05-19
-- **Fase atual**: Setup inicial concluído — pronto para construção de componentes
-- **Próxima ação**: Aguardando instrução do primeiro componente
+- **Última atualização**: 2026-05-20
+- **Fase atual**: Atoms + Sections em construção — headers, heroes, features e footers concluídos
+- **Próxima ação**: Inputs, social proof, stats, pricing, CTAs, forms
 - **Agente em uso**: Claude Code (claude-sonnet-4-6)
 
 ---
@@ -151,8 +151,8 @@ Executado em 2026-05-19:
 - [ ] `ctas/cta-with-form`
 
 #### Footers
-- [ ] `footers/footer-simple`
-- [ ] `footers/footer-complete`
+- [x] `footers/footer-simple` — 3 variantes: nav centralizada+CTA, nav direita+CTA, banner CTA+nav+social
+- [x] `footers/footer-full` — 5 variantes: brand+cols, brand+CTA+cols, banner+brand+cols, cols+contato, search bar
 - [ ] `footers/footer-with-newsletter`
 
 ---
@@ -202,3 +202,5 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-centered: full-bleed com overlay uniforme, conteúdo 100% centralizado, botões inverse
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criados 3 components features: feature-split (Style=01), feature-overview (Style=02/03/04), feature-cards (Style=07)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criados headers: header-simple (light+dark, hamburger) e header-utility (2 fileiras, dropdowns, accordeon mobile)
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criado header-megamenu: 3 breakpoints (mobile full-screen / tablet dropdown / desktop inline), accordion mobile, CTAs + social
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criados footers: footer-simple (3 variantes) e footer-full (5 variantes), totalmente responsivos mobile/tablet/desktop

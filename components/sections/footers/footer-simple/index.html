@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer Simple — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-spacer {
+      padding-block: var(--space-5xl);
+      text-align: center;
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+    }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+      <circle cx="4" cy="4" r="2"/>
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+    </symbol>
+  </svg>
+
+  <div class="demo-spacer">Conteúdo da página acima do footer</div>
+
+  <!-- ═══════════════════════════════
+       VARIANT 1 — Nav centralizada + CTA filled
+       (Default=Center)
+  ════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Nav Central + CTA</p>
+
+  <footer class="footer-simple">
+
+    <!-- Fileira principal: Logo | Nav (center) | CTA -->
+    <div class="footer-simple__main">
+      <div class="footer-simple__main-inner container">
+
+        <a href="/" class="footer-simple__logo" aria-label="Página inicial">
+          <img
+            class="footer-simple__logo-img"
+            src="../../../../assets/images/placeholders/placeholder-dark-logo.png"
+            alt="Logo da empresa"
+            width="73" height="32"
+          >
+        </a>
+
+        <nav class="footer-simple__nav" aria-label="Links do rodapé">
+          <ul class="footer-simple__nav-list" role="list">
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-simple__actions">
+          <a href="#" class="button button--filled button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Fileira inferior: Copyright | Social -->
+    <div class="footer-simple__bottom">
+      <div class="footer-simple__bottom-inner container">
+        <p class="footer-simple__copyright">Lorem ipsum dolor sit amet</p>
+        <div class="footer-simple__social-area">
+          <span class="footer-simple__social-label">Lorem ipsum</span>
+          <a href="#" class="footer-simple__social-link" aria-label="Instagram">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>
+          </a>
+          <a href="#" class="footer-simple__social-link" aria-label="LinkedIn">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+          </a>
+          <a href="#" class="footer-simple__social-link" aria-label="Facebook">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-facebook"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <div class="demo-spacer">— — —</div>
+
+  <!-- ═══════════════════════════════
+       VARIANT 2 — Nav à direita + CTA
+       (Default=Direita)
+  ════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Nav Direita + CTA</p>
+
+  <footer class="footer-simple footer-simple--nav-right">
+
+    <div class="footer-simple__main">
+      <div class="footer-simple__main-inner container">
+
+        <a href="/" class="footer-simple__logo" aria-label="Página inicial">
+          <img
+            class="footer-simple__logo-img"
+            src="../../../../assets/images/placeholders/placeholder-dark-logo.png"
+            alt="Logo da empresa"
+            width="73" height="32"
+          >
+        </a>
+
+        <nav class="footer-simple__nav" aria-label="Links do rodapé">
+          <ul class="footer-simple__nav-list" role="list">
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-simple__actions">
+          <a href="#" class="button button--filled button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-simple__bottom">
+      <div class="footer-simple__bottom-inner container">
+        <p class="footer-simple__copyright">Lorem ipsum dolor sit amet</p>
+        <div class="footer-simple__social-area">
+          <span class="footer-simple__social-label">Lorem ipsum</span>
+          <a href="#" class="footer-simple__social-link" aria-label="Instagram">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>
+          </a>
+          <a href="#" class="footer-simple__social-link" aria-label="LinkedIn">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+          </a>
+          <a href="#" class="footer-simple__social-link" aria-label="Facebook">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-facebook"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <div class="demo-spacer">— — —</div>
+
+  <!-- ═══════════════════════════════
+       VARIANT 3 — Banner CTA + nav + social
+       (Default=Cta)
+       Sem fileira de copyright separada.
+  ════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Banner CTA + Nav + Social</p>
+
+  <footer class="footer-simple">
+
+    <!-- Banner CTA acima -->
+    <div class="footer-simple__cta-banner">
+      <div class="footer-simple__cta-banner-inner container">
+        <p class="footer-simple__cta-heading">
+          Lorem ipsum dolor sit<br>Lorem ipsum dolor
+        </p>
+        <a href="#" class="button button--outline button--md">
+          Get stuff done
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Fileira única: Logo + Nav + Social (sem CTA button, sem bottom bar) -->
+    <div class="footer-simple__main">
+      <div class="footer-simple__main-inner container">
+
+        <a href="/" class="footer-simple__logo" aria-label="Página inicial">
+          <img
+            class="footer-simple__logo-img"
+            src="../../../../assets/images/placeholders/placeholder-dark-logo.png"
+            alt="Logo da empresa"
+            width="73" height="32"
+          >
+        </a>
+
+        <nav class="footer-simple__nav" aria-label="Links do rodapé">
+          <ul class="footer-simple__nav-list" role="list">
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+            <li><a class="footer-simple__nav-link" href="#">Lorem ipsum</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-simple__actions">
+          <div class="footer-simple__social-inline">
+            <a href="#" class="footer-simple__social-link" aria-label="Instagram">
+              <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>
+            </a>
+            <a href="#" class="footer-simple__social-link" aria-label="LinkedIn">
+              <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+            </a>
+            <a href="#" class="footer-simple__social-link" aria-label="Facebook">
+              <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-facebook"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+</body>
+</html>
