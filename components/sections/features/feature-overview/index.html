@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Overview — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .demo-divider { height: 2px; background-color: var(--color-border); }
+  </style>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" style="fill: var(--color-text-strong)"/>
+      <path d="M7 12.5l3.5 3.5 6.5-7"
+        style="fill:none; stroke: var(--color-text-inverse); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════ STYLE=02 — checklist 1-col + imagem direita ═══════════ -->
+  <p class="demo-label">Style=02 — Checklist 1 coluna / imagem direita</p>
+
+  <section class="feature-overview" aria-labelledby="fo-02-title">
+    <div class="container">
+      <div class="feature-overview__header">
+        <span class="feature-overview__eyebrow">TAG LOREM IPSUM DOLOR SIT AMET</span>
+        <h2 class="feature-overview__title" id="fo-02-title">Heading H5 Lorem ipsum dolor sit amet</h2>
+        <p class="feature-overview__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        </p>
+      </div>
+
+      <div class="feature-overview__body">
+        <div class="feature-overview__content">
+          <ul class="feature-overview__checklist" aria-label="Benefícios">
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="feature-overview__media">
+          <img class="feature-overview__image"
+            src="../../../../assets/images/placeholders/placeholder-image.png"
+            alt="produto ou ambiente representativo do serviço"
+            width="400" height="400" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="demo-divider"></div>
+
+  <!-- ═══════════ STYLE=03 — checklist 2-col + imagem direita ═══════════ -->
+  <p class="demo-label">Style=03 — Checklist 2 colunas / imagem direita</p>
+
+  <section class="feature-overview" aria-labelledby="fo-03-title">
+    <div class="container">
+      <div class="feature-overview__header">
+        <span class="feature-overview__eyebrow">TAG LOREM IPSUM DOLOR SIT AMET</span>
+        <h2 class="feature-overview__title" id="fo-03-title">Heading H5 Lorem ipsum dolor sit amet, consectetur</h2>
+        <p class="feature-overview__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        </p>
+      </div>
+
+      <div class="feature-overview__body">
+        <div class="feature-overview__content">
+          <!-- feature-overview__checklist--two-col ativa 2 colunas no desktop -->
+          <ul class="feature-overview__checklist feature-overview__checklist--two-col" aria-label="Benefícios">
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="feature-overview__actions">
+            <a href="#" class="button button--filled button--md">
+              Get stuff done
+              <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="feature-overview__media">
+          <img class="feature-overview__image"
+            src="../../../../assets/images/placeholders/placeholder-image.png"
+            alt="produto ou ambiente representativo do serviço"
+            width="400" height="400" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="demo-divider"></div>
+
+  <!-- ═══════════ STYLE=04 — imagem esquerda + checklist 2-col direita ═══════════ -->
+  <p class="demo-label">Style=04 — Imagem esquerda / checklist 2 colunas direita (--reverse)</p>
+
+  <section class="feature-overview feature-overview--reverse" aria-labelledby="fo-04-title">
+    <div class="container">
+      <div class="feature-overview__header">
+        <h2 class="feature-overview__title" id="fo-04-title">Heading H5 Lorem ipsum dolor sit amet</h2>
+        <p class="feature-overview__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        </p>
+      </div>
+
+      <div class="feature-overview__body">
+        <div class="feature-overview__content">
+          <ul class="feature-overview__checklist feature-overview__checklist--two-col" aria-label="Benefícios">
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+            <li class="feature-overview__check-item">
+              <svg class="feature-overview__check-icon" aria-hidden="true" focusable="false">
+                <use href="#icon-check-circle"/>
+              </svg>
+              <div class="feature-overview__check-content">
+                <strong class="feature-overview__check-subtitle">Subtitle 4</strong>
+                <p class="feature-overview__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="feature-overview__actions">
+            <a href="#" class="button button--filled button--md">
+              Get stuff done
+              <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="feature-overview__media">
+          <img class="feature-overview__image"
+            src="../../../../assets/images/placeholders/placeholder-image.png"
+            alt="produto ou ambiente representativo do serviço"
+            width="400" height="400" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

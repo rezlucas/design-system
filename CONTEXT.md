@@ -90,8 +90,9 @@ Executado em 2026-05-19:
 - [ ] `heroes/hero-minimal`
 
 #### Features
-- [ ] `features/features-grid`
-- [ ] `features/features-alternating`
+- [x] `features/feature-split` — 2 colunas (conteúdo + imagem). Modifier `--reverse` para trocar o lado da imagem. Inclui checklist rico (ícone + subtítulo bold + corpo). Style=01 Direita e Esquerda.
+- [x] `features/feature-overview` — header centralizado (eyebrow + título + descrição) acima + checklist+imagem abaixo. Modifier `--reverse` e `__checklist--two-col`. Cobre Style=02, 03 e 04.
+- [x] `features/feature-cards` — 3 cards com ícone-escudo + título + corpo + link + imagem. Grade 1→2→3 colunas. Style=07.
 - [ ] `features/features-tabs`
 - [ ] `features/features-bento`
 
@@ -198,3 +199,4 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-background: imagem full-bleed desktop / empilhado mobile (style.css + index.html + README.md)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-split: 2 colunas com checklist (Style=01) e descrição+2CTAs (Style=02) num mesmo componente
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado sections/heroes/hero-centered: full-bleed com overlay uniforme, conteúdo 100% centralizado, botões inverse
+- [2026-05-20] Claude Code (claude-sonnet-4-6) — criados 3 components features: feature-split (Style=01), feature-overview (Style=02/03/04), feature-cards (Style=07)

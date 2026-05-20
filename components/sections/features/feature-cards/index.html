@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Cards — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <!-- Escudo com check — ícone maior que o check-circle -->
+    <symbol id="icon-shield-check" viewBox="0 0 24 24">
+      <path d="M12 2L4 6v5c0 5.3 3.5 9.8 8 11 4.5-1.2 8-5.7 8-11V6l-8-4z"
+        style="fill: var(--color-text-strong)"/>
+      <path d="M9 12l2 2 4-4"
+        style="fill:none; stroke: var(--color-text-inverse); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════ STYLE=07 — 3 feature cards com ícone + texto + link + imagem ═══════════ -->
+
+  <section class="feature-cards" aria-labelledby="fc-title">
+    <div class="container">
+
+      <div class="feature-cards__header">
+        <span class="feature-cards__eyebrow">TAG LOREM IPSUM DOLOR SIT AMET</span>
+        <h2 class="feature-cards__title" id="fc-title">
+          Heading H5 Lorem ipsum dolor sit amet, consectetur
+        </h2>
+        <p class="feature-cards__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt
+        </p>
+      </div>
+
+      <ul class="feature-cards__grid" role="list">
+
+        <!-- Card 1 -->
+        <li class="feature-cards__card">
+          <svg class="feature-cards__card-icon" aria-hidden="true" focusable="false">
+            <use href="#icon-shield-check"/>
+          </svg>
+          <strong class="feature-cards__card-title">Subtitle 4</strong>
+          <p class="feature-cards__card-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <a href="#" class="button button--link button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+          <div class="feature-cards__card-media">
+            <img
+              class="feature-cards__card-image"
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt="imagem ilustrativa da funcionalidade ou serviço descrito"
+              width="400" height="300"
+              loading="lazy" decoding="async"
+            >
+          </div>
+        </li>
+
+        <!-- Card 2 -->
+        <li class="feature-cards__card">
+          <svg class="feature-cards__card-icon" aria-hidden="true" focusable="false">
+            <use href="#icon-shield-check"/>
+          </svg>
+          <strong class="feature-cards__card-title">Subtitle 4</strong>
+          <p class="feature-cards__card-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <a href="#" class="button button--link button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+          <div class="feature-cards__card-media">
+            <img
+              class="feature-cards__card-image"
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt="imagem ilustrativa da funcionalidade ou serviço descrito"
+              width="400" height="300"
+              loading="lazy" decoding="async"
+            >
+          </div>
+        </li>
+
+        <!-- Card 3 -->
+        <li class="feature-cards__card">
+          <svg class="feature-cards__card-icon" aria-hidden="true" focusable="false">
+            <use href="#icon-shield-check"/>
+          </svg>
+          <strong class="feature-cards__card-title">Subtitle 4</strong>
+          <p class="feature-cards__card-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <a href="#" class="button button--link button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+          <div class="feature-cards__card-media">
+            <img
+              class="feature-cards__card-image"
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt="imagem ilustrativa da funcionalidade ou serviço descrito"
+              width="400" height="300"
+              loading="lazy" decoding="async"
+            >
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+</body>
+</html>

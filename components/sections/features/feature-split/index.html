@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Split — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" style="fill: var(--color-text-strong)"/>
+      <path d="M7 12.5l3.5 3.5 6.5-7"
+        style="fill:none; stroke: var(--color-text-inverse); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════ STYLE=01 DIREITA (conteúdo esq. / imagem dir.) ═══════════════ -->
+  <p class="demo-label">Style=01 — Align=Direita (conteúdo esquerda / imagem direita)</p>
+
+  <section class="feature-split" aria-labelledby="fs-dir-title">
+    <div class="feature-split__inner container">
+
+      <div class="feature-split__content">
+        <span class="feature-split__eyebrow">TAG LOREM IPSUM DOLOR SIT AMET</span>
+        <h2 class="feature-split__title" id="fs-dir-title">
+          Heading H5 Lorem ipsum dolor sit amet, consectetur
+        </h2>
+        <p class="feature-split__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore.
+        </p>
+
+        <ul class="feature-split__checklist" aria-label="Benefícios">
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="feature-split__actions">
+          <a href="#" class="button button--filled button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="feature-split__media">
+        <img
+          class="feature-split__image"
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="produto ou ambiente representativo do serviço"
+          width="400" height="400"
+          loading="eager" decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ STYLE=01 ESQUERDA (imagem esq. / conteúdo dir.) ═══════════════ -->
+  <p class="demo-label">Style=01 — Align=Esquerda (imagem esquerda / conteúdo direita)</p>
+
+  <section class="feature-split feature-split--reverse" aria-labelledby="fs-esq-title">
+    <div class="feature-split__inner container">
+
+      <div class="feature-split__content">
+        <span class="feature-split__eyebrow">TAG LOREM IPSUM DOLOR SIT AMET</span>
+        <h2 class="feature-split__title" id="fs-esq-title">
+          Heading H5 Lorem ipsum dolor sit amet, consectetur
+        </h2>
+        <p class="feature-split__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore.
+        </p>
+
+        <ul class="feature-split__checklist" aria-label="Benefícios">
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <strong class="feature-split__check-subtitle">Subtitle 4</strong>
+              <p class="feature-split__check-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="feature-split__actions">
+          <a href="#" class="button button--filled button--md">
+            Get stuff done
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="feature-split__media">
+        <img
+          class="feature-split__image"
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="produto ou ambiente representativo do serviço"
+          width="400" height="400"
+          loading="lazy" decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* ─────────────────────────────────────────
+   feature-cards — section
+   Header (eyebrow + título + descrição) acima
+   + grade de 3 cards com ícone, texto, link e imagem.
+   Style=07
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST
+═══════════════════════════════════════ */
+
+.feature-cards {
+  background-color: var(--color-background-alt);
+  padding-block: var(--space-3xl);
+}
+
+/* ── Header (alinhado à esquerda) ── */
+.feature-cards__header {
+  margin-block-end: var(--space-3xl);
+}
+
+.feature-cards__eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-md);
+}
+
+.feature-cards__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-md);
+}
+
+.feature-cards__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  max-width: 65ch;
+}
+
+/* ── Grid de cards ── */
+.feature-cards__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+}
+
+/* ── Card ── */
+.feature-cards__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Ícone (escudo com check — maior que o circle check) */
+.feature-cards__card-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.feature-cards__card-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+.feature-cards__card-body {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+}
+
+/* Imagem do card (abaixo do texto) */
+.feature-cards__card-media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-border);
+  margin-top: auto; /* empurra imagem para baixo se cards tiverem alturas diferentes */
+}
+
+.feature-cards__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET (480px+) — 2 cards por linha
+═══════════════════════════════════════ */
+@media (min-width: 480px) {
+  .feature-cards__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (768px+) — 3 cards por linha
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  .feature-cards {
+    padding-block: var(--space-4xl);
+  }
+
+  .feature-cards__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP LARGE (1024px+)
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .feature-cards__grid {
+    gap: var(--space-2xl);
+  }
+}

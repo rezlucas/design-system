@@ -1,0 +1,168 @@
+/* ─────────────────────────────────────────
+   feature-split — section
+   Conteúdo à esquerda + imagem à direita.
+   Modifier --reverse: imagem esquerda, conteúdo direita.
+   Style=01 Direita / Style=01 Esquerda
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST — coluna única
+═══════════════════════════════════════ */
+
+.feature-split {
+  background-color: var(--color-background-alt);
+  padding-block: var(--space-3xl);
+}
+
+.feature-split__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+/* ── Imagem ── */
+.feature-split__media {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-border);
+}
+
+.feature-split__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Eyebrow ── */
+.feature-split__eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-md);
+}
+
+/* ── Título ── */
+.feature-split__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-lg);
+}
+
+/* ── Descrição ── */
+.feature-split__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  margin-block-end: var(--space-xl);
+}
+
+/* ── Checklist (rico: ícone + subtítulo + corpo) ── */
+.feature-split__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  list-style: none;
+  padding: 0;
+  margin-block-end: var(--space-xl);
+}
+
+.feature-split__check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.feature-split__check-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.feature-split__check-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.feature-split__check-subtitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+.feature-split__check-body {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+/* ── Ações ── */
+.feature-split__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (768px+) — duas colunas
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  .feature-split {
+    padding-block: var(--space-4xl);
+  }
+
+  .feature-split__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: stretch;
+  }
+
+  /* Imagem preenche altura do conteúdo */
+  .feature-split__media {
+    aspect-ratio: auto;
+    min-height: 400px;
+  }
+
+  /* Conteúdo centralizado verticalmente */
+  .feature-split__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /*
+    --reverse: imagem à esquerda, conteúdo à direita.
+    Aplicado apenas no desktop — mobile sempre empilha
+    content-acima / image-abaixo pela ordem do HTML.
+  */
+  .feature-split--reverse .feature-split__media {
+    order: -1;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP LARGE (1024px+)
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .feature-split__inner {
+    gap: var(--space-4xl);
+  }
+
+  .feature-split__media {
+    min-height: 460px;
+  }
+}

@@ -1,0 +1,181 @@
+/* ─────────────────────────────────────────
+   feature-overview — section
+   Header centralizado (full-width) acima +
+   checklist + imagem em 2 colunas abaixo.
+
+   Style=02: checklist 1-col à esq., imagem dir.
+   Style=03: checklist 2-col à esq., imagem dir.
+   Style=04: imagem esq., checklist 2-col dir. (--reverse)
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST
+═══════════════════════════════════════ */
+
+.feature-overview {
+  background-color: var(--color-background-alt);
+  padding-block: var(--space-3xl);
+}
+
+/* ── Header centrado (full width) ── */
+.feature-overview__header {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+  margin-block-end: var(--space-3xl);
+}
+
+.feature-overview__eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-md);
+}
+
+.feature-overview__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-md);
+}
+
+.feature-overview__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+}
+
+/* ── Grid abaixo do header (conteúdo + imagem) ── */
+.feature-overview__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+/* ── Imagem ── */
+.feature-overview__media {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-border);
+}
+
+.feature-overview__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Checklist (rico: ícone + subtítulo bold + corpo) ── */
+.feature-overview__checklist {
+  display: grid;
+  grid-template-columns: 1fr;    /* padrão: 1 coluna */
+  gap: var(--space-lg) var(--space-2xl);
+  list-style: none;
+  padding: 0;
+  margin-block-end: var(--space-xl);
+}
+
+.feature-overview__check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.feature-overview__check-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.feature-overview__check-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.feature-overview__check-subtitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+.feature-overview__check-body {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+/* ── Ações ── */
+.feature-overview__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (768px+) — 2 colunas no body
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  .feature-overview {
+    padding-block: var(--space-4xl);
+  }
+
+  .feature-overview__body {
+    grid-template-columns: 3fr 2fr; /* conteúdo 60% / imagem 40% */
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  /* Imagem preenche altura do conteúdo */
+  .feature-overview__media {
+    aspect-ratio: auto;
+    min-height: 400px;
+    align-self: stretch;
+  }
+
+  /*
+    --reverse: imagem à esquerda (40%), conteúdo à direita (60%).
+    Apenas desktop — mobile sempre empilha content / image.
+  */
+  .feature-overview--reverse .feature-overview__body {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  .feature-overview--reverse .feature-overview__media {
+    order: -1;
+  }
+
+  /*
+    checklist 2 colunas — usado em Style=03 e Style=04.
+    Aplicar classe feature-overview__checklist--two-col no HTML.
+  */
+  .feature-overview__checklist--two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP LARGE (1024px+)
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .feature-overview__body {
+    gap: var(--space-4xl);
+  }
+
+  .feature-overview__media {
+    min-height: 460px;
+  }
+}
