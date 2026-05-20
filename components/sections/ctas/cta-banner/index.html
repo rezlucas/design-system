@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTA Banner — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .demo-divider {
+      text-align: center;
+      padding-block: var(--space-2xl);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Card Split
+       Imagem esq. | painel colorido dir.
+       (Como funciona — APD)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 1 — Card Split</p>
+
+  <section class="cta-banner cta-banner--card-split">
+    <div class="container">
+      <div class="cta-banner__card">
+
+        <div class="cta-banner__card-media">
+          <img
+            src="../../../../assets/images/placeholders/placeholder-image.png"
+            alt="Lorem ipsum"
+            width="400" height="400"
+          >
+        </div>
+
+        <div class="cta-banner__card-content">
+          <p class="cta-banner__eyebrow">Lorem Ipsum</p>
+          <h2 class="cta-banner__title">Lorem ipsum dolor sit amet consectetur</h2>
+          <p class="cta-banner__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. A pensão por morte assegura renda e proteção a quem depende financeiramente. Lorem ipsum dolor sit amet consectetur.</p>
+          <div class="cta-banner__actions">
+            <a href="#" class="button button--filled button--inverse button--md">Lorem ipsum</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Overlay Left
+       Imagem full-bleed, gradiente, conteúdo à esquerda.
+       (Patrocinador — Marmomac)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Overlay Esquerda</p>
+
+  <section class="cta-banner cta-banner--overlay-left">
+
+    <div class="cta-banner__bg">
+      <img
+        src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+        alt=""
+        aria-hidden="true"
+        width="1920" height="579"
+      >
+    </div>
+    <div class="cta-banner__overlay" aria-hidden="true"></div>
+
+    <div class="cta-banner__inner container">
+      <div class="cta-banner__content">
+        <h2 class="cta-banner__title">Lorem ipsum dolor sit amet consectetur</h2>
+        <p class="cta-banner__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aumente a visibilidade da sua empresa. Lorem ipsum dolor sit amet consectetur adipiscing elit incididunt.</p>
+        <div class="cta-banner__actions">
+          <a href="#" class="button button--filled button--inverse button--md">Lorem ipsum</a>
+          <a href="#" class="button button--outline button--inverse button--md">Lorem ipsum</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Overlay Center
+       Imagem full-bleed, overlay uniforme, conteúdo centralizado.
+       (section-faq — Logístico)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Overlay Centralizado</p>
+
+  <section class="cta-banner cta-banner--overlay-center">
+
+    <div class="cta-banner__bg">
+      <img
+        src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+        alt=""
+        aria-hidden="true"
+        width="1920" height="579"
+      >
+    </div>
+    <div class="cta-banner__overlay" aria-hidden="true"></div>
+
+    <div class="cta-banner__inner container">
+      <div class="cta-banner__content">
+        <h2 class="cta-banner__title">Lorem ipsum dolor sit amet consectetur adipiscing elit</h2>
+        <div class="cta-banner__actions">
+          <a href="#" class="button button--filled button--inverse button--md">Lorem ipsum</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 4 — Split Light
+       Fundo branco, conteúdo esq. | imagem dir.
+       (Seja um Expositor — Marmomac)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 4 — Split Fundo Branco</p>
+
+  <section class="cta-banner cta-banner--split">
+    <div class="cta-banner__inner container">
+
+      <div class="cta-banner__content">
+        <p class="cta-banner__eyebrow">Lorem Ipsum</p>
+        <h2 class="cta-banner__title">Lorem ipsum dolor sit amet consectetur adipiscing</h2>
+        <p class="cta-banner__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aumente a visibilidade da sua empresa. Lorem ipsum dolor sit amet consectetur adipiscing elit incididunt ut labore et dolore magna aliqua.</p>
+        <div class="cta-banner__actions">
+          <a href="#" class="button button--filled button--md">Lorem ipsum</a>
+          <a href="#" class="button button--outline button--md">Lorem ipsum</a>
+        </div>
+      </div>
+
+      <div class="cta-banner__media">
+        <img
+          src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+          alt="Lorem ipsum"
+          width="1920" height="579"
+        >
+      </div>
+
+    </div>
+  </section>
+
+
+</body>
+</html>

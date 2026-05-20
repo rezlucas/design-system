@@ -1,0 +1,296 @@
+/* ─────────────────────────────────────────
+   cta-banner — section
+   Seção de chamada para ação.
+
+   Variantes:
+     • --card-split:      card arredondado — imagem esq. | painel colorido dir.
+     • --overlay-left:    imagem full-bleed com overlay, conteúdo à esquerda
+     • --overlay-center:  imagem full-bleed com overlay, conteúdo centralizado
+     • --split:           fundo branco — conteúdo esq. | imagem dir.
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   ELEMENTOS COMPARTILHADOS
+═══════════════════════════════════════ */
+
+.cta-banner__eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+}
+
+.cta-banner__title {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  font-size: clamp(var(--font-size-2xl), 3.5vw, var(--font-size-4xl));
+}
+
+.cta-banner__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.cta-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --card-split
+   Card arredondado: imagem esq. | painel com cor primária dir.
+   (Como funciona — APD)
+═══════════════════════════════════════ */
+
+.cta-banner--card-split {
+  padding-block: var(--space-3xl);
+  background-color: var(--color-background-alt);
+}
+
+.cta-banner__card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.cta-banner__card-media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cta-banner__card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cta-banner__card-content {
+  background-color: var(--color-primary);
+  padding: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.cta-banner--card-split .cta-banner__eyebrow {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.cta-banner--card-split .cta-banner__title {
+  color: var(--color-text-inverse);
+}
+
+.cta-banner--card-split .cta-banner__description {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --overlay-left
+   Imagem full-bleed com gradiente, conteúdo à esquerda.
+   (Patrocinador — Marmomac)
+═══════════════════════════════════════ */
+
+.cta-banner--overlay-left,
+.cta-banner--overlay-center {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagem de fundo */
+.cta-banner__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cta-banner__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay direcional (escurece mais à esquerda) */
+.cta-banner--overlay-left .cta-banner__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.65) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+/* Inner: acima do overlay */
+.cta-banner--overlay-left .cta-banner__inner {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--space-5xl);
+  display: flex;
+  align-items: center;
+  min-height: 460px;
+}
+
+.cta-banner--overlay-left .cta-banner__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 55ch;
+}
+
+.cta-banner--overlay-left .cta-banner__title {
+  color: var(--color-text-inverse);
+}
+
+.cta-banner--overlay-left .cta-banner__description {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --overlay-center
+   Imagem full-bleed com overlay uniforme, conteúdo centralizado.
+   (section-faq — Logístico)
+═══════════════════════════════════════ */
+
+/* Overlay uniforme */
+.cta-banner--overlay-center .cta-banner__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.58);
+}
+
+.cta-banner--overlay-center .cta-banner__inner {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--space-5xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 400px;
+}
+
+.cta-banner--overlay-center .cta-banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xl);
+  max-width: 70ch;
+}
+
+.cta-banner--overlay-center .cta-banner__title {
+  color: var(--color-text-inverse);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --split
+   Fundo branco, 2 colunas: conteúdo esq. | imagem dir.
+   (Seja um Expositor — Marmomac)
+═══════════════════════════════════════ */
+
+.cta-banner--split {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+.cta-banner--split .cta-banner__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.cta-banner--split .cta-banner__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cta-banner--split .cta-banner__eyebrow {
+  color: var(--color-text-muted);
+}
+
+.cta-banner--split .cta-banner__title {
+  color: var(--color-text-strong);
+}
+
+.cta-banner--split .cta-banner__description {
+  color: var(--color-text-muted);
+}
+
+.cta-banner__media {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.cta-banner__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET / DESKTOP (≥ 768px)
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  /* Card-split: 2 colunas, imagem estica com a altura do conteúdo */
+  .cta-banner__card {
+    grid-template-columns: 1fr 1fr;
+    min-height: 360px;
+  }
+
+  .cta-banner__card-media {
+    aspect-ratio: auto;
+    align-self: stretch;
+  }
+
+  /* Split: 2 colunas */
+  .cta-banner--split .cta-banner__inner {
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-4xl);
+  }
+
+  .cta-banner__media {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+
+  .cta-banner__card-content {
+    padding: var(--space-xl);
+  }
+
+  .cta-banner--overlay-left .cta-banner__inner,
+  .cta-banner--overlay-center .cta-banner__inner {
+    padding-block: var(--space-4xl);
+    min-height: 360px;
+  }
+
+  /* Ações em coluna no mobile */
+  .cta-banner__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
