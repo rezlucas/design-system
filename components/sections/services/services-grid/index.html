@@ -31,6 +31,22 @@
 </head>
 <body>
 
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Services Grid</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
   <!-- Sprite de ícones -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -477,6 +493,210 @@
 
       <div class="services-grid__footer">
         <a href="#" class="button button--filled button--md">Lorem ipsum</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 7 — Bleed
+       Header split 2-col + 4-col grid
+       Imagem/emoji vaza acima do card.
+       (Amenities / Features numerados)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 7 — Bleed (imagem vaza acima do card)</p>
+
+  <section class="services-grid services-grid--bleed">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <div>
+          <p class="services-grid__eyebrow">Lorem ipsum dolor sit</p>
+          <h2 class="services-grid__title">
+            Lorem ipsum dolor sit amet, consectetur adipiscing
+          </h2>
+        </div>
+        <p class="services-grid__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+        </p>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 01">🚤</span>
+          <span class="services-grid__card-number" aria-hidden="true">#01</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 02">🎒</span>
+          <span class="services-grid__card-number" aria-hidden="true">#02</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 03">⛳</span>
+          <span class="services-grid__card-number" aria-hidden="true">#03</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 04">🛩️</span>
+          <span class="services-grid__card-number" aria-hidden="true">#04</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 05">🛎️</span>
+          <span class="services-grid__card-number" aria-hidden="true">#05</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 06">🏖️</span>
+          <span class="services-grid__card-number" aria-hidden="true">#06</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 07">🍜</span>
+          <span class="services-grid__card-number" aria-hidden="true">#07</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+        <div class="services-grid__card">
+          <span class="services-grid__bleed-emoji" role="img" aria-label="Ícone 08">🧭</span>
+          <span class="services-grid__card-number" aria-hidden="true">#08</span>
+          <h3 class="services-grid__card-title">Lorem ipsum dolor sit amet</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet consectetur. Elementum accumsan nulla nulla suscipit placerat sed imperdiet.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="demo-divider">— — —</div>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 8 — Gradient Blob
+       Blobs suaves no canto sup. dir. + título
+       grande + "Case Study" link.
+       (Services / Expertise / Portfolio)
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 8 — Gradient Blob Cards</p>
+
+  <section class="services-grid services-grid--gradient" aria-labelledby="sg-gradient-title">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <h2 class="services-grid__title" id="sg-gradient-title">Lorem ipsum dolor sit</h2>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__blob" aria-hidden="true"></div>
+          <p class="services-grid__card-eyebrow">Lorem ipsum</p>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lacinia mi.</p>
+          <div class="services-grid__card-footer">
+            <a href="#" class="services-grid__case-link" aria-label="Case study de Lorem Ipsum">
+              <span class="services-grid__case-btn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg>
+              </span>
+              Lorem ipsum
+            </a>
+          </div>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__blob" aria-hidden="true"></div>
+          <p class="services-grid__card-eyebrow">Lorem ipsum</p>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lacinia mi.</p>
+          <div class="services-grid__card-footer">
+            <a href="#" class="services-grid__case-link" aria-label="Case study de Lorem Ipsum">
+              <span class="services-grid__case-btn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg>
+              </span>
+              Lorem ipsum
+            </a>
+          </div>
+        </div>
+
+        <div class="services-grid__card services-grid__card--active">
+          <div class="services-grid__blob" aria-hidden="true"></div>
+          <p class="services-grid__card-eyebrow">Lorem ipsum</p>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lacinia mi.</p>
+          <div class="services-grid__card-footer">
+            <a href="#" class="services-grid__case-link" aria-label="Case study de Lorem Ipsum">
+              <span class="services-grid__case-btn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg>
+              </span>
+              Lorem ipsum
+            </a>
+          </div>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__blob" aria-hidden="true"></div>
+          <p class="services-grid__card-eyebrow">Lorem ipsum</p>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lacinia mi.</p>
+          <div class="services-grid__card-footer">
+            <a href="#" class="services-grid__case-link" aria-label="Case study de Lorem Ipsum">
+              <span class="services-grid__case-btn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg>
+              </span>
+              Lorem ipsum
+            </a>
+          </div>
+        </div>
+
+        <div class="services-grid__card services-grid__card--active">
+          <div class="services-grid__blob" aria-hidden="true"></div>
+          <p class="services-grid__card-eyebrow">Lorem ipsum</p>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lacinia mi.</p>
+          <div class="services-grid__card-footer">
+            <a href="#" class="services-grid__case-link" aria-label="Case study de Lorem Ipsum">
+              <span class="services-grid__case-btn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg>
+              </span>
+              Lorem ipsum
+            </a>
+          </div>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__blob" aria-hidden="true"></div>
+          <p class="services-grid__card-eyebrow">Lorem ipsum</p>
+          <h3 class="services-grid__card-title">Lorem ipsum</h3>
+          <p class="services-grid__card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et lacinia mi.</p>
+          <div class="services-grid__card-footer">
+            <a href="#" class="services-grid__case-link" aria-label="Case study de Lorem Ipsum">
+              <span class="services-grid__case-btn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-arrow-right"/></svg>
+              </span>
+              Lorem ipsum
+            </a>
+          </div>
+        </div>
+
       </div>
 
     </div>

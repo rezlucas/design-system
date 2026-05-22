@@ -1,0 +1,524 @@
+/* ─────────────────────────────────────────
+   pricing-grid — section
+   Grade de planos de preços: 3 cards,
+   card do meio destacado (dark).
+   Número decorativo no canto superior.
+
+   Variantes:
+     • Base: Basic | Premium (featured) | Platinum
+   ───────────────────────────────────────── */
+
+.pricing-grid {
+  position: relative;
+  padding-block: var(--space-4xl);
+  background-color: #F2F2F0;
+  overflow: hidden;
+}
+
+/* Número decorativo de fundo */
+.pricing-grid__deco {
+  position: absolute;
+  top: -2%;
+  right: -1%;
+  font-family: var(--font-heading);
+  font-size: clamp(120px, 22vw, 280px);
+  font-weight: var(--font-weight-bold);
+  color: rgba(0, 0, 0, 0.04);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: -0.04em;
+}
+
+/* ── Cabeçalho centralizado ── */
+.pricing-grid__header {
+  text-align: center;
+  margin-block-end: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Eyebrow chip com ícone */
+.pricing-grid__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 4px var(--space-md);
+  background-color: var(--color-background);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-body);
+  border: 1px solid var(--color-border);
+}
+
+.pricing-grid__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+.pricing-grid__description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  max-width: 52ch;
+}
+
+/* ── Grade ── */
+.pricing-grid__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* ── Card base ── */
+.pricing-grid__card {
+  background-color: var(--color-background);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Card destacado: fundo escuro, ocupa mais espaço vertical no desktop */
+.pricing-grid__card--featured {
+  background-color: #1C1C2E;
+}
+
+/* ── Topo: nome + descrição ── */
+.pricing-grid__card-top {
+  padding-block-end: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.pricing-grid__card--featured .pricing-grid__card-top {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.pricing-grid__plan-name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  line-height: 1.2;
+}
+
+.pricing-grid__card--featured .pricing-grid__plan-name {
+  color: var(--color-text-inverse);
+}
+
+.pricing-grid__plan-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.pricing-grid__card--featured .pricing-grid__plan-desc {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Preço ── */
+.pricing-grid__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+
+.pricing-grid__price {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-4xl), 6vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-text-strong);
+  letter-spacing: -0.02em;
+}
+
+.pricing-grid__card--featured .pricing-grid__price {
+  color: var(--color-text-inverse);
+}
+
+.pricing-grid__period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.pricing-grid__card--featured .pricing-grid__period {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Botão CTA ── */
+.pricing-grid__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px var(--space-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--color-text-strong);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.pricing-grid__cta:hover {
+  opacity: 0.82;
+}
+
+/* CTA do featured: azul elétrico */
+.pricing-grid__card--featured .pricing-grid__cta {
+  background-color: #3D6FFF;
+}
+
+/* ── Features ── */
+.pricing-grid__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.pricing-grid__feature-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-xs);
+}
+
+.pricing-grid__card--featured .pricing-grid__feature-label {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.pricing-grid__feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-body);
+}
+
+.pricing-grid__card--featured .pricing-grid__feature-item {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pricing-grid__feature-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-background-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pricing-grid__card--featured .pricing-grid__feature-icon {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.pricing-grid__feature-strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+}
+
+.pricing-grid__card--featured .pricing-grid__feature-strong {
+  color: var(--color-text-inverse);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 768px): 3 colunas
+   Featured ao centro ligeiramente elevado
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .pricing-grid__list {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+
+  .pricing-grid__card--featured {
+    margin-block: calc(-1 * var(--space-lg));
+    padding-block: calc(var(--space-2xl) + var(--space-lg));
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+  .pricing-grid {
+    padding-block: var(--space-3xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --compare
+   Tabela de comparação de planos:
+   features à esq. + 3 colunas (featured dark)
+   + sidebar visual à direita. (Sana UI)
+═══════════════════════════════════════ */
+
+.pricing-grid--compare {
+  background-color: var(--color-background-alt);
+  padding-block: var(--space-4xl);
+}
+
+/* Card externo: 2 painéis lado a lado */
+.pricing-grid__compare-card {
+  display: flex;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background-color: #FAF9F5;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+/* Painel esquerdo: tabela de comparação */
+.pricing-grid__compare-content {
+  flex: 1;
+  padding: var(--space-2xl);
+  min-width: 0;
+}
+
+.pricing-grid__compare-eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-xs);
+}
+
+.pricing-grid__compare-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-tight);
+  margin-block-end: var(--space-xl);
+}
+
+/* Cabeçalho da tabela: 3 nomes de planos */
+.pricing-grid__compare-head {
+  display: flex;
+  align-items: stretch;
+  padding-inline-start: 42%;
+}
+
+.pricing-grid__compare-plan-header {
+  flex: 1;
+  text-align: center;
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-xs);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-snug);
+}
+
+.pricing-grid__compare-plan-header--featured {
+  color: var(--color-text-inverse);
+  background-color: #1B4332;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Linha de feature */
+.pricing-grid__compare-row {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  min-height: 58px;
+}
+
+.pricing-grid__compare-feature {
+  flex: 0 0 42%;
+  padding-inline-end: var(--space-lg);
+  padding-block: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-body);
+  line-height: var(--line-height-relaxed);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.pricing-grid__compare-feature::before {
+  content: '•';
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  margin-block-start: 1px;
+}
+
+.pricing-grid__compare-cell {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-sm);
+  align-self: stretch;
+}
+
+.pricing-grid__compare-cell--featured {
+  background-color: #1B4332;
+}
+
+/* Check preenchido (featured) */
+.pricing-grid__compare-check--filled {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background-color: rgba(74,222,128,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1B4332;
+  flex-shrink: 0;
+}
+
+/* Check outline (outros) */
+.pricing-grid__compare-check--outline {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 1.5px solid #4ADE80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4ADE80;
+  flex-shrink: 0;
+}
+
+/* X (não disponível) */
+.pricing-grid__compare-x {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F87171;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Sidebar escura */
+.pricing-grid__compare-aside {
+  flex-shrink: 0;
+  width: 260px;
+  background-color: #3D2C1E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+}
+
+.pricing-grid__compare-brand-logo {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.pricing-grid__compare-brand-name {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: rgba(255,255,255,.65);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* Stack de 3 avatares sobrepostos */
+.pricing-grid__compare-avatars {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.pricing-grid__compare-avatar {
+  position: absolute;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2.5px solid #3D2C1E;
+  background-color: #4D3C2E;
+}
+
+.pricing-grid__compare-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pricing-grid__compare-avatar:nth-child(1) {
+  width: 52px;
+  height: 52px;
+  top: 4px;
+  left: var(--space-xl);
+}
+
+.pricing-grid__compare-avatar:nth-child(2) {
+  width: 72px;
+  height: 72px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.pricing-grid__compare-avatar:nth-child(3) {
+  width: 52px;
+  height: 52px;
+  bottom: 4px;
+  right: var(--space-xl);
+}
+
+.pricing-grid__compare-deco {
+  font-size: 26px;
+  color: #F59E0B;
+  line-height: 1;
+}
+
+.pricing-grid__compare-tagline {
+  font-size: var(--font-size-sm);
+  color: rgba(255,255,255,.65);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 767px) {
+  .pricing-grid__compare-card {
+    flex-direction: column;
+  }
+  .pricing-grid__compare-aside {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: var(--space-xl);
+    min-height: unset;
+  }
+  .pricing-grid__compare-avatars {
+    width: 150px;
+    height: 80px;
+  }
+  .pricing-grid__compare-head {
+    padding-inline-start: 36%;
+  }
+  .pricing-grid__compare-feature {
+    flex: 0 0 36%;
+    font-size: var(--font-size-xs);
+  }
+}

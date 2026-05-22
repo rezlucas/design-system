@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stats Grid — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Stats Grid</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+    <!-- Seta diagonal / link externo -->
+    <symbol id="icon-arrow-upright" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 17L17 7M7 7h10v10"/>
+    </symbol>
+
+    <!-- Ícones decorativos dos cards -->
+
+    <!-- Triângulo / Google Drive-like -->
+    <symbol id="icon-shape-tri" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+    </symbol>
+
+    <!-- Chef hat -->
+    <symbol id="icon-chef-hat" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 13.87A4 4 0 017.41 6a5.11 5.11 0 019.17 0A4 4 0 0118 13.87V21H6v-7.13z"/>
+      <line x1="6" y1="17" x2="18" y2="17"/>
+    </symbol>
+
+    <!-- Taça de vinho -->
+    <symbol id="icon-goblet" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3h8l-3 9H11L8 3z"/>
+      <path d="M6 12h12"/>
+      <path d="M12 12v8"/>
+      <path d="M8 20h8"/>
+    </symbol>
+
+    <!-- Livros -->
+    <symbol id="icon-books" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+    </symbol>
+
+    <!-- Seta para CTA -->
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+
+  </svg>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT BASE — Cascade stack
+       Texto esq. + 4 cards em cascata dir.
+       Último card com fundo primário.
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant Base — Big Number Cascade</p>
+
+  <section class="stats-grid" aria-labelledby="sg-title">
+    <div class="stats-grid__inner container">
+
+      <!-- Conteúdo (esquerda) -->
+      <div class="stats-grid__content">
+
+        <a href="#" class="stats-grid__eyebrow-link">
+          Lorem ipsum
+          <svg aria-hidden="true" focusable="false"><use href="#icon-arrow-upright"/></svg>
+        </a>
+
+        <h2 class="stats-grid__title" id="sg-title">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </h2>
+
+        <div>
+          <a href="#" class="button button--filled button--md">
+            Lorem ipsum
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Stack de cards (direita) -->
+      <div class="stats-grid__stack">
+
+        <div class="stats-grid__card">
+          <span class="stats-grid__card-number">04+</span>
+          <div class="stats-grid__card-text">
+            <p class="stats-grid__card-label">Lorem ipsum dolor<br>sit amet consectetur</p>
+          </div>
+          <div class="stats-grid__card-icon" aria-hidden="true">
+            <svg><use href="#icon-shape-tri"/></svg>
+          </div>
+        </div>
+
+        <div class="stats-grid__card">
+          <span class="stats-grid__card-number">08+</span>
+          <div class="stats-grid__card-text">
+            <p class="stats-grid__card-label">Lorem ipsum dolor<br>sit amet consectetur</p>
+          </div>
+          <div class="stats-grid__card-icon" aria-hidden="true">
+            <svg><use href="#icon-chef-hat"/></svg>
+          </div>
+        </div>
+
+        <div class="stats-grid__card">
+          <span class="stats-grid__card-number">13+</span>
+          <div class="stats-grid__card-text">
+            <p class="stats-grid__card-label">Lorem ipsum dolor<br>sit amet consectetur</p>
+          </div>
+          <div class="stats-grid__card-icon" aria-hidden="true">
+            <svg><use href="#icon-goblet"/></svg>
+          </div>
+        </div>
+
+        <div class="stats-grid__card stats-grid__card--featured">
+          <span class="stats-grid__card-number">600+</span>
+          <div class="stats-grid__card-text">
+            <p class="stats-grid__card-label">Lorem ipsum dolor sit amet<br>consectetur adipiscing elit</p>
+          </div>
+          <div class="stats-grid__card-icon" aria-hidden="true">
+            <svg><use href="#icon-books"/></svg>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

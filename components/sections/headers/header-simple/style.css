@@ -300,3 +300,102 @@
 .header-simple--dark .header-simple__mobile-actions {
   border-top-color: rgba(255, 255, 255, 0.1);
 }
+
+
+/* ═══════════════════════════════════════
+   MODIFIER --floating
+   Header "flutuante": card com borda arredondada,
+   background glass, shadow — não toca as bordas.
+═══════════════════════════════════════ */
+
+.header-simple--floating {
+  background-color: transparent;
+  border-bottom: none;
+  padding: var(--space-sm) var(--space-xl);
+  top: var(--space-sm);
+}
+
+/* Bar vira um card flutuante */
+.header-simple--floating .header-simple__bar {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 18px;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 8px 28px rgba(0, 0, 0, 0.1);
+  height: 52px;
+  padding-inline: var(--space-md);
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+/* Painel mobile: continua o card */
+.header-simple--floating .header-simple__mobile-panel {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 0 0 18px 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-inline: var(--space-xl);
+}
+
+/* Logo: caixa escura */
+.header-simple__logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: var(--color-text-strong);
+  color: var(--color-text-inverse);
+  flex-shrink: 0;
+}
+
+.header-simple__logo-box svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Controles extras: dark mode + idioma (visíveis apenas desktop) */
+.header-simple__extras {
+  display: none;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* Botão de controle: pill com borda */
+.header-simple__control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px var(--space-sm);
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-body);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.header-simple__control:hover {
+  background-color: var(--color-background-alt);
+}
+
+.header-simple__control svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .header-simple__extras {
+    display: flex;
+  }
+}

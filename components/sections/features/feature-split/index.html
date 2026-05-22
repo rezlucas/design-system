@@ -25,6 +25,22 @@
 </head>
 <body>
 
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Feature Split</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -184,6 +200,160 @@
           width="400" height="400"
           loading="lazy" decoding="async"
         >
+      </div>
+
+    </div>
+  </section>
+
+  <div class="demo-divider"></div>
+
+  <!-- ═══════════════ STYLE=03 — MISSION (eyebrow + dot + fan de imagens) ═══════════════ -->
+  <p class="demo-label">Style=03 — Mission (dot eyebrow · stats cards · fan de imagens)</p>
+
+  <section class="feature-split feature-split--mission" aria-labelledby="fs-mission-title">
+    <div class="feature-split__inner container">
+
+      <!-- Conteúdo (esquerda) -->
+      <div class="feature-split__content">
+
+        <!-- Eyebrow: dot • texto ——————————— -->
+        <div class="feature-split__eyebrow-row" aria-hidden="true">
+          <span class="feature-split__eyebrow-dot"></span>
+          <span class="feature-split__eyebrow-text">Lorem ipsum dolor</span>
+          <span class="feature-split__eyebrow-rule"></span>
+        </div>
+
+        <h2 class="feature-split__title" id="fs-mission-title">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h2>
+
+        <p class="feature-split__body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+        <p class="feature-split__body">
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+
+        <!-- Mini stat cards -->
+        <div class="feature-split__stats-row">
+
+          <div class="feature-split__stat">
+            <p class="feature-split__stat-label">Lorem ipsum</p>
+            <p class="feature-split__stat-number">2023</p>
+          </div>
+
+          <div class="feature-split__stat">
+            <p class="feature-split__stat-label">Lorem ipsum dolor</p>
+            <p class="feature-split__stat-number">$3.2M<span class="feature-split__stat-accent">+</span></p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Fan de imagens (direita) -->
+      <div class="feature-split__media">
+        <div class="feature-split__fan" aria-hidden="true">
+
+          <div class="feature-split__fan-card">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt=""
+              width="170" height="226"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="feature-split__fan-card">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt=""
+              width="170" height="226"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="feature-split__fan-card">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt=""
+              width="170" height="226"
+              loading="lazy"
+            >
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="demo-divider"></div>
+
+  <!-- ═══════════════ STYLE=04 — ICON LIST (screenshot + lista de features) ═══════════════ -->
+  <p class="demo-label">Style=04 — Icon List (screenshot app + lista com ícones emoji)</p>
+
+  <section class="feature-split feature-split--icon-list" aria-labelledby="fs-iconlist-title">
+    <div class="feature-split__inner container">
+
+      <!-- Mídia: screenshot em container pontilhado -->
+      <div class="feature-split__media">
+        <div class="feature-split__app-frame">
+          <img
+            class="feature-split__app-screenshot"
+            src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+            alt="Screenshot do produto"
+            width="640" height="400"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="feature-split__content">
+
+        <p class="feature-split__eyebrow">Lorem ipsum</p>
+
+        <h2 class="feature-split__title" id="fs-iconlist-title">
+          Lorem ipsum dolor<br>
+          <span class="feature-split__title-accent-line">sit amet consectetur.</span>
+        </h2>
+
+        <!-- Lista de features com ícones emoji -->
+        <div class="feature-split__icon-list" role="list">
+
+          <div class="feature-split__icon-item" role="listitem">
+            <div class="feature-split__icon-box" aria-hidden="true">📢</div>
+            <div class="feature-split__icon-item-content">
+              <h3 class="feature-split__icon-item-title">Lorem ipsum</h3>
+              <p class="feature-split__icon-item-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum unlocking valuable insights.</p>
+            </div>
+          </div>
+
+          <div class="feature-split__icon-item" role="listitem">
+            <div class="feature-split__icon-box" aria-hidden="true">📊</div>
+            <div class="feature-split__icon-item-content">
+              <h3 class="feature-split__icon-item-title">Lorem <span class="accent">+ ipsum</span></h3>
+              <p class="feature-split__icon-item-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum unlocking valuable insights.</p>
+            </div>
+          </div>
+
+          <div class="feature-split__icon-item" role="listitem">
+            <div class="feature-split__icon-box" aria-hidden="true">🏆</div>
+            <div class="feature-split__icon-item-content">
+              <h3 class="feature-split__icon-item-title">Lorem ipsum</h3>
+              <p class="feature-split__icon-item-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum unlocking valuable insights.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="feature-split__caption">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Additional information can be added here.
+        </p>
+
       </div>
 
     </div>

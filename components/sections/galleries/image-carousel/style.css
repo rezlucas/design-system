@@ -1,0 +1,554 @@
+/* ─────────────────────────────────────────
+   image-carousel — section
+   Seções de carousel/slider de imagens.
+
+   Variantes:
+     • Base (--gallery):  imagem grande centralizada com peek lateral,
+                          setas coloridas sobrepostas, dots abaixo
+     • --split:           conteúdo esq. + cards com imagem bleeding à dir.
+     • --content:         header centralizado + 2 cards com overlay de texto,
+                          setas flutuantes, dots + CTA
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   ELEMENTOS COMPARTILHADOS
+═══════════════════════════════════════ */
+
+.image-carousel {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+  overflow: hidden;
+}
+
+/* ── Cabeçalho centralizado ── */
+.image-carousel__header {
+  text-align: center;
+  margin-block-end: var(--space-3xl);
+}
+
+.image-carousel__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+  margin-block-end: var(--space-md);
+}
+
+.image-carousel__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
+/* ── Setas de navegação (shared) ── */
+.image-carousel__arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.image-carousel__arrow:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.image-carousel__arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.image-carousel__arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Track ── */
+.image-carousel__track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* ── Dots ── */
+.image-carousel__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-xl);
+}
+
+.image-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: none;
+  background-color: var(--color-border-strong);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.image-carousel__dot--active {
+  background-color: var(--color-primary);
+  transform: scale(1.3);
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT BASE — Gallery peek centralizada
+   (Estrutura)
+═══════════════════════════════════════ */
+
+.image-carousel--gallery .image-carousel__stage {
+  position: relative;
+}
+
+.image-carousel--gallery .image-carousel__slider {
+  overflow: hidden;
+}
+
+/* Track com padding para centrar o slide ativo */
+.image-carousel--gallery .image-carousel__track {
+  gap: var(--space-lg);
+  padding-inline: 7vw; /* mobile: (100 - 85) / 2 = 7.5vw */
+}
+
+/* Slides: imagem grande com border-radius */
+.image-carousel--gallery .image-carousel__slide {
+  flex: none;
+  width: 85vw; /* mobile */
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.image-carousel--gallery .image-carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Setas: sobrepostas, com cor primária */
+.image-carousel--gallery .image-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.image-carousel--gallery .image-carousel__arrow:hover:not(:disabled) {
+  opacity: 0.85;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.image-carousel--gallery .image-carousel__arrow--prev { left: 2vw; }
+.image-carousel--gallery .image-carousel__arrow--next { right: 2vw; }
+
+
+/* ═══════════════════════════════════════
+   VARIANT --split
+   Conteúdo esq. fixo + feature cards à dir. (bleed).
+   (Frota)
+═══════════════════════════════════════ */
+
+.image-carousel--split {
+  background-color: var(--color-background-alt);
+  padding-block: var(--space-4xl);
+  /* overflow: hidden já está na base */
+}
+
+/* 2 colunas: conteúdo | cards carousel */
+.image-carousel__split-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  /* Alinha borda esq. com o container */
+  padding-inline-start: var(--container-padding);
+}
+
+/* Aside: conteúdo estático */
+.image-carousel__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  justify-content: center;
+}
+
+.image-carousel__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.image-carousel__eyebrow::before {
+  content: '—';
+  font-weight: var(--font-weight-regular);
+}
+
+.image-carousel__aside-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3.5vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+.image-carousel__aside-body {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  max-width: 42ch;
+}
+
+/* Setas do aside: sem posição absoluta */
+.image-carousel__aside-arrows {
+  display: flex;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-md);
+}
+
+.image-carousel--split .image-carousel__arrow {
+  background: none;
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--color-text-body);
+}
+
+.image-carousel--split .image-carousel__arrow:hover:not(:disabled) {
+  background-color: var(--color-background);
+  border-color: var(--color-text-strong);
+}
+
+/* Coluna do carousel: overflow visible → section faz o clip */
+.image-carousel__cards-col {
+  overflow: visible;
+}
+
+.image-carousel__cards-col .image-carousel__slider {
+  overflow: visible;
+}
+
+.image-carousel__cards-col .image-carousel__track {
+  gap: var(--space-md);
+}
+
+/* Feature card: imagem escura + ícone + título + link */
+.image-carousel__feature-card {
+  flex: none;
+  width: 75vw; /* mobile */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  position: relative;
+  background-color: var(--color-background-dark);
+}
+
+.image-carousel__feature-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.5);
+}
+
+.image-carousel__feature-icon {
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.image-carousel__feature-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.image-carousel__feature-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-lg);
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+}
+
+.image-carousel__feature-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  line-height: var(--line-height-snug);
+  margin-block-end: var(--space-sm);
+}
+
+.image-carousel__feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.image-carousel__feature-link:hover {
+  opacity: 0.8;
+}
+
+.image-carousel__feature-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --content
+   Header centralizado + 2 cards com texto overlay.
+   Setas flutuantes nas laterais.
+   (Style=07)
+═══════════════════════════════════════ */
+
+.image-carousel--content .image-carousel__stage {
+  position: relative;
+}
+
+.image-carousel--content .image-carousel__slider {
+  overflow: hidden;
+}
+
+.image-carousel--content .image-carousel__track {
+  gap: var(--space-md);
+}
+
+/* Content card: imagem bg + texto overlay */
+.image-carousel__content-card {
+  flex: none;
+  width: calc(85vw - var(--space-lg)); /* mobile: 1 card + peek */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  background-color: var(--color-background-dark);
+}
+
+.image-carousel__content-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-carousel__content-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-xl);
+}
+
+.image-carousel__content-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  line-height: var(--line-height-snug);
+  margin-block-end: var(--space-sm);
+}
+
+.image-carousel__content-body {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Setas: flutuantes nas bordas da stage, centradas verticalmente */
+.image-carousel--content .image-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  background-color: var(--color-text-strong);
+  color: var(--color-text-inverse);
+}
+
+.image-carousel--content .image-carousel__arrow:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.image-carousel--content .image-carousel__arrow--prev { left: -24px; }
+.image-carousel--content .image-carousel__arrow--next { right: -24px; }
+
+/* Rodapé: dots + CTA */
+.image-carousel__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  margin-block-start: var(--space-xl);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 768px)
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+
+  /* Gallery: slide mais largo, peek maior */
+  .image-carousel--gallery .image-carousel__track {
+    padding-inline: 15vw; /* (100vw - 70vw) / 2 */
+    gap: var(--space-xl);
+  }
+
+  .image-carousel--gallery .image-carousel__slide {
+    width: 70vw;
+    aspect-ratio: 16 / 8;
+  }
+
+  .image-carousel--gallery .image-carousel__arrow--prev { left: 12vw; }
+  .image-carousel--gallery .image-carousel__arrow--next { right: 12vw; }
+
+  /* Split: 2 colunas */
+  .image-carousel__split-inner {
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-4xl);
+    padding-inline-start: max(
+      var(--container-padding),
+      calc((100vw - var(--container-max)) / 2 + var(--container-padding))
+    );
+    align-items: center;
+  }
+
+  /* Feature cards: ~3 visíveis + peek */
+  .image-carousel__feature-card {
+    width: 22vw;
+    aspect-ratio: 3 / 4;
+  }
+
+  /* Content: 2 cards visíveis */
+  .image-carousel__content-card {
+    width: calc((100vw - var(--container-padding) * 2 - var(--space-md)) / 2);
+  }
+
+  .image-carousel--content .image-carousel__arrow--prev { left: -28px; }
+  .image-carousel--content .image-carousel__arrow--next { right: -28px; }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   VARIANT --photo-grid
+   Grid 2 linhas de fotos com overflow lateral
+   — imagens parcialmente cortadas nas extremidades.
+   Header + grid + pill CTA. (Jambo Gallery)
+═══════════════════════════════════════ */
+
+.image-carousel--photo-grid {
+  background-color: var(--color-background);
+  padding-block: var(--space-4xl);
+}
+
+.image-carousel--photo-grid .image-carousel__header {
+  padding-inline: var(--container-padding);
+  margin-block-end: var(--space-2xl);
+}
+
+.image-carousel--photo-grid .image-carousel__title {
+  color: var(--color-text-strong);
+}
+
+/* Grid full-width: ocupa toda a largura com padding mínimo */
+.image-carousel__photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding-inline: var(--space-md);
+}
+
+/* Cada foto */
+.image-carousel__photo-item {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+}
+
+.image-carousel__photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.image-carousel__photo-item:hover img {
+  transform: scale(1.04);
+}
+
+/* Linha 1: aspect 4/3 */
+.image-carousel__photo-item:nth-child(-n+3) {
+  aspect-ratio: 4 / 3;
+}
+
+/* Linha 2: aspect 3/2 */
+.image-carousel__photo-item:nth-child(n+4) {
+  aspect-ratio: 3 / 2;
+}
+
+/* Rodapé: CTA centralizado */
+.image-carousel__photo-footer {
+  display: flex;
+  justify-content: center;
+  padding-inline: var(--container-padding);
+  margin-block-start: var(--space-2xl);
+}
+
+
+@media (max-width: 639px) {
+
+  .image-carousel {
+    padding-block: var(--space-3xl);
+  }
+
+  .image-carousel--gallery .image-carousel__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .image-carousel--split .image-carousel__aside-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .image-carousel__split-inner {
+    padding-inline: var(--container-padding);
+  }
+}

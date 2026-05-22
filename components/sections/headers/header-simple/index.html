@@ -43,6 +43,22 @@
 </head>
 <body>
 
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Header Simple</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
   <!-- Ícones reutilizáveis via <use> -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
@@ -235,6 +251,78 @@
   </header>
 
   <div class="demo-spacer">Conteúdo da página</div>
+
+
+  <!-- ═══════════════════════════════════════════
+       VARIANT 3 — Floating (card arredondado, glass)
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Floating (card pill com glass)</p>
+
+  <div style="background:linear-gradient(135deg,#FFBFBF 0%,#FFD6D6 100%);padding-block:var(--space-3xl);">
+
+    <header class="header-simple header-simple--floating" style="position:relative;top:0;" role="banner">
+      <div class="header-simple__bar container">
+
+        <a href="/" class="header-simple__logo" aria-label="Página inicial">
+          <div class="header-simple__logo-box" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 22 2 22"/>
+            </svg>
+          </div>
+        </a>
+
+        <nav class="header-simple__nav" aria-label="Navegação principal">
+          <ul class="header-simple__list" role="list">
+            <li><a class="header-simple__link" href="#">Lorem</a></li>
+            <li><a class="header-simple__link" href="#">Lorem</a></li>
+            <li><a class="header-simple__link" href="#">Lorem</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-simple__actions">
+
+          <div class="header-simple__extras">
+            <button class="header-simple__control" type="button" aria-label="Tema escuro">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <button class="header-simple__control" type="button" aria-label="Idioma">
+              BR
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+
+          <div class="header-simple__cta-wrap">
+            <a href="#" class="button button--filled button--sm">
+              Lorem ipsum
+              <svg class="button__icon" aria-hidden="true" focusable="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </svg>
+            </a>
+          </div>
+
+          <button class="header-simple__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="floating-nav-panel" data-js="nav-toggle">
+            <span class="header-simple__toggle-bar"></span>
+            <span class="header-simple__toggle-bar"></span>
+            <span class="header-simple__toggle-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="header-simple__mobile-panel" id="floating-nav-panel" data-js="nav-panel">
+        <ul class="header-simple__mobile-list" role="list">
+          <li><a class="header-simple__mobile-link" href="#">Lorem</a></li>
+          <li><a class="header-simple__mobile-link" href="#">Lorem</a></li>
+          <li><a class="header-simple__mobile-link" href="#">Lorem</a></li>
+        </ul>
+        <div class="header-simple__mobile-actions">
+          <a href="#" class="button button--filled button--md">Lorem ipsum</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="demo-spacer" style="color:rgba(100,30,30,0.5)">— — —</div>
+  </div>
 
   <script src="script.js"></script>
 </body>

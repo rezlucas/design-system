@@ -31,6 +31,22 @@
 </head>
 <body>
 
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Testimonials Cards</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -578,5 +594,143 @@
 
 
   <script src="script.js"></script>
+
+
+  <!-- ═══════════════════════════════════════════
+       VARIANT --social (Beam UI)
+       Awards + cards estilo social com @handle,
+       role badge, quote highlight, logo empresa
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Variant N — Social (awards + cards com @handle e highlight)</p>
+
+  <section class="testimonials testimonials--social" aria-labelledby="tsocial-title">
+    <div class="container">
+
+      <!-- Awards: 3 selos de reconhecimento -->
+      <div class="testimonials__awards" aria-label="Reconhecimentos">
+        <div class="testimonials__award">
+          <div class="testimonials__award-badge">
+            <svg viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Ramo de louros esq. -->
+              <path d="M18 44 C14 36 12 28 16 22 C18 18 22 16 24 20 C20 26 18 34 20 40Z" fill="#4F46E5" opacity=".7"/>
+              <path d="M16 50 C10 44 8 36 12 28 C14 24 18 22 20 26 C16 32 14 40 16 48Z" fill="#4F46E5" opacity=".5"/>
+              <!-- Ramo de louros dir. -->
+              <path d="M70 44 C74 36 76 28 72 22 C70 18 66 16 64 20 C68 26 70 34 68 40Z" fill="#4F46E5" opacity=".7"/>
+              <path d="M72 50 C78 44 80 36 76 28 C74 24 70 22 68 26 C72 32 74 40 72 48Z" fill="#4F46E5" opacity=".5"/>
+              <!-- Texto central -->
+              <text x="44" y="38" text-anchor="middle" font-size="8" font-weight="600" fill="#4F46E5">Best To-Do</text>
+              <text x="44" y="48" text-anchor="middle" font-size="8" font-weight="600" fill="#4F46E5">List App</text>
+            </svg>
+          </div>
+        </div>
+        <div class="testimonials__award testimonials__award--featured">
+          <div class="testimonials__award-badge">
+            <svg viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M14 44 C10 34 8 24 13 17 C16 13 20 11 23 16 C18 23 15 33 18 42Z" fill="#4F46E5" opacity=".8"/>
+              <path d="M12 53 C6 45 4 35 9 25 C12 20 17 18 20 23 C15 31 12 41 14 51Z" fill="#4F46E5" opacity=".55"/>
+              <path d="M74 44 C78 34 80 24 75 17 C72 13 68 11 65 16 C70 23 73 33 70 42Z" fill="#4F46E5" opacity=".8"/>
+              <path d="M76 53 C82 45 84 35 79 25 C76 20 71 18 68 23 C73 31 76 41 74 51Z" fill="#4F46E5" opacity=".55"/>
+              <text x="44" y="38" text-anchor="middle" font-size="9" font-weight="700" fill="#4F46E5">Best To-Do</text>
+              <text x="44" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#4F46E5">List App</text>
+            </svg>
+          </div>
+        </div>
+        <div class="testimonials__award">
+          <div class="testimonials__award-badge">
+            <svg viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M18 44 C14 36 12 28 16 22 C18 18 22 16 24 20 C20 26 18 34 20 40Z" fill="#4F46E5" opacity=".7"/>
+              <path d="M16 50 C10 44 8 36 12 28 C14 24 18 22 20 26 C16 32 14 40 16 48Z" fill="#4F46E5" opacity=".5"/>
+              <path d="M70 44 C74 36 76 28 72 22 C70 18 66 16 64 20 C68 26 70 34 68 40Z" fill="#4F46E5" opacity=".7"/>
+              <path d="M72 50 C78 44 80 36 76 28 C74 24 70 22 68 26 C72 32 74 40 72 48Z" fill="#4F46E5" opacity=".5"/>
+              <text x="44" y="38" text-anchor="middle" font-size="8" font-weight="600" fill="#4F46E5">Best To-Do</text>
+              <text x="44" y="48" text-anchor="middle" font-size="8" font-weight="600" fill="#4F46E5">List App</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cabeçalho -->
+      <div class="testimonials__social-header">
+        <span class="testimonials__social-eyebrow">⚡ Lorem ipsum feedback</span>
+        <h2 class="testimonials__social-title" id="tsocial-title">
+          Lorem ipsum people rely on to stay organized,<br>boost productivity, and balance life.
+        </h2>
+        <p class="testimonials__social-subtitle">Lorem ipsum stories from teams transforming workflows.</p>
+        <div class="testimonials__social-stats">
+          <span>Trusted by <strong>58.000+</strong> users</span>
+          <span class="testimonials__social-stat-sep" aria-hidden="true"></span>
+          <span class="testimonials__social-stars" aria-label="4.98 de 5 estrelas">★★★★★</span>
+          <span>4,98/5</span>
+        </div>
+      </div>
+
+      <!-- Grid de 3 cards -->
+      <div class="testimonials__social-grid">
+
+        <article class="testimonials__social-card">
+          <div class="testimonials__social-head">
+            <div class="testimonials__social-avatar">
+              <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" loading="lazy">
+            </div>
+            <div class="testimonials__social-meta">
+              <p class="testimonials__social-name">Lorem Surname</p>
+              <p class="testimonials__social-handle">@username</p>
+            </div>
+            <span class="testimonials__social-badge">Developer</span>
+          </div>
+          <p class="testimonials__social-quote">
+            Before Lorem, managing our operations felt like <mark>juggling too many balls at once</mark>. Now, everything is consolidated into one simple yet powerful platform.
+          </p>
+          <div class="testimonials__social-footer">
+            <span class="testimonials__social-company">veroxfloor</span>
+            <span>Dec 12, 2025</span>
+          </div>
+        </article>
+
+        <article class="testimonials__social-card">
+          <div class="testimonials__social-head">
+            <div class="testimonials__social-avatar">
+              <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" loading="lazy">
+            </div>
+            <div class="testimonials__social-meta">
+              <p class="testimonials__social-name">Lorem Surname</p>
+              <p class="testimonials__social-handle">@username</p>
+            </div>
+            <span class="testimonials__social-badge">Designer</span>
+          </div>
+          <p class="testimonials__social-quote">
+            Lorem has completely revolutionized how our team works. The intuitive design and robust features allowed us to <mark>streamline complex workflows</mark> that used to take hours.
+          </p>
+          <div class="testimonials__social-footer">
+            <span class="testimonials__social-company">Amplitude</span>
+            <span>Dec 12, 2025</span>
+          </div>
+        </article>
+
+        <article class="testimonials__social-card">
+          <div class="testimonials__social-head">
+            <div class="testimonials__social-avatar">
+              <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" loading="lazy">
+            </div>
+            <div class="testimonials__social-meta">
+              <p class="testimonials__social-name">Lorem Surname</p>
+              <p class="testimonials__social-handle">@username</p>
+            </div>
+            <span class="testimonials__social-badge">Developer</span>
+          </div>
+          <p class="testimonials__social-quote">
+            What stands out is how well it <mark>balances simplicity with functionality</mark>. As a designer, I appreciate how sleek and intuitive the interface is.
+          </p>
+          <div class="testimonials__social-footer">
+            <span class="testimonials__social-company">veroxfloor</span>
+            <span>Dec 12, 2025</span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
 </body>
 </html>

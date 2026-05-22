@@ -1,0 +1,229 @@
+/* ─────────────────────────────────────────
+   hero-countdown — section
+   Layout split: conteúdo + countdown (esq.)
+   e visual decorativo (dir.).
+
+   Variantes:
+     • Base: eyebrow + título + countdown boxes
+             + CTA + visual com stat card
+   ───────────────────────────────────────── */
+
+.hero-countdown {
+  background-color: var(--color-background);
+  padding-block: var(--space-4xl);
+  overflow: hidden;
+}
+
+/* Grid split: 1 col mobile → 2 col desktop */
+.hero-countdown__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+/* ══════════════════════════════
+   CONTEÚDO (esquerda)
+══════════════════════════════ */
+
+.hero-countdown__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-countdown__eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-widest, 0.15em);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-block-end: var(--space-md);
+}
+
+.hero-countdown__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 4.5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-lg);
+}
+
+.hero-countdown__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  max-width: 48ch;
+  margin-block-end: var(--space-2xl);
+}
+
+/* ── Boxes de countdown ── */
+.hero-countdown__boxes {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-block-end: var(--space-2xl);
+}
+
+.hero-countdown__box {
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  text-align: center;
+  min-width: 80px;
+  flex: 1;
+  max-width: 110px;
+}
+
+.hero-countdown__box-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-secondary, #3B2D8F);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-countdown__box-label {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-xs);
+}
+
+/* ══════════════════════════════
+   VISUAL DECORATIVO (direita)
+══════════════════════════════ */
+
+.hero-countdown__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card principal — tall mockup */
+.hero-countdown__mock {
+  width: 260px;
+  height: 420px;
+  background-color: var(--color-background-alt);
+  border-radius: 32px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Badge flutuante no canto superior direito */
+.hero-countdown__badge {
+  position: absolute;
+  top: -16px;
+  right: -50px;
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) var(--space-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 80px;
+}
+
+.hero-countdown__badge-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.hero-countdown__badge-label {
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Card de stat sobreposto na base */
+.hero-countdown__stat-card {
+  position: absolute;
+  bottom: -24px;
+  left: -32px;
+  background-color: var(--color-background);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  width: 230px;
+}
+
+/* Blob decorativo no stat card */
+.hero-countdown__stat-blob {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  width: 52px;
+  height: 52px;
+  border-radius: 40% 60% 55% 45% / 45% 55% 60% 40%;
+  background-color: #F5C518;
+  flex-shrink: 0;
+}
+
+.hero-countdown__stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-text-strong);
+  letter-spacing: -0.03em;
+}
+
+.hero-countdown__stat-unit {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+}
+
+.hero-countdown__stat-body {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-sm);
+  max-width: 24ch;
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 768px): 2 colunas
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .hero-countdown__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+  }
+
+  .hero-countdown__boxes {
+    flex-wrap: nowrap;
+  }
+
+  .hero-countdown__box {
+    max-width: none;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+  .hero-countdown {
+    padding-block: var(--space-3xl);
+  }
+
+  .hero-countdown__visual {
+    display: none; /* esconde visual decorativo no mobile */
+  }
+
+  .hero-countdown__box {
+    min-width: 72px;
+    padding: var(--space-md) var(--space-lg);
+  }
+}

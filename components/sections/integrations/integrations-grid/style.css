@@ -1,0 +1,154 @@
+/* ─────────────────────────────────────────
+   integrations-grid — section
+   Grade de cards de integração com apps externos.
+
+   Variantes:
+     • Base: grid 3-col, cards com borda tracejada
+   ───────────────────────────────────────── */
+
+.integrations-grid {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+/* ── Cabeçalho centralizado ── */
+.integrations-grid__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-block-end: var(--space-3xl);
+}
+
+/* Eyebrow em chip com borda tracejada */
+.integrations-grid__eyebrow {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-muted);
+}
+
+.integrations-grid__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+/* Palavra de destaque no título */
+.integrations-grid__title-accent {
+  color: var(--color-primary);
+}
+
+/* ── Grade de cards ── */
+.integrations-grid__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+/* ── Card individual ── */
+.integrations-grid__card {
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  background-color: var(--color-background);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.integrations-grid__card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Topo do card: ícone + badge opcional ── */
+.integrations-grid__card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 44px;
+}
+
+.integrations-grid__icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ícone SVG inline */
+.integrations-grid__icon-svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Badge "Popular" */
+.integrations-grid__badge {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* ── Corpo do card ── */
+.integrations-grid__card-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+}
+
+.integrations-grid__card-body {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+/* ── Botão de ação: usar .button.button--filled.button--sm com align-self:flex-start ── */
+
+
+/* ═══════════════════════════════════════
+   TABLET (≥ 640px): 2 colunas
+═══════════════════════════════════════ */
+@media (min-width: 640px) {
+  .integrations-grid__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 1024px): 3 colunas
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .integrations-grid__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+  .integrations-grid {
+    padding-block: var(--space-3xl);
+  }
+}

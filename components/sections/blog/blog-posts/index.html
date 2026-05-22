@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Posts — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Blog Posts</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"/>
+    </symbol>
+  </svg>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT BASE — Carousel com setas prev/next
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant Base — Carousel de Posts</p>
+
+  <section class="blog-posts" data-js="blog-posts">
+    <div class="container">
+
+      <div class="blog-posts__header">
+        <div class="blog-posts__header-text">
+          <span class="blog-posts__eyebrow">Blog</span>
+          <h2 class="blog-posts__title">
+            Insights sobre design,<br>estratégia e crescimento B2B
+          </h2>
+        </div>
+        <div class="blog-posts__arrows">
+          <button class="blog-posts__arrow blog-posts__arrow--prev" aria-label="Post anterior" data-js="prev" disabled>
+            <svg aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="blog-posts__arrow blog-posts__arrow--next" aria-label="Próximo post" data-js="next">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <hr class="blog-posts__divider">
+
+      <div class="blog-posts__slider">
+        <div class="blog-posts__track" data-js="track">
+
+          <article class="blog-posts__card" data-js="card">
+            <a href="#" class="blog-posts__card-link">
+              <div class="blog-posts__card-image">
+                <img
+                  class="blog-posts__card-img"
+                  src="../../../../assets/images/placeholders/placeholder-image.png"
+                  alt="Como construir um pipeline de vendas escalável"
+                  width="400"
+                  height="500"
+                  loading="lazy"
+                >
+              </div>
+              <div class="blog-posts__card-meta">
+                <span class="blog-posts__card-category">Vendas B2B</span>
+              </div>
+              <h3 class="blog-posts__card-title">Como construir um pipeline de vendas escalável em 2026</h3>
+            </a>
+          </article>
+
+          <article class="blog-posts__card" data-js="card">
+            <a href="#" class="blog-posts__card-link">
+              <div class="blog-posts__card-image">
+                <img
+                  class="blog-posts__card-img"
+                  src="../../../../assets/images/placeholders/placeholder-image.png"
+                  alt="O guia completo de automação de e-mail para SDRs"
+                  width="400"
+                  height="500"
+                  loading="lazy"
+                >
+              </div>
+              <div class="blog-posts__card-meta">
+                <span class="blog-posts__card-category">Automação</span>
+              </div>
+              <h3 class="blog-posts__card-title">O guia completo de automação de e-mail para SDRs</h3>
+            </a>
+          </article>
+
+          <article class="blog-posts__card" data-js="card">
+            <a href="#" class="blog-posts__card-link">
+              <div class="blog-posts__card-image">
+                <img
+                  class="blog-posts__card-img"
+                  src="../../../../assets/images/placeholders/placeholder-image.png"
+                  alt="Lead Scoring: como priorizar os leads certos"
+                  width="400"
+                  height="500"
+                  loading="lazy"
+                >
+              </div>
+              <div class="blog-posts__card-meta">
+                <span class="blog-posts__card-category">Marketing</span>
+              </div>
+              <h3 class="blog-posts__card-title">Lead Scoring: como priorizar os leads certos e fechar mais rápido</h3>
+            </a>
+          </article>
+
+          <article class="blog-posts__card" data-js="card">
+            <a href="#" class="blog-posts__card-link">
+              <div class="blog-posts__card-image">
+                <img
+                  class="blog-posts__card-img"
+                  src="../../../../assets/images/placeholders/placeholder-image.png"
+                  alt="IA em vendas: o que muda na prática"
+                  width="400"
+                  height="500"
+                  loading="lazy"
+                >
+              </div>
+              <div class="blog-posts__card-meta">
+                <span class="blog-posts__card-category">Inteligência Artificial</span>
+              </div>
+              <h3 class="blog-posts__card-title">IA em vendas: o que muda na prática para equipes B2B</h3>
+            </a>
+          </article>
+
+          <article class="blog-posts__card" data-js="card">
+            <a href="#" class="blog-posts__card-link">
+              <div class="blog-posts__card-image">
+                <img
+                  class="blog-posts__card-img"
+                  src="../../../../assets/images/placeholders/placeholder-image.png"
+                  alt="5 métricas de marketing que todo gestor deve acompanhar"
+                  width="400"
+                  height="500"
+                  loading="lazy"
+                >
+              </div>
+              <div class="blog-posts__card-meta">
+                <span class="blog-posts__card-category">Métricas</span>
+              </div>
+              <h3 class="blog-posts__card-title">5 métricas de marketing B2B que todo gestor deve acompanhar</h3>
+            </a>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

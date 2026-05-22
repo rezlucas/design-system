@@ -1,0 +1,178 @@
+/* ─────────────────────────────────────────
+   stats-highlighted — section
+   Seção de métricas com layout split:
+   imagens de clientes (esq.) + stats grandes (dir.).
+
+   Variantes:
+     • Base: 2 imagens empilhadas + 4 métricas + rodapé CTA
+   ───────────────────────────────────────── */
+
+.stats-highlighted {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+/* Grid principal: 1 col mobile → 2 col desktop */
+.stats-highlighted__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* ══════════════════════════════
+   COLUNA DE MÍDIA (esquerda)
+══════════════════════════════ */
+
+.stats-highlighted__media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  align-items: start;
+}
+
+/* Item de imagem: container relativo para o label */
+.stats-highlighted__media-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+
+/* Imagem principal: mais alta (coluna esq.) */
+.stats-highlighted__media-item--primary .stats-highlighted__media-img {
+  aspect-ratio: 3 / 4;
+}
+
+/* Imagem secundária: mais baixa (coluna dir.) */
+.stats-highlighted__media-item--secondary .stats-highlighted__media-img {
+  aspect-ratio: 4 / 5;
+}
+
+.stats-highlighted__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Chip com nome do cliente sobreposto na imagem */
+.stats-highlighted__media-label {
+  position: absolute;
+  bottom: var(--space-md);
+  left: var(--space-md);
+  background-color: var(--color-background);
+  color: var(--color-text-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 9999px;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════
+   COLUNA DE CONTEÚDO (direita)
+══════════════════════════════ */
+
+.stats-highlighted__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.stats-highlighted__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3.5vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+/* ── Lista de métricas ── */
+.stats-highlighted__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-highlighted__stat {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-xl);
+}
+
+.stats-highlighted__stat:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Linha com número grande + label inline */
+.stats-highlighted__stat-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-block-end: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.stats-highlighted__stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-text-strong);
+  letter-spacing: -0.02em;
+}
+
+.stats-highlighted__stat-label {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+}
+
+.stats-highlighted__stat-body {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+/* ── Rodapé: texto + CTA ── */
+.stats-highlighted__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding-block-start: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.stats-highlighted__footer-text {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  max-width: 52ch;
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 768px): 2 colunas iguais
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .stats-highlighted__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+  .stats-highlighted {
+    padding-block: var(--space-3xl);
+  }
+
+  .stats-highlighted__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

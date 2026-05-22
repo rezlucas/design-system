@@ -31,6 +31,22 @@
 </head>
 <body>
 
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">CTA Banner</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
 
   <!-- ═══════════════════════════════════
        VARIANT 1 — Card Split
@@ -164,6 +180,116 @@
           alt="Lorem ipsum"
           width="1920" height="579"
         >
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       VARIANT --courses (Cyrus UI)
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Variant 5 — Courses (header + 2 cards de curso + CTA)</p>
+
+  <section class="cta-banner cta-banner--courses" aria-labelledby="cta-courses-title">
+    <div class="container">
+
+      <div class="cta-banner__courses-header">
+        <span class="cta-banner__courses-eyebrow">Lorem ipsum</span>
+        <h2 class="cta-banner__courses-title" id="cta-courses-title">Lorem ipsum dolor sit.</h2>
+        <p class="cta-banner__courses-desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
+          sed do eiusmod tempor incididunt ut labore.
+        </p>
+      </div>
+
+      <div class="cta-banner__courses-grid">
+
+        <!-- Card 1 -->
+        <div class="cta-banner__course-card">
+          <img
+            class="cta-banner__course-thumb"
+            src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+            alt="Lorem ipsum"
+            width="800" height="450"
+            loading="lazy"
+          >
+          <div class="cta-banner__course-body">
+            <div class="cta-banner__course-title-row">
+              <h3 class="cta-banner__course-name">Lorem ipsum dolor</h3>
+              <span class="cta-banner__course-badge">FREE</span>
+            </div>
+            <p class="cta-banner__course-desc">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit. Aliquam in hendrerit urna.
+            </p>
+            <div class="cta-banner__course-footer">
+              <div class="cta-banner__course-author">
+                <div class="cta-banner__course-avatar">
+                  <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="36" height="36">
+                </div>
+                <div>
+                  <p class="cta-banner__course-author-name">Lorem Surname</p>
+                  <p class="cta-banner__course-author-role">Lorem ipsum</p>
+                </div>
+              </div>
+              <div class="cta-banner__course-stats">
+                <span class="cta-banner__course-stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  2.4k
+                </span>
+                <span class="cta-banner__course-stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  15:56
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="cta-banner__course-card">
+          <img
+            class="cta-banner__course-thumb"
+            src="../../../../assets/images/placeholders/placeholder-background-image-section.png"
+            alt="Lorem ipsum"
+            width="800" height="450"
+            loading="lazy"
+          >
+          <div class="cta-banner__course-body">
+            <div class="cta-banner__course-title-row">
+              <h3 class="cta-banner__course-name">Lorem ipsum dolor sit</h3>
+              <span class="cta-banner__course-badge">FREE</span>
+            </div>
+            <p class="cta-banner__course-desc">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit. Aliquam in hendrerit urna.
+            </p>
+            <div class="cta-banner__course-footer">
+              <div class="cta-banner__course-author">
+                <div class="cta-banner__course-avatar">
+                  <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="36" height="36">
+                </div>
+                <div>
+                  <p class="cta-banner__course-author-name">Lorem Surname</p>
+                  <p class="cta-banner__course-author-role">Lorem ipsum</p>
+                </div>
+              </div>
+              <div class="cta-banner__course-stats">
+                <span class="cta-banner__course-stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  5.6k
+                </span>
+                <span class="cta-banner__course-stat">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  21:32
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cta-banner__courses-footer">
+        <a href="#" class="button button--filled button--pill button--md">Lorem ipsum</a>
       </div>
 
     </div>

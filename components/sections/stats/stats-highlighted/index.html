@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stats Highlighted — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Stats Highlighted</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+  </svg>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT BASE — Split: imagens esq. / métricas dir.
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant Base — Imagens + Métricas Split</p>
+
+  <section class="stats-highlighted">
+    <div class="stats-highlighted__inner container">
+
+      <!-- Coluna de imagens -->
+      <div class="stats-highlighted__media">
+
+        <div class="stats-highlighted__media-item stats-highlighted__media-item--primary">
+          <img
+            class="stats-highlighted__media-img"
+            src="../../../../assets/images/placeholders/placeholder-image.png"
+            alt="Caso de sucesso: Solaris Energia"
+            width="400"
+            height="600"
+            loading="lazy"
+          >
+          <span class="stats-highlighted__media-label">Cliente: Solaris Energia</span>
+        </div>
+
+        <div class="stats-highlighted__media-item stats-highlighted__media-item--secondary">
+          <img
+            class="stats-highlighted__media-img"
+            src="../../../../assets/images/placeholders/placeholder-image.png"
+            alt="Caso de sucesso: Vertix Tecnologia"
+            width="400"
+            height="500"
+            loading="lazy"
+          >
+          <span class="stats-highlighted__media-label">Cliente: Vertix Tecnologia</span>
+        </div>
+
+      </div>
+
+      <!-- Coluna de métricas -->
+      <div class="stats-highlighted__content">
+
+        <h2 class="stats-highlighted__title">
+          Métricas que refletem o impacto do nosso trabalho.
+        </h2>
+
+        <ul class="stats-highlighted__list" aria-label="Resultados dos clientes">
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">+47%</span>
+              <span class="stats-highlighted__stat-label">Taxa de Conversão</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              Aumento médio na conversão de MQL para SQL após 90 dias de uso da plataforma.
+            </p>
+          </li>
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">−68%</span>
+              <span class="stats-highlighted__stat-label">Trabalho Manual</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              Redução no esforço operacional manual através de automações de e-mail e qualificação.
+            </p>
+          </li>
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">3×</span>
+              <span class="stats-highlighted__stat-label">Mais Reuniões Agendadas</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              Times geram três vezes mais reuniões qualificadas com o mesmo headcount de SDRs.
+            </p>
+          </li>
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">99,4%</span>
+              <span class="stats-highlighted__stat-label">Uptime da Plataforma</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              SLA garantido com infraestrutura redundante e monitoramento 24/7.
+            </p>
+          </li>
+
+        </ul>
+
+        <div class="stats-highlighted__footer">
+          <p class="stats-highlighted__footer-text">
+            Esses números representam mais do que performance — eles refletem parcerias de longo prazo, entrega consistente e resultados mensuráveis em receita.
+          </p>
+          <a href="#" class="button button--filled button--md">
+            Ver cases
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Countdown — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Hero Countdown</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+  </svg>
+
+
+  <p class="demo-label">Variant Base — Coming Soon com Countdown</p>
+
+  <!--
+    data-end: data ISO 8601 do lançamento.
+    Sem o atributo, conta 35 dias a partir de agora (demo).
+  -->
+  <section
+    class="hero-countdown"
+    data-js="hero-countdown"
+    aria-labelledby="cd-title"
+  >
+    <div class="hero-countdown__inner container">
+
+      <!-- Conteúdo (esquerda) -->
+      <div class="hero-countdown__content">
+
+        <p class="hero-countdown__eyebrow">Lorem ipsum!</p>
+
+        <h1 class="hero-countdown__title" id="cd-title">
+          Lorem ipsum dolor<br>sit amet!
+        </h1>
+
+        <p class="hero-countdown__description">
+          Lorem ipsum is a placeholder text to demonstrate the visual form of a typeface without relying on meaningful content.
+        </p>
+
+        <!-- Countdown boxes -->
+        <div class="hero-countdown__boxes" role="timer" aria-live="off" aria-label="Contagem regressiva">
+          <div class="hero-countdown__box">
+            <span class="hero-countdown__box-value" data-js="cd-days">35</span>
+            <span class="hero-countdown__box-label">Dias</span>
+          </div>
+          <div class="hero-countdown__box">
+            <span class="hero-countdown__box-value" data-js="cd-hours">07</span>
+            <span class="hero-countdown__box-label">Horas</span>
+          </div>
+          <div class="hero-countdown__box">
+            <span class="hero-countdown__box-value" data-js="cd-minutes">23</span>
+            <span class="hero-countdown__box-label">Minutos</span>
+          </div>
+          <div class="hero-countdown__box">
+            <span class="hero-countdown__box-value" data-js="cd-seconds">16</span>
+            <span class="hero-countdown__box-label">Segundos</span>
+          </div>
+        </div>
+
+        <a href="#" class="button button--filled button--md">
+          Lorem ipsum via E-mail
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
+
+      </div>
+
+      <!-- Visual decorativo (direita) -->
+      <div class="hero-countdown__visual" aria-hidden="true">
+
+        <!-- Card principal: mockup de app/preview -->
+        <div class="hero-countdown__mock">
+
+          <!-- Badge flutuante no canto superior direito -->
+          <div class="hero-countdown__badge">
+            <span class="hero-countdown__badge-icon">✦</span>
+            <span class="hero-countdown__badge-label">Lorem ipsum</span>
+          </div>
+
+        </div>
+
+        <!-- Card de stat sobreposto na base -->
+        <div class="hero-countdown__stat-card">
+          <div class="hero-countdown__stat-blob" aria-hidden="true"></div>
+          <p class="hero-countdown__stat-number">
+            89.5<span class="hero-countdown__stat-unit">%</span>
+          </p>
+          <p class="hero-countdown__stat-body">
+            Lorem ipsum dolor sit amet, consectetur description goes here.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+/* ─────────────────────────────────────────
+   stats-grid — section
+   Layout split 2-col: texto à esq. + stack de
+   cards em cascata à dir. Último card com
+   fundo primário (destaque).
+
+   Variantes:
+     • Base: 4 cards em cascata (offset decrescente)
+   ───────────────────────────────────────── */
+
+.stats-grid {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background);
+}
+
+/* Grid principal: 1 col mobile → 2 col desktop */
+.stats-grid__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+/* ══════════════════════════════
+   COLUNA DE CONTEÚDO (esquerda)
+══════════════════════════════ */
+
+.stats-grid__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Link eyebrow com seta inline */
+.stats-grid__eyebrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.stats-grid__eyebrow-link:hover {
+  opacity: 0.75;
+}
+
+.stats-grid__eyebrow-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.stats-grid__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 4.5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  letter-spacing: -0.02em;
+}
+
+/* ══════════════════════════════
+   STACK DE CARDS (direita)
+══════════════════════════════ */
+
+.stats-grid__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* pequeno espaçamento entre cards */
+}
+
+/* Card base */
+.stats-grid__card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-lg) var(--space-2xl);
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-grid__card:hover {
+  transform: translateX(-4px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Cascade: cada card desloca menos à esquerda que o anterior ──
+   Cria o efeito de escada decrescente de cima para baixo.        */
+.stats-grid__card:nth-child(1) { margin-inline-start: clamp(32px, 7vw, 112px); }
+.stats-grid__card:nth-child(2) { margin-inline-start: clamp(22px, 4.5vw, 74px); }
+.stats-grid__card:nth-child(3) { margin-inline-start: clamp(11px, 2.2vw, 36px); }
+.stats-grid__card:nth-child(4) { margin-inline-start: 0; }
+
+/* Card destacado — último, fundo primário */
+.stats-grid__card--featured {
+  background-color: var(--color-primary);
+}
+
+.stats-grid__card--featured:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+/* ── Número grande ── */
+.stats-grid__card-number {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-text-strong);
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 4ch; /* mantém alinhamento entre cards */
+}
+
+.stats-grid__card--featured .stats-grid__card-number {
+  color: var(--color-text-inverse);
+}
+
+/* ── Texto descritivo ── */
+.stats-grid__card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.stats-grid__card-label {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-muted);
+}
+
+.stats-grid__card--featured .stats-grid__card-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ── Ícone decorativo (direita) ── */
+.stats-grid__card-icon {
+  flex-shrink: 0;
+  color: var(--color-border-strong);
+}
+
+.stats-grid__card-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.stats-grid__card--featured .stats-grid__card-icon {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 768px): 2 colunas
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .stats-grid__inner {
+    grid-template-columns: 1fr 1.3fr;
+    gap: var(--space-4xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 640px)
+═══════════════════════════════════════ */
+@media (max-width: 639px) {
+  .stats-grid {
+    padding-block: var(--space-3xl);
+  }
+
+  .stats-grid__card {
+    padding: var(--space-md) var(--space-lg);
+    gap: var(--space-lg);
+  }
+
+  /* Reduz o offset no mobile para não desperdiçar espaço */
+  .stats-grid__card:nth-child(1) { margin-inline-start: clamp(20px, 6vw, 48px); }
+  .stats-grid__card:nth-child(2) { margin-inline-start: clamp(13px, 4vw, 32px); }
+  .stats-grid__card:nth-child(3) { margin-inline-start: clamp(6px, 2vw, 16px); }
+  .stats-grid__card:nth-child(4) { margin-inline-start: 0; }
+
+  .stats-grid__card-number {
+    font-size: var(--font-size-2xl);
+    min-width: 3ch;
+  }
+}

@@ -4,6 +4,9 @@
      • com checklist  (Style=01)
      • com descrição  (Style=02)
    Imagem sempre à direita (desktop) / abaixo (mobile).
+
+   Modifier:
+     • --reverse: inverte colunas — imagem esq., conteúdo dir.
    ───────────────────────────────────────── */
 
 /* ═══════════════════════════════════════
@@ -137,4 +140,15 @@
   .hero-split__media {
     min-height: 440px;
   }
+}
+
+
+/* ═══════════════════════════════════════
+   MODIFIER --reverse
+   Inverte a ordem: imagem esq., conteúdo dir.
+   (Style=03)
+═══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .hero-split--reverse .hero-split__content { order: 2; }
+  .hero-split--reverse .hero-split__media   { order: 1; }
 }

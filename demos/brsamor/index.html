@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BR Samor — Logística e Soluções em Transporte</title>
+
+  <!-- Google Fonts: Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tokens & Base -->
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../base/reset.css">
+  <link rel="stylesheet" href="../../base/base.css">
+  <link rel="stylesheet" href="../../base/utilities.css">
+
+  <!-- Atoms -->
+  <link rel="stylesheet" href="../../components/atoms/buttons/style.css">
+
+  <!-- Sections -->
+  <link rel="stylesheet" href="../../components/sections/headers/header-simple/style.css">
+  <link rel="stylesheet" href="../../components/sections/heroes/hero-split/style.css">
+  <link rel="stylesheet" href="../../components/sections/services/services-grid/style.css">
+  <link rel="stylesheet" href="../../components/sections/features/feature-split/style.css">
+  <link rel="stylesheet" href="../../components/sections/stats/stats-highlighted/style.css">
+  <link rel="stylesheet" href="../../components/sections/ctas/cta-banner/style.css">
+  <link rel="stylesheet" href="../../components/sections/faq/faq-accordion/style.css">
+  <link rel="stylesheet" href="../../components/sections/footers/footer-simple/style.css">
+
+  <style>
+    /* ── BR Samor Brand Tokens ────────────────────────────────────────
+       Sobrescreve apenas variáveis de marca.
+       Laranja (#F15922) como primária — botões, links, acentos.
+       Azul profundo (#162F42) como fundo escuro e texto forte.
+    ─────────────────────────────────────────────────────────────── */
+    :root {
+      /* Roboto em tudo */
+      --font-heading: 'Roboto', system-ui, sans-serif;
+
+      /* Primária: laranja BR Samor */
+      --color-primary:        #F15922;
+      --color-primary-hover:  #D94E1A;
+      --color-primary-light:  #FEF0EA;
+
+      /* Secundária: azul naval */
+      --color-secondary:        #1F425D;
+      --color-secondary-hover:  #162F42;
+
+      /* Fundos */
+      --color-background-dark:  #162F42;
+      --color-background-alt:   #F0F4F7;
+
+      /* Texto */
+      --color-text-strong:  #162F42;
+      --color-text-body:    #2A3D4E;
+      --color-text-muted:   #6B8A9E;
+
+      /* Bordas com tom azulado */
+      --color-border:        #DDE6ED;
+      --color-border-strong: #9EB7CB;
+    }
+
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 72px; }
+
+    /* Fundo alternativo com tint azul levíssimo */
+    .services-grid { background-color: #F0F4F7; }
+    .faq-accordion--enclosed { background-color: var(--color-background); }
+
+    /* Eyebrow laranja no hero */
+    .hero-split__check-icon use { fill: var(--color-primary); }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Demo · BR Samor</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+<!-- ════════════════════════════════════════
+     SVG SPRITE
+════════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <!-- Seta direita -->
+  <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+
+  <!-- Check preenchido -->
+  <symbol id="icon-check-circle" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="12" fill="#F15922"/>
+    <path d="M7 12.5l3.5 3.5 6.5-7"
+      fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Avião -->
+  <symbol id="icon-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2a.5.5 0 00-.5.26L3 8l8 3.5L8 14l-2 .5L4 17l3-.5L8.5 19l3-2 3.5 8 2.3-1.3a.5.5 0 00.26-.5z"/>
+  </symbol>
+
+  <!-- Setas cíclicas (logística reversa) -->
+  <symbol id="icon-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1 4v6h6M23 20v-6h-6"/>
+    <path d="M20.49 9A9 9 0 005.64 5.64L1 10M3.51 15a9 9 0 0014.85 3.36L23 14"/>
+  </symbol>
+
+  <!-- Raio (priority) -->
+  <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+  </symbol>
+
+  <!-- Pessoa/portador -->
+  <symbol id="icon-user-carry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="5" r="2"/>
+    <path d="M8 22l2-8-2-3h8l-2 3 2 8"/>
+    <path d="M7 10l-3 5M17 10l3 5"/>
+  </symbol>
+
+  <!-- Caminhão -->
+  <symbol id="icon-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="1" y="3" width="15" height="13" rx="1"/>
+    <path d="M16 8h4l3 4v5h-7V8z"/>
+    <circle cx="5.5" cy="18.5" r="2.5"/>
+    <circle cx="18.5" cy="18.5" r="2.5"/>
+  </symbol>
+
+  <!-- Escudo blindado -->
+  <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    <path d="M9 12l2 2 4-4"/>
+  </symbol>
+
+  <!-- Check simples -->
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+
+  <!-- Chevrons -->
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 18l-6-6 6-6"/>
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18l6-6-6-6"/>
+  </symbol>
+
+  <!-- Redes sociais -->
+  <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  </symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+  </symbol>
+  <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+    <circle cx="4" cy="4" r="2"/>
+  </symbol>
+
+  <!-- FAQ ícone +/− -->
+  <symbol id="icon-plus-faq" viewBox="0 0 18 18" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+    <line x1="3" y1="9" x2="15" y2="9"/>
+  </symbol>
+
+  <!-- Arrow-right-sm -->
+  <symbol id="icon-arrow-right-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+
+</svg>
+
+<a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+
+
+<!-- ════════════════════════════════════════
+     HEADER — Dark (azul naval)
+════════════════════════════════════════ -->
+<header class="header-simple header-simple--dark" role="banner">
+  <div class="header-simple__bar container">
+
+    <a href="/" class="header-simple__logo" aria-label="BR Samor — Página inicial">
+      <svg width="130" height="36" viewBox="0 0 130 36" fill="none" aria-hidden="true">
+        <!-- Ícone laranja -->
+        <rect width="36" height="36" rx="8" fill="#F15922"/>
+        <path d="M11 27V9l14 18V9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Texto branco -->
+        <text x="44" y="14" font-family="Roboto, system-ui, sans-serif" font-size="10" font-weight="700" fill="#9EB7CB" letter-spacing="1">LOGÍSTICA</text>
+        <text x="44" y="30" font-family="Roboto, system-ui, sans-serif" font-size="15" font-weight="900" fill="white" letter-spacing="-0.3">BR Samor</text>
+      </svg>
+    </a>
+
+    <nav class="header-simple__nav" aria-label="Navegação principal">
+      <ul class="header-simple__list" role="list">
+        <li><a class="header-simple__link header-simple__link--active" href="#servicos">Serviços</a></li>
+        <li><a class="header-simple__link" href="#segmentos">Segmentos</a></li>
+        <li><a class="header-simple__link" href="#sobre">Sobre</a></li>
+        <li><a class="header-simple__link" href="#faq">FAQ</a></li>
+        <li><a class="header-simple__link" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-simple__actions">
+      <div class="header-simple__cta-wrap">
+        <a href="#contato" class="button button--filled button--md">
+          Solicitar cotação
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
+      </div>
+      <button
+        class="header-simple__toggle"
+        type="button"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+        aria-controls="brsamor-nav-panel"
+        data-js="nav-toggle"
+      >
+        <span class="header-simple__toggle-bar"></span>
+        <span class="header-simple__toggle-bar"></span>
+        <span class="header-simple__toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="header-simple__mobile-panel"
+    id="brsamor-nav-panel"
+    data-js="nav-panel"
+    aria-label="Menu mobile"
+  >
+    <ul class="header-simple__mobile-list" role="list">
+      <li><a class="header-simple__mobile-link" href="#servicos">Serviços</a></li>
+      <li><a class="header-simple__mobile-link" href="#segmentos">Segmentos</a></li>
+      <li><a class="header-simple__mobile-link" href="#sobre">Sobre</a></li>
+      <li><a class="header-simple__mobile-link" href="#faq">FAQ</a></li>
+      <li><a class="header-simple__mobile-link" href="#contato">Contato</a></li>
+    </ul>
+    <div class="header-simple__mobile-actions">
+      <a href="#contato" class="button button--filled button--lg">
+        Solicitar cotação
+        <svg class="button__icon" aria-hidden="true" focusable="false">
+          <use href="#icon-arrow"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════════════
+     CONTEÚDO PRINCIPAL
+════════════════════════════════════════ -->
+<main id="main-content">
+
+
+  <!-- ── HERO — Split checklist ── -->
+  <section class="hero-split" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-split__inner container">
+
+      <div class="hero-split__content">
+        <h1 class="hero-split__title" id="hero-title">
+          Carga entregue no prazo. Com segurança. Garantido.
+        </h1>
+
+        <ul class="hero-split__checklist" aria-label="Diferenciais da BR Samor">
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Frota aérea e rodoviária para todo o território nacional</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Autorizada pela Anvisa para transporte farmacêutico</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Rastreamento em tempo real em todas as modalidades</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Pontualidade comprovada em mais de 15 anos de operação</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Filiais em Vitória, São Paulo, Brasília, Recife e Joinville</span>
+          </li>
+        </ul>
+
+        <div class="hero-split__actions">
+          <a href="#contato" class="button button--filled button--md">
+            Solicitar cotação
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+          <a href="#servicos" class="button button--outline button--md">
+            Conhecer serviços
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-split__media">
+        <img
+          class="hero-split__image"
+          src="../../assets/images/placeholders/placeholder-image.png"
+          alt="Frota de veículos da BR Samor pronta para entrega"
+          width="560"
+          height="560"
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── SERVICES — 6 modalidades de transporte ── -->
+  <section class="services-grid" id="servicos" aria-labelledby="services-title">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <h2 class="services-grid__title" id="services-title">
+          Modalidades de transporte para cada necessidade
+        </h2>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-plane"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Standard</h3>
+          <p class="services-grid__card-body">Coleta em horário comercial com transporte aéreo e prazo padrão por localidade. A solução ideal para envios regulares.</p>
+          <a href="#contato" class="services-grid__card-link" aria-label="Solicitar cotação para Standard">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-refresh"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Logística Reversa</h3>
+          <p class="services-grid__card-body">Coleta no cliente final com retorno ao varejista ou fabricante. Processo ágil e rastreado para trocas e devoluções.</p>
+          <a href="#contato" class="services-grid__card-link" aria-label="Solicitar cotação para Logística Reversa">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-zap"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Priority</h3>
+          <p class="services-grid__card-body">Veículo exclusivo com embarque garantido no primeiro voo disponível. Para urgências onde cada hora conta.</p>
+          <a href="#contato" class="services-grid__card-link" aria-label="Solicitar cotação para Priority">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-user-carry"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Portador Exclusivo</h3>
+          <p class="services-grid__card-body">Carga transportada em mãos por colaborador da BR Samor, sem restrição de horário. Máxima segurança e agilidade.</p>
+          <a href="#contato" class="services-grid__card-link" aria-label="Solicitar cotação para Portador Exclusivo">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-truck"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Rodo Express</h3>
+          <p class="services-grid__card-body">Modal rodoviário com prazo de carga aérea. Veículo dedicado e rastreado em tempo real para distâncias estratégicas.</p>
+          <a href="#contato" class="services-grid__card-link" aria-label="Solicitar cotação para Rodo Express">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-shield"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Rodo Blindado</h3>
+          <p class="services-grid__card-body">Para cargas de alto valor: gerenciamento de risco, monitoramento em tempo real e apólice de cobertura integral.</p>
+          <a href="#contato" class="services-grid__card-link" aria-label="Solicitar cotação para Rodo Blindado">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── FEATURE — Segmentos de atuação (imagem esq.) ── -->
+  <section class="feature-split feature-split--reverse" id="segmentos" aria-labelledby="segments-title">
+    <div class="feature-split__inner container">
+
+      <div class="feature-split__content">
+        <span class="feature-split__eyebrow">ESPECIALIZAÇÃO POR SEGMENTO</span>
+        <h2 class="feature-split__title" id="segments-title">
+          Soluções desenvolvidas para cada tipo de carga
+        </h2>
+        <p class="feature-split__description">
+          Desde 2009, a BR Samor construiu expertise profunda em três segmentos críticos — com processos, embalagens e protocolos próprios que vão além do transporte padrão.
+        </p>
+
+        <ul class="feature-split__checklist" aria-label="Segmentos atendidos">
+
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <span class="feature-split__check-subtitle">Eletrônicos</span>
+              <p class="feature-split__check-body">Segmento de origem da BR Samor. Embalagens e processos próprios desenvolvidos como diferencial de mercado para produtos sensíveis e de alto valor.</p>
+            </div>
+          </li>
+
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <span class="feature-split__check-subtitle">Fármaco</span>
+              <p class="feature-split__check-body">Transporte de medicamentos, materiais cirúrgicos e correlatos. Empresa autorizada e monitorada pela Anvisa, com cadeia de frio e rastreabilidade total.</p>
+            </div>
+          </li>
+
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <span class="feature-split__check-subtitle">Cosméticos</span>
+              <p class="feature-split__check-body">Perfumaria, higiene pessoal e materiais inflamáveis como perfumes — com protocolos de segurança específicos para produtos IATA e Classe 3.</p>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="feature-split__actions">
+          <a href="#contato" class="button button--filled button--md">
+            Falar com um especialista
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="feature-split__media">
+        <img
+          class="feature-split__image"
+          src="../../assets/images/placeholders/placeholder-image.png"
+          alt="Operação de carga especializada da BR Samor"
+          width="560"
+          height="560"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── STATS — Números da empresa ── -->
+  <section class="stats-highlighted" id="sobre" aria-labelledby="stats-title">
+    <div class="stats-highlighted__inner container">
+
+      <div class="stats-highlighted__media">
+
+        <div class="stats-highlighted__media-item stats-highlighted__media-item--primary">
+          <img
+            class="stats-highlighted__media-img"
+            src="../../assets/images/placeholders/placeholder-image.png"
+            alt="Centro de distribuição da BR Samor em Vitória (ES)"
+            width="400"
+            height="600"
+            loading="lazy"
+          >
+          <span class="stats-highlighted__media-label">Matriz: Vitória, ES</span>
+        </div>
+
+        <div class="stats-highlighted__media-item stats-highlighted__media-item--secondary">
+          <img
+            class="stats-highlighted__media-img"
+            src="../../assets/images/placeholders/placeholder-image.png"
+            alt="Filial BR Samor em São Paulo"
+            width="400"
+            height="500"
+            loading="lazy"
+          >
+          <span class="stats-highlighted__media-label">Filial: São Paulo, SP</span>
+        </div>
+
+      </div>
+
+      <div class="stats-highlighted__content">
+
+        <h2 class="stats-highlighted__title" id="stats-title">
+          Números que refletem anos de comprometimento.
+        </h2>
+
+        <ul class="stats-highlighted__list" aria-label="Indicadores da BR Samor">
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">+15</span>
+              <span class="stats-highlighted__stat-label">Anos no mercado</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              Fundada em 2009 em Vitória (ES), a BR Samor acumula mais de uma década e meia de experiência em logística especializada.
+            </p>
+          </li>
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">5</span>
+              <span class="stats-highlighted__stat-label">Filiais nacionais</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              Presença em Vitória (ES), São Paulo (SP), Brasília (DF), Recife (PE) e Joinville (SC), com postos avançados em João Pessoa, Rio de Janeiro e Porto Alegre.
+            </p>
+          </li>
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">3</span>
+              <span class="stats-highlighted__stat-label">Segmentos especializados</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              Eletrônicos, Fármaco e Cosméticos — cada um com processos, embalagens e protocolos desenvolvidos internamente para máxima segurança.
+            </p>
+          </li>
+
+          <li class="stats-highlighted__stat">
+            <div class="stats-highlighted__stat-head">
+              <span class="stats-highlighted__stat-number">100%</span>
+              <span class="stats-highlighted__stat-label">Território nacional coberto</span>
+            </div>
+            <p class="stats-highlighted__stat-body">
+              Atendemos todas as regiões do Brasil com nossas modalidades aérea e rodoviária, do embarque à entrega com rastreamento em tempo real.
+            </p>
+          </li>
+
+        </ul>
+
+        <div class="stats-highlighted__footer">
+          <p class="stats-highlighted__footer-text">
+            Esses números representam mais do que operações — refletem a confiança de centenas de empresas que nos escolhem para cuidar do que têm de mais valioso.
+          </p>
+          <a href="#contato" class="button button--filled button--md">
+            Falar com a BR Samor
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── CTA BANNER — Card split ── -->
+  <section class="cta-banner cta-banner--card-split" id="contato" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-banner__card">
+
+        <div class="cta-banner__card-media">
+          <img
+            src="../../assets/images/placeholders/placeholder-image.png"
+            alt="Operação de carga BR Samor"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="cta-banner__card-content">
+          <p class="cta-banner__eyebrow">Solicite sua cotação</p>
+          <h2 class="cta-banner__title" id="cta-title">
+            Sua carga nas mãos certas. Fale com a gente.
+          </h2>
+          <p class="cta-banner__description">
+            Em menos de 24 horas nossa equipe comercial retorna com a melhor solução de transporte para o seu produto. Aérea, rodoviária ou blindada — cobrimos tudo.
+          </p>
+          <div class="cta-banner__actions">
+            <a href="mailto:comercial@brsamor.com.br" class="button button--filled button--inverse button--md">
+              comercial@brsamor.com.br
+              <svg class="button__icon" aria-hidden="true" focusable="false">
+                <use href="#icon-arrow"/>
+              </svg>
+            </a>
+            <a href="tel:+552722338840" class="button button--outline button--inverse button--md">
+              (27) 2233-8840
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── FAQ ── -->
+  <section class="faq-accordion faq-accordion--enclosed" id="faq" aria-labelledby="faq-title">
+    <div class="faq-accordion__inner container">
+
+      <header class="faq-accordion__header">
+        <h2 class="faq-accordion__title" id="faq-title">Perguntas frequentes</h2>
+      </header>
+
+      <div class="faq-accordion__list">
+
+        <details class="faq-accordion__item" open>
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Quais regiões do Brasil a BR Samor atende?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Atendemos todo o território nacional. Temos matriz em Vitória (ES) e filiais em São Paulo (SP), Brasília (DF), Recife (PE) e Joinville (SC), com postos avançados em João Pessoa (PB), Rio de Janeiro (RJ) e Porto Alegre (RS). A capilaridade aérea nos permite chegar a qualquer cidade com aeroporto em todo o Brasil.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como funciona o serviço Priority?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">O Priority é nossa modalidade de urgência máxima. Disponibilizamos um veículo exclusivo para a sua coleta e garantimos o embarque no primeiro voo disponível. É a escolha ideal para peças de reposição críticas, amostras urgentes ou situações onde cada hora faz diferença para o seu negócio.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">A BR Samor é autorizada a transportar medicamentos?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Sim. A BR Samor é credenciada e monitorada pela Anvisa para o transporte de medicamentos, materiais cirúrgicos e correlatos. Operamos com protocolos rigorosos de temperatura, embalagem e rastreabilidade exigidos pela legislação sanitária brasileira. Nossas operações no segmento Fármaco seguem todas as Boas Práticas de Distribuição e Armazenagem (BPDA).</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como solicito uma cotação?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Você pode entrar em contato pelo e-mail comercial@brsamor.com.br ou pelo telefone (27) 2233-8840. Nosso time comercial retorna em até 24 horas úteis com a proposta mais adequada para o seu perfil de carga, origem e destino. Informe o segmento do produto, peso, dimensões e urgência para agilizarmos a cotação.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">O que é e quando devo usar o Rodo Blindado?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">O Rodo Blindado é nossa solução premium para cargas de alto valor agregado, como eletrônicos de ponta, equipamentos cirúrgicos e itens de luxo. Inclui gerenciamento de risco profissional, monitoramento em tempo real 24h, escolta quando necessário e apólice de seguro com cobertura integral da carga. Ideal para remessas acima de determinado valor ou em rotas de maior risco.</p>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="footer-simple footer-simple--nav-right">
+
+  <div class="footer-simple__main">
+    <div class="footer-simple__main-inner container">
+
+      <a href="/" class="footer-simple__logo" aria-label="BR Samor — Página inicial">
+        <svg width="130" height="36" viewBox="0 0 130 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#F15922"/>
+          <path d="M11 27V9l14 18V9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="14" font-family="Roboto, system-ui, sans-serif" font-size="10" font-weight="700" fill="#9EB7CB" letter-spacing="1">LOGÍSTICA</text>
+          <text x="44" y="30" font-family="Roboto, system-ui, sans-serif" font-size="15" font-weight="900" fill="#162F42" letter-spacing="-0.3">BR Samor</text>
+        </svg>
+      </a>
+
+      <nav class="footer-simple__nav" aria-label="Links do rodapé">
+        <ul class="footer-simple__nav-list" role="list">
+          <li><a class="footer-simple__nav-link" href="#servicos">Serviços</a></li>
+          <li><a class="footer-simple__nav-link" href="#segmentos">Segmentos</a></li>
+          <li><a class="footer-simple__nav-link" href="#sobre">Sobre</a></li>
+          <li><a class="footer-simple__nav-link" href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-simple__actions">
+        <a href="mailto:comercial@brsamor.com.br" class="button button--filled button--md">
+          Solicitar cotação
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-simple__bottom">
+    <div class="footer-simple__bottom-inner container">
+      <p class="footer-simple__copyright">
+        © 2026 BR Samor Logística · (27) 2233-8840 · comercial@brsamor.com.br
+      </p>
+      <div class="footer-simple__social-area">
+        <span class="footer-simple__social-label">Siga-nos</span>
+        <a href="https://www.instagram.com/brsamor/" class="footer-simple__social-link" aria-label="Instagram da BR Samor" target="_blank" rel="noopener noreferrer">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>
+        </a>
+        <a href="https://www.facebook.com/brsamor/" class="footer-simple__social-link" aria-label="Facebook da BR Samor" target="_blank" rel="noopener noreferrer">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-facebook"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/br-samor" class="footer-simple__social-link" aria-label="LinkedIn da BR Samor" target="_blank" rel="noopener noreferrer">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+<!-- Scripts -->
+<script src="../../components/sections/headers/header-simple/script.js"></script>
+<script src="../../components/sections/faq/faq-accordion/script.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Active nav link tracking */
+  var navLinks = Array.from(
+    document.querySelectorAll('.header-simple__link[href^="#"]')
+  );
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = entry.target.id;
+      navLinks.forEach(function (link) {
+        link.classList.toggle(
+          'header-simple__link--active',
+          link.getAttribute('href') === '#' + id
+        );
+      });
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  document.querySelectorAll('section[id]').forEach(function (s) {
+    observer.observe(s);
+  });
+
+  /* Fecha mobile menu ao clicar em âncora */
+  var header = document.querySelector('.header-simple');
+  if (header) {
+    var toggle = header.querySelector('[data-js="nav-toggle"]');
+    var panel  = header.querySelector('[data-js="nav-panel"]');
+    header.querySelectorAll('.header-simple__mobile-link[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (!panel || !toggle) return;
+        panel.classList.remove('header-simple__mobile-panel--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

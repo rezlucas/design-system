@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Página não encontrada</title>
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../base/reset.css">
+  <link rel="stylesheet" href="../../base/base.css">
+  <link rel="stylesheet" href="../../base/utilities.css">
+  <link rel="stylesheet" href="../../components/atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Template · 404</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+
+<div class="error-404">
+
+  <!-- Header -->
+  <header class="error-404__header" role="banner">
+    <a href="/" class="error-404__logo" aria-label="Página inicial">
+      <!-- Logo inline: ícone + texto -->
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <polygon points="11,2 20,19 2,19" fill="currentColor"/>
+      </svg>
+      Lorem ipsum
+    </a>
+    <a href="#" class="error-404__nav-link">Contato</a>
+  </header>
+
+  <!-- Stage: número + conteúdo -->
+  <main class="error-404__stage" id="main-content">
+
+    <p class="error-404__number" aria-label="Erro 404">404</p>
+
+    <div class="error-404__content">
+      <h1 class="error-404__title">Lorem ipsum dolor.</h1>
+      <p class="error-404__body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+        Ut enim ad minim veniam, quis nostrud exercitation.
+      </p>
+      <a href="/" class="button button--filled button--pill button--md">Voltar ao início</a>
+    </div>
+
+  </main>
+
+  <!-- Barra de cor no rodapé -->
+  <div class="error-404__bar" aria-hidden="true"></div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     VARIANT --centered (Breeze UI)
+     404 coral + badges flutuantes + CTA pill
+════════════════════════════════════════════ -->
+
+<div class="error-404 error-404--centered">
+
+  <!-- Número com badges -->
+  <div class="error-404__number-stage">
+    <div class="error-404__float-card">
+      <span class="error-404__float-icon">✳️</span>
+      Not Found!
+    </div>
+    <span class="error-404__number--coral" aria-label="Erro 404">404</span>
+    <div class="error-404__float-pill">
+      <span>✳</span> Error
+    </div>
+    <span class="error-404__float-asterisk" aria-hidden="true">✳</span>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="error-404__centered-content">
+    <h1 class="error-404__centered-title">Lorem ipsum dolor!</h1>
+    <p class="error-404__centered-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+      Lorem ipsum <a href="#">on meaningful content.</a>
+    </p>
+    <a href="/" class="button button--filled button--pill button--md">Voltar ao início</a>
+  </div>
+
+</div>
+
+</body>
+</html>

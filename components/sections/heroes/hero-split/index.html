@@ -33,6 +33,22 @@
 </head>
 <body>
 
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Hero Split</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
   <!-- SVG sprite: ícones reutilizáveis -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <!-- Seta direita (botões) -->
@@ -153,6 +169,55 @@
             <svg class="button__icon" aria-hidden="true" focusable="false">
               <use href="#icon-arrow"/>
             </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-split__media">
+        <img
+          class="hero-split__image"
+          src="../../../../assets/images/placeholders/placeholder-image.png"
+          alt="produto ou ambiente relacionado ao serviço oferecido"
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <div class="demo-divider"></div>
+
+  <!-- ═══════════════════════════════════════════
+       STYLE=03 — Imagem esq. + Conteúdo dir. (--reverse)
+       Eyebrow + Título + Descrição + 2 CTAs
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Style 03 — Reverse (imagem esquerda)</p>
+
+  <section class="hero-split hero-split--reverse" aria-labelledby="split-03-title">
+    <div class="hero-split__inner container">
+
+      <div class="hero-split__content">
+        <h2 class="hero-split__title" id="split-03-title">
+          Economize horas e construa sites melhores.
+        </h2>
+
+        <p class="hero-split__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+        <div class="hero-split__actions">
+          <a href="#" class="button button--filled button--md">
+            Começar agora
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+          <a href="#" class="button button--outline button--md">
+            Ver demonstração
           </a>
         </div>
       </div>

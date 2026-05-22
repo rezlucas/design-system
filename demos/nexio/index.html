@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexio — Automação de Marketing B2B</title>
+
+  <!-- Tokens & Base -->
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../base/reset.css">
+  <link rel="stylesheet" href="../../base/base.css">
+  <link rel="stylesheet" href="../../base/utilities.css">
+
+  <!-- Atoms -->
+  <link rel="stylesheet" href="../../components/atoms/buttons/style.css">
+
+  <!-- Sections -->
+  <link rel="stylesheet" href="../../components/sections/headers/header-simple/style.css">
+  <link rel="stylesheet" href="../../components/sections/heroes/hero-split/style.css">
+  <link rel="stylesheet" href="../../components/sections/services/services-grid/style.css">
+  <link rel="stylesheet" href="../../components/sections/features/feature-split/style.css">
+  <link rel="stylesheet" href="../../components/sections/social-proof/testimonials-cards/style.css">
+  <link rel="stylesheet" href="../../components/sections/faq/faq-accordion/style.css">
+  <link rel="stylesheet" href="../../components/sections/ctas/cta-banner/style.css">
+  <link rel="stylesheet" href="../../components/sections/footers/footer-simple/style.css">
+
+  <style>
+    /* ── Nexio Brand Tokens ───────────────────────────────
+       Sobrescreve apenas as variáveis de marca; todos os
+       demais tokens (tipografia, espaçamento, radius) são
+       herdados do design system sem modificação.
+    ─────────────────────────────────────────────────────── */
+    :root {
+      /* Primária: índigo elétrico */
+      --color-primary:        #4F46E5;
+      --color-primary-hover:  #4338CA;
+      --color-primary-light:  #EEF2FF;
+
+      /* Acento: ciano vibrante (CTAs secundários, hover states) */
+      --color-secondary:        #06B6D4;
+      --color-secondary-hover:  #0891B2;
+
+      /* Superfícies: fundo alt com leve tint índigo */
+      --color-background-alt:   #F8F7FF;
+
+      /* Texto forte: quase preto com leve tint frio */
+      --color-text-strong:      #1E1B4B;
+    }
+
+    /* Scroll suave para os âncora links de navegação */
+    html { scroll-behavior: smooth; }
+
+    /* Compensa o header sticky na chegada da âncora */
+    section[id] { scroll-margin-top: 72px; }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Demo · Nexio</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+<!-- ═══════════════════════════════════════════
+     SVG SPRITE — ícones globais
+════════════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+
+  <symbol id="icon-check-circle" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="12" style="fill: var(--color-text-strong)"/>
+    <path d="M7 12.5l3.5 3.5 6.5-7"
+      style="fill:none; stroke: var(--color-text-inverse); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"/>
+  </symbol>
+
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 18l-6-6 6-6"/>
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18l6-6-6-6"/>
+  </symbol>
+
+  <!-- Ícones de serviços -->
+  <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="4" width="20" height="16" rx="2"/>
+    <path d="M2 7l10 7 10-7"/>
+  </symbol>
+  <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+  </symbol>
+  <symbol id="icon-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="12" width="4" height="9" rx="1"/>
+    <rect x="10" y="7" width="4" height="14" rx="1"/>
+    <rect x="17" y="3" width="4" height="18" rx="1"/>
+  </symbol>
+  <symbol id="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+    <polyline points="2 17 12 22 22 17"/>
+    <polyline points="2 12 12 17 22 12"/>
+  </symbol>
+  <symbol id="icon-arrow-right-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+
+  <!-- Redes sociais -->
+  <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+    <circle cx="4" cy="4" r="2"/>
+  </symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  </symbol>
+  <symbol id="icon-youtube" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
+    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+  </symbol>
+
+  <!-- FAQ -->
+  <symbol id="icon-plus" viewBox="0 0 18 18" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+    <line x1="3" y1="9" x2="15" y2="9"/>
+  </symbol>
+
+</svg>
+
+<a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
+
+
+<!-- ═══════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════ -->
+<header class="header-simple" role="banner">
+  <div class="header-simple__bar container">
+
+    <a href="/" class="header-simple__logo" aria-label="Nexio — Página inicial">
+      <!-- Logo inline enquanto não há arquivo de imagem -->
+      <svg width="96" height="32" viewBox="0 0 96 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="var(--color-primary)"/>
+        <path d="M9 23V9l14 14V9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="40" y="22" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="var(--color-text-strong)">nexio</text>
+      </svg>
+    </a>
+
+    <nav class="header-simple__nav" aria-label="Navegação principal">
+      <ul class="header-simple__list" role="list">
+        <li><a class="header-simple__link header-simple__link--active" href="#produto">Produto</a></li>
+        <li><a class="header-simple__link" href="#recursos">Recursos</a></li>
+        <li><a class="header-simple__link" href="#como-funciona">Automação</a></li>
+        <li><a class="header-simple__link" href="#cases">Cases</a></li>
+        <li><a class="header-simple__link" href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-simple__actions">
+      <div class="header-simple__cta-wrap">
+        <a href="#cta" class="button button--filled button--md">
+          Começar grátis
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
+      </div>
+      <button
+        class="header-simple__toggle"
+        type="button"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+        aria-controls="nexio-nav-panel"
+        data-js="nav-toggle"
+      >
+        <span class="header-simple__toggle-bar"></span>
+        <span class="header-simple__toggle-bar"></span>
+        <span class="header-simple__toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="header-simple__mobile-panel"
+    id="nexio-nav-panel"
+    data-js="nav-panel"
+    aria-label="Menu mobile"
+  >
+    <ul class="header-simple__mobile-list" role="list">
+      <li><a class="header-simple__mobile-link" href="#produto">Produto</a></li>
+      <li><a class="header-simple__mobile-link" href="#recursos">Recursos</a></li>
+      <li><a class="header-simple__mobile-link" href="#como-funciona">Automação</a></li>
+      <li><a class="header-simple__mobile-link" href="#cases">Cases</a></li>
+      <li><a class="header-simple__mobile-link" href="#faq">FAQ</a></li>
+    </ul>
+    <div class="header-simple__mobile-actions">
+      <a href="#cta" class="button button--filled button--lg">
+        Começar grátis
+        <svg class="button__icon" aria-hidden="true" focusable="false">
+          <use href="#icon-arrow"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO — Split com checklist
+════════════════════════════════════════════ -->
+<main id="main-content">
+
+  <section class="hero-split" id="produto" aria-labelledby="hero-title">
+    <div class="hero-split__inner container">
+
+      <div class="hero-split__content">
+        <h1 class="hero-split__title" id="hero-title">
+          Sua equipe fecha mais negócios. A Nexio cuida do resto.
+        </h1>
+
+        <ul class="hero-split__checklist" aria-label="Benefícios da Nexio">
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Sequências de e-mail personalizadas com IA generativa</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Qualificação automática de leads por score comportamental</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Integração com +50 CRMs e ferramentas em um clique</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Relatórios preditivos com análise de pipeline em tempo real</span>
+          </li>
+          <li class="hero-split__check-item">
+            <svg class="hero-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <span>Suporte dedicado em português, disponível 24 horas por dia</span>
+          </li>
+        </ul>
+
+        <div class="hero-split__actions">
+          <a href="#cta" class="button button--filled button--md">
+            Testar grátis por 14 dias
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-split__media">
+        <img
+          class="hero-split__image"
+          src="../../assets/images/placeholders/placeholder-image.png"
+          alt="Dashboard da Nexio mostrando pipeline de vendas e automações ativas"
+          width="560"
+          height="560"
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SERVICES — 4 cards brancos
+  ════════════════════════════════════════════ -->
+  <section class="services-grid" id="recursos" aria-labelledby="services-title">
+    <div class="container">
+
+      <header class="services-grid__header">
+        <h2 class="services-grid__title" id="services-title">
+          Tudo que você precisa para escalar seu pipeline
+        </h2>
+      </header>
+
+      <div class="services-grid__list">
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Automação de E-mail</h3>
+          <p class="services-grid__card-body">Crie jornadas multi-etapa que nutrem leads automaticamente, do primeiro contato até o fechamento da venda.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Saiba mais sobre Automação de E-mail">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-zap"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Lead Scoring Inteligente</h3>
+          <p class="services-grid__card-body">A IA da Nexio pontua cada lead com base em comportamento, fit de perfil e intenção de compra detectada em tempo real.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Saiba mais sobre Lead Scoring">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-bar-chart"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Análise de Pipeline</h3>
+          <p class="services-grid__card-body">Dashboards em tempo real com previsão de receita e identificação de gargalos na jornada de cada oportunidade.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Saiba mais sobre Análise de Pipeline">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+        <div class="services-grid__card">
+          <div class="services-grid__icon-wrap">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-layers"/></svg>
+          </div>
+          <h3 class="services-grid__card-title">Integrações Nativas</h3>
+          <p class="services-grid__card-body">Conecte a Nexio ao seu stack favorito em minutos: Salesforce, HubSpot, Pipedrive, Slack e mais 47 ferramentas prontas.</p>
+          <a href="#" class="services-grid__card-link" aria-label="Saiba mais sobre Integrações">
+            <svg><use href="#icon-arrow-right-sm"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FEATURE — Split (conteúdo esq. / imagem dir.)
+  ════════════════════════════════════════════ -->
+  <section class="feature-split" id="como-funciona" aria-labelledby="feature-title">
+    <div class="feature-split__inner container">
+
+      <div class="feature-split__content">
+        <span class="feature-split__eyebrow">AUTOMAÇÃO DE PONTA A PONTA</span>
+        <h2 class="feature-split__title" id="feature-title">
+          Do lead captado à venda fechada, sem nenhum esforço manual
+        </h2>
+        <p class="feature-split__description">
+          Com a Nexio, cada lead entra em uma jornada personalizada que combina e-mail, SMS e LinkedIn. Nossa IA identifica o momento exato para acionar o time de vendas — e passa o lead quente com todo o contexto da jornada.
+        </p>
+
+        <ul class="feature-split__checklist" aria-label="Recursos da automação">
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <span class="feature-split__check-subtitle">Workflows visuais drag-and-drop</span>
+              <p class="feature-split__check-body">Monte fluxos complexos em minutos, sem escrever uma linha de código.</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <span class="feature-split__check-subtitle">Gatilhos comportamentais em tempo real</span>
+              <p class="feature-split__check-body">Acione mensagens no momento certo: abertura de e-mail, visita a página, download de material e mais.</p>
+            </div>
+          </li>
+          <li class="feature-split__check-item">
+            <svg class="feature-split__check-icon" aria-hidden="true" focusable="false">
+              <use href="#icon-check-circle"/>
+            </svg>
+            <div class="feature-split__check-content">
+              <span class="feature-split__check-subtitle">Handoff automático para vendas</span>
+              <p class="feature-split__check-body">O lead chega ao vendedor com score, histórico completo e próximo passo sugerido pela IA.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="feature-split__actions">
+          <a href="#" class="button button--filled button--md">
+            Ver como funciona
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+          <a href="#" class="button button--outline button--md">
+            Agendar demonstração
+          </a>
+        </div>
+      </div>
+
+      <div class="feature-split__media">
+        <img
+          class="feature-split__image"
+          src="../../assets/images/placeholders/placeholder-image.png"
+          alt="Interface de automação da Nexio com workflow visual"
+          width="560"
+          height="560"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       TESTIMONIALS — Aspas + Carousel
+  ════════════════════════════════════════════ -->
+  <section class="testimonials" id="cases" data-js="testimonials" aria-labelledby="testimonials-title">
+    <div class="container">
+
+      <div class="testimonials__header-row">
+        <div class="testimonials__header-text">
+          <p class="testimonials__eyebrow">Clientes</p>
+          <h2 class="testimonials__title" id="testimonials-title">
+            Quem usa a Nexio cresce mais rápido
+          </h2>
+          <p class="testimonials__description">
+            Mais de 1.200 equipes de vendas B2B no Brasil já automatizaram seu marketing com a Nexio. Veja o que elas têm a dizer.
+          </p>
+        </div>
+        <div class="testimonials__arrows">
+          <button class="testimonials__arrow" aria-label="Depoimento anterior" data-js="prev" disabled>
+            <svg aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+          </button>
+          <button class="testimonials__arrow" aria-label="Próximo depoimento" data-js="next">
+            <svg aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div data-js="carousel">
+        <div class="testimonials__slider">
+          <div class="testimonials__track" data-js="track">
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Em três meses com a Nexio, nossa taxa de conversão de MQL para SQL subiu 47%. O lead scoring inteligente mudou completamente a forma como priorizamos oportunidades. A equipe de vendas nunca esteve tão focada.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Rafael Mendonça">
+                <div>
+                  <p class="testimonials__name">Rafael Mendonça</p>
+                  <p class="testimonials__role">Head de Marketing, Vertix Tecnologia</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Antes da Nexio, nosso time passava horas por semana enviando e-mails manuais. Hoje as sequências rodam sozinhas e geramos 3× mais reuniões qualificadas com metade do esforço. O ROI foi visível no primeiro mês.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Camila Furtado">
+                <div>
+                  <p class="testimonials__name">Camila Furtado</p>
+                  <p class="testimonials__role">Diretora Comercial, Solaris Energia</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">A integração com o Salesforce funcionou em menos de 20 minutos. Passamos a ter visibilidade total do pipeline e as previsões de receita ficaram muito mais precisas. O suporte em português foi decisivo na nossa escolha.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Bruno Lacerda">
+                <div>
+                  <p class="testimonials__name">Bruno Lacerda</p>
+                  <p class="testimonials__role">CEO, Conecta Soluções B2B</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Implantamos a Nexio sem precisar de uma agência. Em duas semanas já tínhamos 12 fluxos ativos nutrindo mais de 4.000 leads. Os relatórios preditivos nos ajudam a entender exatamente onde estamos perdendo oportunidades.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Fernanda Rocha">
+                <div>
+                  <p class="testimonials__name">Fernanda Rocha</p>
+                  <p class="testimonials__role">Gerente de Growth, Innova Software</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonials__card" data-js="card">
+              <span class="testimonials__quote-mark" aria-hidden="true">"</span>
+              <p class="testimonials__text">Nossa maior dificuldade era acompanhar cada lead individualmente. A Nexio resolveu isso com o handoff automático para o time de vendas. Agora cada vendedor recebe o contexto completo — histórico, score e próximo passo sugerido.</p>
+              <div class="testimonials__author">
+                <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Diego Sampaio">
+                <div>
+                  <p class="testimonials__name">Diego Sampaio</p>
+                  <p class="testimonials__role">VP de Vendas, Fluxo Logística</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FAQ — Enclosed
+  ════════════════════════════════════════════ -->
+  <section class="faq-accordion faq-accordion--enclosed" id="faq" aria-labelledby="faq-title">
+    <div class="faq-accordion__inner container">
+
+      <header class="faq-accordion__header">
+        <h2 class="faq-accordion__title" id="faq-title">Dúvidas frequentes</h2>
+      </header>
+
+      <div class="faq-accordion__list">
+
+        <details class="faq-accordion__item" open>
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Preciso de conhecimento técnico para usar a Nexio?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Não. A Nexio foi projetada para equipes de marketing e vendas, não para times de TI. Nosso editor de workflows é visual (drag-and-drop) e as integrações são configuradas em minutos, sem escrever código. Se surgir alguma dúvida, nosso suporte em português está disponível 24h.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Como funciona o período de teste gratuito?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Você tem acesso completo a todos os recursos da Nexio por 14 dias, sem precisar informar cartão de crédito. Ao final do período de teste, você escolhe o plano que melhor se encaixa no seu volume de contatos e equipe. Caso opte por não continuar, seus dados são exportados automaticamente.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">A Nexio está em conformidade com a LGPD?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">Sim. A Nexio foi desenvolvida com privacidade por design. Todos os dados são armazenados em servidores no Brasil, com criptografia AES-256. Disponibilizamos ferramentas nativas para gestão de consentimento, exclusão de dados e relatórios de tratamento exigidos pela LGPD.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Quais CRMs posso integrar à Nexio?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">A Nexio oferece integrações nativas com Salesforce, HubSpot, Pipedrive, RD Station CRM, Zoho CRM e Agendor, entre outros. Além disso, nossa API REST e os conectores Zapier e Make permitem integrar qualquer ferramenta do seu stack atual.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="faq-accordion__item">
+          <summary class="faq-accordion__trigger">
+            <span class="faq-accordion__question">Quanto tempo leva para ter resultados?</span>
+            <span class="faq-accordion__icon-wrap" aria-hidden="true">
+              <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+                <line x1="3" y1="9" x2="15" y2="9"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-accordion__panel">
+            <div class="faq-accordion__panel-inner">
+              <p class="faq-accordion__answer">A maioria dos clientes tem sua primeira automação rodando no mesmo dia do cadastro. Resultados mensuráveis — como aumento em reuniões agendadas e redução no tempo de resposta a leads — costumam aparecer entre a segunda e a quarta semana. Nosso time de Customer Success acompanha você nessa jornada.</p>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       CTA BANNER — Card Split
+  ════════════════════════════════════════════ -->
+  <section class="cta-banner cta-banner--card-split" id="cta" aria-labelledby="cta-title">
+    <div class="container">
+      <div class="cta-banner__card">
+
+        <div class="cta-banner__card-media">
+          <img
+            src="../../assets/images/placeholders/placeholder-image.png"
+            alt="Equipe usando a Nexio para fechar negócios"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="cta-banner__card-content">
+          <p class="cta-banner__eyebrow">Comece agora</p>
+          <h2 class="cta-banner__title" id="cta-title">
+            Pronto para automatizar seu crescimento?
+          </h2>
+          <p class="cta-banner__description">
+            Teste a Nexio por 14 dias sem precisar de cartão de crédito. Em menos de 30 minutos você já tem sua primeira automação rodando e seus leads sendo nutridos.
+          </p>
+          <div class="cta-banner__actions">
+            <a href="#" class="button button--filled button--inverse button--md">
+              Criar conta grátis
+              <svg class="button__icon" aria-hidden="true" focusable="false">
+                <use href="#icon-arrow"/>
+              </svg>
+            </a>
+            <a href="#" class="button button--outline button--inverse button--md">
+              Falar com especialista
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer-simple">
+
+  <div class="footer-simple__main">
+    <div class="footer-simple__main-inner container">
+
+      <a href="/" class="footer-simple__logo" aria-label="Nexio — Página inicial">
+        <svg width="96" height="32" viewBox="0 0 96 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="var(--color-primary)"/>
+          <path d="M9 23V9l14 14V9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="40" y="22" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="var(--color-text-strong)">nexio</text>
+        </svg>
+      </a>
+
+      <nav class="footer-simple__nav" aria-label="Links do rodapé">
+        <ul class="footer-simple__nav-list" role="list">
+          <li><a class="footer-simple__nav-link" href="#">Produto</a></li>
+          <li><a class="footer-simple__nav-link" href="#">Preços</a></li>
+          <li><a class="footer-simple__nav-link" href="#">Cases</a></li>
+          <li><a class="footer-simple__nav-link" href="#">Blog</a></li>
+          <li><a class="footer-simple__nav-link" href="#">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-simple__actions">
+        <a href="#cta" class="button button--filled button--md">
+          Começar grátis
+          <svg class="button__icon" aria-hidden="true" focusable="false">
+            <use href="#icon-arrow"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-simple__bottom">
+    <div class="footer-simple__bottom-inner container">
+      <p class="footer-simple__copyright">© 2026 Nexio Tecnologia Ltda. Todos os direitos reservados.</p>
+      <div class="footer-simple__social-area">
+        <span class="footer-simple__social-label">Siga-nos</span>
+        <a href="#" class="footer-simple__social-link" aria-label="LinkedIn da Nexio">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+        </a>
+        <a href="#" class="footer-simple__social-link" aria-label="Instagram da Nexio">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>
+        </a>
+        <a href="#" class="footer-simple__social-link" aria-label="YouTube da Nexio">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-youtube"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+<!-- Scripts -->
+<script src="../../components/sections/headers/header-simple/script.js"></script>
+<script src="../../components/sections/social-proof/testimonials-cards/script.js"></script>
+<script src="../../components/sections/faq/faq-accordion/script.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Active nav link por IntersectionObserver ── */
+  var navLinks = Array.from(
+    document.querySelectorAll('.header-simple__link[href^="#"]')
+  );
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = entry.target.id;
+      navLinks.forEach(function (link) {
+        var active = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('header-simple__link--active', active);
+      });
+    });
+  }, {
+    /* Dispara quando o centro da viewport cruza a seção */
+    rootMargin: '-45% 0px -45% 0px',
+    threshold: 0
+  });
+
+  document.querySelectorAll('section[id]').forEach(function (section) {
+    observer.observe(section);
+  });
+
+  /* ── Fecha menu mobile ao clicar em um link de âncora ── */
+  var header = document.querySelector('.header-simple');
+  if (header) {
+    var toggle = header.querySelector('[data-js="nav-toggle"]');
+    var panel  = header.querySelector('[data-js="nav-panel"]');
+
+    header.querySelectorAll('.header-simple__mobile-link[href^="#"]')
+      .forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (!panel || !toggle) return;
+          panel.classList.remove('header-simple__mobile-panel--open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+  }
+})();
+</script>
+
+</body>
+</html>

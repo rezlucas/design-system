@@ -1,8 +1,9 @@
 /* ─────────────────────────────────────────
    button — atom
-   Variantes : filled | outline | link
+   Variantes : filled | outline | link | glass | icon-circle
    Tamanhos  : lg | md | sm
    Layouts   : texto | icon-only
+   Modifiers : pill | inverse
    ───────────────────────────────────────── */
 
 /* ── Base ── */
@@ -212,6 +213,65 @@
 }
 
 /* ─────────────────────────────────────────
+   Modifier: PILL
+   Aplica border-radius circular sobre qualquer tamanho.
+   Combinar com: --filled | --outline | --glass
+   ───────────────────────────────────────── */
+.button--pill {
+  border-radius: 9999px;
+}
+
+
+/* ─────────────────────────────────────────
+   Variante: GLASS
+   Fundo translúcido com blur — para uso sobre
+   imagens ou fundos coloridos.
+   ───────────────────────────────────────── */
+.button--glass {
+  background-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-text-strong);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.button--glass:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* ─────────────────────────────────────────
+   Variante: ICON-CIRCLE
+   Botão circular fixo 40×40 com borda — para
+   links de ação em cards (ex: seta → no canto).
+   Não combinar com modificadores de tamanho.
+   ───────────────────────────────────────── */
+.button--icon-circle {
+  width: 40px;
+  height: 40px;
+  min-height: unset;
+  padding-inline: 0;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text-body);
+  flex-shrink: 0;
+}
+
+.button--icon-circle:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.button--icon-circle svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+
+/* ─────────────────────────────────────────
    Estado desabilitado — base
    ───────────────────────────────────────── */
 .button:disabled,
@@ -244,5 +304,10 @@ a.button[aria-disabled="true"] {
 @media (min-width: 480px) {
   .button {
     width: max-content;
+  }
+
+  /* icon-circle mantém dimensão fixa em todos os breakpoints */
+  .button--icon-circle {
+    width: 40px;
   }
 }

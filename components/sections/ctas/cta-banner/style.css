@@ -294,3 +294,210 @@
     align-items: stretch;
   }
 }
+
+
+/* ═══════════════════════════════════════
+   VARIANT --courses
+   Header centralizado + 2 cards de curso
+   (thumb + título + badge + autor + stats)
+   + pill CTA rodapé. (Cyrus UI)
+═══════════════════════════════════════ */
+
+.cta-banner--courses {
+  background-color: #F5F4F0;
+  padding-block: var(--space-4xl);
+}
+
+/* Cabeçalho centralizado */
+.cta-banner__courses-header {
+  text-align: center;
+  margin-block-end: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Eyebrow: bolinha + texto */
+.cta-banner__courses-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.cta-banner__courses-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.cta-banner__courses-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+.cta-banner__courses-desc {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  max-width: 52ch;
+}
+
+/* Grid de cards */
+.cta-banner__courses-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-block-end: var(--space-3xl);
+}
+
+/* Card de curso */
+.cta-banner__course-card {
+  background-color: var(--color-background);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+}
+
+/* Thumbnail */
+.cta-banner__course-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background-color: var(--color-background-alt);
+}
+
+/* Corpo do card */
+.cta-banner__course-body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+/* Linha: título + badge */
+.cta-banner__course-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.cta-banner__course-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+.cta-banner__course-badge {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  background-color: transparent;
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.cta-banner__course-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Rodapé do card: autor + stats */
+.cta-banner__course-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-block-start: var(--space-md);
+  margin-block-start: auto;
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.cta-banner__course-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.cta-banner__course-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+  flex-shrink: 0;
+}
+
+.cta-banner__course-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cta-banner__course-author-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+}
+
+.cta-banner__course-author-role {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Stats: views + duração */
+.cta-banner__course-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.cta-banner__course-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.cta-banner__course-stat svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Rodapé da seção: CTA centralizado */
+.cta-banner__courses-footer {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .cta-banner__courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -10,9 +10,9 @@
 
 ## Status geral
 
-- **Última atualização**: 2026-05-20
-- **Fase atual**: Atoms + Sections em construção — headers, heroes, features e footers concluídos
-- **Próxima ação**: Inputs, social proof, stats, pricing, CTAs, forms
+- **Última atualização**: 2026-05-21
+- **Fase atual**: Atoms + Sections em construção — headers, heroes, features, footers, stats, blog e integrações adicionados
+- **Próxima ação**: Inputs, pricing, forms, gallery-grid, logos-grid
 - **Agente em uso**: Claude Code (claude-sonnet-4-6)
 
 ---
@@ -84,7 +84,7 @@ Executado em 2026-05-19:
 
 #### Heroes
 - [x] `heroes/hero-background` — imagem full-bleed. Desktop: conteúdo sobreposto à esquerda com gradiente. Mobile: empilhado (conteúdo escuro em cima, imagem embaixo).
-- [x] `heroes/hero-split` — duas colunas (conteúdo esq. / imagem dir.). 2 variantes de conteúdo: checklist (Style=01) e descrição+2CTAs (Style=02).
+- [x] `heroes/hero-split` — duas colunas. 3 estilos: checklist (Style=01), descrição+2CTAs (Style=02), reverse imagem esq. (Style=03, modifier `--reverse`).
 - [x] `heroes/hero-centered` — imagem full-bleed, overlay escuro uniforme, todo conteúdo centralizado (eyebrow + h1 + descrição + 2 CTAs inverse).
 - [ ] `heroes/hero-with-form`
 - [ ] `heroes/hero-with-video`
@@ -107,9 +107,12 @@ Executado em 2026-05-19:
 - [ ] `social-proof/logos-grid`
 - [x] `social-proof/testimonials-cards` — 5 variantes: aspas 4-col, estrelas+logo 3-col, media split, fullquote bold peek, grid estático 3×2+CTA
 
+#### Integrations
+- [x] `integrations/integrations-grid` — grade 3-col cards com borda tracejada, badge "Popular", ícones SVG inline, botão "Conectar"
+
 #### Stats
 - [ ] `stats/stats-grid`
-- [ ] `stats/stats-highlighted`
+- [x] `stats/stats-highlighted` — split 2-col: 2 imagens com label chip (esq.) + 4 métricas grandes + rodapé CTA (dir.)
 
 #### Services
 - [x] `services/services-grid` — 6 variantes: cards-seta, pastel, icon-box horizontal, bento assimétrico, centered 4-col+CTA, circular media
@@ -134,6 +137,9 @@ Executado em 2026-05-19:
 - [ ] `galleries/gallery-masonry`
 
 #### FAQ
+#### Blog
+- [x] `blog/blog-posts` — carousel de posts: eyebrow + título + divider + cards (imagem portrait + categoria colorida + título). Setas prev (dark) / next (acento). Script reutiliza padrão testimonials.
+
 - [x] `faq/faq-accordion` — 4 variantes: enclosed (+/−), dark 3-colunas (chevron), cards (chevron), split heading+lista (+/−). CSS-only via details/summary.
 - [ ] `faq/faq-grouped`
 
@@ -161,6 +167,15 @@ Executado em 2026-05-19:
 - **[2026-05-19]** Fonte padrão: Inter (system-ui como fallback). Carregada via Google Fonts em `tokens/tokens.css`.
 - **[2026-05-19]** Breakpoint mobile→tablet: 768px; tablet→desktop: 1024px.
 - **[2026-05-19]** Discovery de skills no Claude Code via `additionalDirectories: ["skills"]` em `.claude/settings.json` (symlinks não usados por exigir admin no Windows).
+
+---
+
+## Navegador de componentes
+
+- **Arquivo:** `index.html` na raiz do projeto
+- **Finalidade:** utilitário interno de visualização — lista todos os componentes com links diretos para seus `index.html`
+- **⚠️ NÃO é um componente do design system.** Não deve ser referenciado em projetos de clientes nem usado como base para componentes. Existe exclusivamente para facilitar a navegação entre demos durante o desenvolvimento.
+- Cada card abre o componente em nova aba. Organizado por categoria com faixas coloridas e contagem de variantes.
 
 ---
 

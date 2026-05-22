@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Grid — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-background); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Team Grid</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <!-- E-mail -->
+    <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M2 7l10 7 10-7"/>
+    </symbol>
+    <!-- X / Twitter -->
+    <symbol id="icon-x" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </symbol>
+    <!-- LinkedIn -->
+    <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+      <circle cx="4" cy="4" r="2"/>
+    </symbol>
+  </svg>
+
+
+  <p class="demo-label">Variant Base — Grid 4 colunas com foto e redes sociais</p>
+
+  <section class="team-grid" aria-labelledby="team-title">
+    <div class="container">
+
+      <header class="team-grid__header">
+        <span class="team-grid__eyebrow">Lorem ipsum</span>
+        <h2 class="team-grid__title" id="team-title">
+          Lorem ipsum dolor sit<br>amet <span class="team-grid__title-accent">consectetur</span>
+        </h2>
+      </header>
+
+      <ul class="team-grid__list" role="list">
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">CEO — Founder</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail de Lorem Surname">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X de Lorem Surname">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn de Lorem Surname">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Managing Partner</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Legal Consultant</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Client Relations Manager</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Research Analyst</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Litigation Specialist</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Legal Consultant</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__photo-wrap">
+            <img
+              class="team-grid__photo"
+              src="../../../../assets/images/placeholders/placeholder-avatar.png"
+              alt="Lorem Surname"
+              width="200" height="267"
+              loading="lazy"
+            >
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Defense Attorney</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-link" aria-label="E-mail">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="X">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+              </a>
+              <a href="#" class="team-grid__social-link" aria-label="LinkedIn">
+                <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       VARIANT --horizontal (Breeze UI)
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Horizontal (avatar circular + handles sociais)</p>
+
+  <section class="team-grid team-grid--horizontal" aria-labelledby="team-h-title">
+    <div class="container">
+
+      <header class="team-grid__header">
+        <div class="team-grid__header-row">
+          <div>
+            <span class="team-grid__eyebrow">Lorem ipsum</span>
+            <h2 class="team-grid__title" id="team-h-title" style="margin-block-start:var(--space-sm)">
+              Lorem ipsum dolor<br>sit amet
+            </h2>
+          </div>
+          <a href="#" class="team-grid__header-link">
+            Lorem ipsum
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);max-width:52ch;margin-block-start:var(--space-md)">
+          Lorem ipsum dolor sit amet consectetur adipiscing elit. Lorem ipsum is a placeholder text to demonstrate.
+        </p>
+      </header>
+
+      <ul class="team-grid__list" role="list">
+
+        <li class="team-grid__card">
+          <div class="team-grid__avatar">
+            <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="80" height="80" loading="lazy">
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Lorem ipsum is a placeholder.</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-handle" aria-label="X de Lorem Surname">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-x"/></svg>
+                @lorem
+              </a>
+              <a href="#" class="team-grid__social-handle" aria-label="Instagram de Lorem Surname">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                @lorem
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__avatar">
+            <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="80" height="80" loading="lazy">
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Lorem ipsum is a placeholder.</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>@lorem</a>
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@lorem</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__avatar">
+            <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="80" height="80" loading="lazy">
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Lorem ipsum is a placeholder.</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>@lorem</a>
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@lorem</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__avatar">
+            <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="80" height="80" loading="lazy">
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Lorem ipsum is a placeholder.</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>@lorem</a>
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@lorem</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__avatar">
+            <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="80" height="80" loading="lazy">
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Lorem ipsum is a placeholder.</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>@lorem</a>
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@lorem</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="team-grid__card">
+          <div class="team-grid__avatar">
+            <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname" width="80" height="80" loading="lazy">
+          </div>
+          <div class="team-grid__info">
+            <h3 class="team-grid__name">Lorem Surname</h3>
+            <p class="team-grid__role">Lorem ipsum is a placeholder.</p>
+            <div class="team-grid__social">
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>@lorem</a>
+              <a href="#" class="team-grid__social-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@lorem</a>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       VARIANT --carousel (Beam UI)
+       Fotos em P&B, card central colorido.
+       Fundo de dots no header. Quote abaixo.
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Variant 3 — Carousel (fotos P&B, card central colorido, dots background)</p>
+
+  <section class="team-grid team-grid--carousel" aria-labelledby="team-c-title">
+
+    <!-- Cabeçalho com dots decorativos -->
+    <div class="container">
+      <div class="team-grid__carousel-header">
+        <div class="team-grid__carousel-dots" aria-hidden="true"></div>
+        <div class="team-grid__carousel-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h2 class="team-grid__carousel-title" id="team-c-title">Lorem ipsum Members</h2>
+        <p class="team-grid__carousel-subtitle">Lorem ipsum dolor sit amet consectetur adipiscing elit, empowering seamless communication.</p>
+      </div>
+    </div>
+
+    <!-- Track do carousel — cards duplicados (aria-hidden no clone) para loop infinito contínuo -->
+    <div class="team-grid__carousel-track-wrap">
+      <div class="team-grid__carousel-track" aria-label="Membros da equipe">
+
+        <!-- SET 1 — original (acessível) -->
+        <div class="team-grid__carousel-card">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname — Lorem ipsum" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Lorem ipsum</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname — Director of Content" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Director of Content</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname — Tech Manager" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Tech Manager</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname — Lorem Researcher" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Lorem Researcher</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname — CEO Founder" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">CEO — Founder</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname — Director of Content" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Director of Content</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="Lorem Surname — Lorem Manager" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Lorem Manager</p>
+          </div>
+        </div>
+
+        <!-- SET 2 — clone duplicado para loop contínuo (oculto de leitores de tela) -->
+        <div class="team-grid__carousel-card" aria-hidden="true">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Lorem ipsum</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card" aria-hidden="true">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Director of Content</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card" aria-hidden="true">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Tech Manager</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card" aria-hidden="true">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Lorem Researcher</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card" aria-hidden="true">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">CEO — Founder</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card" aria-hidden="true">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Director of Content</p>
+          </div>
+        </div>
+
+        <div class="team-grid__carousel-card" aria-hidden="true">
+          <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" width="175" height="175" loading="lazy">
+          <div class="team-grid__carousel-card-info">
+            <p class="team-grid__carousel-card-name">Lorem Surname</p>
+            <p class="team-grid__carousel-card-role">Lorem Manager</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Quote abaixo do carousel -->
+    <div class="container">
+      <p class="team-grid__carousel-quote">
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. We suggested an improvement, and their team implemented it with remarkable speed!
+      </p>
+    </div>
+
+  </section>
+
+</body>
+</html>

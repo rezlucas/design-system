@@ -9,6 +9,7 @@
      • --bento:     grid assimétrico (featured + mini-grid + banner)
      • --centered:  4 colunas, conteúdo centralizado, ícone em caixa, CTA card
      • --circular:  media circular + texto centralizado + CTA rodapé
+     • --bleed:     header split 2-col + 4-col grid, imagem/emoji vaza acima do card
    ───────────────────────────────────────── */
 
 /* ═══════════════════════════════════════
@@ -439,6 +440,131 @@
 
 
 /* ═══════════════════════════════════════
+   VARIANT --bleed
+   Header 2-col split + 4-col grid + imagem
+   que vaza (overflow) acima de cada card.
+   (Amenities / Features numerados)
+═══════════════════════════════════════ */
+
+/* Fundo creme quente — característico da variante */
+.services-grid--bleed {
+  background-color: #F5EFE2;
+}
+
+/* Header: empilhado no mobile, 2-col no desktop */
+.services-grid--bleed .services-grid__header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  text-align: left;
+  margin-block-end: var(--space-2xl);
+}
+
+.services-grid--bleed .services-grid__eyebrow {
+  color: var(--color-primary);
+  display: block;
+  margin-block-end: var(--space-sm);
+}
+
+.services-grid--bleed .services-grid__title {
+  text-align: left;
+  font-size: clamp(var(--font-size-2xl), 3.5vw, var(--font-size-4xl));
+  line-height: var(--line-height-tight);
+}
+
+.services-grid--bleed .services-grid__description {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  margin-inline: 0;
+  max-width: 52ch;
+  align-self: end;
+}
+
+/* Grid: padding-top acomoda o bleed da primeira linha */
+.services-grid--bleed .services-grid__list {
+  padding-block-start: var(--space-3xl); /* espaço para a imagem da 1ª row */
+  row-gap: var(--space-3xl);             /* espaço entre rows para a imagem não cobrir o card acima */
+  column-gap: var(--space-md);
+  align-items: start;
+}
+
+/* Card: overflow visible é o que permite o bleed */
+.services-grid--bleed .services-grid__card {
+  position: relative;
+  overflow: visible;
+  padding: var(--space-xl);
+  padding-block-start: var(--space-3xl); /* espaço interno para a metade inferior da imagem */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  gap: var(--space-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.services-grid--bleed .services-grid__card:hover {
+  box-shadow: 0 10px 32px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+
+/* ── Imagem que vaza: posicionada no topo esq. do card,
+      metade acima da borda via translateY(-50%) ── */
+.services-grid__bleed-img {
+  position: absolute;
+  top: 0;
+  left: var(--space-lg);
+  transform: translateY(-50%);
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Variante com emoji em vez de <img> */
+.services-grid__bleed-emoji {
+  position: absolute;
+  top: 0;
+  left: var(--space-lg);
+  transform: translateY(-50%);
+  font-size: 64px;
+  line-height: 1;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.13));
+}
+
+/* ── Número #01, #02 ... no canto superior direito ── */
+.services-grid__card-number {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-lg);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-border-strong);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  font-family: var(--font-heading);
+  opacity: 0.7;
+}
+
+/* Textos dos cards */
+.services-grid--bleed .services-grid__card-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+.services-grid--bleed .services-grid__card-body {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+
+/* ═══════════════════════════════════════
    TABLET (≥ 640px): 2 colunas
 ═══════════════════════════════════════ */
 @media (min-width: 640px) {
@@ -488,6 +614,17 @@
   .services-grid--circular .services-grid__list {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  /* Bleed: 4 colunas + header 2-col */
+  .services-grid--bleed .services-grid__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .services-grid--bleed .services-grid__header {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: end;
+  }
 }
 
 
@@ -508,5 +645,153 @@
   /* Icon-box: volta para vertical no mobile */
   .services-grid--icon-box .services-grid__card {
     flex-direction: column;
+  }
+
+  /* Bleed: 1 col mobile + menos padding-top */
+  .services-grid--bleed .services-grid__list {
+    grid-template-columns: 1fr;
+    padding-block-start: var(--space-2xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --gradient
+   Cards com blob de gradiente suave no
+   canto superior direito + título grande.
+   (Services / Expertise / Portfolio)
+═══════════════════════════════════════ */
+
+.services-grid--gradient {
+  background-color: var(--color-background);
+}
+
+/* Cards: overflow hidden para clipar o blob */
+.services-grid--gradient .services-grid__card {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.services-grid--gradient .services-grid__card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Blob de gradiente suave — posicionado no canto superior direito */
+.services-grid__blob {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  filter: blur(36px);
+  pointer-events: none;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+/* Cores rotativas por posição */
+.services-grid--gradient .services-grid__card:nth-child(1) .services-grid__blob { background: #FF8A80; }
+.services-grid--gradient .services-grid__card:nth-child(2) .services-grid__blob { background: #80CBC4; }
+.services-grid--gradient .services-grid__card:nth-child(3) .services-grid__blob { background: #CE93D8; }
+.services-grid--gradient .services-grid__card:nth-child(4) .services-grid__blob { background: #80DEEA; }
+.services-grid--gradient .services-grid__card:nth-child(5) .services-grid__blob { background: #FFE082; }
+.services-grid--gradient .services-grid__card:nth-child(6) .services-grid__blob { background: #FFCC80; }
+
+/* Eyebrow "Main service" */
+.services-grid__card-eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-sm);
+}
+
+/* Título grande — tipografia destacada */
+.services-grid--gradient .services-grid__card-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-3xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  letter-spacing: -0.02em;
+  margin-block-end: 0;
+}
+
+/* Espaçador: empurra corpo e link para o fim */
+.services-grid--gradient .services-grid__card-body {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  flex: 1;
+}
+
+/* Rodapé do card: link "Case Study" */
+.services-grid__card-footer {
+  margin-block-start: var(--space-xl);
+}
+
+.services-grid__case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-body);
+  transition: color 0.15s ease;
+}
+
+.services-grid__case-link:hover {
+  color: var(--color-text-strong);
+}
+
+/* Botão circula com seta */
+.services-grid__case-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text-body);
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.services-grid__case-link:hover .services-grid__case-btn,
+.services-grid__card--active .services-grid__case-btn {
+  background-color: var(--color-text-strong);
+  border-color: var(--color-text-strong);
+  color: var(--color-text-inverse);
+}
+
+.services-grid__case-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Desktop --gradient: 3 colunas */
+@media (min-width: 768px) {
+  .services-grid--gradient .services-grid__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile --gradient: 1 coluna */
+@media (max-width: 639px) {
+  .services-grid--gradient .services-grid__list {
+    grid-template-columns: 1fr;
+  }
+  .services-grid--gradient .services-grid__card {
+    min-height: 260px;
   }
 }

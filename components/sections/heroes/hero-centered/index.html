@@ -11,8 +11,38 @@
   <link rel="stylesheet" href="../../../../base/utilities.css">
   <link rel="stylesheet" href="../../../atoms/buttons/style.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../hero-portfolio/style.css">
+  <style>
+    body { background-color: var(--color-background-alt); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-lg);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      background: var(--color-background-alt);
+    }
+  </style>
 </head>
 <body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Hero Centered · Hero Personal</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
 
   <!-- Ícones reutilizáveis -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -20,9 +50,15 @@
       stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M5 12h14M12 5l7 7-7 7"/>
     </symbol>
+    <symbol id="icon-arrow-upright" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 17L17 7M7 7h10v10"/>
+    </symbol>
   </svg>
 
   <a class="skip-link" href="#hero-content">Ir para o conteúdo</a>
+
+  <p class="demo-label">Variant 1 — Centered (imagem full-bleed)</p>
 
   <main>
 
@@ -85,6 +121,41 @@
     </section>
 
   </main>
+
+  <!-- ═══════════════════════════════════════════
+       VARIANT 2 — Personal (fundo colorido, foto recortada)
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Personal (fundo colorido, título gigante, foto)</p>
+
+  <section class="hero-personal" aria-labelledby="hp-title">
+
+    <p class="hero-personal__name" aria-hidden="true">Lorem ipsum,</p>
+
+    <h1 class="hero-personal__title" id="hp-title">Lorem ipsum</h1>
+
+    <div class="hero-personal__photo">
+      <img
+        src="../../../../assets/images/placeholders/placeholder-avatar-transparent.png"
+        alt=""
+        width="480"
+        height="720"
+        loading="eager"
+        decoding="async"
+      >
+    </div>
+
+    <div class="hero-personal__actions">
+      <a href="#" class="button button--filled button--pill button--sm">
+        Lorem ipsum
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-upright"/></svg>
+      </a>
+      <a href="#" class="button button--glass button--pill button--sm">
+        Lorem ipsum
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-upright"/></svg>
+      </a>
+    </div>
+
+  </section>
 
 </body>
 </html>

@@ -202,7 +202,7 @@
 /* ── Logo da empresa (--stars) ── */
 .testimonials__company-logo {
   height: 24px;
-  width: auto;
+  width: max-content;
   display: block;
   opacity: 0.65;
 }
@@ -441,5 +441,226 @@
   .testimonials--media .testimonials__card-media {
     width: 100%;
     aspect-ratio: 16 / 9;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --social
+   Awards/selos no topo + grid estática de 3
+   cards sociais (avatar, @handle, role badge,
+   quote com highlight, logo empresa + data).
+   (Beam UI)
+═══════════════════════════════════════ */
+
+.testimonials--social {
+  background-color: var(--color-background-alt);
+  padding-block: var(--space-4xl);
+}
+
+/* ── Awards: fileira de selos de reconhecimento ── */
+.testimonials__awards {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: var(--space-xl);
+  margin-block-end: var(--space-3xl);
+}
+
+.testimonials__award {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  color: #4F46E5;
+}
+
+/* Badge SVG: ramo de louros + texto */
+.testimonials__award-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+  color: #4F46E5;
+}
+
+.testimonials__award-badge svg {
+  width: 72px;
+  height: 72px;
+}
+
+.testimonials__award--featured .testimonials__award-badge svg {
+  width: 88px;
+  height: 88px;
+}
+
+/* ── Cabeçalho centralizado ── */
+.testimonials__social-header {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+  margin-block-end: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.testimonials__social-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 4px var(--space-md);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-body);
+}
+
+.testimonials__social-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 3.5vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+.testimonials__social-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.testimonials__social-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.testimonials__social-stars {
+  color: #FBBF24;
+  letter-spacing: 1px;
+}
+
+.testimonials__social-stat-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--color-border-strong);
+}
+
+/* ── Grid de cards ── */
+.testimonials__social-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* Card individual */
+.testimonials__social-card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.testimonials__social-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+
+/* Topo: avatar + nome + @handle + badge */
+.testimonials__social-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.testimonials__social-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: var(--color-background-alt);
+}
+
+.testimonials__social-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonials__social-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.testimonials__social-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: 1.2;
+}
+
+.testimonials__social-handle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.testimonials__social-badge {
+  display: inline-block;
+  padding: 2px var(--space-sm);
+  background-color: var(--color-background-alt);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-body);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Corpo: quote com highlight */
+.testimonials__social-quote {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  flex: 1;
+}
+
+.testimonials__social-quote mark {
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Rodapé: empresa + data */
+.testimonials__social-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-start: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.testimonials__social-company {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-body);
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .testimonials__social-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

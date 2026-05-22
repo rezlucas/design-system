@@ -1,0 +1,470 @@
+/* ─────────────────────────────────────────
+   team-grid — section
+   Grade de membros do time com foto, cargo
+   e ícones de redes sociais.
+
+   Variantes:
+     • Base: header centralizado (chip + título
+             com palavra colorida) + grid 4-col
+   ───────────────────────────────────────── */
+
+.team-grid {
+  padding-block: var(--space-4xl);
+  background-color: var(--color-background-alt);
+}
+
+/* ── Cabeçalho centralizado ── */
+.team-grid__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-block-end: var(--space-3xl);
+}
+
+/* Chip eyebrow com borda tracejada */
+.team-grid__eyebrow {
+  display: inline-block;
+  padding: 4px var(--space-md);
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.team-grid__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+/* Palavra de destaque em cor primária */
+.team-grid__title-accent {
+  color: var(--color-primary);
+}
+
+/* ── Grade de cards ── */
+.team-grid__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* ── Card de membro ── */
+.team-grid__card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.team-grid__card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Área da foto */
+.team-grid__photo-wrap {
+  margin: var(--space-md);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background-color: var(--color-background-alt);
+  flex-shrink: 0;
+}
+
+.team-grid__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Área de informações */
+.team-grid__info {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+.team-grid__name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+.team-grid__role {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ── Redes sociais ── */
+.team-grid__social {
+  display: flex;
+  gap: var(--space-xs);
+  padding-block-start: var(--space-md);
+  margin-block-start: var(--space-sm);
+  border-top: 1px dashed var(--color-border-strong);
+}
+
+.team-grid__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-background-alt);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.team-grid__social-link:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.team-grid__social-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.team-grid__social-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET (≥ 480px): 2 colunas
+═══════════════════════════════════════ */
+@media (min-width: 480px) {
+  .team-grid__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥ 1024px): 4 colunas
+═══════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .team-grid__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   MOBILE (< 480px)
+═══════════════════════════════════════ */
+@media (max-width: 479px) {
+  .team-grid {
+    padding-block: var(--space-3xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --horizontal
+   Cards horizontais: avatar circular +
+   nome + cargo + handles de redes sociais.
+   Grid 2-col. (Breeze UI)
+═══════════════════════════════════════ */
+
+.team-grid--horizontal {
+  background-color: var(--color-background);
+}
+
+/* Cabeçalho: texto esq. + link direita */
+.team-grid__header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.team-grid__header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+
+.team-grid__header-link:hover { opacity: 0.72; }
+
+.team-grid__header-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.team-grid--horizontal .team-grid__header {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.team-grid--horizontal .team-grid__list {
+  grid-template-columns: 1fr;
+}
+
+/* Card horizontal: avatar à esq., info à dir. */
+.team-grid--horizontal .team-grid__card {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  overflow: visible;
+}
+
+/* Avatar circular */
+.team-grid__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: var(--color-background-alt);
+}
+
+.team-grid__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-grid--horizontal .team-grid__info {
+  padding: 0;
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+/* Social: sem borda, com handles textuais */
+.team-grid--horizontal .team-grid__social {
+  border-top: none;
+  padding-block-start: var(--space-sm);
+  margin-block-start: 0;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* Handle: ícone + @texto */
+.team-grid__social-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.team-grid__social-handle:hover {
+  color: var(--color-primary);
+}
+
+.team-grid__social-handle svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .team-grid--horizontal .team-grid__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid--horizontal .team-grid__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   VARIANT --carousel
+   Carousel horizontal: fotos em P&B,
+   card central em cor. Fundo de dots no header.
+   (Beam UI)
+═══════════════════════════════════════ */
+
+.team-grid--carousel {
+  background-color: var(--color-background);
+  padding-block: var(--space-4xl);
+  overflow: hidden;
+}
+
+/* Cabeçalho com ícone e dots decorativos */
+.team-grid__carousel-header {
+  text-align: center;
+  margin-block-end: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  position: relative;
+  padding-block: var(--space-2xl);
+}
+
+/* Dots: grid quadrada no background do header */
+.team-grid__carousel-dots {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.team-grid__carousel-icon {
+  position: relative;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: #3B82F6;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.35);
+}
+
+.team-grid__carousel-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.team-grid__carousel-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-tight);
+}
+
+.team-grid__carousel-subtitle {
+  position: relative;
+  z-index: 1;
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  max-width: 52ch;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Keyframe: desloca a track pelo width de 1 set (= -50% do total com cards duplicados) */
+@keyframes team-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Wrapper: clip + pausa ao hover */
+.team-grid__carousel-track-wrap {
+  overflow: hidden;
+}
+
+/* Track: animação contínua linear */
+.team-grid__carousel-track {
+  display: flex;
+  gap: var(--space-md);
+  width: max-content;
+  animation: team-marquee 24s linear infinite;
+}
+
+/* Pausa ao passar o mouse sobre qualquer card */
+.team-grid__carousel-track-wrap:hover .team-grid__carousel-track {
+  animation-play-state: paused;
+}
+
+/* Card de membro */
+.team-grid__carousel-card {
+  flex-shrink: 0;
+  width: 175px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-background);
+  cursor: pointer;
+}
+
+/* Todas as fotos em P&B por padrão */
+.team-grid__carousel-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1);
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+/* Ao hover: foto do card em cor, leve zoom */
+.team-grid__carousel-card:hover img {
+  filter: grayscale(0);
+  transform: scale(1.04);
+}
+
+/* Sutil: borda iluminada no card hovered */
+.team-grid__carousel-card:hover {
+  border-color: var(--color-primary, #3B82F6);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.18);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-grid__carousel-card-info {
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+}
+
+.team-grid__carousel-card-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  line-height: 1.2;
+}
+
+.team-grid__carousel-card-role {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-block-start: 2px;
+}
+
+/* Quote abaixo do carousel */
+.team-grid__carousel-quote {
+  text-align: center;
+  padding-block-start: var(--space-2xl);
+  padding-inline: var(--container-padding);
+  max-width: 600px;
+  margin-inline: auto;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  line-height: var(--line-height-relaxed);
+}

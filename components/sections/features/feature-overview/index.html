@@ -26,6 +26,22 @@
 </head>
 <body>
 
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Feature Overview</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
       stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -257,6 +273,60 @@
             width="400" height="400" loading="lazy" decoding="async">
         </div>
       </div>
+    </div>
+  </section>
+
+  <div class="demo-divider"></div>
+
+  <!-- ═══════════════════════════════════════════
+       STYLE=05 — Steps / How it Works
+       Bolhas numeradas com conector SVG curvo
+  ════════════════════════════════════════════ -->
+  <p class="demo-label">Style=05 — Steps (como funciona com numeração e conector curvo)</p>
+
+  <section class="feature-overview feature-overview--steps" aria-labelledby="fo-steps-title">
+    <div class="container">
+
+      <header class="feature-overview__header">
+        <h2 class="feature-overview__title" id="fo-steps-title">Lorem ipsum dolor sit amet</h2>
+        <p class="feature-overview__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </header>
+
+      <div class="feature-overview__steps-row">
+
+        <!-- Step 1 -->
+        <div class="feature-overview__step">
+          <div class="feature-overview__step-bubble">1</div>
+          <h3 class="feature-overview__step-title">Lorem ipsum</h3>
+          <p class="feature-overview__step-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+        </div>
+
+        <!-- Conector: arco curvo tracejado (SVG path) -->
+        <svg class="feature-overview__step-connector" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 8 Q50 36 100 8" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Step 2 (ativo) -->
+        <div class="feature-overview__step">
+          <div class="feature-overview__step-bubble feature-overview__step-bubble--active">2</div>
+          <h3 class="feature-overview__step-title">Lorem ipsum</h3>
+          <p class="feature-overview__step-body">Lorem ipsum dolor sit amet, dela consectetur adipiscing elit, sed do eiusmod tempor.</p>
+        </div>
+
+        <!-- Conector -->
+        <svg class="feature-overview__step-connector" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 8 Q50 36 100 8" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Step 3 -->
+        <div class="feature-overview__step">
+          <div class="feature-overview__step-bubble">3</div>
+          <h3 class="feature-overview__step-title">Lorem ipsum</h3>
+          <p class="feature-overview__step-body">Lorem ipsum dolor sit amet, dela consectetur adipiscing elit, sed do eiusmod tempor.</p>
+        </div>
+
+      </div>
+
     </div>
   </section>
 

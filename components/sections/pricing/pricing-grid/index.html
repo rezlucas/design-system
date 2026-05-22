@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Grid — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Pricing Grid</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+
+  <section class="pricing-grid" aria-labelledby="pricing-title">
+
+    <!-- Número decorativo de fundo -->
+    <span class="pricing-grid__deco" aria-hidden="true">07</span>
+
+    <div class="container">
+
+      <header class="pricing-grid__header">
+        <span class="pricing-grid__eyebrow">⚡ Lorem ipsum</span>
+        <h2 class="pricing-grid__title" id="pricing-title">Lorem ipsum dolor</h2>
+        <p class="pricing-grid__description">Lorem ipsum dolor sit amet consectetur adipiscing.</p>
+      </header>
+
+      <div class="pricing-grid__list">
+
+        <!-- Basic -->
+        <div class="pricing-grid__card">
+          <div class="pricing-grid__card-top">
+            <h3 class="pricing-grid__plan-name">Basic Plan</h3>
+            <p class="pricing-grid__plan-desc">For simple desktop apps and solo developers.</p>
+          </div>
+          <div class="pricing-grid__price-row">
+            <span class="pricing-grid__price">$99</span>
+            <span class="pricing-grid__period">/ Month</span>
+          </div>
+          <a href="#" class="pricing-grid__cta">Get Started With Basic</a>
+          <div class="pricing-grid__features">
+            <p class="pricing-grid__feature-label">Weekly Sends</p>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">⏱</span>
+              <span><span class="pricing-grid__feature-strong">30 day</span> build retention</span>
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">⬇️</span>
+              <span><span class="pricing-grid__feature-strong">5,000</span> downloads/month</span>
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">📦</span>
+              Native module rebuilding
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">✅</span>
+              Build validation checks
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium (featured) -->
+        <div class="pricing-grid__card pricing-grid__card--featured">
+          <div class="pricing-grid__card-top">
+            <h3 class="pricing-grid__plan-name">Premium Plan</h3>
+            <p class="pricing-grid__plan-desc">For simple desktop apps and solo developers.</p>
+          </div>
+          <div class="pricing-grid__price-row">
+            <span class="pricing-grid__price">$249</span>
+            <span class="pricing-grid__period">/ Month</span>
+          </div>
+          <a href="#" class="pricing-grid__cta">Get Started With Premium</a>
+          <div class="pricing-grid__features">
+            <p class="pricing-grid__feature-label">Weekly Sends</p>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">⏱</span>
+              <span><span class="pricing-grid__feature-strong">30 day</span> build retention</span>
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">⬇️</span>
+              <span><span class="pricing-grid__feature-strong">5,000</span> downloads/month</span>
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">📦</span>
+              Native module rebuilding
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">✅</span>
+              Build validation checks
+            </div>
+          </div>
+        </div>
+
+        <!-- Platinum -->
+        <div class="pricing-grid__card">
+          <div class="pricing-grid__card-top">
+            <h3 class="pricing-grid__plan-name">Platinum Plan</h3>
+            <p class="pricing-grid__plan-desc">For simple desktop apps and solo developers.</p>
+          </div>
+          <div class="pricing-grid__price-row">
+            <span class="pricing-grid__price">$750</span>
+            <span class="pricing-grid__period">/ Month</span>
+          </div>
+          <a href="#" class="pricing-grid__cta">Get Started With Platinum</a>
+          <div class="pricing-grid__features">
+            <p class="pricing-grid__feature-label">Weekly Sends</p>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">⏱</span>
+              <span><span class="pricing-grid__feature-strong">30 day</span> build retention</span>
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">⬇️</span>
+              <span><span class="pricing-grid__feature-strong">5,000</span> downloads/month</span>
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">📦</span>
+              Native module rebuilding
+            </div>
+            <div class="pricing-grid__feature-item">
+              <span class="pricing-grid__feature-icon">✅</span>
+              Build validation checks
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       VARIANT --compare (Sana UI)
+       Tabela de comparação + sidebar visual
+  ════════════════════════════════════════════ -->
+  <p style="text-align:center;padding-block:var(--space-xl);font-size:var(--font-size-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-muted)">Variant 2 — Compare (tabela de features + sidebar)</p>
+
+  <section class="pricing-grid pricing-grid--compare" aria-labelledby="compare-title">
+    <div class="container">
+
+      <div class="pricing-grid__compare-card">
+
+        <!-- Painel esquerdo: tabela -->
+        <div class="pricing-grid__compare-content">
+          <p class="pricing-grid__compare-eyebrow">Lorem ipsum Features</p>
+          <h2 class="pricing-grid__compare-title" id="compare-title">Lorem ipsum curiosity</h2>
+
+          <!-- Cabeçalho dos planos -->
+          <div class="pricing-grid__compare-head">
+            <div class="pricing-grid__compare-plan-header pricing-grid__compare-plan-header--featured">Lorem<br>Serenity</div>
+            <div class="pricing-grid__compare-plan-header">Lorem<br>Flow</div>
+            <div class="pricing-grid__compare-plan-header">Lorem<br>Start</div>
+          </div>
+
+          <!-- Row 1 -->
+          <div class="pricing-grid__compare-row">
+            <p class="pricing-grid__compare-feature">Lorem ipsum: Unlimited on-demand classes (yoga, breathwork, lorem baths).</p>
+            <div class="pricing-grid__compare-cell pricing-grid__compare-cell--featured">
+              <span class="pricing-grid__compare-check--filled">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-x" aria-label="Não disponível">✕</span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-x" aria-label="Não disponível">✕</span>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="pricing-grid__compare-row">
+            <p class="pricing-grid__compare-feature">Lorem ipsum class recommendations and exclusive member community.</p>
+            <div class="pricing-grid__compare-cell pricing-grid__compare-cell--featured">
+              <span class="pricing-grid__compare-check--filled">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-check--outline" aria-label="Disponível">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-x" aria-label="Não disponível">✕</span>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="pricing-grid__compare-row">
+            <p class="pricing-grid__compare-feature">Community forum access and free downloadable guides for starter.</p>
+            <div class="pricing-grid__compare-cell pricing-grid__compare-cell--featured">
+              <span class="pricing-grid__compare-check--filled">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-check--outline" aria-label="Disponível">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-check--outline" aria-label="Disponível">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="pricing-grid__compare-row">
+            <p class="pricing-grid__compare-feature">Free entry to annual Global Lorem Summit (virtual + on-site).</p>
+            <div class="pricing-grid__compare-cell pricing-grid__compare-cell--featured">
+              <span class="pricing-grid__compare-check--filled">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-check--outline" aria-label="Disponível">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="pricing-grid__compare-cell">
+              <span class="pricing-grid__compare-check--outline" aria-label="Disponível">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar visual -->
+        <aside class="pricing-grid__compare-aside" aria-label="Imagem visual do produto">
+          <span class="pricing-grid__compare-brand-logo" aria-hidden="true">✳</span>
+          <p class="pricing-grid__compare-brand-name">Lorem ipsum</p>
+
+          <div class="pricing-grid__compare-avatars" role="presentation">
+            <div class="pricing-grid__compare-avatar">
+              <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" loading="lazy">
+            </div>
+            <div class="pricing-grid__compare-avatar">
+              <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" loading="lazy">
+            </div>
+            <div class="pricing-grid__compare-avatar">
+              <img src="../../../../assets/images/placeholders/placeholder-avatar.png" alt="" loading="lazy">
+            </div>
+          </div>
+
+          <span class="pricing-grid__compare-deco" aria-hidden="true">∞</span>
+          <p class="pricing-grid__compare-tagline">Lorem ipsum dolor sit amet, consectetur flows.</p>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
