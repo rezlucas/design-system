@@ -97,13 +97,12 @@
       position: sticky;
       top: 40px;
       z-index: 150;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: #fff;
       border-bottom: 1px solid #EAE8F5;
-      box-shadow: 0 1px 0 0 rgba(79,70,229,0.04);
-      /* Impede que a lista interna cause scroll horizontal na página.
-         Os panels são position:fixed e não são afetados por este overflow. */
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      /* overflow:hidden contém o scroll horizontal da lista.
+         Não usamos backdrop-filter aqui pois ela cria um containing block
+         para position:fixed, impedindo os panels de ancorar no viewport. */
       overflow: hidden;
     }
 
