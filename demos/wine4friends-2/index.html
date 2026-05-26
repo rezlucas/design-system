@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wine4Friends — Clube de Vinhos Exclusivo</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- DS tokens & base -->
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../base/reset.css">
+  <link rel="stylesheet" href="../../base/base.css">
+  <link rel="stylesheet" href="../../base/utilities.css">
+
+  <!-- Atoms -->
+  <link rel="stylesheet" href="../../components/atoms/buttons/style.css">
+
+  <!-- Components -->
+  <link rel="stylesheet" href="../../components/sections/headers/header-utility/style.css">
+  <link rel="stylesheet" href="../../components/sections/heroes/hero-centered/style.css">
+  <link rel="stylesheet" href="../../components/sections/features/feature-cards/style.css">
+  <link rel="stylesheet" href="../../components/sections/tabs/tabs-section/style.css">
+  <link rel="stylesheet" href="../../components/sections/ctas/cta-banner/style.css">
+  <link rel="stylesheet" href="../../components/sections/social-proof/testimonials-cards/style.css">
+  <link rel="stylesheet" href="../../components/sections/faq/faq-accordion/style.css">
+  <link rel="stylesheet" href="../../components/sections/footers/footer-full/style.css">
+
+  <!-- Brand tokens -->
+  <style>
+    :root {
+      --color-primary:          #8B1A35;
+      --color-primary-light:    #C98046;
+      --color-background-alt:   #FDF7F4;
+      --color-text-strong:      #111120;
+      --font-heading: 'Syne', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    body { font-family: var(--font-body); }
+    h1, h2, h3, h4, h5, h6,
+    .hero-centered__title,
+    .feature-cards__title,
+    .tabs-section__title,
+    .cta-banner__title,
+    .testimonials__title,
+    .faq-accordion__split-title,
+    .footer-full__cta-heading { font-family: var(--font-heading); }
+
+    /* Header accent on topbar */
+    .header-utility__topbar { background: var(--color-text-strong); }
+
+    /* Hero eyebrow accent */
+    .hero-centered__eyebrow { color: var(--color-primary-light); }
+
+    /* Feature cards icon accent */
+    .feature-cards__card-icon use { color: var(--color-primary); }
+
+    /* Tabs active tab */
+    .tabs-section__tab[aria-selected="true"] {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    /* Logo text */
+    .w4f-logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--color-text-strong);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .w4f-logo span { color: var(--color-primary); }
+
+    /* Plan badge inside tabs */
+    .plan-price {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 1rem 0 0.25rem;
+    }
+    .plan-period {
+      font-size: 0.875rem;
+      color: var(--color-text-muted, #6b7280);
+      margin-bottom: 1rem;
+    }
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.9375rem;
+    }
+    .plan-features li::before {
+      content: "✓";
+      color: var(--color-primary);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar -->
+<div id="ds-nav-bar">
+  <a href="../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Demo · Wine4Friends v2</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SVG SPRITE
+══════════════════════════════════════════════════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9l6 6 6-6"/>
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18l6-6-6-6"/>
+  </symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 18l-6-6 6-6"/>
+  </symbol>
+  <symbol id="icon-accessibility" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="5" r="1.5"/>
+    <path d="M4 8.5h16M8 8.5l1 10 3-5 3 5 1-10"/>
+  </symbol>
+  <symbol id="icon-globe" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+  </symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="M21 21l-4.35-4.35"/>
+  </symbol>
+  <symbol id="icon-wine" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 22h8M12 11v11M6 2h12l-2 7a4 4 0 01-8 0L6 2z"/>
+  </symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </symbol>
+  <symbol id="icon-globe-wine" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+  </symbol>
+  <symbol id="icon-box" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+    <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
+  </symbol>
+  <symbol id="icon-shield-check" viewBox="0 0 24 24">
+    <path d="M12 2L4 6v5c0 5.3 3.5 9.8 8 11 4.5-1.2 8-5.7 8-11V6l-8-4z"
+      style="fill: var(--color-text-strong)"/>
+    <path d="M9 12l2 2 4-4"
+      style="fill:none; stroke: var(--color-text-inverse); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"/>
+  </symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  </symbol>
+  <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+    <circle cx="4" cy="4" r="2"/>
+  </symbol>
+  <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+  </symbol>
+</svg>
+
+
+<!-- ══════════════════════════════════════════════════════
+     1. HEADER — UTILITY
+══════════════════════════════════════════════════════ -->
+<header class="header-utility" role="banner">
+
+  <!-- Topbar utilitária -->
+  <div class="header-utility__topbar">
+    <div class="header-utility__topbar-inner container">
+
+      <nav aria-label="Links de suporte">
+        <ul class="header-utility__topbar-links" role="list">
+          <li><a class="header-utility__topbar-link" href="#">Fale Conosco</a></li>
+          <li><a class="header-utility__topbar-link" href="#">Suporte</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-utility__topbar-icons">
+        <button class="header-utility__icon-btn" type="button" aria-label="Acessibilidade">
+          <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#icon-accessibility"/></svg>
+        </button>
+        <button class="header-utility__icon-btn" type="button" aria-label="Buscar">
+          <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#icon-search"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Nav principal -->
+  <div class="header-utility__main">
+    <div class="header-utility__main-inner container">
+
+      <a href="/" class="w4f-logo" aria-label="Wine4Friends — Página inicial">
+        🍷 Wine<span>4</span>Friends
+      </a>
+
+      <nav class="header-utility__nav" aria-label="Navegação principal">
+        <ul class="header-utility__list" role="list">
+
+          <li class="header-utility__item">
+            <button class="header-utility__link" type="button"
+              aria-haspopup="true" aria-expanded="false"
+              aria-controls="dd-planos" data-js="dropdown-trigger">
+              Planos
+              <svg class="header-utility__chevron" aria-hidden="true" focusable="false">
+                <use href="#icon-chevron-down"/>
+              </svg>
+            </button>
+            <div class="header-utility__dropdown" id="dd-planos" hidden>
+              <ul class="header-utility__dropdown-list" role="list">
+                <li><a class="header-utility__dropdown-link" href="#">Essencial — R$89/mês</a></li>
+                <li><a class="header-utility__dropdown-link" href="#">Descoberta — R$149/mês</a></li>
+                <li><a class="header-utility__dropdown-link" href="#">Sommelier — R$249/mês</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="header-utility__item">
+            <a class="header-utility__link" href="#como-funciona">Como Funciona</a>
+          </li>
+
+          <li class="header-utility__item">
+            <a class="header-utility__link" href="#diferenciais">Por Que Escolher</a>
+          </li>
+
+          <li class="header-utility__item">
+            <a class="header-utility__link" href="#faq">FAQ</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- Hambúrguer -->
+      <button class="header-utility__toggle" type="button"
+        aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="nav-panel-utility" data-js="nav-toggle">
+        <span class="header-utility__toggle-bar"></span>
+        <span class="header-utility__toggle-bar"></span>
+        <span class="header-utility__toggle-bar"></span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Painel mobile -->
+  <div class="header-utility__mobile-panel" id="nav-panel-utility"
+    data-js="nav-panel" aria-label="Menu de navegação">
+    <ul class="header-utility__mobile-list" role="list">
+
+      <li class="header-utility__mobile-item">
+        <button class="header-utility__mobile-trigger" type="button"
+          aria-expanded="false" data-js="mobile-accordion">
+          Planos
+          <svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#icon-chevron-down"/></svg>
+        </button>
+        <ul class="header-utility__mobile-submenu" role="list">
+          <li><a class="header-utility__mobile-sublink" href="#">Essencial</a></li>
+          <li><a class="header-utility__mobile-sublink" href="#">Descoberta</a></li>
+          <li><a class="header-utility__mobile-sublink" href="#">Sommelier</a></li>
+        </ul>
+      </li>
+
+      <li class="header-utility__mobile-item">
+        <a class="header-utility__mobile-link" href="#como-funciona">Como Funciona</a>
+      </li>
+
+      <li class="header-utility__mobile-item">
+        <a class="header-utility__mobile-link" href="#diferenciais">Por Que Escolher</a>
+      </li>
+
+      <li class="header-utility__mobile-item">
+        <a class="header-utility__mobile-link" href="#faq">FAQ</a>
+      </li>
+
+      <li class="header-utility__mobile-item">
+        <a class="header-utility__mobile-link" href="#">Fale Conosco</a>
+      </li>
+
+    </ul>
+  </div>
+
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════
+     2. HERO — CENTERED
+══════════════════════════════════════════════════════ -->
+<a class="skip-link" href="#hero-content">Ir para o conteúdo</a>
+
+<section class="hero-centered" aria-labelledby="hero-centered-title">
+
+  <div class="hero-centered__media">
+    <img
+      class="hero-centered__image"
+      src="../../assets/images/placeholders/placeholder-background-image-section.png"
+      alt="Adega com garrafas de vinho selecionadas por sommeliers"
+      width="1920" height="579"
+      loading="eager" decoding="async"
+    >
+  </div>
+
+  <div class="hero-centered__overlay">
+    <div class="hero-centered__container container" id="hero-content">
+      <div class="hero-centered__content">
+
+        <span class="hero-centered__eyebrow">CLUBE DE VINHOS EXCLUSIVO</span>
+
+        <h1 class="hero-centered__title" id="hero-centered-title">
+          Descubra vinhos excepcionais<br>
+          com curadoria de especialistas
+        </h1>
+
+        <p class="hero-centered__description">
+          Todo mês, uma seleção única de rótulos premiados de mais de 15 países
+          chega na sua porta — com harmonização, história e a paixão de quem
+          entende de vinho de verdade.
+        </p>
+
+        <div class="hero-centered__actions">
+          <a href="#planos" class="button button--filled button--md button--inverse">
+            Assinar agora
+            <svg class="button__icon" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow"/>
+            </svg>
+          </a>
+          <a href="#como-funciona" class="button button--outline button--md button--inverse">
+            Como funciona
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     3. FEATURE CARDS — Por que o Wine4Friends é diferente
+══════════════════════════════════════════════════════ -->
+<section class="feature-cards" id="diferenciais" aria-labelledby="fc-title">
+  <div class="container">
+
+    <div class="feature-cards__header">
+      <span class="feature-cards__eyebrow">POR QUE ESCOLHER O WINE4FRIENDS</span>
+      <h2 class="feature-cards__title" id="fc-title">
+        Uma experiência completa, do produtor à sua taça
+      </h2>
+      <p class="feature-cards__description">
+        Não enviamos apenas vinho. Entregamos conhecimento, história e descobertas
+        que transformam cada garrafa em uma experiência memorável.
+      </p>
+    </div>
+
+    <ul class="feature-cards__grid" role="list">
+
+      <!-- Card 1 -->
+      <li class="feature-cards__card">
+        <svg class="feature-cards__card-icon" aria-hidden="true" focusable="false">
+          <use href="#icon-star"/>
+        </svg>
+        <strong class="feature-cards__card-title">Curadoria por Sommeliers</strong>
+        <p class="feature-cards__card-body">
+          Cada garrafa é selecionada por especialistas certificados que percorrem
+          vinícolas ao redor do mundo em busca dos melhores rótulos — equilibrando
+          qualidade, origem e custo-benefício para você.
+        </p>
+        <a href="#planos" class="button button--link button--md">
+          Ver planos
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+        <div class="feature-cards__card-media">
+          <img
+            class="feature-cards__card-image"
+            src="../../assets/images/placeholders/placeholder-image.png"
+            alt="Sommelier avaliando vinhos"
+            width="400" height="300"
+            loading="lazy" decoding="async"
+          >
+        </div>
+      </li>
+
+      <!-- Card 2 -->
+      <li class="feature-cards__card">
+        <svg class="feature-cards__card-icon" aria-hidden="true" focusable="false">
+          <use href="#icon-globe-wine"/>
+        </svg>
+        <strong class="feature-cards__card-title">Vinhos de 15+ Países</strong>
+        <p class="feature-cards__card-body">
+          Do Alentejo à Borgonha, da Rioja à Toscana — nossa seleção abrange
+          mais de 15 países produtores, trazendo diversidade e raridade que
+          você não encontra nas prateleiras convencionais.
+        </p>
+        <a href="#planos" class="button button--link button--md">
+          Ver planos
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+        <div class="feature-cards__card-media">
+          <img
+            class="feature-cards__card-image"
+            src="../../assets/images/placeholders/placeholder-image.png"
+            alt="Mapa de regiões vinícolas do mundo"
+            width="400" height="300"
+            loading="lazy" decoding="async"
+          >
+        </div>
+      </li>
+
+      <!-- Card 3 -->
+      <li class="feature-cards__card">
+        <svg class="feature-cards__card-icon" aria-hidden="true" focusable="false">
+          <use href="#icon-box"/>
+        </svg>
+        <strong class="feature-cards__card-title">Receba em Casa, com Conteúdo</strong>
+        <p class="feature-cards__card-body">
+          Cada caixa inclui fichas técnicas, sugestões de harmonização e notas de
+          degustação. Aprenda enquanto degusta e evolua seu paladar a cada entrega,
+          com custo de frete grátis em todos os planos.
+        </p>
+        <a href="#planos" class="button button--link button--md">
+          Ver planos
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+        <div class="feature-cards__card-media">
+          <img
+            class="feature-cards__card-image"
+            src="../../assets/images/placeholders/placeholder-image.png"
+            alt="Caixa Wine4Friends com vinhos e materiais"
+            width="400" height="300"
+            loading="lazy" decoding="async"
+          >
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     4. TABS SECTION — Nossos Planos (Variant 3 Split)
+══════════════════════════════════════════════════════ -->
+<section class="tabs-section" id="planos" data-js="tabs-section" aria-labelledby="tabs-title">
+
+  <div class="tabs-section__header container">
+    <p class="tabs-section__eyebrow">Nossos Planos</p>
+    <h2 class="tabs-section__title" id="tabs-title">Escolha o clube ideal para o seu paladar</h2>
+    <p class="tabs-section__description">Todos os planos incluem frete grátis, curadoria exclusiva de sommeliers e a liberdade de cancelar quando quiser. Quanto mais você explora, mais o vinho revela.</p>
+  </div>
+
+  <div class="tabs-section__nav-wrap container">
+    <div class="tabs-section__nav" role="tablist" aria-label="Planos disponíveis" data-js="tablist">
+      <button class="tabs-section__tab" role="tab" aria-selected="true"
+        aria-controls="tab-panel-1" data-js="tab" data-target="tab-panel-1">Essencial</button>
+      <button class="tabs-section__tab" role="tab" aria-selected="false"
+        aria-controls="tab-panel-2" data-js="tab" data-target="tab-panel-2">Descoberta</button>
+      <button class="tabs-section__tab" role="tab" aria-selected="false"
+        aria-controls="tab-panel-3" data-js="tab" data-target="tab-panel-3">Sommelier</button>
+    </div>
+  </div>
+
+  <!-- Plano Essencial -->
+  <div class="tabs-section__panel container" id="tab-panel-1" role="tabpanel" data-js="panel">
+    <div class="tabs-section__split">
+      <div class="tabs-section__split-content">
+        <h3 class="tabs-section__split-title">Plano Essencial</h3>
+        <p class="plan-price">R$ 89<small style="font-size:1rem;font-weight:500">/mês</small></p>
+        <p class="plan-period">2 garrafas selecionadas por mês</p>
+        <ul class="plan-features">
+          <li>2 rótulos cuidadosamente escolhidos</li>
+          <li>Fichas de degustação completas</li>
+          <li>Sugestões de harmonização</li>
+          <li>Frete grátis para todo o Brasil</li>
+          <li>Cancele quando quiser, sem multa</li>
+        </ul>
+        <a href="#" class="button button--filled button--md">
+          Assinar Essencial
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+      </div>
+      <div class="tabs-section__split-media">
+        <img src="../../assets/images/placeholders/placeholder-image.png" alt="Caixa Essencial com 2 garrafas de vinho" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- Plano Descoberta -->
+  <div class="tabs-section__panel container" id="tab-panel-2" role="tabpanel" hidden data-js="panel">
+    <div class="tabs-section__split">
+      <div class="tabs-section__split-content">
+        <h3 class="tabs-section__split-title">Plano Descoberta</h3>
+        <p class="plan-price">R$ 149<small style="font-size:1rem;font-weight:500">/mês</small></p>
+        <p class="plan-period">4 garrafas selecionadas por mês</p>
+        <ul class="plan-features">
+          <li>4 rótulos de regiões variadas</li>
+          <li>Fichas de degustação completas</li>
+          <li>Sugestões de harmonização por garrafa</li>
+          <li>Acesso ao grupo exclusivo de membros</li>
+          <li>Frete grátis para todo o Brasil</li>
+          <li>Cancele quando quiser, sem multa</li>
+        </ul>
+        <a href="#" class="button button--filled button--md">
+          Assinar Descoberta
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+      </div>
+      <div class="tabs-section__split-media">
+        <img src="../../assets/images/placeholders/placeholder-image.png" alt="Caixa Descoberta com 4 garrafas de vinho" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <!-- Plano Sommelier -->
+  <div class="tabs-section__panel container" id="tab-panel-3" role="tabpanel" hidden data-js="panel">
+    <div class="tabs-section__split">
+      <div class="tabs-section__split-content">
+        <h3 class="tabs-section__split-title">Plano Sommelier</h3>
+        <p class="plan-price">R$ 249<small style="font-size:1rem;font-weight:500">/mês</small></p>
+        <p class="plan-period">6 garrafas premium por mês</p>
+        <ul class="plan-features">
+          <li>6 rótulos raros e premiados internacionalmente</li>
+          <li>Fichas e vídeos de degustação exclusivos</li>
+          <li>Harmonizações avançadas com receitas</li>
+          <li>Acesso VIP a eventos e masterclasses online</li>
+          <li>Desconto em vinhos avulsos na nossa loja</li>
+          <li>Frete grátis para todo o Brasil</li>
+          <li>Cancele quando quiser, sem multa</li>
+        </ul>
+        <a href="#" class="button button--filled button--md">
+          Assinar Sommelier
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+      </div>
+      <div class="tabs-section__split-media">
+        <img src="../../assets/images/placeholders/placeholder-image.png" alt="Caixa Sommelier premium com 6 garrafas selecionadas" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     5. CTA BANNER — OVERLAY CENTER
+══════════════════════════════════════════════════════ -->
+<section class="cta-banner cta-banner--overlay-center">
+
+  <div class="cta-banner__bg">
+    <img
+      src="../../assets/images/placeholders/placeholder-background-image-section.png"
+      alt="" aria-hidden="true"
+      width="1920" height="579"
+    >
+  </div>
+  <div class="cta-banner__overlay" aria-hidden="true"></div>
+
+  <div class="cta-banner__inner container">
+    <div class="cta-banner__content">
+      <h2 class="cta-banner__title">Assine agora e ganhe 10% OFF na primeira caixa</h2>
+      <p class="cta-banner__description" style="color:rgba(255,255,255,.85);max-width:520px;margin:0 auto 2rem;">
+        Junte-se a milhares de apreciadores que já descobriram o mundo do vinho
+        com a curadoria do Wine4Friends. Use o cupom <strong>BEMVINDO</strong> no checkout.
+      </p>
+      <div class="cta-banner__actions">
+        <a href="#planos" class="button button--filled button--inverse button--lg">
+          Escolher meu plano
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     6. TESTIMONIALS — GRID
+══════════════════════════════════════════════════════ -->
+<section class="testimonials testimonials--grid">
+  <div class="container">
+
+    <div class="testimonials__header-row">
+      <div class="testimonials__header-text">
+        <p class="testimonials__eyebrow">Depoimentos</p>
+        <h2 class="testimonials__title">O que nossos membros dizem</h2>
+        <p class="testimonials__description">Mais de 10.000 assinantes em todo o Brasil já transformaram a forma como descobrem e apreciam vinhos com o Wine4Friends.</p>
+      </div>
+    </div>
+
+    <div class="testimonials__list">
+
+      <div class="testimonials__card">
+        <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+        <p class="testimonials__text">"Nunca imaginei que um clube de vinhos pudesse mudar tanto minha relação com a bebida. Cada caixa é uma surpresa, e as fichas de degustação me ajudaram a entender o que realmente aprecio. O plano Descoberta vale cada centavo."</p>
+        <div class="testimonials__author">
+          <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Ana Lima">
+          <div>
+            <p class="testimonials__name">Ana Lima</p>
+            <p class="testimonials__role">São Paulo, SP — Membro há 14 meses</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials__card">
+        <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+        <p class="testimonials__text">"Como alguém que sempre achou vinho intimidador, o Wine4Friends foi a porta de entrada perfeita. A curadoria é impecável e nunca recebi uma garrafa que não me impressionasse. O suporte quando precisei mudar um mês foi super ágil."</p>
+        <div class="testimonials__author">
+          <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Roberto Carvalho">
+          <div>
+            <p class="testimonials__name">Roberto Carvalho</p>
+            <p class="testimonials__role">Belo Horizonte, MG — Membro há 8 meses</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials__card">
+        <div class="testimonials__stars" aria-label="5 estrelas"><span aria-hidden="true">★★★★★</span></div>
+        <p class="testimonials__text">"Assino o plano Sommelier há quase um ano e é sem dúvida o melhor investimento que faço todo mês. Os rótulos são únicos, muitos que nunca encontraria por conta própria. As masterclasses online são um bônus incrível."</p>
+        <div class="testimonials__author">
+          <img class="testimonials__avatar" src="../../assets/images/placeholders/placeholder-avatar.png" alt="Mariana Torres">
+          <div>
+            <p class="testimonials__name">Mariana Torres</p>
+            <p class="testimonials__role">Vitória, ES — Membro há 11 meses</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     7. FAQ ACCORDION — SPLIT
+══════════════════════════════════════════════════════ -->
+<section class="faq-accordion faq-accordion--split" id="faq">
+  <div class="faq-accordion__inner container">
+
+    <div class="faq-accordion__split-heading">
+      <h2 class="faq-accordion__split-title">Perguntas<br>frequentes</h2>
+    </div>
+
+    <div class="faq-accordion__list">
+
+      <details class="faq-accordion__item" open>
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">Posso cancelar a assinatura a qualquer momento?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+              <line x1="3" y1="9" x2="15" y2="9"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Sim, você pode cancelar sua assinatura quando quiser, sem burocracia e sem multa. Basta acessar sua conta e solicitar o cancelamento antes da data de renovação do seu ciclo. Pedidos já enviados não são cancelados, mas você não será cobrado pelos meses seguintes.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">Os vinhos mudam todo mês ou posso receber os mesmos rótulos?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+              <line x1="3" y1="9" x2="15" y2="9"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Nossa curadoria é renovada a cada mês, então você sempre receberá rótulos diferentes, selecionados de acordo com a safra, sazonalidade e novidades do mercado. Nosso objetivo é que cada caixa seja uma descoberta. Repetições são rarissimas e acontecem apenas quando um rótulo se destaca de forma excepcional.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">Qual é o prazo de entrega e o frete é gratuito?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+              <line x1="3" y1="9" x2="15" y2="9"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Sim, o frete é gratuito em todos os planos para todo o Brasil. As caixas são enviadas entre os dias 5 e 10 de cada mês, com prazo de entrega de 3 a 7 dias úteis dependendo da sua região. Capitais e grandes centros costumam receber em até 3 dias. Você recebe o código de rastreio por e-mail assim que o pedido for despachado.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">Posso indicar minhas preferências de vinho?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+              <line x1="3" y1="9" x2="15" y2="9"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Sim! Após a assinatura, você preenche um breve questionário de preferências — tipo (tinto, branco, rosé, espumante), corpo, acidez e regiões favoritas. Nossa equipe usa essas informações como referência para personalizar sua curadoria dentro das seleções do mês.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">Como funciona a cobrança? É automática?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line class="icon-plus__v" x1="9" y1="3" x2="9" y2="15"/>
+              <line x1="3" y1="9" x2="15" y2="9"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Sim, a cobrança é automática e recorrente, feita todo mês na mesma data em que você assinou. Aceitamos cartão de crédito e PIX. Você recebe um aviso por e-mail 3 dias antes de cada renovação e pode gerenciar tudo pelo painel da sua conta, incluindo atualização do meio de pagamento.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     8. FOOTER FULL — VARIANT 3
+══════════════════════════════════════════════════════ -->
+<footer class="footer-full">
+
+  <!-- Banner CTA -->
+  <div class="footer-full__cta-banner">
+    <div class="footer-full__cta-banner-inner container">
+      <p class="footer-full__cta-heading">
+        Dúvidas? Fale<br>com a gente
+      </p>
+      <a href="mailto:contato@wine4friends.com.br" class="button button--outline button--md">
+        Entrar em contato
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-full__grid container">
+
+    <!-- Brand -->
+    <div class="footer-full__brand">
+      <a href="/" class="footer-full__logo w4f-logo" aria-label="Wine4Friends — Página inicial"
+        style="font-size:1.1rem;color:#fff;">
+        🍷 Wine<span style="color:var(--color-primary-light)">4</span>Friends
+      </a>
+      <p class="footer-full__description">
+        Clube de vinhos com curadoria exclusiva de sommeliers.
+        Rótulos excepcionais de mais de 15 países direto na sua porta, todo mês.
+      </p>
+      <div class="footer-full__brand-social">
+        <a href="#" class="footer-full__social-link" aria-label="Instagram">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>
+        </a>
+        <a href="#" class="footer-full__social-link" aria-label="Facebook">
+          <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-facebook"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 3 colunas -->
+    <div class="footer-full__links">
+      <div class="footer-full__group">
+        <p class="footer-full__group-title">Planos</p>
+        <ul class="footer-full__group-list" role="list">
+          <li><a class="footer-full__group-link" href="#">Essencial — R$89/mês</a></li>
+          <li><a class="footer-full__group-link" href="#">Descoberta — R$149/mês</a></li>
+          <li><a class="footer-full__group-link" href="#">Sommelier — R$249/mês</a></li>
+          <li><a class="footer-full__group-link" href="#">Comparar planos</a></li>
+        </ul>
+      </div>
+      <div class="footer-full__group">
+        <p class="footer-full__group-title">Empresa</p>
+        <ul class="footer-full__group-list" role="list">
+          <li><a class="footer-full__group-link" href="#">Sobre o Wine4Friends</a></li>
+          <li><a class="footer-full__group-link" href="#">Nossa curadoria</a></li>
+          <li><a class="footer-full__group-link" href="#">Blog de vinhos</a></li>
+          <li><a class="footer-full__group-link" href="#">Imprensa</a></li>
+        </ul>
+      </div>
+      <div class="footer-full__group">
+        <p class="footer-full__group-title">Contato</p>
+        <ul class="footer-full__group-list" role="list">
+          <li><a class="footer-full__group-link" href="#">Central de ajuda</a></li>
+          <li><a class="footer-full__group-link" href="#">Fale conosco</a></li>
+          <li><a class="footer-full__group-link" href="#">WhatsApp</a></li>
+          <li><a class="footer-full__group-link" href="#">contato@wine4friends.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="footer-full__divider">
+
+  <div class="footer-full__bottom">
+    <div class="footer-full__bottom-inner container">
+      <p class="footer-full__copyright">© 2026 Wine4Friends — Todos os direitos reservados</p>
+      <ul class="footer-full__bottom-links" role="list">
+        <li><a class="footer-full__bottom-link" href="#">Privacidade</a></li>
+        <li><a class="footer-full__bottom-link" href="#">Termos de uso</a></li>
+        <li><a class="footer-full__bottom-link" href="#">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════════════════ -->
+<script>
+/* ── Header Utility ── */
+(function () {
+  'use strict';
+  var toggle = document.querySelector('[data-js="nav-toggle"]');
+  var panel  = document.querySelector('[data-js="nav-panel"]');
+  if (toggle && panel) {
+    toggle.addEventListener('click', function () {
+      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      panel.classList.toggle('header-utility__mobile-panel--open', !isOpen);
+    });
+  }
+  var triggers = document.querySelectorAll('[data-js="dropdown-trigger"]');
+  function closeAll(except) {
+    triggers.forEach(function (t) {
+      if (t === except) return;
+      t.setAttribute('aria-expanded', 'false');
+      var dp = document.getElementById(t.getAttribute('aria-controls'));
+      if (dp) dp.hidden = true;
+    });
+  }
+  triggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      var dp = document.getElementById(trigger.getAttribute('aria-controls'));
+      closeAll(trigger);
+      if (!isOpen) { trigger.setAttribute('aria-expanded', 'true'); if (dp) dp.hidden = false; }
+      else         { trigger.setAttribute('aria-expanded', 'false'); if (dp) dp.hidden = true; }
+    });
+  });
+  document.addEventListener('click', function () { closeAll(null); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(null); });
+  document.querySelectorAll('[data-js="mobile-accordion"]').forEach(function (mt) {
+    mt.addEventListener('click', function () {
+      var item = mt.closest('.header-utility__mobile-item');
+      if (!item) return;
+      item.classList.toggle('header-utility__mobile-item--open');
+      mt.setAttribute('aria-expanded', String(item.classList.contains('header-utility__mobile-item--open')));
+    });
+  });
+})();
+</script>
+
+<script>
+/* ── Tabs Section ── */
+(function () {
+  'use strict';
+  document.querySelectorAll('[data-js="tabs-section"]').forEach(function (section) {
+    var tabs   = section.querySelectorAll('[data-js="tab"]');
+    var panels = section.querySelectorAll('[data-js="panel"]');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var targetId = tab.getAttribute('data-target');
+        tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+        panels.forEach(function (p) { p.hidden = true; });
+        tab.setAttribute('aria-selected', 'true');
+        var target = section.querySelector('#' + targetId);
+        if (target) target.hidden = false;
+      });
+    });
+    var tabList = section.querySelector('[data-js="tablist"]');
+    if (tabList) {
+      tabList.addEventListener('keydown', function (e) {
+        var idx = Array.from(tabs).indexOf(document.activeElement);
+        if (idx === -1) return;
+        var next = idx;
+        if      (e.key === 'ArrowRight') next = (idx + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft')  next = (idx - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home')       next = 0;
+        else if (e.key === 'End')        next = tabs.length - 1;
+        else return;
+        e.preventDefault();
+        tabs[next].click();
+        tabs[next].focus();
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
