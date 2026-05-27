@@ -11,26 +11,46 @@
   <link rel="stylesheet" href="base/base.css">
   <link rel="stylesheet" href="base/utilities.css">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    /*
-     * ──────────────────────────────────────────────────────────────
-     *  DESIGN SYSTEM NAVIGATOR
-     *  Utilitário interno de visualização de componentes.
-     *  NÃO é um componente do design system — não deve ser usado
-     *  como referência de padrões ou ser copiado para projetos.
-     * ──────────────────────────────────────────────────────────────
-     */
+    /* ── Design System Navigator — dark editorial theme ── */
+
+    :root {
+      --ds-bg:          #070810;
+      --ds-surface:     #0C0F1C;
+      --ds-surface-2:   #111628;
+      --ds-surface-3:   #16192F;
+      --ds-border:      rgba(255,255,255,0.07);
+      --ds-border-md:   rgba(255,255,255,0.11);
+      --ds-border-hover:rgba(255,255,255,0.20);
+      --ds-text:        #D8E1F5;
+      --ds-text-muted:  rgba(170,185,215,0.65);
+      --ds-text-subtle: rgba(110,125,160,0.7);
+      --ds-accent:      #6C73F2;
+      --ds-accent-dim:  rgba(108,115,242,0.18);
+      --fn-display:     'DM Serif Display', Georgia, serif;
+      --fn-ui:          'Outfit', system-ui, sans-serif;
+      --fn-mono:        'JetBrains Mono', 'Fira Code', monospace;
+    }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: #F1F0F7;
+      background-color: var(--ds-bg);
+      font-family: var(--fn-ui);
+      color: var(--ds-text);
       min-height: 100vh;
     }
 
     /* ── Barra de topo ── */
     .nav-header {
-      background-color: #0F0E1A;
+      background: rgba(7,8,16,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--ds-border);
       position: sticky;
       top: 0;
       z-index: 200;
@@ -41,7 +61,7 @@
       align-items: center;
       justify-content: space-between;
       gap: var(--space-xl);
-      padding-block: var(--space-md);
+      padding-block: 10px;
     }
 
     .nav-header__brand {
@@ -52,40 +72,40 @@
     }
 
     .nav-header__mark {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 900;
-      color: white;
-      font-family: var(--font-heading);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      overflow: hidden;
       flex-shrink: 0;
+      opacity: 0.9;
     }
 
     .nav-header__name {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-bold);
+      font-family: var(--fn-display);
+      font-size: 17px;
+      font-weight: 400;
       color: #fff;
-      font-family: var(--font-heading);
+      letter-spacing: 0.01em;
     }
 
     .nav-header__pill {
-      font-size: var(--font-size-xs);
-      background: rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.5);
-      padding: 2px 10px;
-      border-radius: 9999px;
+      font-family: var(--fn-mono);
+      font-size: 10px;
+      background: var(--ds-accent-dim);
+      color: var(--ds-accent);
+      border: 1px solid rgba(108,115,242,0.25);
+      padding: 2px 8px;
+      border-radius: 4px;
       white-space: nowrap;
+      letter-spacing: 0.05em;
     }
 
     .nav-header__meta {
-      font-size: var(--font-size-sm);
-      color: rgba(255,255,255,0.45);
+      font-family: var(--fn-mono);
+      font-size: 11px;
+      color: var(--ds-text-subtle);
       white-space: nowrap;
+      letter-spacing: 0.03em;
     }
 
     @media (max-width: 639px) {
@@ -95,14 +115,10 @@
     /* ══ MEGA NAV ══════════════════════════════════════════════ */
     .mega-nav {
       position: sticky;
-      top: 40px;
+      top: 48px;
       z-index: 150;
-      background: #fff;
-      border-bottom: 1px solid #EAE8F5;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-      /* overflow:hidden contém o scroll horizontal da lista.
-         Não usamos backdrop-filter aqui pois ela cria um containing block
-         para position:fixed, impedindo os panels de ancorar no viewport. */
+      background: rgba(11,13,26,0.97);
+      border-bottom: 1px solid var(--ds-border);
       overflow: hidden;
     }
 
@@ -126,16 +142,16 @@
       position: relative;
     }
 
-    /* Trigger: link + dot + chevron */
     .mega-nav__trigger {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 0 11px;
-      height: 44px;
-      font-size: 12.5px;
+      gap: 6px;
+      padding: 0 12px;
+      height: 42px;
+      font-family: var(--fn-ui);
+      font-size: 12px;
       font-weight: 500;
-      color: #64748B;
+      color: var(--ds-text-muted);
       text-decoration: none;
       border-radius: 6px;
       background: transparent;
@@ -144,54 +160,53 @@
       line-height: 1;
       border: none;
       outline: none;
-      font-family: inherit;
+      letter-spacing: 0.01em;
     }
     .mega-nav__trigger:hover,
     .mega-nav__item--open .mega-nav__trigger {
-      color: #0F172A;
-      background: #F5F4FC;
+      color: var(--ds-text);
+      background: var(--ds-surface-2);
     }
     .mega-nav__trigger:focus-visible {
-      outline: 2px solid #4F46E5;
+      outline: 2px solid var(--ds-accent);
       outline-offset: -2px;
     }
 
     .mega-nav__dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 9999px;
       flex-shrink: 0;
-      transition: transform 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
     .mega-nav__item--open .mega-nav__dot {
-      transform: scale(1.4);
+      transform: scale(1.5);
+      box-shadow: 0 0 6px currentColor;
     }
 
     .mega-nav__chevron {
-      width: 10px;
-      height: 10px;
-      opacity: 0.3;
+      width: 9px;
+      height: 9px;
+      opacity: 0.25;
       flex-shrink: 0;
       transition: transform 0.2s, opacity 0.15s;
     }
-    .mega-nav__trigger:hover .mega-nav__chevron { opacity: 0.55; }
+    .mega-nav__trigger:hover .mega-nav__chevron { opacity: 0.5; }
     .mega-nav__item--open .mega-nav__chevron {
       transform: rotate(180deg);
       opacity: 0.65;
     }
 
-    /* Panel flyout — position:fixed para escapar do overflow-x do scroller */
     .mega-nav__panel {
       position: fixed;
-      /* top / left / right definidos pelo JS em openItem() */
-      min-width: 256px;
-      background: #fff;
-      border: 1px solid #E4E2F4;
+      min-width: 264px;
+      background: var(--ds-surface);
+      border: 1px solid var(--ds-border-md);
       border-radius: 12px;
       box-shadow:
-        0 2px 8px rgba(0,0,0,0.05),
-        0 12px 40px rgba(0,0,0,0.13),
-        0 0 0 1px rgba(79,70,229,0.03);
+        0 4px 16px rgba(0,0,0,0.4),
+        0 20px 60px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.04);
       z-index: 9000;
       overflow: hidden;
       opacity: 0;
@@ -211,36 +226,36 @@
       transform-origin: top right;
     }
 
-    /* Cabeçalho do panel */
     .mega-nav__panel-head {
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 12px 14px;
-      border-bottom: 1px solid #F1F0F9;
-      background: #FAFAF8;
+      border-bottom: 1px solid var(--ds-border);
+      background: var(--ds-surface-2);
     }
     .mega-nav__panel-accent {
       width: 3px;
-      height: 34px;
+      height: 30px;
       border-radius: 9999px;
       flex-shrink: 0;
     }
     .mega-nav__panel-cat {
+      font-family: var(--fn-ui);
       font-size: 12px;
-      font-weight: 700;
-      color: #0F172A;
+      font-weight: 600;
+      color: var(--ds-text);
       display: block;
       line-height: 1.2;
     }
     .mega-nav__panel-desc {
-      font-size: 10.5px;
-      color: #94A3B8;
+      font-family: var(--fn-ui);
+      font-size: 10px;
+      color: var(--ds-text-subtle);
       display: block;
       margin-block-start: 2px;
     }
 
-    /* Corpo do panel: lista de componentes */
     .mega-nav__panel-body { padding: 6px; }
 
     .mega-nav__comp {
@@ -252,25 +267,28 @@
       text-decoration: none;
       transition: background 0.1s;
     }
-    .mega-nav__comp:hover { background: #F5F4FC; }
+    .mega-nav__comp:hover { background: var(--ds-surface-2); }
 
     .mega-nav__comp-stripe {
       width: 3px;
       align-self: stretch;
       border-radius: 9999px;
       flex-shrink: 0;
+      opacity: 0.7;
     }
     .mega-nav__comp-info { flex: 1; min-width: 0; }
     .mega-nav__comp-name {
+      font-family: var(--fn-ui);
       font-size: 12.5px;
-      font-weight: 600;
-      color: #1E293B;
+      font-weight: 500;
+      color: var(--ds-text);
       display: block;
       line-height: 1.2;
     }
     .mega-nav__comp-meta {
-      font-size: 10.5px;
-      color: #94A3B8;
+      font-family: var(--fn-ui);
+      font-size: 10px;
+      color: var(--ds-text-subtle);
       display: block;
       margin-block-start: 2px;
       overflow: hidden;
@@ -278,27 +296,30 @@
       white-space: nowrap;
     }
     .mega-nav__comp-badge {
-      font-size: 9.5px;
-      font-weight: 600;
-      padding: 1px 6px;
-      border-radius: 9999px;
-      background: #F1F0F9;
-      color: #7C6FC4;
+      font-family: var(--fn-mono);
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--ds-surface-3);
+      color: var(--ds-text-subtle);
+      border: 1px solid var(--ds-border);
       flex-shrink: 0;
       white-space: nowrap;
+      letter-spacing: 0.03em;
     }
 
-    /* Rodapé do panel */
     .mega-nav__panel-foot {
       padding: 7px 14px;
-      border-top: 1px solid #F1F0F9;
+      border-top: 1px solid var(--ds-border);
       display: flex;
       justify-content: flex-end;
     }
     .mega-nav__panel-cta {
+      font-family: var(--fn-ui);
       font-size: 11px;
-      font-weight: 600;
-      color: #4F46E5;
+      font-weight: 500;
+      color: var(--ds-accent);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -307,10 +328,91 @@
     }
     .mega-nav__panel-cta:hover { gap: 7px; }
 
-    /* Mobile: oculta panels */
     @media (max-width: 900px) {
       .mega-nav__panel { display: none !important; }
       .mega-nav__chevron { display: none; }
+    }
+
+    /* ── Hero de apresentação ── */
+    .ds-hero {
+      position: relative;
+      padding: 72px 0 64px;
+      overflow: hidden;
+    }
+    .ds-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 30% 40%, rgba(108,115,242,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 75% 60%, rgba(6,182,212,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .ds-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 75%);
+      pointer-events: none;
+    }
+    .ds-hero__inner {
+      position: relative;
+      z-index: 1;
+    }
+    .ds-hero__label {
+      font-family: var(--fn-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ds-accent);
+      margin-block-end: 20px;
+      opacity: 0.85;
+    }
+    .ds-hero__title {
+      font-family: var(--fn-display);
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 400;
+      line-height: 1.08;
+      color: #fff;
+      margin-block-end: 36px;
+      letter-spacing: -0.01em;
+    }
+    .ds-hero__title em {
+      font-style: italic;
+      color: var(--ds-accent);
+      opacity: 0.9;
+    }
+    .ds-hero__stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .ds-hero__stat {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .ds-hero__stat strong {
+      font-family: var(--fn-display);
+      font-size: 32px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+    }
+    .ds-hero__stat span {
+      font-family: var(--fn-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ds-text-subtle);
+    }
+    .ds-hero__divider {
+      width: 1px;
+      background: var(--ds-border-md);
+      align-self: stretch;
+      margin-block: 4px;
     }
 
     /* ── Conteúdo principal ── */
@@ -321,184 +423,204 @@
     /* ── Seção de categoria ── */
     .nav-section {
       margin-block-end: var(--space-3xl);
-      scroll-margin-top: 96px;
+      scroll-margin-top: 100px;
     }
 
     .nav-section__heading {
       display: flex;
       align-items: center;
-      gap: var(--space-md);
-      margin-block-end: var(--space-lg);
+      gap: 14px;
+      margin-block-end: 20px;
     }
 
     .nav-section__dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 9999px;
       flex-shrink: 0;
+      box-shadow: 0 0 8px currentColor;
     }
 
     .nav-section__label {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      letter-spacing: 0.1em;
+      font-family: var(--fn-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--ds-text-subtle);
     }
 
     .nav-section__line {
       flex: 1;
       height: 1px;
-      background-color: var(--color-border);
+      background: linear-gradient(to right, var(--ds-border-md), transparent);
     }
 
     .nav-section__count {
-      font-size: var(--font-size-xs);
-      color: var(--color-text-subtle);
+      font-family: var(--fn-mono);
+      font-size: 10px;
+      color: var(--ds-text-subtle);
+      letter-spacing: 0.04em;
     }
 
     /* ── Grid de cards ── */
     .nav-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: var(--space-md);
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 12px;
     }
 
     /* ── Card de componente ── */
     .nav-card {
-      background-color: var(--color-background);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
+      position: relative;
+      background: var(--ds-surface);
+      border: 1px solid var(--ds-border);
+      border-radius: 10px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       text-decoration: none;
       color: inherit;
-      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease,
+        background 0.2s ease;
       cursor: pointer;
     }
 
     .nav-card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
-      border-color: var(--color-border-strong);
+      background: var(--ds-surface-2);
+      border-color: var(--ds-border-hover);
+      box-shadow:
+        0 0 0 1px var(--ds-border-md),
+        0 8px 32px rgba(0,0,0,0.35),
+        0 2px 8px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
     }
 
-    /* Faixa colorida no topo */
+    /* Stripe vertical esquerda */
     .nav-card__stripe {
-      height: 4px;
-      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      height: 100%;
       flex-shrink: 0;
     }
 
     .nav-card__body {
-      padding: var(--space-lg);
+      padding: 18px 18px 18px 22px;
       display: flex;
       flex-direction: column;
-      gap: var(--space-xs);
+      gap: 6px;
       flex: 1;
     }
 
     .nav-card__name {
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-text-strong);
-      line-height: var(--line-height-snug);
+      font-family: var(--fn-ui);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ds-text);
+      line-height: 1.3;
     }
 
     .nav-card__desc {
-      font-size: var(--font-size-sm);
-      color: var(--color-text-muted);
-      line-height: var(--line-height-relaxed);
+      font-family: var(--fn-ui);
+      font-size: 12px;
+      color: var(--ds-text-subtle);
+      line-height: 1.6;
       flex: 1;
-      margin-block-start: var(--space-xs);
+      margin-block-start: 2px;
     }
 
     .nav-card__footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-block-start: var(--space-md);
-      padding-block-start: var(--space-md);
-      border-top: 1px solid var(--color-border);
+      margin-block-start: 14px;
+      padding-block-start: 12px;
+      border-top: 1px solid var(--ds-border);
     }
 
     .nav-card__badge {
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
+      font-family: var(--fn-mono);
+      font-size: 10px;
+      font-weight: 400;
       padding: 2px 8px;
-      border-radius: 9999px;
-      background-color: var(--color-background-alt);
-      color: var(--color-text-muted);
-      letter-spacing: 0.02em;
+      border-radius: 4px;
+      background: var(--ds-surface-3);
+      color: var(--ds-text-subtle);
+      border: 1px solid var(--ds-border);
+      letter-spacing: 0.04em;
     }
 
     .nav-card__cta {
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-semibold);
-      color: var(--color-primary);
+      font-family: var(--fn-ui);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ds-text-muted);
       display: flex;
       align-items: center;
       gap: 4px;
+      transition: color 0.15s;
+    }
+    .nav-card:hover .nav-card__cta {
+      color: var(--ds-accent);
     }
 
-    /* Destaque especial para o card de DEMO */
+    /* Cards de DEMO */
     .nav-card--demo {
-      background: linear-gradient(145deg, #EEF2FF 0%, var(--color-background) 60%);
-      border-color: #C7D2FE;
+      border-color: var(--ds-border-md);
     }
     .nav-card--demo:hover {
-      border-color: #818CF8;
-      box-shadow: 0 8px 24px rgba(79,70,229,0.15);
-    }
-    .nav-card--demo .nav-card__name {
-      color: #4F46E5;
-    }
-    .nav-card--demo .nav-card__badge {
-      background-color: #EEF2FF;
-      color: #4F46E5;
+      border-color: rgba(108,115,242,0.35);
+      box-shadow:
+        0 0 0 1px rgba(108,115,242,0.15),
+        0 8px 32px rgba(0,0,0,0.4);
     }
 
-    /* ── Cores das faixas por categoria ── */
-    .s-atoms       { background-color: #7C3AED; }
-    .s-headers     { background-color: #0052CC; }
-    .s-heroes      { background-color: #4F46E5; }
-    .s-features    { background-color: #0891B2; }
-    .s-tabs        { background-color: #EA580C; }
-    .s-faq         { background-color: #D97706; }
-    .s-ctas        { background-color: #E11D48; }
-    .s-services    { background-color: #059669; }
-    .s-social      { background-color: #DB2777; }
-    .s-galleries   { background-color: #7C3AED; }
-    .s-stats       { background-color: #475569; }
-    .s-integrations{ background-color: #6D28D9; }
-    .s-blog        { background-color: #B45309; }
-    .s-footers     { background-color: #1E293B; }
-    .s-demo        { background: linear-gradient(90deg, #4F46E5, #06B6D4); }
+    /* ── Cores das stripes por categoria ── */
+    .s-atoms       { background: #7C3AED; }
+    .s-headers     { background: #3B82F6; }
+    .s-heroes      { background: #6C73F2; }
+    .s-features    { background: #0891B2; }
+    .s-tabs        { background: #EA580C; }
+    .s-faq         { background: #D97706; }
+    .s-ctas        { background: #E11D48; }
+    .s-services    { background: #059669; }
+    .s-social      { background: #DB2777; }
+    .s-galleries   { background: #8B5CF6; }
+    .s-stats       { background: #64748B; }
+    .s-integrations{ background: #6D28D9; }
+    .s-blog        { background: #B45309; }
+    .s-footers     { background: #475569; }
+    .s-demo        { background: linear-gradient(180deg, #6C73F2, #06B6D4); }
 
-    /* Cores dos dots de seção */
-    .d-atoms       { background-color: #7C3AED; }
-    .d-headers     { background-color: #0052CC; }
-    .d-heroes      { background-color: #4F46E5; }
-    .d-features    { background-color: #0891B2; }
-    .d-tabs        { background-color: #EA580C; }
-    .d-faq         { background-color: #D97706; }
-    .d-ctas        { background-color: #E11D48; }
-    .d-services    { background-color: #059669; }
-    .d-social      { background-color: #DB2777; }
-    .d-galleries   { background-color: #7C3AED; }
-    .d-stats       { background-color: #475569; }
-    .d-integrations{ background-color: #6D28D9; }
-    .d-blog        { background-color: #B45309; }
-    .d-footers     { background-color: #1E293B; }
-    .d-demo        { background: linear-gradient(90deg, #4F46E5, #06B6D4); }
+    /* ── Dots de seção (mesmas cores) ── */
+    .d-atoms       { background: #7C3AED; }
+    .d-headers     { background: #3B82F6; }
+    .d-heroes      { background: #6C73F2; }
+    .d-features    { background: #0891B2; }
+    .d-tabs        { background: #EA580C; }
+    .d-faq         { background: #D97706; }
+    .d-ctas        { background: #E11D48; }
+    .d-services    { background: #059669; }
+    .d-social      { background: #DB2777; }
+    .d-galleries   { background: #8B5CF6; }
+    .d-stats       { background: #64748B; }
+    .d-integrations{ background: #6D28D9; }
+    .d-blog        { background: #B45309; }
+    .d-footers     { background: #475569; }
+    .d-demo        { background: linear-gradient(135deg, #6C73F2, #06B6D4); }
 
     /* ── SVG icon ── */
     .icon-ext {
       display: inline-block;
-      width: 11px;
-      height: 11px;
-      opacity: 0.7;
+      width: 10px;
+      height: 10px;
+      opacity: 0.5;
     }
 
     /* ════════════════════════════════════════
@@ -511,13 +633,13 @@
       position: fixed;
       z-index: 9999;
       width: 480px;
-      border-radius: 14px;
-      background: var(--color-background);
-      border: 1px solid #D4D0F0;
+      border-radius: 12px;
+      background: var(--ds-surface);
+      border: 1px solid var(--ds-border-md);
       box-shadow:
-        0 2px 8px rgba(0,0,0,0.06),
-        0 16px 48px rgba(0,0,0,0.16),
-        0 0 0 1px rgba(79,70,229,0.06);
+        0 4px 16px rgba(0,0,0,0.5),
+        0 20px 60px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(108,115,242,0.08);
       overflow: hidden;
       opacity: 0;
       visibility: hidden;
@@ -535,22 +657,22 @@
       transform: translateY(0) scale(1);
     }
 
-    /* Barra de cabeçalho do preview */
     .dsp__header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
       padding: 9px 14px;
-      background: #F5F4FF;
-      border-bottom: 1px solid #E0DCFF;
+      background: var(--ds-surface-2);
+      border-bottom: 1px solid var(--ds-border);
       flex-shrink: 0;
     }
 
     .dsp__name {
+      font-family: var(--fn-ui);
       font-size: 12px;
-      font-weight: 700;
-      color: #2D1DB4;
+      font-weight: 500;
+      color: var(--ds-text);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -560,16 +682,16 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 11px;
-      color: #8B85C1;
+      font-family: var(--fn-mono);
+      font-size: 10px;
+      color: var(--ds-text-subtle);
       white-space: nowrap;
       flex-shrink: 0;
     }
 
-    /* Dot pulsante de "ao vivo" */
     .dsp__live {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 9999px;
       background: #10B981;
       flex-shrink: 0;
@@ -581,16 +703,14 @@
       50%       { opacity: 0.3; }
     }
 
-    /* Área do iframe */
     .dsp__viewport {
       position: relative;
       width: 480px;
-      height: 300px; /* 900px × (1/3) */
+      height: 300px;
       overflow: hidden;
-      background: #fff;
+      background: #0a0a12;
     }
 
-    /* iframe renderizado em 1440×900 e reduzido a 1/3 */
     .dsp__frame {
       width: 1440px;
       height: 900px;
@@ -607,7 +727,6 @@
       opacity: 1;
     }
 
-    /* Skeleton enquanto carrega */
     .dsp__skeleton {
       position: absolute;
       inset: 0;
@@ -616,7 +735,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: #FAFAFF;
+      background: var(--ds-surface);
       transition: opacity 0.2s ease;
       pointer-events: none;
     }
@@ -626,10 +745,10 @@
     }
 
     .dsp__spinner {
-      width: 22px;
-      height: 22px;
-      border: 2.5px solid #E0DCFF;
-      border-top-color: #4F46E5;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--ds-border-md);
+      border-top-color: var(--ds-accent);
       border-radius: 9999px;
       animation: dsp-spin 0.75s linear infinite;
     }
@@ -639,15 +758,15 @@
     }
 
     .dsp__skeleton-text {
-      font-size: 11px;
-      color: #9CA3AF;
-      font-family: var(--font-heading);
+      font-family: var(--fn-mono);
+      font-size: 10px;
+      color: var(--ds-text-subtle);
+      letter-spacing: 0.06em;
     }
 
-    /* Barra de progresso de loading na base */
     .dsp__progress {
       height: 2px;
-      background: linear-gradient(90deg, #4F46E5 0%, #06B6D4 100%);
+      background: linear-gradient(90deg, var(--ds-accent) 0%, #06B6D4 100%);
       width: 0%;
       transition: width 1.2s ease;
       flex-shrink: 0;
@@ -663,7 +782,6 @@
       transition: width 0.3s ease, opacity 0.3s ease 0.3s;
     }
 
-    /* Desabilita em telas pequenas */
     @media (max-width: 900px) {
       #ds-preview { display: none !important; }
     }
@@ -710,18 +828,18 @@
       <!-- TEMPLATES -->
       <li class="mega-nav__item" data-panel="mega-templates">
         <a class="mega-nav__trigger" href="#templates">
-          <span class="mega-nav__dot" style="background:#0F0E1A"></span>
+          <span class="mega-nav__dot" style="background:#94A3B8"></span>
           Templates
           <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
         </a>
         <div class="mega-nav__panel" id="mega-templates" role="region">
           <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#0F0E1A"></span>
+            <span class="mega-nav__panel-accent" style="background:#94A3B8"></span>
             <span><span class="mega-nav__panel-cat">Templates</span><span class="mega-nav__panel-desc">Páginas completas prontas para personalizar</span></span>
           </div>
           <div class="mega-nav__panel-body">
             <a href="templates/saas-template/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:var(--color-primary)"></span>
+              <span class="mega-nav__comp-stripe" style="background:#6C73F2"></span>
               <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Template SaaS</span><span class="mega-nav__comp-meta">8 seções · header-utility · tabs · FAQ split</span></span>
             </a>
             <a href="templates/404/index.html" class="mega-nav__comp">
@@ -1216,13 +1334,38 @@
      CONTEÚDO
 ════════════════════════════════════════ -->
 <main class="nav-main" id="nav-content">
+
+  <!-- ── Hero ── -->
+  <div class="ds-hero">
+    <div class="ds-hero__inner container">
+      <p class="ds-hero__label">Tegrus · Design System v1.0</p>
+      <h1 class="ds-hero__title">Biblioteca de<br><em>Componentes</em></h1>
+      <div class="ds-hero__stats">
+        <div class="ds-hero__stat">
+          <strong>27</strong>
+          <span>Componentes</span>
+        </div>
+        <div class="ds-hero__divider"></div>
+        <div class="ds-hero__stat">
+          <strong>2</strong>
+          <span>Templates</span>
+        </div>
+        <div class="ds-hero__divider"></div>
+        <div class="ds-hero__stat">
+          <strong>7</strong>
+          <span>Demos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
 
 
     <!-- ─── TEMPLATES ─── -->
     <section class="nav-section" id="templates" aria-labelledby="cat-templates">
       <div class="nav-section__heading">
-        <span class="nav-section__dot" style="background:#0F0E1A" aria-hidden="true"></span>
+        <span class="nav-section__dot" style="background:#94A3B8" aria-hidden="true"></span>
         <h2 class="nav-section__label" id="cat-templates">Templates — Páginas completas</h2>
         <div class="nav-section__line"></div>
         <span class="nav-section__count">2 templates</span>
@@ -1230,7 +1373,7 @@
       <div class="nav-grid">
 
         <a href="templates/404/index.html" class="nav-card">
-          <div class="nav-card__stripe" style="background:#0F0E1A"></div>
+          <div class="nav-card__stripe" style="background:#94A3B8"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Página 404</h3>
             <p class="nav-card__desc">V1 tipográfico: "404" gigante + barra de cor · V2 --centered: 404 coral + badges flutuantes + CTA pill (Breeze UI)</p>
@@ -1242,7 +1385,7 @@
         </a>
 
         <a href="templates/saas-template/index.html" class="nav-card">
-          <div class="nav-card__stripe" style="background:var(--color-primary)"></div>
+          <div class="nav-card__stripe" style="background:#6C73F2"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Template SaaS</h3>
             <p class="nav-card__desc">Header utility + hero centered + feature cards 3-col + tabs split + CTA overlay + testimonials grid + FAQ split + footer full com banner</p>
@@ -1818,10 +1961,10 @@
         <a href="demos/brsamor/index.html" class="nav-card nav-card--demo nav-card--brsamor">
           <div class="nav-card__stripe" style="background:linear-gradient(90deg,#1F425D,#F15922)"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name" style="color:#1F425D">BR Samor — Logística e Transporte</h3>
+            <h3 class="nav-card__name">BR Samor — Logística e Transporte</h3>
             <p class="nav-card__desc">Landing page com identidade real: header dark navy, hero split, 6 serviços de transporte, segmentos (feature split reverse), stats, CTA, FAQ e footer · Fonte Roboto</p>
             <div class="nav-card__footer">
-              <span class="nav-card__badge" style="background:#FEF0EA;color:#F15922">Demo real</span>
+              <span class="nav-card__badge">Demo real</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
             </div>
           </div>
@@ -1830,10 +1973,10 @@
         <a href="demos/fluxo/index.html" class="nav-card nav-card--demo">
           <div class="nav-card__stripe" style="background:linear-gradient(90deg,#0369A1,#0EA5E9)"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name" style="color:#0369A1">Fluxo — SaaS Financeiro</h3>
+            <h3 class="nav-card__name">Fluxo — SaaS Financeiro</h3>
             <p class="nav-card__desc">Landing page fintech para freelancers: header floating, hero split, stats bar, feature split + icon-list, services pastel + icon-box, testimonials, FAQ, pricing grid, CTA overlay, footer</p>
             <div class="nav-card__footer">
-              <span class="nav-card__badge" style="background:#EFF6FF;color:#0369A1">Demo fictícia</span>
+              <span class="nav-card__badge">Demo fictícia</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
             </div>
           </div>
@@ -1842,10 +1985,10 @@
         <a href="demos/kova/index.html" class="nav-card nav-card--demo">
           <div class="nav-card__stripe" style="background:linear-gradient(90deg,#059669,#34D399)"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name" style="color:#059669">Tappa — Maquininhas de Cartão</h3>
+            <h3 class="nav-card__name">Tappa — Maquininhas de Cartão</h3>
             <p class="nav-card__desc">Landing page fintech/payments: header floating, hero split checklist, stats highlighted, feature split ×2, services icon-box, pricing grid, testimonials grid, FAQ enclosed, CTA overlay, footer</p>
             <div class="nav-card__footer">
-              <span class="nav-card__badge" style="background:#F0FDF4;color:#059669">Demo fictícia</span>
+              <span class="nav-card__badge">Demo fictícia</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
             </div>
           </div>
@@ -1854,10 +1997,10 @@
         <a href="demos/wine4friends/index.html" class="nav-card nav-card--demo">
           <div class="nav-card__stripe" style="background:linear-gradient(90deg,#B02040,#C98046)"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name" style="color:#B02040">Wine4Friends — Clube de Vinhos</h3>
+            <h3 class="nav-card__name">Wine4Friends — Clube de Vinhos</h3>
             <p class="nav-card__desc">Landing page de assinatura: megamenu, hero background, feature icon-list (como funciona), pricing compare, feature checklist (benefícios), testimonials fullquote, FAQ cards, CTA overlay, footer full</p>
             <div class="nav-card__footer">
-              <span class="nav-card__badge" style="background:#FDF6F0;color:#B02040">Demo fictícia</span>
+              <span class="nav-card__badge">Demo fictícia</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
             </div>
           </div>
@@ -1866,10 +2009,10 @@
         <a href="demos/wine4friends-2/index.html" class="nav-card nav-card--demo">
           <div class="nav-card__stripe" style="background:linear-gradient(90deg,#8B1A35,#C98046)"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name" style="color:#8B1A35">Wine4Friends v2 — Template SaaS</h3>
+            <h3 class="nav-card__name">Wine4Friends v2 — Template SaaS</h3>
             <p class="nav-card__desc">Clube de vinhos no template SaaS: header-utility, hero-centered, feature-cards 3 diferenciais, tabs-section 3 planos (Essencial/Descoberta/Sommelier), CTA overlay 10% OFF, testimonials grid, FAQ split, footer full com banner</p>
             <div class="nav-card__footer">
-              <span class="nav-card__badge" style="background:#FDF7F4;color:#8B1A35">Demo fictícia</span>
+              <span class="nav-card__badge">Demo fictícia</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
             </div>
           </div>
@@ -1878,10 +2021,10 @@
         <a href="demos/prime/index.html" class="nav-card nav-card--demo">
           <div class="nav-card__stripe" style="background:linear-gradient(90deg,#1D1D1D,#8E7A41)"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name" style="color:#1D1D1D">Prime — Motorista Privado por Assinatura</h3>
+            <h3 class="nav-card__name">Prime — Motorista Privado por Assinatura</h3>
             <p class="nav-card__desc">Serviço premium de motorista executivo: header-utility topbar escura, hero-centered, feature-cards 3 diferenciais, tabs-section 3 planos com badge "Mais Popular", CTA 30 dias grátis, testimonials grid, FAQ split, footer full</p>
             <div class="nav-card__footer">
-              <span class="nav-card__badge" style="background:#F4F4F4;color:#1D1D1D">Demo fictícia</span>
+              <span class="nav-card__badge">Demo fictícia</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
             </div>
           </div>
