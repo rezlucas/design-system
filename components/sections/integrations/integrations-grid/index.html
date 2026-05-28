@@ -31,7 +31,7 @@
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     Todos os componentes
   </a>
-  <span id="ds-nav-label">Integrations Grid</span>
+  <span id="ds-nav-label">Integrations</span>
 </div>
 <style>
   #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
@@ -204,6 +204,80 @@
 
     </div>
   </section>
+
+
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Orbit Navy
+       Fundo navy escuro · anéis circulares concêntricos · fileira de ícones coloridos
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 2 — Orbit Navy</p>
+
+  <div class="ze-orbit">
+    <section class="integrations-section">
+      <div class="rings" aria-hidden="true"></div>
+      <div class="container integrations-inner">
+        <div class="section-heading centered">
+          <span class="section-badge dark-badge">Connections</span>
+          <h2>Integrations</h2>
+        </div>
+        <div class="integration-orbit" aria-hidden="true">
+          <span class="integration-icon tiny blue"></span>
+          <span class="integration-icon small orange"></span>
+          <span class="integration-icon medium yellow"></span>
+          <span class="integration-icon large indigo"></span>
+          <span class="integration-icon core">Z</span>
+          <span class="integration-icon large sky"></span>
+          <span class="integration-icon medium teal"></span>
+          <span class="integration-icon small mixed"></span>
+          <span class="integration-icon tiny coral"></span>
+        </div>
+        <a class="pill-button-orbit" href="#">
+          Explore Integrations
+          <span class="arrow-orbit" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+  </div>
+  <style>
+    .ze-orbit { --navy: #031621; --navy-2: #052233; }
+    .ze-orbit .integrations-section { position: relative; min-height: 548px; background: var(--navy); overflow: hidden; }
+    .ze-orbit .rings { position: absolute; left: 50%; top: -108px; width: 753px; height: 753px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; transform: translateX(-50%); }
+    .ze-orbit .rings::before, .ze-orbit .rings::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.16); }
+    .ze-orbit .rings::before { width: 483px; height: 483px; left: 134px; top: 135px; }
+    .ze-orbit .rings::after  { width: 289px; height: 289px; left: 231px; top: 232px; border-color: rgba(255,255,255,0.2); }
+    .ze-orbit .integrations-inner { position: relative; z-index: 1; min-height: 548px; padding: 80px 0; text-align: center; }
+    .ze-orbit .section-heading { margin-bottom: 32px; }
+    .ze-orbit .section-heading.centered { text-align: center; }
+    .ze-orbit .section-heading h2 { margin: 4px 0 0; font-size: 34px; line-height: 51px; font-weight: 700; color: #fff; }
+    .ze-orbit .section-badge { display: inline-flex; align-items: center; min-height: 27px; padding: 3px 13px; border-radius: 999px; font-size: 14px; }
+    .ze-orbit .dark-badge { color: #fff; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); }
+    .ze-orbit .integration-orbit { height: 160px; margin: 34px auto 70px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+    .ze-orbit .integration-icon { display: inline-grid; place-items: center; border-radius: 50%; background: #fff; color: #fff; font-weight: 800; }
+    .ze-orbit .integration-icon.tiny   { width: 57px;  height: 57px; }
+    .ze-orbit .integration-icon.small  { width: 80px;  height: 80px; }
+    .ze-orbit .integration-icon.medium { width: 100px; height: 100px; }
+    .ze-orbit .integration-icon.large  { width: 120px; height: 120px; }
+    .ze-orbit .integration-icon.core   { width: 140px; height: 140px; background: var(--navy-2); border: 1px solid rgba(255,255,255,0.08); font-size: 42px; color: #fff; }
+    .ze-orbit .integration-icon.blue   { background: linear-gradient(135deg, #a4bcfd, #3538cd); }
+    .ze-orbit .integration-icon.orange { background: #ff4405; }
+    .ze-orbit .integration-icon.yellow { background: linear-gradient(135deg, #fcb400 0 55%, #18bfff 55%); }
+    .ze-orbit .integration-icon.indigo { background: radial-gradient(circle at 35% 35%, #a4bcfd 0 10%, #6172f3 11% 28%, #3538cd 29%); }
+    .ze-orbit .integration-icon.sky    { background: linear-gradient(135deg, #f38744 0 35%, #53b1fd 35% 70%, #2e90fa 70%); }
+    .ze-orbit .integration-icon.teal   { background: #2a9d8f; }
+    .ze-orbit .integration-icon.mixed  { background: linear-gradient(135deg, #efd515 0 50%, #2e90fa 50%); }
+    .ze-orbit .integration-icon.coral  { background: #f07167; }
+    .ze-orbit .pill-button-orbit { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 16px 25px; border-radius: 999px; font-size: 14px; font-weight: 600; border: 1px solid #fff; color: #fff; background: transparent; text-decoration: none; transition: transform 180ms ease; white-space: nowrap; cursor: pointer; }
+    .ze-orbit .pill-button-orbit:hover { transform: translateY(-1px); }
+    .ze-orbit .arrow-orbit { position: relative; display: inline-block; width: 24px; height: 24px; }
+    .ze-orbit .arrow-orbit::before { content: ""; position: absolute; left: 3px; top: 50%; width: 18px; height: 2px; background: #fff; transform: translateY(-50%); }
+    .ze-orbit .arrow-orbit::after  { content: ""; position: absolute; right: 3px; top: 50%; width: 8px; height: 8px; border-top: 2px solid #fff; border-right: 2px solid #fff; background: transparent; transform: translateY(-50%) rotate(45deg); }
+    @media (max-width: 1180px) { .ze-orbit .integration-orbit { gap: 8px; } .ze-orbit .integration-icon.tiny { width: 48px; height: 48px; } .ze-orbit .integration-icon.small { width: 64px; height: 64px; } .ze-orbit .integration-icon.medium { width: 82px; height: 82px; } .ze-orbit .integration-icon.large { width: 100px; height: 100px; } .ze-orbit .integration-icon.core { width: 118px; height: 118px; } }
+    @media (max-width: 980px) { .ze-orbit .integration-orbit { flex-wrap: wrap; height: auto; max-width: 620px; margin-bottom: 42px; } }
+    @media (max-width: 640px) { .ze-orbit .integrations-inner { padding: 70px 0; } .ze-orbit .section-heading h2 { font-size: 30px; line-height: 40px; } }
+  </style>
 
 </body>
 </html>

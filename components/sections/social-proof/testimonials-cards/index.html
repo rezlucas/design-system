@@ -596,6 +596,89 @@
   <script src="script.js"></script>
 
 
+  <div class="demo-divider">— — —</div>
+
+
+  <!-- ═══════════════════════════════════
+       VARIANT 7 — Dark Navy Grid
+       3 cards de depoimento em grid · fundo navy · controles prev/next circulares · tema Zenify
+  ════════════════════════════════════ -->
+  <p class="demo-label">Variant 7 — Dark Navy Grid</p>
+
+  <div class="ze-tdark">
+    <section class="t-dark-section">
+      <div class="container">
+        <div class="t-dark-heading">
+          <span class="t-dark-badge">Testimonials</span>
+          <h2>Customer Reviews</h2>
+        </div>
+        <div class="t-dark-wrap">
+          <button class="t-round-ctrl t-prev" aria-label="Previous review"><span></span></button>
+          <div class="t-dark-grid">
+            <article class="t-dark-card">
+              <div class="t-dark-person">
+                <span class="t-avatar ta1"></span>
+                <div>
+                  <h3>Carlos Mendonça</h3>
+                  <p>Diretor Comercial, Logistika</p>
+                </div>
+              </div>
+              <p>Depois de 6 meses usando a Nexio, nossa taxa de conversão aumentou 34%. O pipeline kanban mudou completamente a forma como gerenciamos nosso funil de vendas.</p>
+            </article>
+            <article class="t-dark-card">
+              <div class="t-dark-person">
+                <span class="t-avatar ta2"></span>
+                <div>
+                  <h3>Fernanda Aguiar</h3>
+                  <p>Head de Vendas, Inova Tech</p>
+                </div>
+              </div>
+              <p>Finalmente encontramos uma ferramenta que o time realmente usa. A adoção foi rápida e os resultados apareceram em menos de 30 dias após a implantação.</p>
+            </article>
+            <article class="t-dark-card">
+              <div class="t-dark-person">
+                <span class="t-avatar ta3"></span>
+                <div>
+                  <h3>Rodrigo Santana</h3>
+                  <p>CEO, ConsultGroup</p>
+                </div>
+              </div>
+              <p>A automação de e-mails eliminou pelo menos 3 horas de trabalho manual por dia do nosso time. Agora focamos 100% em conversas que realmente fecham negócios.</p>
+            </article>
+          </div>
+          <button class="t-round-ctrl t-next" aria-label="Next review"><span></span></button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <style>
+    .ze-tdark { --navy: #031621; }
+    .ze-tdark .t-dark-section { background: var(--navy); padding: 102px 0 112px; }
+    .ze-tdark .t-dark-heading { margin-bottom: 32px; text-align: center; }
+    .ze-tdark .t-dark-badge { display: inline-flex; align-items: center; min-height: 27px; padding: 3px 13px; border-radius: 999px; font-size: 14px; color: #fff; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); }
+    .ze-tdark .t-dark-heading h2 { margin: 4px 0 0; font-size: 34px; line-height: 51px; font-weight: 700; color: #fff; }
+    .ze-tdark .t-dark-wrap { position: relative; margin-top: 30px; }
+    .ze-tdark .t-dark-grid { width: min(1120px, calc(100% - 160px)); margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+    .ze-tdark .t-dark-card { min-height: 381px; padding: 24px 20px; color: #fff; background: rgba(255,255,255,0.1); border-radius: 4px; }
+    .ze-tdark .t-dark-person { display: flex; align-items: center; gap: 17px; margin-bottom: 40px; }
+    .ze-tdark .t-avatar { width: 48px; height: 48px; flex: 0 0 auto; border-radius: 50%; background-color: #d9d9d9; background-position: center; background-size: cover; }
+    .ze-tdark .ta1 { background-image: url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80"); }
+    .ze-tdark .ta2 { background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80"); }
+    .ze-tdark .ta3 { background-image: url("https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=160&q=80"); }
+    .ze-tdark .t-dark-person h3 { margin: 0; font-size: 16px; line-height: 27px; font-weight: 600; color: #fff; }
+    .ze-tdark .t-dark-person p  { margin: 0; font-size: 14px; line-height: 21px; color: rgba(255,255,255,0.65); }
+    .ze-tdark .t-dark-card > p  { margin: 0; font-size: 18px; line-height: 30px; color: #fff; }
+    .ze-tdark .t-round-ctrl { position: absolute; top: 155px; width: 72px; height: 72px; border-radius: 50%; background: #fff; border: 0; cursor: pointer; }
+    .ze-tdark .t-prev { left: 44px; }
+    .ze-tdark .t-next { right: 44px; }
+    .ze-tdark .t-round-ctrl span { position: absolute; top: 28px; width: 15px; height: 15px; border-top: 2.25px solid #000; border-left: 2.25px solid #000; }
+    .ze-tdark .t-prev span { left: 29px; transform: rotate(-45deg); }
+    .ze-tdark .t-next span { right: 29px; transform: rotate(135deg); }
+    @media (max-width: 980px) { .ze-tdark .t-dark-grid { width: min(100%, 520px); grid-template-columns: 1fr; } .ze-tdark .t-round-ctrl { display: none; } }
+    @media (max-width: 640px) { .ze-tdark .t-dark-section { padding: 80px 0; } .ze-tdark .t-dark-heading h2 { font-size: 30px; line-height: 40px; } .ze-tdark .t-dark-card > p { font-size: 17px; line-height: 28px; } }
+  </style>
+
+
   <!-- ═══════════════════════════════════════════
        VARIANT --social (Beam UI)
        Awards + cards estilo social com @handle,
