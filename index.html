@@ -581,38 +581,8 @@
         0 8px 32px rgba(0,0,0,0.4);
     }
 
-    /* ── Cores das stripes por categoria ── */
-    .s-atoms       { background: #7C3AED; }
-    .s-headers     { background: #3B82F6; }
-    .s-heroes      { background: #6C73F2; }
-    .s-features    { background: #0891B2; }
-    .s-tabs        { background: #EA580C; }
-    .s-faq         { background: #D97706; }
-    .s-ctas        { background: #E11D48; }
-    .s-services    { background: #059669; }
-    .s-social      { background: #DB2777; }
-    .s-galleries   { background: #8B5CF6; }
-    .s-stats       { background: #64748B; }
-    .s-integrations{ background: #6D28D9; }
-    .s-blog        { background: #B45309; }
-    .s-footers     { background: #475569; }
+    /* ── Cores das stripes por grupo ── */
     .s-demo        { background: linear-gradient(180deg, #6C73F2, #06B6D4); }
-
-    /* ── Dots de seção (mesmas cores) ── */
-    .d-atoms       { background: #7C3AED; }
-    .d-headers     { background: #3B82F6; }
-    .d-heroes      { background: #6C73F2; }
-    .d-features    { background: #0891B2; }
-    .d-tabs        { background: #EA580C; }
-    .d-faq         { background: #D97706; }
-    .d-ctas        { background: #E11D48; }
-    .d-services    { background: #059669; }
-    .d-social      { background: #DB2777; }
-    .d-galleries   { background: #8B5CF6; }
-    .d-stats       { background: #64748B; }
-    .d-integrations{ background: #6D28D9; }
-    .d-blog        { background: #B45309; }
-    .d-footers     { background: #475569; }
     .d-demo        { background: linear-gradient(135deg, #6C73F2, #06B6D4); }
 
     /* ── SVG icon ── */
@@ -825,67 +795,17 @@
   <div class="mega-nav__scroller">
     <ul class="mega-nav__list" role="list">
 
-      <!-- TEMPLATES -->
-      <li class="mega-nav__item" data-panel="mega-templates">
-        <a class="mega-nav__trigger" href="#templates">
-          <span class="mega-nav__dot" style="background:#94A3B8"></span>
-          Templates
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-templates" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#94A3B8"></span>
-            <span><span class="mega-nav__panel-cat">Templates</span><span class="mega-nav__panel-desc">Páginas completas prontas para personalizar</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="templates/saas-template/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#6C73F2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Template SaaS</span><span class="mega-nav__comp-meta">8 seções · header-utility · tabs · FAQ split</span></span>
-            </a>
-            <a href="templates/404/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0F0E1A"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Página 404</span><span class="mega-nav__comp-meta">Tipográfico gigante · centered coral flutuante</span></span>
-              <span class="mega-nav__comp-badge">2 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#templates" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- ATOMS -->
-      <li class="mega-nav__item" data-panel="mega-atoms">
-        <a class="mega-nav__trigger" href="#atoms">
-          <span class="mega-nav__dot" style="background:#7C3AED"></span>
-          Atoms
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-atoms" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#7C3AED"></span>
-            <span><span class="mega-nav__panel-cat">Atoms</span><span class="mega-nav__panel-desc">Elementos base reutilizáveis</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/atoms/buttons/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#7C3AED"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Buttons</span><span class="mega-nav__comp-meta">filled · outline · link · pill · glass · icon-circle</span></span>
-              <span class="mega-nav__comp-badge">6 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#atoms" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- HEADERS -->
-      <li class="mega-nav__item" data-panel="mega-headers">
-        <a class="mega-nav__trigger" href="#headers">
+      <!-- NAVEGAÇÃO -->
+      <li class="mega-nav__item" data-panel="mega-nav">
+        <a class="mega-nav__trigger" href="#navegacao">
           <span class="mega-nav__dot" style="background:#0052CC"></span>
-          Headers
+          Navegação
           <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
         </a>
-        <div class="mega-nav__panel" id="mega-headers" role="region">
+        <div class="mega-nav__panel" id="mega-nav" role="region">
           <div class="mega-nav__panel-head">
             <span class="mega-nav__panel-accent" style="background:#0052CC"></span>
-            <span><span class="mega-nav__panel-cat">Headers</span><span class="mega-nav__panel-desc">Navegação principal e utilitária</span></span>
+            <span><span class="mega-nav__panel-cat">Navegação</span><span class="mega-nav__panel-desc">Barras de menu e navegação principal</span></span>
           </div>
           <div class="mega-nav__panel-body">
             <a href="components/sections/headers/header-simple/index.html" class="mega-nav__comp">
@@ -904,203 +824,112 @@
               <span class="mega-nav__comp-badge">1 var.</span>
             </a>
           </div>
-          <div class="mega-nav__panel-foot"><a href="#headers" class="mega-nav__panel-cta">Ver categoria →</a></div>
+          <div class="mega-nav__panel-foot"><a href="#navegacao" class="mega-nav__panel-cta">Ver categoria →</a></div>
         </div>
       </li>
 
-      <!-- HEROES -->
-      <li class="mega-nav__item" data-panel="mega-heroes">
-        <a class="mega-nav__trigger" href="#heroes">
+      <!-- ABERTURA DE PÁGINA -->
+      <li class="mega-nav__item" data-panel="mega-abertura">
+        <a class="mega-nav__trigger" href="#abertura">
           <span class="mega-nav__dot" style="background:#4F46E5"></span>
-          Heroes
+          Abertura de Página
           <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
         </a>
-        <div class="mega-nav__panel" id="mega-heroes" role="region">
+        <div class="mega-nav__panel" id="mega-abertura" role="region">
           <div class="mega-nav__panel-head">
             <span class="mega-nav__panel-accent" style="background:#4F46E5"></span>
-            <span><span class="mega-nav__panel-cat">Heroes</span><span class="mega-nav__panel-desc">Seções de abertura de página</span></span>
+            <span><span class="mega-nav__panel-cat">Abertura de Página</span><span class="mega-nav__panel-desc">A primeira grande seção que o usuário vê</span></span>
           </div>
           <div class="mega-nav__panel-body">
             <a href="components/sections/heroes/hero-background/index.html" class="mega-nav__comp">
               <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Background</span><span class="mega-nav__comp-meta">Imagem full-bleed com gradiente</span></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Background</span><span class="mega-nav__comp-meta">Imagem full-bleed com overlay e gradiente</span></span>
+              <span class="mega-nav__comp-badge">1 var.</span>
+            </a>
+            <a href="components/sections/heroes/hero-split/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Split</span><span class="mega-nav__comp-meta">2 colunas · checklist · desc+CTAs · reverse</span></span>
+              <span class="mega-nav__comp-badge">3 estilos</span>
+            </a>
+            <a href="components/sections/heroes/hero-portfolio/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Personal</span><span class="mega-nav__comp-meta">Foto recortada + título gigante (portfólio)</span></span>
               <span class="mega-nav__comp-badge">1 var.</span>
             </a>
             <a href="components/sections/heroes/hero-centered/index.html" class="mega-nav__comp">
               <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Centered</span><span class="mega-nav__comp-meta">Overlay centralizado · Personal (foto + título gigante)</span></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Centered</span><span class="mega-nav__comp-meta">Overlay centralizado · foto z-index</span></span>
               <span class="mega-nav__comp-badge">2 var.</span>
             </a>
-            <a href="components/sections/heroes/hero-split/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Split</span><span class="mega-nav__comp-meta">2-col: checklist · desc+CTA · --reverse</span></span>
-              <span class="mega-nav__comp-badge">3 estilos</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#heroes" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- COUNTDOWN -->
-      <li class="mega-nav__item" data-panel="mega-countdown">
-        <a class="mega-nav__trigger" href="#countdown">
-          <span class="mega-nav__dot" style="background:#7C3AED"></span>
-          Countdown
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-countdown" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#7C3AED"></span>
-            <span><span class="mega-nav__panel-cat">Countdown</span><span class="mega-nav__panel-desc">Timer regressivo com CTA</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
             <a href="components/sections/heroes/hero-countdown/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#7C3AED"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Countdown</span><span class="mega-nav__comp-meta">Timer JS (data-end) · caixas HH:MM:SS tabular</span></span>
+              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Countdown</span><span class="mega-nav__comp-meta">Coming soon · timer regressivo JS</span></span>
               <span class="mega-nav__comp-badge">1 var.</span>
             </a>
           </div>
-          <div class="mega-nav__panel-foot"><a href="#countdown" class="mega-nav__panel-cta">Ver categoria →</a></div>
+          <div class="mega-nav__panel-foot"><a href="#abertura" class="mega-nav__panel-cta">Ver categoria →</a></div>
         </div>
       </li>
 
-      <!-- FEATURES -->
-      <li class="mega-nav__item" data-panel="mega-features">
-        <a class="mega-nav__trigger" href="#features">
+      <!-- APRESENTAÇÃO DE PRODUTO -->
+      <li class="mega-nav__item" data-panel="mega-produto">
+        <a class="mega-nav__trigger" href="#produto">
           <span class="mega-nav__dot" style="background:#0891B2"></span>
-          Features
+          Apresentação
           <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
         </a>
-        <div class="mega-nav__panel" id="mega-features" role="region">
+        <div class="mega-nav__panel" id="mega-produto" role="region">
           <div class="mega-nav__panel-head">
             <span class="mega-nav__panel-accent" style="background:#0891B2"></span>
-            <span><span class="mega-nav__panel-cat">Features</span><span class="mega-nav__panel-desc">Apresentação de funcionalidades</span></span>
+            <span><span class="mega-nav__panel-cat">Apresentação de Produto</span><span class="mega-nav__panel-desc">Mostre funcionalidades, serviços e benefícios</span></span>
           </div>
           <div class="mega-nav__panel-body">
-            <a href="components/sections/features/feature-accordion/index.html" class="mega-nav__comp">
+            <a href="components/sections/features/feature-split/index.html" class="mega-nav__comp">
               <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Accordion</span><span class="mega-nav__comp-meta">Imagem + itens colapsáveis laterais</span></span>
-            </a>
-            <a href="components/sections/features/feature-cards/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Cards</span><span class="mega-nav__comp-meta">Grid de cards com ícone + título</span></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Split</span><span class="mega-nav__comp-meta">2-col · reverse · mission · icon-list</span></span>
+              <span class="mega-nav__comp-badge">4 estilos</span>
             </a>
             <a href="components/sections/features/feature-overview/index.html" class="mega-nav__comp">
               <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Overview</span><span class="mega-nav__comp-meta">Checklist · --steps numerados</span></span>
-              <span class="mega-nav__comp-badge">5 estilos</span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Overview</span><span class="mega-nav__comp-meta">Checklist · 2 colunas · steps numerados</span></span>
+              <span class="mega-nav__comp-badge">4 var.</span>
             </a>
-            <a href="components/sections/features/feature-split/index.html" class="mega-nav__comp">
+            <a href="components/sections/features/feature-cards/index.html" class="mega-nav__comp">
               <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Split</span><span class="mega-nav__comp-meta">2-col · --reverse · --mission · --icon-list</span></span>
-              <span class="mega-nav__comp-badge">4 estilos</span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Cards</span><span class="mega-nav__comp-meta">Grade de cards com ícone + título</span></span>
+              <span class="mega-nav__comp-badge">1 var.</span>
             </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#features" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- TABS -->
-      <li class="mega-nav__item" data-panel="mega-tabs">
-        <a class="mega-nav__trigger" href="#tabs">
-          <span class="mega-nav__dot" style="background:#EA580C"></span>
-          Tabs
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-tabs" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#EA580C"></span>
-            <span><span class="mega-nav__panel-cat">Tabs</span><span class="mega-nav__panel-desc">Navegação por abas com conteúdo</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
+            <a href="components/sections/features/feature-accordion/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Accordion</span><span class="mega-nav__comp-meta">Imagem + itens colapsáveis laterais</span></span>
+              <span class="mega-nav__comp-badge">4 var.</span>
+            </a>
+            <a href="components/sections/services/services-grid/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Services Grid</span><span class="mega-nav__comp-meta">cards · pastel · bento · icon-box · bleed</span></span>
+              <span class="mega-nav__comp-badge">8 var.</span>
+            </a>
             <a href="components/sections/tabs/tabs-section/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#EA580C"></span>
+              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
               <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Tabs Section</span><span class="mega-nav__comp-meta">Pills + conteúdo dinâmico + imagem</span></span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#tabs" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- FAQ -->
-      <li class="mega-nav__item" data-panel="mega-faq">
-        <a class="mega-nav__trigger" href="#faq">
-          <span class="mega-nav__dot" style="background:#D97706"></span>
-          FAQ
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-faq" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#D97706"></span>
-            <span><span class="mega-nav__panel-cat">FAQ</span><span class="mega-nav__panel-desc">Perguntas frequentes colapsáveis</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/faq/faq-accordion/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#D97706"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">FAQ Accordion</span><span class="mega-nav__comp-meta">Enclosed card · open list · 2-col + feature</span></span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#faq" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- CTAs -->
-      <li class="mega-nav__item" data-panel="mega-ctas">
-        <a class="mega-nav__trigger" href="#ctas">
-          <span class="mega-nav__dot" style="background:#E11D48"></span>
-          CTAs
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-ctas" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#E11D48"></span>
-            <span><span class="mega-nav__panel-cat">CTAs</span><span class="mega-nav__panel-desc">Chamadas para ação de conversão</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/ctas/cta-banner/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#E11D48"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">CTA Banner</span><span class="mega-nav__comp-meta">card-split · overlay esq/center · split · courses</span></span>
               <span class="mega-nav__comp-badge">5 var.</span>
             </a>
           </div>
-          <div class="mega-nav__panel-foot"><a href="#ctas" class="mega-nav__panel-cta">Ver categoria →</a></div>
+          <div class="mega-nav__panel-foot"><a href="#produto" class="mega-nav__panel-cta">Ver categoria →</a></div>
         </div>
       </li>
 
-      <!-- SERVIÇOS -->
-      <li class="mega-nav__item" data-panel="mega-services">
-        <a class="mega-nav__trigger" href="#services">
-          <span class="mega-nav__dot" style="background:#059669"></span>
-          Serviços
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-services" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#059669"></span>
-            <span><span class="mega-nav__panel-cat">Serviços</span><span class="mega-nav__panel-desc">Grade de cards de serviços e features</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/services/services-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#059669"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Services Grid</span><span class="mega-nav__comp-meta">pastel · icon-box · bento · bleed · gradient</span></span>
-              <span class="mega-nav__comp-badge">7 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#services" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- SOCIAL PROOF -->
-      <li class="mega-nav__item" data-panel="mega-social">
-        <a class="mega-nav__trigger" href="#social">
+      <!-- CREDIBILIDADE & PROVA SOCIAL -->
+      <li class="mega-nav__item" data-panel="mega-credibilidade">
+        <a class="mega-nav__trigger" href="#credibilidade">
           <span class="mega-nav__dot" style="background:#DB2777"></span>
-          Social Proof
+          Credibilidade
           <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
         </a>
-        <div class="mega-nav__panel" id="mega-social" role="region">
+        <div class="mega-nav__panel" id="mega-credibilidade" role="region">
           <div class="mega-nav__panel-head">
             <span class="mega-nav__panel-accent" style="background:#DB2777"></span>
-            <span><span class="mega-nav__panel-cat">Social Proof</span><span class="mega-nav__panel-desc">Depoimentos e avaliações</span></span>
+            <span><span class="mega-nav__panel-cat">Credibilidade & Prova Social</span><span class="mega-nav__panel-desc">Depoimentos, números, equipe e parceiros</span></span>
           </div>
           <div class="mega-nav__panel-body">
             <a href="components/sections/social-proof/testimonials-cards/index.html" class="mega-nav__comp">
@@ -1108,174 +937,149 @@
               <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Testimonials Cards</span><span class="mega-nav__comp-meta">aspas · stars · media · fullquote · grid · social</span></span>
               <span class="mega-nav__comp-badge">6 var.</span>
             </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#social" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- INTEGRAÇÕES -->
-      <li class="mega-nav__item" data-panel="mega-integrations">
-        <a class="mega-nav__trigger" href="#integrations">
-          <span class="mega-nav__dot" style="background:#6D28D9"></span>
-          Integrações
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-integrations" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#6D28D9"></span>
-            <span><span class="mega-nav__panel-cat">Integrações</span><span class="mega-nav__panel-desc">Cards de apps e conexões</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/integrations/integrations-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#6D28D9"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Integrations Grid</span><span class="mega-nav__comp-meta">Grid tracejada · badges Popular · ícones SVG</span></span>
+            <a href="components/sections/stats/stats-grid/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Stats Grid</span><span class="mega-nav__comp-meta">Cascata de cards com big number e ícone</span></span>
               <span class="mega-nav__comp-badge">1 var.</span>
             </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#integrations" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- STATS -->
-      <li class="mega-nav__item" data-panel="mega-stats">
-        <a class="mega-nav__trigger" href="#stats">
-          <span class="mega-nav__dot" style="background:#475569"></span>
-          Stats
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-stats" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#475569"></span>
-            <span><span class="mega-nav__panel-cat">Stats</span><span class="mega-nav__panel-desc">Números e métricas em destaque</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/stats/stats-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#475569"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Stats Grid</span><span class="mega-nav__comp-meta">Cascata de cards com offset progressivo</span></span>
-            </a>
             <a href="components/sections/stats/stats-highlighted/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#475569"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Stats Highlighted</span><span class="mega-nav__comp-meta">Big number + descrição lateral</span></span>
+              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Stats Highlighted</span><span class="mega-nav__comp-meta">Big number + descrição + imagens duplas</span></span>
+              <span class="mega-nav__comp-badge">1 var.</span>
             </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#stats" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- BLOG -->
-      <li class="mega-nav__item" data-panel="mega-blog">
-        <a class="mega-nav__trigger" href="#blog">
-          <span class="mega-nav__dot" style="background:#B45309"></span>
-          Blog
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-blog" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#B45309"></span>
-            <span><span class="mega-nav__panel-cat">Blog</span><span class="mega-nav__panel-desc">Posts e listagens de artigos</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/blog/blog-posts/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#B45309"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Blog Posts</span><span class="mega-nav__comp-meta">Grid de artigos com thumb, categoria e data</span></span>
+            <a href="components/sections/integrations/integrations-grid/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Integrations Grid</span><span class="mega-nav__comp-meta">Grade tracejada · badges Popular · ícones SVG</span></span>
+              <span class="mega-nav__comp-badge">1 var.</span>
             </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#blog" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- FOOTERS — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-footers">
-        <a class="mega-nav__trigger" href="#footers">
-          <span class="mega-nav__dot" style="background:#1E293B"></span>
-          Footers
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-footers" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#1E293B"></span>
-            <span><span class="mega-nav__panel-cat">Footers</span><span class="mega-nav__panel-desc">Rodapé da página</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/footers/footer-full/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#1E293B"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Footer Full</span><span class="mega-nav__comp-meta">Multi-coluna + newsletter + social</span></span>
-            </a>
-            <a href="components/sections/footers/footer-simple/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#1E293B"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Footer Simple</span><span class="mega-nav__comp-meta">Logo + nav central + copyright</span></span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#footers" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- TEAM — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-team">
-        <a class="mega-nav__trigger" href="#team">
-          <span class="mega-nav__dot" style="background:#059669"></span>
-          Team
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-team" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#059669"></span>
-            <span><span class="mega-nav__panel-cat">Team</span><span class="mega-nav__panel-desc">Apresentação da equipe</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
             <a href="components/sections/team/team-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#059669"></span>
+              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
               <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Team Grid</span><span class="mega-nav__comp-meta">Portrait 4-col · horizontal · carousel P&B</span></span>
               <span class="mega-nav__comp-badge">3 var.</span>
             </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#team" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- GALLERIES — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-galleries">
-        <a class="mega-nav__trigger" href="#galleries">
-          <span class="mega-nav__dot" style="background:#8B5CF6"></span>
-          Galleries
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-galleries" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#8B5CF6"></span>
-            <span><span class="mega-nav__panel-cat">Galleries</span><span class="mega-nav__panel-desc">Carousels e grades de imagens</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
+            <a href="components/sections/blog/blog-posts/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Blog Posts</span><span class="mega-nav__comp-meta">Grid de artigos com thumb, categoria e data</span></span>
+              <span class="mega-nav__comp-badge">1 var.</span>
+            </a>
             <a href="components/sections/galleries/image-carousel/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#8B5CF6"></span>
+              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
               <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Image Carousel</span><span class="mega-nav__comp-meta">Gallery peek lateral · photo-grid 2 linhas</span></span>
               <span class="mega-nav__comp-badge">2 var.</span>
             </a>
           </div>
-          <div class="mega-nav__panel-foot"><a href="#galleries" class="mega-nav__panel-cta">Ver categoria →</a></div>
+          <div class="mega-nav__panel-foot"><a href="#credibilidade" class="mega-nav__panel-cta">Ver categoria →</a></div>
         </div>
       </li>
 
-      <!-- PRICING — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-pricing">
-        <a class="mega-nav__trigger" href="#pricing">
-          <span class="mega-nav__dot" style="background:#F59E0B"></span>
-          Pricing
+      <!-- CONVERSÃO -->
+      <li class="mega-nav__item" data-panel="mega-conversao">
+        <a class="mega-nav__trigger" href="#conversao">
+          <span class="mega-nav__dot" style="background:#E11D48"></span>
+          Conversão
           <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
         </a>
-        <div class="mega-nav__panel" id="mega-pricing" role="region">
+        <div class="mega-nav__panel" id="mega-conversao" role="region">
           <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#F59E0B"></span>
-            <span><span class="mega-nav__panel-cat">Pricing</span><span class="mega-nav__panel-desc">Tabelas e comparações de planos</span></span>
+            <span class="mega-nav__panel-accent" style="background:#E11D48"></span>
+            <span><span class="mega-nav__panel-cat">Conversão</span><span class="mega-nav__panel-desc">Leve o usuário a tomar uma ação</span></span>
           </div>
           <div class="mega-nav__panel-body">
+            <a href="components/sections/ctas/cta-banner/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#E11D48"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">CTA Banner</span><span class="mega-nav__comp-meta">card-split · overlay esq/center · split · courses</span></span>
+              <span class="mega-nav__comp-badge">5 var.</span>
+            </a>
             <a href="components/sections/pricing/pricing-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#F59E0B"></span>
+              <span class="mega-nav__comp-stripe" style="background:#E11D48"></span>
               <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Pricing Grid</span><span class="mega-nav__comp-meta">3 planos (featured dark) · --compare tabela ✓/✕</span></span>
               <span class="mega-nav__comp-badge">2 var.</span>
             </a>
+            <a href="components/sections/faq/faq-accordion/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#E11D48"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">FAQ Accordion</span><span class="mega-nav__comp-meta">Enclosed · cards · split · dark 3-col</span></span>
+              <span class="mega-nav__comp-badge">4 var.</span>
+            </a>
           </div>
-          <div class="mega-nav__panel-foot"><a href="#pricing" class="mega-nav__panel-cta">Ver categoria →</a></div>
+          <div class="mega-nav__panel-foot"><a href="#conversao" class="mega-nav__panel-cta">Ver categoria →</a></div>
+        </div>
+      </li>
+
+      <!-- RODAPÉ — flip -->
+      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-rodape">
+        <a class="mega-nav__trigger" href="#rodape">
+          <span class="mega-nav__dot" style="background:#475569"></span>
+          Rodapé
+          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+        </a>
+        <div class="mega-nav__panel" id="mega-rodape" role="region">
+          <div class="mega-nav__panel-head">
+            <span class="mega-nav__panel-accent" style="background:#475569"></span>
+            <span><span class="mega-nav__panel-cat">Rodapé</span><span class="mega-nav__panel-desc">Parte inferior da página</span></span>
+          </div>
+          <div class="mega-nav__panel-body">
+            <a href="components/sections/footers/footer-full/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#475569"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Footer Full</span><span class="mega-nav__comp-meta">Multi-coluna + newsletter + social</span></span>
+              <span class="mega-nav__comp-badge">5 var.</span>
+            </a>
+            <a href="components/sections/footers/footer-simple/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#475569"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Footer Simple</span><span class="mega-nav__comp-meta">Logo + nav central + copyright</span></span>
+              <span class="mega-nav__comp-badge">3 var.</span>
+            </a>
+          </div>
+          <div class="mega-nav__panel-foot"><a href="#rodape" class="mega-nav__panel-cta">Ver categoria →</a></div>
+        </div>
+      </li>
+
+      <!-- BASE — flip -->
+      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-base">
+        <a class="mega-nav__trigger" href="#base">
+          <span class="mega-nav__dot" style="background:#7C3AED"></span>
+          Base
+          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+        </a>
+        <div class="mega-nav__panel" id="mega-base" role="region">
+          <div class="mega-nav__panel-head">
+            <span class="mega-nav__panel-accent" style="background:#7C3AED"></span>
+            <span><span class="mega-nav__panel-cat">Base</span><span class="mega-nav__panel-desc">Elementos fundamentais reutilizáveis</span></span>
+          </div>
+          <div class="mega-nav__panel-body">
+            <a href="components/atoms/buttons/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#7C3AED"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Buttons</span><span class="mega-nav__comp-meta">filled · outline · link · pill · glass · icon-circle</span></span>
+              <span class="mega-nav__comp-badge">6 var.</span>
+            </a>
+          </div>
+          <div class="mega-nav__panel-foot"><a href="#base" class="mega-nav__panel-cta">Ver categoria →</a></div>
+        </div>
+      </li>
+
+      <!-- TEMPLATES — flip -->
+      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-templates">
+        <a class="mega-nav__trigger" href="#templates">
+          <span class="mega-nav__dot" style="background:#94A3B8"></span>
+          Templates
+          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+        </a>
+        <div class="mega-nav__panel" id="mega-templates" role="region">
+          <div class="mega-nav__panel-head">
+            <span class="mega-nav__panel-accent" style="background:#94A3B8"></span>
+            <span><span class="mega-nav__panel-cat">Templates</span><span class="mega-nav__panel-desc">Páginas completas prontas para personalizar</span></span>
+          </div>
+          <div class="mega-nav__panel-body">
+            <a href="templates/saas-template/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#6C73F2"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Template SaaS</span><span class="mega-nav__comp-meta">8 seções · header-utility · tabs · FAQ split</span></span>
+            </a>
+            <a href="templates/404/index.html" class="mega-nav__comp">
+              <span class="mega-nav__comp-stripe" style="background:#94A3B8"></span>
+              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Página 404</span><span class="mega-nav__comp-meta">Tipográfico gigante · centered coral flutuante</span></span>
+              <span class="mega-nav__comp-badge">2 var.</span>
+            </a>
+          </div>
+          <div class="mega-nav__panel-foot"><a href="#templates" class="mega-nav__panel-cta">Ver categoria →</a></div>
         </div>
       </li>
 
@@ -1362,85 +1166,21 @@
   <div class="container">
 
 
-    <!-- ─── TEMPLATES ─── -->
-    <section class="nav-section" id="templates" aria-labelledby="cat-templates">
+    <!-- ─── NAVEGAÇÃO ─── -->
+    <section class="nav-section" id="navegacao" aria-labelledby="cat-navegacao">
       <div class="nav-section__heading">
-        <span class="nav-section__dot" style="background:#94A3B8" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-templates">Templates — Páginas completas</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">2 templates</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="templates/404/index.html" class="nav-card">
-          <div class="nav-card__stripe" style="background:#94A3B8"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Página 404</h3>
-            <p class="nav-card__desc">V1 tipográfico: "404" gigante + barra de cor · V2 --centered: 404 coral + badges flutuantes + CTA pill (Breeze UI)</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">2 variantes</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <a href="templates/saas-template/index.html" class="nav-card">
-          <div class="nav-card__stripe" style="background:#6C73F2"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Template SaaS</h3>
-            <p class="nav-card__desc">Header utility + hero centered + feature cards 3-col + tabs split + CTA overlay + testimonials grid + FAQ split + footer full com banner</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">8 seções</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── ATOMS ─── -->
-    <section class="nav-section" id="atoms" aria-labelledby="cat-atoms">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-atoms" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-atoms">Atoms</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/atoms/buttons/index.html" class="nav-card">
-          <div class="nav-card__stripe s-atoms"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Buttons</h3>
-            <p class="nav-card__desc">Filled, Outline, Link · tamanhos sm / md / lg · modifier --inverse para fundos escuros · ícone-only</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">3 variantes</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── HEADERS ─── -->
-    <section class="nav-section" id="headers" aria-labelledby="cat-headers">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-headers" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-headers">Headers</h2>
+        <span class="nav-section__dot" style="background:#0052CC" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-navegacao">Navegação — Barras de menu e topo da página</h2>
         <div class="nav-section__line"></div>
         <span class="nav-section__count">3 componentes</span>
       </div>
       <div class="nav-grid">
 
         <a href="components/sections/headers/header-simple/index.html" class="nav-card">
-          <div class="nav-card__stripe s-headers"></div>
+          <div class="nav-card__stripe" style="background:#0052CC"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Header Simple</h3>
-            <p class="nav-card__desc">Variant 1: light · Variant 2: dark · Variant 3: floating (card pill glass + dark mode toggle + idioma) · hamburger com animação X</p>
+            <p class="nav-card__desc">Sticky · dark · floating pill glass</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">3 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1449,7 +1189,7 @@
         </a>
 
         <a href="components/sections/headers/header-utility/index.html" class="nav-card">
-          <div class="nav-card__stripe s-headers"></div>
+          <div class="nav-card__stripe" style="background:#0052CC"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Header Utility</h3>
             <p class="nav-card__desc">2 fileiras: barra utilitária superior + nav principal com dropdowns acessíveis · accordeon mobile</p>
@@ -1461,7 +1201,7 @@
         </a>
 
         <a href="components/sections/headers/header-megamenu/index.html" class="nav-card">
-          <div class="nav-card__stripe s-headers"></div>
+          <div class="nav-card__stripe" style="background:#0052CC"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Header Megamenu</h3>
             <p class="nav-card__desc">3 breakpoints: overlay full-screen mobile, dropdown tablet, inline desktop · CTAs + idioma + redes sociais</p>
@@ -1476,21 +1216,21 @@
     </section>
 
 
-    <!-- ─── HEROES ─── -->
-    <section class="nav-section" id="heroes" aria-labelledby="cat-heroes">
+    <!-- ─── ABERTURA DE PÁGINA ─── -->
+    <section class="nav-section" id="abertura" aria-labelledby="cat-abertura">
       <div class="nav-section__heading">
-        <span class="nav-section__dot d-heroes" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-heroes">Heroes</h2>
+        <span class="nav-section__dot" style="background:#4F46E5" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-abertura">Abertura de Página — Primeira seção que o visitante vê</h2>
         <div class="nav-section__line"></div>
-        <span class="nav-section__count">4 componentes</span>
+        <span class="nav-section__count">5 componentes</span>
       </div>
       <div class="nav-grid">
 
         <a href="components/sections/heroes/hero-background/index.html" class="nav-card">
-          <div class="nav-card__stripe s-heroes"></div>
+          <div class="nav-card__stripe" style="background:#4F46E5"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Hero Background</h3>
-            <p class="nav-card__desc">Variant 1: imagem full-bleed com overlay gradiente · conteúdo centralizado · mobile empilhado</p>
+            <p class="nav-card__desc">Imagem full-bleed com overlay gradiente · conteúdo centralizado · mobile empilhado</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">1 variante</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1499,10 +1239,10 @@
         </a>
 
         <a href="components/sections/heroes/hero-split/index.html" class="nav-card">
-          <div class="nav-card__stripe s-heroes"></div>
+          <div class="nav-card__stripe" style="background:#4F46E5"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Hero Split</h3>
-            <p class="nav-card__desc">Variant 1: checklist · Variant 2: descrição + 2 CTAs · Variant 3: reverse (imagem esquerda)</p>
+            <p class="nav-card__desc">Texto de um lado, imagem do outro · checklist, 2 CTAs, ou imagem invertida</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">3 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1511,10 +1251,10 @@
         </a>
 
         <a href="components/sections/heroes/hero-centered/index.html" class="nav-card">
-          <div class="nav-card__stripe s-heroes"></div>
+          <div class="nav-card__stripe" style="background:#4F46E5"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Hero Centered</h3>
-            <p class="nav-card__desc">Variant 1: imagem full-bleed, overlay, 2 CTAs centralizados · Variant 2: fundo colorido, título gigante (14vw), foto recortada z-index</p>
+            <p class="nav-card__desc">Tudo centralizado · imagem full-bleed com overlay ou fundo colorido com título gigante e foto recortada</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">2 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1522,11 +1262,23 @@
           </div>
         </a>
 
+        <a href="components/sections/heroes/hero-portfolio/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#4F46E5"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Hero Personal</h3>
+            <p class="nav-card__desc">Para portfólios e consultores · foto + nome + cargo em destaque + links de contato</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">1 variante</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
         <a href="components/sections/heroes/hero-countdown/index.html" class="nav-card">
-          <div class="nav-card__stripe s-heroes"></div>
+          <div class="nav-card__stripe" style="background:#4F46E5"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Hero Countdown</h3>
-            <p class="nav-card__desc">Variant 1: Coming Soon split · eyebrow + título + descrição + 4 boxes de contagem regressiva (JS) + CTA · stat cards sobrepostos</p>
+            <p class="nav-card__desc">Contagem regressiva para lançamento · "Em breve" com dias, horas e minutos + CTA de lista de espera</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">1 variante</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1538,21 +1290,21 @@
     </section>
 
 
-    <!-- ─── FEATURES ─── -->
-    <section class="nav-section" id="features" aria-labelledby="cat-features">
+    <!-- ─── APRESENTAÇÃO DE PRODUTO ─── -->
+    <section class="nav-section" id="produto" aria-labelledby="cat-produto">
       <div class="nav-section__heading">
-        <span class="nav-section__dot d-features" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-features">Features</h2>
+        <span class="nav-section__dot" style="background:#0891B2" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-produto">Apresentação de Produto — Explique o que você oferece</h2>
         <div class="nav-section__line"></div>
-        <span class="nav-section__count">4 componentes</span>
+        <span class="nav-section__count">6 componentes</span>
       </div>
       <div class="nav-grid">
 
         <a href="components/sections/features/feature-split/index.html" class="nav-card">
-          <div class="nav-card__stripe s-features"></div>
+          <div class="nav-card__stripe" style="background:#0891B2"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Feature Split</h3>
-            <p class="nav-card__desc">Variant 1: conteúdo esq/imagem dir · Variant 2: imagem esq/conteúdo dir · Variant 3: mission (fan + stats) · Variant 4: icon-list (screenshot + lista emoji)</p>
+            <p class="nav-card__desc">Texto de um lado, imagem do outro · 4 versões: conteúdo esq., imagem esq., missão com stats, lista com ícones</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">4 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1561,10 +1313,10 @@
         </a>
 
         <a href="components/sections/features/feature-overview/index.html" class="nav-card">
-          <div class="nav-card__stripe s-features"></div>
+          <div class="nav-card__stripe" style="background:#0891B2"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Feature Overview</h3>
-            <p class="nav-card__desc">Variant 1: checklist 1 col + imagem dir · Variant 2: checklist 2 col + imagem dir · Variant 3: --reverse · Variant 4: steps com conector SVG curvo</p>
+            <p class="nav-card__desc">Lista de benefícios com imagem · checklist 1 ou 2 colunas · versão invertida · passos com conector curvo</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">4 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1573,10 +1325,10 @@
         </a>
 
         <a href="components/sections/features/feature-cards/index.html" class="nav-card">
-          <div class="nav-card__stripe s-features"></div>
+          <div class="nav-card__stripe" style="background:#0891B2"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Feature Cards</h3>
-            <p class="nav-card__desc">Grade de cards com ícone-escudo + título + corpo + link + imagem · 1 → 2 → 3 colunas responsivo</p>
+            <p class="nav-card__desc">Grade de cards com ícone + título + descrição + link + imagem · responsivo 1 a 3 colunas</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">1 variante</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1585,114 +1337,22 @@
         </a>
 
         <a href="components/sections/features/feature-accordion/index.html" class="nav-card">
-          <div class="nav-card__stripe s-features"></div>
+          <div class="nav-card__stripe" style="background:#0891B2"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Feature Accordion</h3>
-            <p class="nav-card__desc">Variant 1: imagem esq. contida · Variant 2: imagem dir. contida · Variant 3: imagem esq. full-bleed · Variant 4: imagem dir. full-bleed</p>
+            <p class="nav-card__desc">Lista de funcionalidades que abre/fecha com imagem ao lado · 4 versões de posicionamento da imagem</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">4 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
             </div>
           </div>
         </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── TABS ─── -->
-    <section class="nav-section" id="tabs" aria-labelledby="cat-tabs">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-tabs" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-tabs">Tabs</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/tabs/tabs-section/index.html" class="nav-card">
-          <div class="nav-card__stripe s-tabs"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Tabs Section</h3>
-            <p class="nav-card__desc">Variant 1: carousel+dots · Variant 2: peek carousel · Variant 3: split texto+imagem · Variant 4: cards com CTA+setas · Variant 5: steps numerados</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">5 variantes</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── FAQ ─── -->
-    <section class="nav-section" id="faq" aria-labelledby="cat-faq">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-faq" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-faq">FAQ</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/faq/faq-accordion/index.html" class="nav-card">
-          <div class="nav-card__stripe s-faq"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">FAQ Accordion</h3>
-            <p class="nav-card__desc">Variant 1: enclosed · Variant 2: dark 3-col · Variant 3: cards · Variant 4: split (heading esq. + lista dir.) · CSS-only via details/summary</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">4 variantes</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── CTAs ─── -->
-    <section class="nav-section" id="ctas" aria-labelledby="cat-ctas">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-ctas" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-ctas">CTAs</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/ctas/cta-banner/index.html" class="nav-card">
-          <div class="nav-card__stripe s-ctas"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">CTA Banner</h3>
-            <p class="nav-card__desc">Variant 1: card split · Variant 2: overlay esq. · Variant 3: overlay center · Variant 4: split 2-col fundo branco · Variant 5: courses (header + 2 cards + CTA)</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">5 variantes</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── SERVICES ─── -->
-    <section class="nav-section" id="services" aria-labelledby="cat-services">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-services" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-services">Serviços</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
 
         <a href="components/sections/services/services-grid/index.html" class="nav-card">
-          <div class="nav-card__stripe s-services"></div>
+          <div class="nav-card__stripe" style="background:#0891B2"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Services Grid</h3>
-            <p class="nav-card__desc">Variant 1: cards brancos+seta · Variant 2: pastel · Variant 3: icon-box horizontal · Variant 4: bento · Variant 5: centered 4-col · Variant 6: circular media · Variant 7: bleed · Variant 8: gradient blob</p>
+            <p class="nav-card__desc">Grade de serviços · 8 estilos: cards brancos, pastel, horizontal, bento, 4-col, circular, sangria, gradiente</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">8 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1700,153 +1360,11 @@
           </div>
         </a>
 
-      </div>
-    </section>
-
-
-    <!-- ─── SOCIAL PROOF ─── -->
-    <section class="nav-section" id="social" aria-labelledby="cat-social">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-social" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-social">Social Proof</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/social-proof/testimonials-cards/index.html" class="nav-card">
-          <div class="nav-card__stripe s-social"></div>
+        <a href="components/sections/tabs/tabs-section/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#0891B2"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name">Testimonials Cards</h3>
-            <p class="nav-card__desc">Variant 1: aspas carousel · Variant 2: estrelas+logo · Variant 3: media split · Variant 4: fullquote peek · Variant 5: grid 3×2 · Variant 6: social (awards + @handle)</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">6 variantes</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── INTEGRATIONS ─── -->
-    <section class="nav-section" id="integrations" aria-labelledby="cat-integrations">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-integrations" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-integrations">Integrações</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/integrations/integrations-grid/index.html" class="nav-card">
-          <div class="nav-card__stripe s-integrations"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Integrations Grid</h3>
-            <p class="nav-card__desc">Variant 1: grade 3-col com borda tracejada · ícones SVG de apps · badge "Popular" · título com palavra em destaque colorido</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">1 variante</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── STATS ─── -->
-    <section class="nav-section" id="stats" aria-labelledby="cat-stats">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-stats" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-stats">Stats</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">2 componentes</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/stats/stats-highlighted/index.html" class="nav-card">
-          <div class="nav-card__stripe s-stats"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Stats Highlighted</h3>
-            <p class="nav-card__desc">Variant 1: split 2-col · 2 imagens com label chip de cliente (esq.) + 4 métricas grandes com borda (dir.) + rodapé CTA</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">1 variante</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <a href="components/sections/stats/stats-grid/index.html" class="nav-card">
-          <div class="nav-card__stripe s-stats"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Stats Grid</h3>
-            <p class="nav-card__desc">Variant 1: split 2-col · eyebrow-link + título grande + CTA (esq.) + 4 cards em cascata com big number e ícone — último card com fundo primário</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">1 variante</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── BLOG ─── -->
-    <section class="nav-section" id="blog" aria-labelledby="cat-blog">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-blog" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-blog">Blog</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/blog/blog-posts/index.html" class="nav-card">
-          <div class="nav-card__stripe s-blog"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Blog Posts</h3>
-            <p class="nav-card__desc">Variant 1: carousel de posts com setas prev/next · categorias com dot colorido · imagens portrait no desktop</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">1 variante</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ─── FOOTERS ─── -->
-    <section class="nav-section" id="footers" aria-labelledby="cat-footers">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot d-footers" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-footers">Footers</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">2 componentes</span>
-      </div>
-      <div class="nav-grid">
-
-        <a href="components/sections/footers/footer-simple/index.html" class="nav-card">
-          <div class="nav-card__stripe s-footers"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Footer Simple</h3>
-            <p class="nav-card__desc">Variant 1: nav central+CTA · Variant 2: nav direita+CTA · Variant 3: banner CTA+nav+social · barra de copyright separada</p>
-            <div class="nav-card__footer">
-              <span class="nav-card__badge">3 variantes</span>
-              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <a href="components/sections/footers/footer-full/index.html" class="nav-card">
-          <div class="nav-card__stripe s-footers"></div>
-          <div class="nav-card__body">
-            <h3 class="nav-card__name">Footer Full</h3>
-            <p class="nav-card__desc">Variant 1: brand+cols · Variant 2: minimal · Variant 3: banner CTA+brand+cols · Variant 4: search+contato+cols · Variant 5: colunas ricas com CTAs</p>
+            <h3 class="nav-card__name">Tabs Section</h3>
+            <p class="nav-card__desc">Abas para organizar conteúdo · carousel com dots, peek, texto+imagem, cards, passos numerados</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">5 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1858,21 +1376,69 @@
     </section>
 
 
-    <!-- ─── TEAM ─── -->
-    <section class="nav-section" id="team" aria-labelledby="cat-team">
+    <!-- ─── CREDIBILIDADE & PROVA SOCIAL ─── -->
+    <section class="nav-section" id="credibilidade" aria-labelledby="cat-credibilidade">
       <div class="nav-section__heading">
-        <span class="nav-section__dot" style="background:#059669" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-team">Team</h2>
+        <span class="nav-section__dot" style="background:#DB2777" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-credibilidade">Credibilidade &amp; Prova Social — Gere confiança com números e depoimentos</h2>
         <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
+        <span class="nav-section__count">7 componentes</span>
       </div>
       <div class="nav-grid">
 
+        <a href="components/sections/social-proof/testimonials-cards/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#DB2777"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Testimonials Cards</h3>
+            <p class="nav-card__desc">Depoimentos de clientes · 6 estilos: aspas carousel, estrelas+logo, mídia split, citação peek, grid 3×2, social</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">6 variantes</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="components/sections/stats/stats-grid/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#DB2777"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Stats Grid</h3>
+            <p class="nav-card__desc">Números grandes que impressionam · split 2-col com eyebrow, título e 4 cards com métricas em destaque</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">1 variante</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="components/sections/stats/stats-highlighted/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#DB2777"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Stats Highlighted</h3>
+            <p class="nav-card__desc">Resultados com fotos de clientes · 2 imagens com chips (esq.) + 4 métricas com borda (dir.) + CTA</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">1 variante</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="components/sections/integrations/integrations-grid/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#DB2777"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Integrations Grid</h3>
+            <p class="nav-card__desc">Grade de ferramentas que o produto conecta · ícones de apps + badge "Popular" + título em destaque</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">1 variante</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
         <a href="components/sections/team/team-grid/index.html" class="nav-card">
-          <div class="nav-card__stripe" style="background:#059669"></div>
+          <div class="nav-card__stripe" style="background:#DB2777"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Team Grid</h3>
-            <p class="nav-card__desc">Variant 1: grid 4-col portrait · Variant 2: horizontal avatar círculo + handles · Variant 3: carousel scroll P&B, card central colorido, dots</p>
+            <p class="nav-card__desc">Apresentação da equipe · grid 4-col, lista horizontal com avatares, ou carousel com card central colorido</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">3 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1880,25 +1446,23 @@
           </div>
         </a>
 
-      </div>
-    </section>
-
-
-    <!-- ─── GALLERIES ─── -->
-    <section class="nav-section" id="galleries" aria-labelledby="cat-galleries">
-      <div class="nav-section__heading">
-        <span class="nav-section__dot" style="background:#8B5CF6" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-galleries">Galleries</h2>
-        <div class="nav-section__line"></div>
-        <span class="nav-section__count">1 componente</span>
-      </div>
-      <div class="nav-grid">
+        <a href="components/sections/blog/blog-posts/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#DB2777"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Blog Posts</h3>
+            <p class="nav-card__desc">Seção de artigos e conteúdo · carousel de posts com setas, categorias coloridas e imagens portrait</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">1 variante</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
 
         <a href="components/sections/galleries/image-carousel/index.html" class="nav-card">
-          <div class="nav-card__stripe" style="background:#8B5CF6"></div>
+          <div class="nav-card__stripe" style="background:#DB2777"></div>
           <div class="nav-card__body">
             <h3 class="nav-card__name">Image Carousel</h3>
-            <p class="nav-card__desc">Variant 1: gallery (peek centralizado + setas coloridas) · Variant 2: photo-grid (2 linhas com imagens cortadas nas laterais + CTA)</p>
+            <p class="nav-card__desc">Galeria de imagens · carrossel centralizado com setas ou grade 2 linhas com imagens cortadas + CTA</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">2 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
@@ -1910,21 +1474,147 @@
     </section>
 
 
-    <!-- ─── PRICING ─── -->
-    <section class="nav-section" id="pricing" aria-labelledby="cat-pricing">
+    <!-- ─── CONVERSÃO ─── -->
+    <section class="nav-section" id="conversao" aria-labelledby="cat-conversao">
       <div class="nav-section__heading">
-        <span class="nav-section__dot" style="background:#F59E0B" aria-hidden="true"></span>
-        <h2 class="nav-section__label" id="cat-pricing">Pricing</h2>
+        <span class="nav-section__dot" style="background:#E11D48" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-conversao">Conversão — Leve o visitante a agir</h2>
+        <div class="nav-section__line"></div>
+        <span class="nav-section__count">3 componentes</span>
+      </div>
+      <div class="nav-grid">
+
+        <a href="components/sections/ctas/cta-banner/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#E11D48"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">CTA Banner</h3>
+            <p class="nav-card__desc">Chamada para ação destacada · 5 estilos: card split, overlay esq., overlay centro, 2-col branco, cursos</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">5 variantes</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="components/sections/pricing/pricing-grid/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#E11D48"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Pricing Grid</h3>
+            <p class="nav-card__desc">Tabela de planos e preços · 3 planos com destaque para o principal, ou tabela comparativa com ✓ e ✕</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">2 variantes</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="components/sections/faq/faq-accordion/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#E11D48"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">FAQ Accordion</h3>
+            <p class="nav-card__desc">Perguntas frequentes que abrem/fecham · 4 estilos: contido, dark 3-col, cards, split (título esq. + lista dir.)</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">4 variantes</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- ─── RODAPÉ ─── -->
+    <section class="nav-section" id="rodape" aria-labelledby="cat-rodape">
+      <div class="nav-section__heading">
+        <span class="nav-section__dot" style="background:#475569" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-rodape">Rodapé — Encerre a página com links e informações</h2>
+        <div class="nav-section__line"></div>
+        <span class="nav-section__count">2 componentes</span>
+      </div>
+      <div class="nav-grid">
+
+        <a href="components/sections/footers/footer-simple/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#475569"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Footer Simple</h3>
+            <p class="nav-card__desc">Rodapé compacto · nav central com CTA, nav à direita, ou banner CTA + redes sociais</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">3 variantes</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="components/sections/footers/footer-full/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#475569"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Footer Full</h3>
+            <p class="nav-card__desc">Rodapé completo com múltiplas colunas · marca + links + contato · 5 versões de layout</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">5 variantes</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- ─── BASE ─── -->
+    <section class="nav-section" id="base" aria-labelledby="cat-base">
+      <div class="nav-section__heading">
+        <span class="nav-section__dot" style="background:#7C3AED" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-base">Base — Elementos fundamentais reutilizáveis</h2>
         <div class="nav-section__line"></div>
         <span class="nav-section__count">1 componente</span>
       </div>
       <div class="nav-grid">
 
-        <a href="components/sections/pricing/pricing-grid/index.html" class="nav-card">
-          <div class="nav-card__stripe" style="background:#F59E0B"></div>
+        <a href="components/atoms/buttons/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#7C3AED"></div>
           <div class="nav-card__body">
-            <h3 class="nav-card__name">Pricing Grid</h3>
-            <p class="nav-card__desc">Variant 1: 3 planos com card featured escuro + CTA · Variant 2: tabela comparativa (✓/✕) com sidebar visual escura</p>
+            <h3 class="nav-card__name">Buttons</h3>
+            <p class="nav-card__desc">Botões prontos para usar · Filled, Outline e Link · tamanhos P/M/G · versão clara e escura · ícone-only</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">3 variantes</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- ─── TEMPLATES ─── -->
+    <section class="nav-section" id="templates" aria-labelledby="cat-templates">
+      <div class="nav-section__heading">
+        <span class="nav-section__dot" style="background:#94A3B8" aria-hidden="true"></span>
+        <h2 class="nav-section__label" id="cat-templates">Templates — Páginas completas prontas para adaptar</h2>
+        <div class="nav-section__line"></div>
+        <span class="nav-section__count">2 templates</span>
+      </div>
+      <div class="nav-grid">
+
+        <a href="templates/saas-template/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#6C73F2"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Template SaaS</h3>
+            <p class="nav-card__desc">Landing page completa com 8 seções: header, hero, serviços, features, depoimentos, FAQ, CTA e footer</p>
+            <div class="nav-card__footer">
+              <span class="nav-card__badge">8 seções</span>
+              <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
+            </div>
+          </div>
+        </a>
+
+        <a href="templates/404/index.html" class="nav-card">
+          <div class="nav-card__stripe" style="background:#94A3B8"></div>
+          <div class="nav-card__body">
+            <h3 class="nav-card__name">Página 404</h3>
+            <p class="nav-card__desc">Página de erro personalizada · V1 tipográfico com "404" gigante · V2 centralizado com badges flutuantes e CTA</p>
             <div class="nav-card__footer">
               <span class="nav-card__badge">2 variantes</span>
               <span class="nav-card__cta">Abrir <svg class="icon-ext"><use href="#icon-ext"/></svg></span>
