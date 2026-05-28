@@ -4,1066 +4,697 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fitz — Recrutamento especializado em Revenue</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Brand tokens ── */
+    /* ══════════════════════════════════════════════════════
+       TOKENS — Fitz brand overrides (same variable names as tokens.css)
+    ══════════════════════════════════════════════════════ */
     :root {
-      --fz-primary:   #450092;
-      --fz-secondary: #CCFD88;
-      --fz-accent:    #15371C;
-      --fz-dark:      #0D0020;
-      --fz-mid:       #1E0048;
-      --fz-light-bg:  #F7F4FF;
-      --fz-white:     #FFFFFF;
-      --fz-text:      #160035;
-      --fz-muted:     #6B5C8A;
-      --fz-border:    rgba(69,0,146,.12);
-      --fn-serif:     'DM Serif Display', Georgia, serif;
-      --fn-sans:      'Inter', system-ui, sans-serif;
-      --radius-md:    14px;
-      --radius-lg:    20px;
-      --radius-xl:    28px;
+      /* Brand */
+      --color-primary:        #450092;
+      --color-primary-hover:  #3a0080;
+      --color-primary-light:  #f0e6ff;
+      --color-secondary:      #CCFD88;
+      --color-secondary-hover:#b5ef6d;
+
+      /* Text */
+      --color-text-strong:    #160035;
+      --color-text-body:      #3d2060;
+      --color-text-muted:     #6b5c8a;
+      --color-text-subtle:    #9985b5;
+      --color-text-inverse:   #FFFFFF;
+
+      /* Backgrounds */
+      --color-background:     #FFFFFF;
+      --color-background-alt: #f7f3ff;
+      --color-background-dark:#0D0020;
+
+      /* States */
+      --color-success:        #10B981;
+      --color-warning:        #F59E0B;
+      --color-error:          #EF4444;
+      --color-info:           #3B82F6;
+
+      /* Borders */
+      --color-border:         rgba(69,0,146,.10);
+      --color-border-strong:  rgba(69,0,146,.20);
+
+      /* Overlay */
+      --color-overlay:        rgba(0,0,0,.5);
+
+      /* Fonts */
+      --font-heading: 'DM Serif Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+      /* Font sizes */
+      --font-size-xs:   0.75rem;
+      --font-size-sm:   0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg:   1.125rem;
+      --font-size-xl:   1.25rem;
+      --font-size-2xl:  1.5rem;
+      --font-size-3xl:  2rem;
+      --font-size-4xl:  2.5rem;
+      --font-size-5xl:  3rem;
+      --font-size-6xl:  4rem;
+
+      /* Font weights */
+      --font-weight-regular:  400;
+      --font-weight-medium:   500;
+      --font-weight-semibold: 600;
+      --font-weight-bold:     700;
+
+      /* Line heights */
+      --line-height-tight:   1.1;
+      --line-height-snug:    1.3;
+      --line-height-normal:  1.5;
+      --line-height-relaxed: 1.7;
+
+      /* Letter spacing */
+      --letter-spacing-tight:  -0.02em;
+      --letter-spacing-normal:  0;
+      --letter-spacing-wide:    0.05em;
+      --letter-spacing-wider:   0.1em;
+
+      /* Spacing */
+      --space-xs:  0.25rem;
+      --space-sm:  0.5rem;
+      --space-md:  1rem;
+      --space-lg:  1.5rem;
+      --space-xl:  2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --space-4xl: 6rem;
+      --space-5xl: 8rem;
+
+      /* Container */
+      --container-max:     1200px;
+      --container-padding: 1.5rem;
+
+      /* Radii */
+      --radius-none: 0;
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-xs:  0 1px 2px rgba(0,0,0,.05);
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:  0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.05);
+      --shadow-lg:  0 10px 15px rgba(0,0,0,.1), 0 4px 6px rgba(0,0,0,.05);
+      --shadow-xl:  0 20px 25px rgba(0,0,0,.1), 0 10px 10px rgba(0,0,0,.04);
+      --shadow-2xl: 0 25px 50px rgba(0,0,0,.25);
     }
 
+    /* ── Reset mínimo ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--fn-sans); color: var(--fz-text); line-height: 1.6; background: var(--fz-white); }
-
+    body { font-family: var(--font-body); color: var(--color-text-body); line-height: var(--line-height-normal); }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
-    button { font-family: inherit; cursor: pointer; }
+    ul, ol { list-style: none; }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: var(--space-md);
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      z-index: 9000;
+    }
+    .skip-link:focus { top: var(--space-sm); }
 
     .container {
-      width: min(1160px, calc(100% - 48px));
-      margin: 0 auto;
+      max-width: var(--container-max);
+      padding-inline: var(--container-padding);
+      margin-inline: auto;
     }
 
-    /* ─── DS Navigator Bar ─── */
-    #ds-nav-bar {
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      background: #0F0E1A;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      height: 40px;
-      gap: 16px;
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 12px;
-    }
-    #ds-nav-back {
+    /* ══════════════════════════════════════════════════════
+       BUTTONS — atom/buttons/style.css
+    ══════════════════════════════════════════════════════ */
+    .button {
+      width: 100%;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: rgba(255,255,255,.65);
-      font-weight: 500;
-      transition: color .15s;
+      justify-content: center;
+      gap: var(--space-sm);
+      font-family: var(--font-body);
+      font-weight: var(--font-weight-bold);
+      line-height: 1;
+      text-decoration: none;
       white-space: nowrap;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background-color .15s ease, border-color .15s ease, color .15s ease, opacity .15s ease;
+    }
+    .button--lg { min-height: 56px; padding-inline: var(--space-xl); font-size: var(--font-size-lg); border-radius: var(--radius-xl); }
+    .button--md { min-height: 48px; padding-inline: var(--space-lg); font-size: var(--font-size-base); border-radius: var(--radius-lg); }
+    .button--sm { min-height: 36px; padding-inline: var(--space-md); font-size: var(--font-size-sm); border-radius: var(--radius-md); }
+    .button__icon { flex-shrink: 0; pointer-events: none; }
+    .button--lg .button__icon { width: 20px; height: 20px; }
+    .button--md .button__icon { width: 18px; height: 18px; }
+    .button--sm .button__icon { width: 16px; height: 16px; }
+    .button--filled {
+      background-color: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: var(--color-primary);
+    }
+    .button--filled:hover:not(:disabled) { opacity: .86; }
+    .button--outline {
+      background-color: transparent;
+      color: var(--color-text-strong);
+      border-color: var(--color-text-strong);
+    }
+    .button--outline:hover:not(:disabled) { background-color: var(--color-background-alt); }
+    /* inverse = lime accent on dark backgrounds */
+    .button--inverse {
+      background-color: var(--color-secondary);
+      color: var(--color-text-strong);
+      border-color: var(--color-secondary);
+    }
+    .button--inverse:hover:not(:disabled) { background-color: var(--color-secondary-hover); }
+    @media (min-width: 480px) { .button { width: auto; } }
+
+    /* ══════════════════════════════════════════════════════
+       DS NAVIGATOR BAR
+    ══════════════════════════════════════════════════════ */
+    #ds-nav-bar {
+      position: sticky; top: 0; z-index: 9999;
+      background: #0F0E1A;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 40px; gap: 16px;
+      font-family: system-ui, -apple-system, sans-serif; font-size: 12px;
+    }
+    #ds-nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: rgba(255,255,255,.65); font-weight: 500;
+      transition: color .15s; white-space: nowrap;
     }
     #ds-nav-back:hover { color: #fff; }
     #ds-nav-back svg { flex-shrink: 0; }
     #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
 
-    /* ─── Section shared ─── */
-    .section { padding: 96px 0; }
-    .section--dark { background: var(--fz-dark); color: #e8e0ff; }
-    .section--mid  { background: var(--fz-mid); color: #e8e0ff; }
-    .section--light { background: var(--fz-light-bg); }
-    .section--white { background: var(--fz-white); }
-    .section--accent { background: var(--fz-accent); color: var(--fz-white); }
-
-    .eyebrow {
-      display: inline-block;
-      font-family: var(--fn-sans);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--fz-primary);
-      margin-bottom: 14px;
+    /* ══════════════════════════════════════════════════════
+       HEADER SIMPLE — header-simple/style.css
+    ══════════════════════════════════════════════════════ */
+    .header-simple {
+      position: sticky;
+      top: 40px; /* below DS nav bar */
+      z-index: 100;
+      background-color: var(--color-background);
+      border-bottom: 1px solid var(--color-border);
     }
-    .eyebrow--lime   { color: var(--fz-secondary); }
-    .eyebrow--muted  { color: var(--fz-muted); }
-
-    .heading-xl {
-      font-family: var(--fn-serif);
-      font-size: clamp(38px, 5vw, 64px);
-      font-weight: 400;
-      line-height: 1.08;
+    .header-simple__bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-md); height: 64px;
+    }
+    .header-simple__logo { flex-shrink: 0; display: flex; align-items: center; }
+    .header-simple__logo-text {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      color: var(--color-primary);
       letter-spacing: -.01em;
     }
-    .heading-lg {
-      font-family: var(--fn-serif);
-      font-size: clamp(28px, 3.5vw, 46px);
-      font-weight: 400;
-      line-height: 1.15;
-    }
-    .heading-md {
-      font-family: var(--fn-serif);
-      font-size: clamp(22px, 2.5vw, 32px);
-      font-weight: 400;
-      line-height: 1.2;
-    }
-    .body-lg { font-size: 18px; line-height: 1.7; }
-    .body-md { font-size: 16px; line-height: 1.7; }
-
-    /* ─── Buttons ─── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 99px;
-      font-size: 15px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: transform .18s, box-shadow .18s, background .18s;
+    .header-simple__logo-text em { font-style: italic; color: #15371C; }
+    .header-simple__nav { display: none; }
+    .header-simple__list { display: flex; align-items: center; gap: 2px; }
+    .header-simple__link {
+      display: inline-flex; align-items: center;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-muted);
+      border-radius: var(--radius-md);
+      transition: color .15s, background-color .15s;
       white-space: nowrap;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn--lime {
-      background: var(--fz-secondary);
-      color: var(--fz-accent);
-      box-shadow: 0 4px 24px rgba(204,253,136,.25);
+    .header-simple__link:hover { color: var(--color-primary); background-color: var(--color-primary-light); }
+    .header-simple__link--active { color: var(--color-text-strong); font-weight: var(--font-weight-semibold); }
+    .header-simple__actions { display: flex; align-items: center; gap: var(--space-sm); flex-shrink: 0; }
+    .header-simple__cta-wrap { display: none; }
+    .header-simple__toggle {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 40px; height: 40px;
+      background: transparent; border: none; cursor: pointer;
+      border-radius: var(--radius-md); padding: var(--space-xs); flex-shrink: 0;
     }
-    .btn--lime:hover { box-shadow: 0 8px 32px rgba(204,253,136,.4); }
-    .btn--outline-light {
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,.3);
-      color: rgba(255,255,255,.85);
+    .header-simple__toggle-bar {
+      display: block; width: 22px; height: 2px;
+      background-color: var(--color-text-strong);
+      border-radius: var(--radius-full);
+      transition: transform .22s ease, opacity .22s ease;
+      transform-origin: center;
     }
-    .btn--outline-light:hover { border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.07); }
-    .btn--outline-dark {
-      background: transparent;
-      border: 1.5px solid var(--fz-border);
-      color: var(--fz-text);
-    }
-    .btn--outline-dark:hover { border-color: var(--fz-primary); color: var(--fz-primary); }
-    .btn--primary {
-      background: var(--fz-primary);
-      color: #fff;
-      box-shadow: 0 4px 24px rgba(69,0,146,.3);
-    }
-    .btn--primary:hover { box-shadow: 0 8px 32px rgba(69,0,146,.45); }
-
-
-    /* ══════════════════════════════════════
-       1. HEADER
-    ══════════════════════════════════════ */
-    .site-header {
-      position: sticky;
-      top: 40px;
-      z-index: 999;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--fz-border);
-    }
-    .site-header__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-      gap: 32px;
-    }
-    .site-logo {
-      font-family: var(--fn-serif);
-      font-size: 24px;
-      color: var(--fz-primary);
-      letter-spacing: -.01em;
-    }
-    .site-logo em { font-style: italic; color: var(--fz-accent); }
-    .site-nav {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-    .site-nav a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--fz-muted);
-      transition: color .15s;
-    }
-    .site-nav a:hover { color: var(--fz-primary); }
-    .header-cta { margin-left: 8px; }
-
-    /* Mobile menu */
-    .hamburger {
+    .header-simple__toggle[aria-expanded="true"] .header-simple__toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .header-simple__toggle[aria-expanded="true"] .header-simple__toggle-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .header-simple__toggle[aria-expanded="true"] .header-simple__toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .header-simple__mobile-panel {
       display: none;
-      width: 36px;
-      height: 36px;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      background: transparent;
-      color: var(--fz-primary);
-      cursor: pointer;
+      border-top: 1px solid var(--color-border);
+      background-color: var(--color-background);
+      padding: var(--space-lg);
     }
-    .mobile-panel {
-      display: none;
-      position: fixed;
-      inset: 108px 0 0;
-      background: rgba(255,255,255,.97);
-      backdrop-filter: blur(16px);
-      padding: 32px 24px;
-      flex-direction: column;
-      gap: 4px;
-      z-index: 998;
+    .header-simple__mobile-panel--open { display: block; }
+    .header-simple__mobile-list {
+      display: flex; flex-direction: column; gap: 2px;
+      margin-block-end: var(--space-lg);
     }
-    .mobile-panel.is-open { display: flex; }
-    .mobile-panel a {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--fz-text);
-      padding: 14px 0;
-      border-bottom: 1px solid var(--fz-border);
+    .header-simple__mobile-link {
+      display: block; padding: var(--space-sm) var(--space-md);
+      font-size: var(--font-size-base); font-weight: var(--font-weight-medium);
+      color: var(--color-text-body); border-radius: var(--radius-md);
+      transition: background-color .15s;
     }
-    .mobile-panel .btn { margin-top: 24px; width: 100%; justify-content: center; }
-
-    @media (max-width: 768px) {
-      .site-nav, .header-cta { display: none; }
-      .hamburger { display: flex; }
+    .header-simple__mobile-link:hover { background-color: var(--color-background-alt); }
+    .header-simple__mobile-actions {
+      display: flex; flex-direction: column; gap: var(--space-sm);
+      padding-top: var(--space-lg); border-top: 1px solid var(--color-border);
+    }
+    @media (min-width: 1024px) {
+      .header-simple__nav { display: flex; align-items: center; flex: 1; justify-content: center; }
+      .header-simple__cta-wrap { display: flex; align-items: center; gap: var(--space-sm); }
+      .header-simple__toggle { display: none; }
+      .header-simple__mobile-panel,
+      .header-simple__mobile-panel--open { display: none; }
     }
 
-
-    /* ══════════════════════════════════════
-       2. HERO BACKGROUND
-    ══════════════════════════════════════ */
-    .hero {
-      position: relative;
-      min-height: 86vh;
-      display: flex;
-      align-items: center;
-      background: var(--fz-dark);
+    /* ══════════════════════════════════════════════════════
+       HERO BACKGROUND — hero-background/style.css
+    ══════════════════════════════════════════════════════ */
+    .hero-background { display: flex; flex-direction: column; }
+    .hero-background__media {
+      order: 2;
       overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(160deg, #0D0020 0%, #450092 50%, #15371C 100%);
     }
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 60% 30%, rgba(69,0,146,.65) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 85% 70%, rgba(204,253,136,.07) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 10% 80%, rgba(21,55,28,.5) 0%, transparent 65%),
-        linear-gradient(160deg, #0D0020 0%, #1a0040 50%, #0D0020 100%);
+    .hero-background__overlay {
+      order: 1;
+      background-color: var(--color-background-dark);
+      padding: var(--space-2xl) var(--space-lg);
     }
-    /* Decorative grid */
-    .hero__bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(204,253,136,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(204,253,136,.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    /* Glow orbs */
-    .hero__orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-    }
-    .hero__orb--1 {
-      width: 500px; height: 500px;
-      background: rgba(69,0,146,.4);
-      top: -100px; left: -100px;
-    }
-    .hero__orb--2 {
-      width: 400px; height: 400px;
-      background: rgba(204,253,136,.06);
-      bottom: -80px; right: 10%;
-    }
-    .hero__content {
-      position: relative;
-      z-index: 2;
-      max-width: 720px;
-      padding: 120px 0 100px;
-    }
-    .hero__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(204,253,136,.12);
-      border: 1px solid rgba(204,253,136,.2);
-      border-radius: 99px;
-      padding: 6px 14px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .1em;
+    .hero-background__eyebrow {
+      display: block;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
       text-transform: uppercase;
-      color: var(--fz-secondary);
-      margin-bottom: 28px;
+      color: var(--color-secondary);
+      margin-block-end: var(--space-md);
     }
-    .hero__eyebrow::before {
+    .hero-background__title {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--font-size-2xl), 6vw, var(--font-size-5xl));
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-tight);
+      color: var(--color-text-inverse);
+      margin-block-end: var(--space-lg);
+    }
+    .hero-background__description {
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-relaxed);
+      color: var(--color-text-inverse);
+      opacity: .82;
+      max-width: 44ch;
+      margin-block-end: var(--space-xl);
+    }
+    .hero-background__actions { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+    @media (min-width: 480px) {
+      .hero-background__overlay { padding: var(--space-3xl) var(--space-xl); }
+    }
+    @media (min-width: 768px) {
+      .hero-background { position: relative; display: block; }
+      .hero-background__media { position: absolute; inset: 0; z-index: 0; aspect-ratio: auto; }
+      .hero-background__overlay {
+        position: relative; z-index: 1;
+        background-color: transparent;
+        background-image: linear-gradient(to right, rgba(13,0,32,.95) 0%, rgba(13,0,32,.85) 35%, rgba(13,0,32,.3) 56%, transparent 70%);
+        padding: 0; min-height: 480px;
+        display: flex; align-items: center;
+      }
+      .hero-background__content { max-width: 520px; padding-block: var(--space-4xl); }
+      .hero-background__title { font-size: clamp(var(--font-size-3xl), 3.2vw, var(--font-size-5xl)); margin-block-end: var(--space-xl); }
+      .hero-background__description { font-size: var(--font-size-lg); }
+    }
+    @media (min-width: 1024px) {
+      .hero-background__overlay { min-height: 560px; }
+      .hero-background__content { max-width: 580px; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       FEATURE SPLIT — feature-split/style.css
+    ══════════════════════════════════════════════════════ */
+    .feature-split { background-color: var(--color-background-alt); padding-block: var(--space-3xl); }
+    .feature-split__inner { display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); align-items: center; }
+    .feature-split__media {
+      aspect-ratio: 1/1; overflow: hidden; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #450092 0%, #0D0020 60%, #15371C 100%);
+      position: relative;
+    }
+    .feature-split__media::after {
       content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--fz-secondary);
-      flex-shrink: 0;
+      position: absolute; inset: 0;
+      background: radial-gradient(circle 200px at 40% 35%, rgba(204,253,136,.14) 0%, transparent 70%);
     }
-    .hero__title {
-      font-family: var(--fn-serif);
-      font-size: clamp(44px, 6vw, 76px);
-      font-weight: 400;
-      line-height: 1.05;
-      color: #f0eaff;
-      margin-bottom: 24px;
-      letter-spacing: -.02em;
+    .feature-split__eyebrow {
+      display: block;
+      font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider); text-transform: uppercase;
+      color: var(--color-primary); margin-block-end: var(--space-md);
     }
-    .hero__title em {
-      font-style: italic;
-      color: var(--fz-secondary);
+    .feature-split__title {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+      font-weight: var(--font-weight-bold); line-height: var(--line-height-tight);
+      color: var(--color-text-strong); margin-block-end: var(--space-lg);
     }
-    .hero__sub {
-      font-size: 18px;
-      line-height: 1.7;
-      color: rgba(240,234,255,.55);
-      max-width: 540px;
-      margin-bottom: 40px;
+    .feature-split__description {
+      font-size: var(--font-size-base); line-height: var(--line-height-relaxed);
+      color: var(--color-text-body); margin-block-end: var(--space-xl);
     }
-    .hero__actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+    .feature-split__checklist { display: flex; flex-direction: column; gap: var(--space-lg); margin-block-end: var(--space-xl); }
+    .feature-split__check-item { display: flex; align-items: flex-start; gap: var(--space-sm); }
+    .feature-split__check-icon { flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; color: var(--color-primary); }
+    .feature-split__check-content { display: flex; flex-direction: column; gap: var(--space-xs); }
+    .feature-split__check-subtitle { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); color: var(--color-text-strong); line-height: var(--line-height-snug); }
+    .feature-split__check-body { font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); color: var(--color-text-muted); }
+    .feature-split__actions { display: flex; flex-wrap: wrap; gap: var(--space-md); }
+    @media (min-width: 768px) {
+      .feature-split { padding-block: var(--space-4xl); }
+      .feature-split__inner { grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: stretch; }
+      .feature-split__media { aspect-ratio: auto; min-height: 400px; }
+      .feature-split__content { display: flex; flex-direction: column; justify-content: center; }
     }
-    /* Stats row */
-    .hero__stats {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 40px;
-      padding-bottom: 60px;
-      flex-wrap: wrap;
-    }
-    .hero__stat-item { display: flex; flex-direction: column; }
-    .hero__stat-num {
-      font-family: var(--fn-serif);
-      font-size: 36px;
-      color: var(--fz-secondary);
-      line-height: 1;
-    }
-    .hero__stat-label { font-size: 13px; color: rgba(240,234,255,.45); margin-top: 4px; }
-
-
-    /* ══════════════════════════════════════
-       3. FEATURE SPLIT
-    ══════════════════════════════════════ */
-    .fsplit {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .fsplit__visual {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--fz-primary), var(--fz-mid));
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* Abstract visual pattern */
-    .fsplit__visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle 180px at 30% 40%, rgba(204,253,136,.15) 0%, transparent 70%),
-        radial-gradient(circle 140px at 75% 70%, rgba(255,255,255,.06) 0%, transparent 70%);
-    }
-    .fsplit__visual-inner {
-      position: relative;
-      z-index: 1;
-      padding: 40px;
-      width: 100%;
-    }
-    /* Scorecard mockup */
-    .fitz-scorecard {
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      padding: 24px;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-    .fitz-scorecard__label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--fz-secondary);
-      margin-bottom: 20px;
-    }
-    .fitz-score-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-      gap: 12px;
-    }
-    .fitz-score-row__name { font-size: 13px; color: rgba(255,255,255,.7); flex: 1; }
-    .fitz-score-row__bar {
-      width: 100px;
-      height: 5px;
-      border-radius: 3px;
-      background: rgba(255,255,255,.1);
-      overflow: hidden;
-    }
-    .fitz-score-row__fill {
-      height: 100%;
-      border-radius: 3px;
-      background: var(--fz-secondary);
-    }
-    .fitz-score-row__val {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--fz-secondary);
-      width: 28px;
-      text-align: right;
-    }
-    .fitz-scorecard__total {
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .fitz-scorecard__total-label { font-size: 12px; color: rgba(255,255,255,.5); }
-    .fitz-scorecard__total-val {
-      font-family: var(--fn-serif);
-      font-size: 26px;
-      color: #fff;
+    @media (min-width: 1024px) {
+      .feature-split__inner { gap: var(--space-4xl); }
+      .feature-split__media { min-height: 460px; }
     }
 
-    .fsplit__copy { display: flex; flex-direction: column; gap: 8px; }
-    .fsplit__copy p {
-      font-size: 17px;
-      color: var(--fz-muted);
-      line-height: 1.7;
-      margin: 12px 0 28px;
+    /* ══════════════════════════════════════════════════════
+       FEATURE CARDS — feature-cards/style.css
+    ══════════════════════════════════════════════════════ */
+    .feature-cards { background-color: var(--color-background); padding-block: var(--space-3xl); }
+    .feature-cards__header { margin-block-end: var(--space-3xl); }
+    .feature-cards__eyebrow {
+      display: block; font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider); text-transform: uppercase;
+      color: var(--color-primary); margin-block-end: var(--space-md);
     }
-    .fsplit__checklist { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-    .fsplit__item {
-      display: flex;
-      gap: 16px;
+    .feature-cards__title {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+      font-weight: var(--font-weight-bold); line-height: var(--line-height-tight);
+      color: var(--color-text-strong); margin-block-end: var(--space-md);
     }
-    .fsplit__icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: rgba(69,0,146,.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--fz-primary);
-    }
-    .fsplit__item-body {}
-    .fsplit__item-title {
-      font-weight: 700;
-      font-size: 15px;
-      color: var(--fz-text);
-      margin-bottom: 4px;
-    }
-    .fsplit__item-desc { font-size: 14px; color: var(--fz-muted); line-height: 1.6; }
-
-    @media (max-width: 900px) {
-      .fsplit { grid-template-columns: 1fr; gap: 48px; }
-      .fsplit__visual { min-height: 300px; order: -1; }
-    }
-
-
-    /* ══════════════════════════════════════
-       4. FEATURE CARDS
-    ══════════════════════════════════════ */
-    .fcards__header {
-      text-align: center;
-      max-width: 620px;
-      margin: 0 auto 56px;
-    }
-    .fcards__header p {
-      font-size: 17px;
-      color: var(--fz-muted);
-      margin-top: 12px;
-      line-height: 1.7;
-    }
-    .fcards__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .fcard {
-      background: var(--fz-white);
-      border: 1px solid var(--fz-border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .fcard:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(69,0,146,.1);
-    }
-    .fcard__visual {
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-    }
-    .fcard__visual--1 { background: linear-gradient(135deg, #1a0040, #450092); }
-    .fcard__visual--2 { background: linear-gradient(135deg, #15371C, #2a6b38); }
-    .fcard__visual--3 { background: linear-gradient(135deg, #0D0020, #2d0070); }
-
-    .fcard__visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle 120px at 70% 60%, rgba(204,253,136,.12), transparent 70%);
-    }
-    .fcard__icon {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.12);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--fz-secondary);
-      z-index: 1;
-    }
-    .fcard__tag {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 99px;
-      padding: 4px 12px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.8);
-      z-index: 1;
-    }
-    .fcard__body { padding: 24px; }
-    .fcard__problem {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--fz-muted);
-      margin-bottom: 8px;
-    }
-    .fcard__title {
-      font-family: var(--fn-serif);
-      font-size: 20px;
-      color: var(--fz-text);
-      margin-bottom: 10px;
-      line-height: 1.25;
-    }
-    .fcard__desc {
-      font-size: 14px;
-      color: var(--fz-muted);
-      line-height: 1.65;
-      margin-bottom: 20px;
-    }
-    .fcard__link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--fz-primary);
+    .feature-cards__description { font-size: var(--font-size-base); line-height: var(--line-height-relaxed); color: var(--color-text-body); max-width: 65ch; }
+    .feature-cards__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); }
+    .feature-cards__card { display: flex; flex-direction: column; gap: var(--space-md); }
+    .feature-cards__card-icon { width: 32px; height: 32px; flex-shrink: 0; color: var(--color-primary); }
+    .feature-cards__card-title { font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--color-text-strong); line-height: var(--line-height-snug); }
+    .feature-cards__card-body { font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); color: var(--color-text-body); }
+    .feature-cards__card-link {
+      display: inline-flex; align-items: center; gap: var(--space-xs);
+      font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold);
+      color: var(--color-primary); margin-top: auto;
       transition: gap .15s;
     }
-    .fcard__link:hover { gap: 10px; }
+    .feature-cards__card-link:hover { gap: var(--space-sm); }
+    .feature-cards__card-media {
+      aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius-lg);
+      margin-top: auto;
+    }
+    .feature-cards__card-media--1 { background: linear-gradient(135deg, #160035, #450092); }
+    .feature-cards__card-media--2 { background: linear-gradient(135deg, #15371C, #2a7040); }
+    .feature-cards__card-media--3 { background: linear-gradient(135deg, #0D0020, #2d007a); }
+    @media (min-width: 480px) { .feature-cards__grid { grid-template-columns: repeat(2,1fr); gap: var(--space-xl); } }
+    @media (min-width: 768px) { .feature-cards { padding-block: var(--space-4xl); } .feature-cards__grid { grid-template-columns: repeat(3,1fr); } }
+    @media (min-width: 1024px) { .feature-cards__grid { gap: var(--space-2xl); } }
 
-    @media (max-width: 900px) {
-      .fcards__grid { grid-template-columns: 1fr; }
+    /* ══════════════════════════════════════════════════════
+       FEATURE ACCORDION — feature-accordion/style.css
+    ══════════════════════════════════════════════════════ */
+    .feature-accordion { padding-block: var(--space-4xl); background-color: var(--color-background-alt); }
+    .feature-accordion__inner { display: grid; grid-template-columns: 1fr; gap: var(--space-3xl); align-items: center; }
+    .feature-accordion__media {
+      border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 1/1;
+      background: linear-gradient(145deg, #15371C 0%, #0D0020 55%, #450092 100%);
+      position: relative;
+    }
+    .feature-accordion__media::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle 180px at 55% 40%, rgba(204,253,136,.12) 0%, transparent 65%);
+    }
+    .feature-accordion__content { display: flex; flex-direction: column; }
+    .feature-accordion__title {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+      font-weight: var(--font-weight-bold); line-height: var(--line-height-tight);
+      color: var(--color-text-strong); margin-block-end: var(--space-lg);
+    }
+    .feature-accordion__description {
+      font-size: var(--font-size-sm); line-height: var(--line-height-relaxed);
+      color: var(--color-text-muted); margin-block-end: var(--space-2xl);
+    }
+    .feature-accordion__list { display: flex; flex-direction: column; }
+    .feature-accordion__item { border-bottom: 1px solid var(--color-border); }
+    .feature-accordion__item:first-child { border-top: 1px solid var(--color-border); }
+    .feature-accordion__trigger {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
+      width: 100%; background: none; border: none; padding-block: var(--space-lg); text-align: left;
+    }
+    .feature-accordion__trigger::-webkit-details-marker { display: none; }
+    .feature-accordion__question { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-strong); line-height: var(--line-height-snug); flex: 1; }
+    .feature-accordion__icon-wrap { flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--color-text-muted); }
+    .feature-accordion__icon-chevron { width: 20px; height: 20px; transition: transform .25s ease; }
+    details[open] > .feature-accordion__trigger .feature-accordion__icon-chevron { transform: rotate(-180deg); }
+    .feature-accordion__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease; }
+    details[open] > .feature-accordion__panel { grid-template-rows: 1fr; }
+    .feature-accordion__panel-inner { overflow: hidden; }
+    .feature-accordion__answer { font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); color: var(--color-text-muted); padding-block-end: var(--space-lg); }
+    @media (min-width: 768px) {
+      .feature-accordion__inner { grid-template-columns: 1fr 1fr; gap: var(--space-4xl); }
     }
 
-
-    /* ══════════════════════════════════════
-       5. FEATURE ACCORDION
-    ══════════════════════════════════════ */
-    .faccordion {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
+    /* ══════════════════════════════════════════════════════
+       INTEGRATIONS GRID — integrations-grid/style.css
+    ══════════════════════════════════════════════════════ */
+    .integrations-grid { padding-block: var(--space-4xl); background-color: var(--color-background); }
+    .integrations-grid__header {
+      text-align: center; display: flex; flex-direction: column; align-items: center;
+      gap: var(--space-lg); margin-block-end: var(--space-3xl);
     }
-    .faccordion__visual {
-      position: sticky;
-      top: 130px;
+    .integrations-grid__eyebrow {
+      display: inline-block; padding: var(--space-xs) var(--space-md);
+      border: 1.5px dashed var(--color-border-strong); border-radius: var(--radius-full);
+      font-size: var(--font-size-xs); font-weight: var(--font-weight-medium);
+      letter-spacing: var(--letter-spacing-wide); color: var(--color-text-muted);
+    }
+    .integrations-grid__title {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+      font-weight: var(--font-weight-bold); line-height: var(--line-height-tight);
+      color: var(--color-text-strong);
+    }
+    .integrations-grid__title-accent { color: var(--color-primary); }
+    .integrations-grid__list { display: grid; grid-template-columns: 1fr; gap: var(--space-md); }
+    .integrations-grid__card {
+      border: 1.5px dashed var(--color-border-strong); border-radius: var(--radius-lg);
+      padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-md);
+      background-color: var(--color-background);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .integrations-grid__card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-sm); }
+    .integrations-grid__card-head { display: flex; align-items: flex-start; justify-content: space-between; min-height: 44px; }
+    .integrations-grid__icon-svg { width: 40px; height: 40px; display: block; flex-shrink: 0; color: var(--color-primary); }
+    .integrations-grid__badge {
+      display: inline-block; padding: 2px var(--space-sm);
+      background-color: var(--color-primary); color: var(--color-text-inverse);
+      border-radius: var(--radius-full); font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold); line-height: 1.6; white-space: nowrap;
+    }
+    .integrations-grid__card-title { font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--color-text-strong); }
+    .integrations-grid__card-body { font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); color: var(--color-text-muted); flex: 1; }
+    .integrations-grid__footer { display: flex; justify-content: center; margin-block-start: var(--space-3xl); }
+    @media (min-width: 640px) { .integrations-grid__list { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .integrations-grid__list { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 639px) { .integrations-grid { padding-block: var(--space-3xl); } }
+
+    /* ══════════════════════════════════════════════════════
+       BLOG POSTS — blog-posts/style.css
+    ══════════════════════════════════════════════════════ */
+    .blog-posts { padding-block: var(--space-4xl); background-color: var(--color-background-alt); overflow: hidden; }
+    .blog-posts__header { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-xl); margin-block-end: var(--space-xl); }
+    .blog-posts__header-text { flex: 1; }
+    .blog-posts__eyebrow { font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); letter-spacing: var(--letter-spacing-wider); text-transform: uppercase; color: var(--color-primary); margin-block-end: var(--space-sm); display: block; }
+    .blog-posts__title { font-family: var(--font-heading); font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl)); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight); color: var(--color-text-strong); }
+    .blog-posts__arrows { display: flex; gap: var(--space-sm); flex-shrink: 0; align-self: flex-end; }
+    .blog-posts__arrow {
+      width: 44px; height: 44px; border-radius: var(--radius-full); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: opacity .15s, transform .15s;
+    }
+    .blog-posts__arrow:disabled { opacity: .35; cursor: not-allowed; }
+    .blog-posts__arrow svg { width: 18px; height: 18px; }
+    .blog-posts__arrow--prev { background-color: var(--color-text-strong); color: var(--color-text-inverse); }
+    .blog-posts__arrow--next { background-color: var(--color-secondary); color: var(--color-text-strong); }
+    .blog-posts__arrow:hover:not(:disabled) { opacity: .85; transform: scale(1.06); }
+    .blog-posts__divider { border: none; border-top: 1px solid var(--color-border); margin-block-end: var(--space-xl); }
+    .blog-posts__slider { overflow: hidden; }
+    .blog-posts__track { display: flex; gap: var(--space-lg); transition: transform .4s cubic-bezier(.25,.46,.45,.94); will-change: transform; }
+    .blog-posts__card { flex: none; width: calc(85vw - var(--space-lg)); display: flex; flex-direction: column; gap: var(--space-md); }
+    .blog-posts__card-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: var(--space-md); flex: 1; }
+    .blog-posts__card-image { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; flex-shrink: 0; }
+    .blog-posts__card-meta { display: flex; align-items: center; }
+    .blog-posts__card-category { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-primary); display: flex; align-items: center; gap: var(--space-xs); }
+    .blog-posts__card-category::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: var(--radius-full); background-color: currentColor; flex-shrink: 0; }
+    .blog-posts__card-title { font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); line-height: var(--line-height-snug); color: var(--color-text-strong); transition: color .15s; }
+    .blog-posts__card-link:hover .blog-posts__card-title { color: var(--color-primary); }
+    @media (min-width: 640px) { .blog-posts__card { width: calc((100vw - var(--container-padding) * 2 - var(--space-lg)) / 2); } }
+    @media (min-width: 1024px) {
+      .blog-posts__card { width: calc((min(100vw, var(--container-max)) - var(--container-padding) * 2 - var(--space-lg) * 2) / 3); }
+      .blog-posts__card-image { aspect-ratio: 3/4; }
+    }
+    @media (max-width: 639px) { .blog-posts { padding-block: var(--space-3xl); } .blog-posts__header { flex-direction: column; align-items: flex-start; gap: var(--space-lg); } .blog-posts__arrows { align-self: flex-start; } }
+
+    /* ══════════════════════════════════════════════════════
+       FAQ ACCORDION — faq-accordion/style.css
+    ══════════════════════════════════════════════════════ */
+    .faq-accordion { padding-block: var(--space-4xl); background-color: var(--color-background); }
+    .faq-accordion__header { text-align: center; margin-block-end: var(--space-3xl); }
+    .faq-accordion__title { font-family: var(--font-heading); font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl)); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight); color: var(--color-text-strong); margin-block-end: var(--space-md); }
+    .faq-accordion__subtitle { font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: var(--line-height-relaxed); }
+    .faq-accordion__trigger {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg);
+      width: 100%; background: none; border: none; padding-block: var(--space-lg); text-align: left;
+    }
+    .faq-accordion__trigger::-webkit-details-marker { display: none; }
+    .faq-accordion__question { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-strong); line-height: var(--line-height-snug); flex: 1; }
+    .faq-accordion__icon-wrap { flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--color-primary); }
+    .faq-accordion__icon-plus { width: 18px; height: 18px; }
+    .faq-accordion__icon-plus .icon-plus__v { transform-origin: 9px 9px; transition: transform .2s, opacity .2s; }
+    details[open] > .faq-accordion__trigger .faq-accordion__icon-plus .icon-plus__v { transform: rotate(90deg) scaleX(0); opacity: 0; }
+    .faq-accordion__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease; }
+    details[open] > .faq-accordion__panel { grid-template-rows: 1fr; }
+    .faq-accordion__panel-inner { overflow: hidden; }
+    .faq-accordion__answer { font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); color: var(--color-text-muted); padding-block-end: var(--space-lg); }
+    .faq-accordion__list { display: flex; flex-direction: column; }
+    .faq-accordion__item { border-bottom: 1px solid var(--color-border); }
+    .faq-accordion__item:first-child { border-top: none; }
+    /* --enclosed variant */
+    .faq-accordion--enclosed .faq-accordion__list {
+      background-color: var(--color-background-alt);
       border-radius: var(--radius-xl);
-      overflow: hidden;
-      background: linear-gradient(160deg, var(--fz-accent), #0e2814);
-      min-height: 480px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .faccordion__visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle 200px at 50% 40%, rgba(204,253,136,.12) 0%, transparent 70%),
-        radial-gradient(circle 120px at 80% 80%, rgba(69,0,146,.2) 0%, transparent 60%);
-    }
-    /* Profile card mockup */
-    .fitz-profile {
-      position: relative;
-      z-index: 1;
-      padding: 32px;
-      width: 100%;
-      max-width: 280px;
-    }
-    .fitz-profile__card {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 12px;
-    }
-    .fitz-profile__av {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--fz-primary), #8b3aff);
-      margin-bottom: 12px;
-    }
-    .fitz-profile__name { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-    .fitz-profile__role { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 14px; }
-    .fitz-profile__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(204,253,136,.15);
-      border: 1px solid rgba(204,253,136,.25);
-      border-radius: 99px;
-      padding: 4px 10px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--fz-secondary);
-    }
-    .fitz-profile__badge::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--fz-secondary);
-    }
-    .fitz-profile__score-row {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 12px;
-      font-size: 12px;
-    }
-    .fitz-profile__score-label { color: rgba(255,255,255,.4); }
-    .fitz-profile__score-val { font-weight: 700; color: var(--fz-secondary); }
-
-    .faccordion__copy { }
-    .faccordion__copy p {
-      font-size: 17px;
-      color: var(--fz-muted);
-      line-height: 1.7;
-      margin: 12px 0 36px;
-    }
-    .facc-list { display: flex; flex-direction: column; gap: 4px; }
-    .facc-item {
-      border: 1px solid var(--fz-border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: border-color .2s;
-    }
-    .facc-item[open] { border-color: rgba(69,0,146,.3); }
-    .facc-item summary {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 20px 24px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .facc-item summary::-webkit-details-marker { display: none; }
-    .facc-summary-inner { display: flex; align-items: center; gap: 14px; }
-    .facc-num {
-      font-family: var(--fn-serif);
-      font-size: 22px;
-      color: rgba(69,0,146,.25);
-      line-height: 1;
-      min-width: 28px;
-    }
-    .facc-item[open] .facc-num { color: var(--fz-primary); }
-    .facc-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--fz-text);
-      line-height: 1.3;
-    }
-    .facc-chevron {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      border: 1px solid var(--fz-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--fz-muted);
-      flex-shrink: 0;
-      transition: background .15s, transform .3s;
-    }
-    .facc-item[open] .facc-chevron {
-      background: var(--fz-primary);
-      border-color: var(--fz-primary);
-      color: #fff;
-      transform: rotate(180deg);
-    }
-    .facc-body {
-      padding: 0 24px 20px 66px;
-      font-size: 15px;
-      color: var(--fz-muted);
-      line-height: 1.7;
-    }
-    .facc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .facc-tag {
-      background: rgba(69,0,146,.07);
-      color: var(--fz-primary);
-      border-radius: 99px;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    @media (max-width: 900px) {
-      .faccordion { grid-template-columns: 1fr; gap: 48px; }
-      .faccordion__visual { position: static; min-height: 280px; }
-    }
-
-
-    /* ══════════════════════════════════════
-       6. CTA / INTEGRATIONS
-    ══════════════════════════════════════ */
-    .cta-section {
-      background: var(--fz-primary);
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(204,253,136,.08) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 10% 20%, rgba(255,255,255,.04) 0%, transparent 60%);
-    }
-    .cta-section__inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 48px;
-      align-items: center;
-    }
-    .cta-section__eyebrow { color: rgba(204,253,136,.7); }
-    .cta-section__title {
-      font-family: var(--fn-serif);
-      font-size: clamp(28px, 3.5vw, 44px);
-      line-height: 1.15;
-      color: #fff;
-      margin-top: 10px;
-    }
-    .cta-section__sub {
-      font-size: 17px;
-      color: rgba(255,255,255,.55);
-      margin-top: 12px;
-      line-height: 1.6;
-    }
-    .cta-section__actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-    /* Mini proof badges */
-    .cta-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-    .cta-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 99px;
-      padding: 5px 14px;
-      font-size: 12px;
-      color: rgba(255,255,255,.65);
-    }
-    .cta-badge::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--fz-secondary);
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 768px) {
-      .cta-section__inner { grid-template-columns: 1fr; }
-      .cta-section__actions { flex-direction: row; flex-wrap: wrap; }
-    }
-
-
-    /* ══════════════════════════════════════
-       7. BLOG / METHODOLOGY STEPS
-    ══════════════════════════════════════ */
-    .method__header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 64px;
-    }
-    .method__header p { font-size: 17px; color: var(--fz-muted); margin-top: 12px; line-height: 1.7; }
-    .method__steps { display: flex; flex-direction: column; gap: 0; }
-    .method__step {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 24px;
-      align-items: start;
-      position: relative;
-    }
-    .method__step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 39px;
-      top: 48px;
-      bottom: -16px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--fz-secondary) 0%, rgba(204,253,136,.15) 100%);
-    }
-    .method__num-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 4px;
-    }
-    .method__num {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--fz-secondary);
-      color: var(--fz-accent);
-      font-family: var(--fn-serif);
-      font-size: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-    }
-    .method__content {
-      padding: 4px 0 48px;
-    }
-    .method__step-title {
-      font-family: var(--fn-serif);
-      font-size: 22px;
-      color: var(--fz-text);
-      margin-bottom: 8px;
-    }
-    .method__step-desc {
-      font-size: 15px;
-      color: var(--fz-muted);
-      line-height: 1.7;
-      max-width: 560px;
-    }
-    .method__step-tag {
-      display: inline-block;
-      margin-top: 12px;
-      background: rgba(69,0,146,.08);
-      color: var(--fz-primary);
-      border-radius: 99px;
-      padding: 4px 12px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    @media (max-width: 600px) {
-      .method__step { grid-template-columns: 56px 1fr; gap: 16px; }
-      .method__num { width: 42px; height: 42px; font-size: 18px; }
-      .method__step:not(:last-child)::after { left: 27px; }
-    }
-
-
-    /* ══════════════════════════════════════
-       8. FAQ ACCORDION
-    ══════════════════════════════════════ */
-    .faq__header {
-      text-align: center;
-      max-width: 580px;
-      margin: 0 auto 52px;
-    }
-    .faq__header p { font-size: 17px; color: var(--fz-muted); margin-top: 12px; }
-    .faq__list {
+      padding-inline: var(--space-xl);
       max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      margin-inline: auto;
     }
-    .faq__item {
-      background: var(--fz-light-bg);
-      border: 1px solid var(--fz-border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: box-shadow .2s;
+    .faq-accordion--enclosed .faq-accordion__item { border-top: none; border-bottom: 1px solid var(--color-border); }
+    .faq-accordion--enclosed .faq-accordion__item:last-child { border-bottom: none; }
+    .faq-accordion--enclosed .faq-accordion__trigger { padding-block: var(--space-xl); }
+    .faq-accordion--enclosed .faq-accordion__question { font-size: var(--font-size-base); }
+    .faq-accordion__footer { display: flex; justify-content: center; margin-block-start: var(--space-3xl); }
+    @media (max-width: 639px) { .faq-accordion { padding-block: var(--space-3xl); } }
+
+    /* ══════════════════════════════════════════════════════
+       FOOTER FULL — footer-full/style.css
+    ══════════════════════════════════════════════════════ */
+    .footer-full { background-color: var(--color-background-dark); border-top: 1px solid rgba(255,255,255,.07); }
+    .footer-full__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-3xl); padding-block: var(--space-3xl); }
+    .footer-full__brand { display: flex; flex-direction: column; gap: var(--space-lg); }
+    .footer-full__logo { flex-shrink: 0; display: flex; align-items: center; }
+    .footer-full__logo-text { font-family: var(--font-heading); font-size: 26px; color: #f0eaff; }
+    .footer-full__logo-text em { font-style: italic; color: var(--color-secondary); }
+    .footer-full__description { font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); color: rgba(240,234,255,.5); max-width: 40ch; }
+    .footer-full__links { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--space-xl) var(--space-2xl); align-items: start; }
+    .footer-full__group-title { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: rgba(240,234,255,.4); margin-block-end: var(--space-md); line-height: var(--line-height-snug); text-transform: uppercase; letter-spacing: var(--letter-spacing-wide); font-size: var(--font-size-xs); }
+    .footer-full__group-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .footer-full__group-link { font-size: var(--font-size-sm); color: rgba(240,234,255,.55); display: flex; align-items: center; gap: var(--space-sm); transition: color .15s; }
+    .footer-full__group-link:hover { color: var(--color-secondary); }
+    .footer-full__group-social { display: flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; }
+    .footer-full__social-link { display: flex; align-items: center; justify-content: center; color: rgba(240,234,255,.55); transition: color .15s; }
+    .footer-full__social-link:hover { color: var(--color-secondary); }
+    .footer-full__divider { border: none; border-top: 1px solid rgba(255,255,255,.07); margin: 0; }
+    .footer-full__bottom { padding-block: var(--space-md); }
+    .footer-full__bottom-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); flex-wrap: wrap; }
+    .footer-full__copyright { font-size: var(--font-size-xs); color: rgba(240,234,255,.3); }
+    .footer-full__bottom-links { list-style: none; display: flex; gap: var(--space-lg); flex-wrap: wrap; }
+    .footer-full__bottom-link { font-size: var(--font-size-xs); color: rgba(240,234,255,.3); transition: color .15s; }
+    .footer-full__bottom-link:hover { color: var(--color-secondary); }
+    @media (min-width: 768px) {
+      .footer-full__grid { grid-template-columns: minmax(180px,1fr) 2fr; gap: var(--space-4xl); }
+      .footer-full__links { grid-template-columns: repeat(3,1fr); }
     }
-    .faq__item:hover { box-shadow: 0 4px 20px rgba(69,0,146,.07); }
-    .faq__item[open] {
-      background: #fff;
-      box-shadow: 0 4px 20px rgba(69,0,146,.1);
+    @media (min-width: 1024px) {
+      .footer-full__grid { grid-template-columns: minmax(220px,1fr) 3fr; }
+      .footer-full__links { grid-template-columns: repeat(4,1fr); }
     }
-    .faq__item summary {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 20px 24px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .faq__item summary::-webkit-details-marker { display: none; }
-    .faq__question {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--fz-text);
-      line-height: 1.4;
-    }
-    .faq__toggle {
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: rgba(69,0,146,.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--fz-primary);
-      flex-shrink: 0;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1;
-      transition: background .15s, transform .3s;
-    }
-    .faq__item[open] .faq__toggle {
-      background: var(--fz-primary);
-      color: #fff;
-      transform: rotate(45deg);
-    }
-    .faq__answer {
-      padding: 0 24px 20px;
-      font-size: 15px;
-      color: var(--fz-muted);
-      line-height: 1.7;
+    @media (max-width: 767px) {
+      .footer-full__bottom-inner { flex-direction: column; align-items: flex-start; gap: var(--space-md); }
     }
 
-
-    /* ══════════════════════════════════════
-       9. FOOTER
-    ══════════════════════════════════════ */
-    .site-footer {
-      background: var(--fz-dark);
-      color: rgba(240,234,255,.6);
-      padding: 72px 0 36px;
-    }
-    .footer__grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 56px;
-    }
-    .footer__brand { }
-    .footer__logo {
-      font-family: var(--fn-serif);
-      font-size: 26px;
-      color: #f0eaff;
-      margin-bottom: 14px;
-    }
-    .footer__logo em { font-style: italic; color: var(--fz-secondary); }
-    .footer__desc {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(240,234,255,.45);
-      max-width: 260px;
-      margin-bottom: 24px;
-    }
-    .footer__social {
-      display: flex;
-      gap: 10px;
-    }
-    .footer__social-link {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,.5);
-      transition: background .15s, color .15s;
-    }
-    .footer__social-link:hover { background: var(--fz-secondary); color: var(--fz-accent); }
-    .footer__col-title {
-      font-size: 12px;
+    /* ── Fitz: step card image gradients in blog-posts ── */
+    .fitz-step--1 .blog-posts__card-image { background: linear-gradient(135deg, #160035, #450092); }
+    .fitz-step--2 .blog-posts__card-image { background: linear-gradient(135deg, #0D0020, #2d007a); }
+    .fitz-step--3 .blog-posts__card-image { background: linear-gradient(135deg, #15371C, #2a7040); }
+    .fitz-step--4 .blog-posts__card-image { background: linear-gradient(135deg, #450092, #8b3aff); }
+    .fitz-step--5 .blog-posts__card-image { background: linear-gradient(135deg, #15371C, #450092); }
+    /* Step number badge inside image */
+    .fitz-step__num {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 100%;
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: rgba(255,255,255,.18);
       font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(240,234,255,.35);
-      margin-bottom: 20px;
-    }
-    .footer__links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer__links a {
-      font-size: 14px;
-      color: rgba(240,234,255,.55);
-      transition: color .15s;
-    }
-    .footer__links a:hover { color: var(--fz-secondary); }
-    .footer__bottom {
-      border-top: 1px solid rgba(255,255,255,.07);
-      padding-top: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 13px;
-      color: rgba(240,234,255,.3);
-    }
-    .footer__bottom a { color: rgba(240,234,255,.4); transition: color .15s; }
-    .footer__bottom a:hover { color: var(--fz-secondary); }
-
-    @media (max-width: 900px) {
-      .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .footer__brand { grid-column: 1 / -1; }
-    }
-    @media (max-width: 560px) {
-      .footer__grid { grid-template-columns: 1fr; }
-      .footer__brand { grid-column: unset; }
+      user-select: none;
     }
   </style>
 </head>
 <body>
 
-<!-- ─── DS Navigator Bar ─── -->
+<a class="skip-link" href="#main-content">Ir para o conteúdo</a>
+
+<!-- SVG Sprites -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 18l-6-6 6-6"/>
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18l6-6-6-6"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  </symbol>
+  <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+    <circle cx="4" cy="4" r="2"/>
+  </symbol>
+</svg>
+
+
+<!-- DS Navigator Bar -->
 <div id="ds-nav-bar">
   <a href="../../index.html" id="ds-nav-back">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
@@ -1076,228 +707,194 @@
 <!-- ══════════════════════════════════════
      1. HEADER SIMPLE — V1 Light
 ══════════════════════════════════════ -->
-<header class="site-header">
-  <div class="container">
-    <div class="site-header__inner">
-      <a href="#" class="site-logo">Fitz<em>.</em></a>
-      <nav aria-label="Navegação principal">
-        <ul class="site-nav">
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#beneficios">Benefícios</a></li>
-          <li><a href="#diferenciais">Diferenciais</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </nav>
-      <a href="#contato" class="btn btn--primary header-cta">Entrar em contato</a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+<header class="header-simple" role="banner">
+  <div class="header-simple__bar container">
+
+    <a href="/" class="header-simple__logo" aria-label="Fitz — Página inicial">
+      <span class="header-simple__logo-text">Fitz<em>.</em></span>
+    </a>
+
+    <nav class="header-simple__nav" aria-label="Navegação principal">
+      <ul class="header-simple__list" role="list">
+        <li><a class="header-simple__link" href="#sobre">Sobre</a></li>
+        <li><a class="header-simple__link" href="#beneficios">Benefícios</a></li>
+        <li><a class="header-simple__link" href="#diferenciais">Diferenciais</a></li>
+        <li><a class="header-simple__link" href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-simple__actions">
+      <div class="header-simple__cta-wrap">
+        <a href="#contato" class="button button--filled button--md">
+          Entrar em contato
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+        </a>
+      </div>
+      <button class="header-simple__toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-panel-fitz" data-js="nav-toggle">
+        <span class="header-simple__toggle-bar"></span>
+        <span class="header-simple__toggle-bar"></span>
+        <span class="header-simple__toggle-bar"></span>
       </button>
     </div>
   </div>
-</header>
 
-<!-- Mobile nav panel -->
-<nav class="mobile-panel" id="mobile-panel" aria-label="Menu mobile">
-  <a href="#sobre">Sobre</a>
-  <a href="#beneficios">Benefícios</a>
-  <a href="#diferenciais">Diferenciais</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contato" class="btn btn--primary">Entrar em contato</a>
-</nav>
+  <div class="header-simple__mobile-panel" id="nav-panel-fitz" data-js="nav-panel" aria-label="Menu mobile">
+    <ul class="header-simple__mobile-list" role="list">
+      <li><a class="header-simple__mobile-link" href="#sobre">Sobre</a></li>
+      <li><a class="header-simple__mobile-link" href="#beneficios">Benefícios</a></li>
+      <li><a class="header-simple__mobile-link" href="#diferenciais">Diferenciais</a></li>
+      <li><a class="header-simple__mobile-link" href="#faq">FAQ</a></li>
+    </ul>
+    <div class="header-simple__mobile-actions">
+      <a href="#contato" class="button button--filled button--lg">
+        Entrar em contato
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
 
 
 <!-- ══════════════════════════════════════
      2. HERO BACKGROUND — V1
 ══════════════════════════════════════ -->
-<section class="hero" id="sobre">
-  <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
-  <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
-  <div class="hero__bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero__content">
-      <div class="hero__eyebrow">Recrutamento em Revenue</div>
-      <h1 class="hero__title">
-        O talento certo para<br>
-        <em>acelerar sua receita.</em>
-      </h1>
-      <p class="hero__sub">
-        A Fitz conecta empresas B2B com especialistas em RevOps, CRM e Growth. Processo estruturado, fit garantido — em até 30 dias.
+<main id="main-content">
+<section class="hero-background" aria-labelledby="hero-title" id="sobre">
+
+  <div class="hero-background__media" aria-hidden="true">
+    <!-- CSS gradient background: no real image needed -->
+  </div>
+
+  <div class="hero-background__overlay">
+    <div class="hero-background__container container">
+      <div class="hero-background__content">
+
+        <span class="hero-background__eyebrow">Recrutamento em Revenue</span>
+
+        <h1 class="hero-background__title" id="hero-title">
+          O talento certo para acelerar sua receita.
+        </h1>
+
+        <p class="hero-background__description">
+          A Fitz conecta empresas B2B com especialistas em RevOps, CRM e Growth. Processo estruturado, fit garantido — em até 30 dias.
+        </p>
+
+        <div class="hero-background__actions">
+          <a href="#contato" class="button button--inverse button--lg">
+            Quero montar meu time
+            <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+          <a href="#diferenciais" class="button button--outline button--lg" style="border-color:rgba(255,255,255,.35);color:#fff">
+            Como funciona
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     3. FEATURE SPLIT — V1 (conteúdo esq. + imagem dir.)
+     "Nosso método"
+══════════════════════════════════════ -->
+<section class="feature-split" id="beneficios">
+  <div class="feature-split__inner container">
+
+    <div class="feature-split__content">
+      <span class="feature-split__eyebrow">Nosso método</span>
+      <h2 class="feature-split__title">Mais do que recrutamento — uma parceria de crescimento.</h2>
+      <p class="feature-split__description">
+        Cada candidato que apresentamos passou por uma triagem rigorosa que vai muito além do currículo. Medimos o que realmente importa para a sua empresa.
       </p>
-      <div class="hero__actions">
-        <a href="#contato" class="btn btn--lime">
-          Quero montar meu time
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+
+      <ul class="feature-split__checklist">
+        <li class="feature-split__check-item">
+          <svg class="feature-split__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-check"/></svg>
+          <div class="feature-split__check-content">
+            <span class="feature-split__check-subtitle">Curadoria Premium</span>
+            <span class="feature-split__check-body">Avaliamos mais de 200 candidatos para entregar os 3 mais aderentes ao seu perfil — com parecer técnico detalhado de cada um.</span>
+          </div>
+        </li>
+        <li class="feature-split__check-item">
+          <svg class="feature-split__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-check"/></svg>
+          <div class="feature-split__check-content">
+            <span class="feature-split__check-subtitle">Fit cultural mensurável</span>
+            <span class="feature-split__check-body">Nossa metodologia proprietária quantifica a compatibilidade entre o candidato e a cultura da sua empresa — não é feeling, é dado.</span>
+          </div>
+        </li>
+        <li class="feature-split__check-item">
+          <svg class="feature-split__check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#icon-check"/></svg>
+          <div class="feature-split__check-content">
+            <span class="feature-split__check-subtitle">Modelo de construção e sustentação</span>
+            <span class="feature-split__check-body">Não apenas contratamos — acompanhamos os primeiros 90 dias para garantir que o profissional performa e permanece.</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="feature-split__actions">
+        <a href="#contato" class="button button--filled button--md">
+          Falar com a Fitz
+          <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
         </a>
-        <a href="#diferenciais" class="btn btn--outline-light">Como funciona</a>
       </div>
     </div>
-    <div class="hero__stats" aria-label="Números da Fitz">
-      <div class="hero__stat-item">
-        <span class="hero__stat-num">+200</span>
-        <span class="hero__stat-label">Profissionais curados</span>
-      </div>
-      <div class="hero__stat-item">
-        <span class="hero__stat-num">30d</span>
-        <span class="hero__stat-label">Prazo médio de fechamento</span>
-      </div>
-      <div class="hero__stat-item">
-        <span class="hero__stat-num">92%</span>
-        <span class="hero__stat-label">Taxa de retenção em 12 meses</span>
-      </div>
+
+    <div class="feature-split__media" aria-hidden="true">
+      <!-- CSS gradient visual -->
     </div>
+
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════
-     3. FEATURE SPLIT — V1
-     "O método Fitz"
+     4. FEATURE CARDS — V1 (3-col grid)
+     "Diferenciais / problemas que resolvemos"
 ══════════════════════════════════════ -->
-<section class="section section--white" id="beneficios">
+<section class="feature-cards" id="diferenciais">
   <div class="container">
-    <div class="fsplit">
-      <!-- Visual -->
-      <div class="fsplit__visual" aria-hidden="true">
-        <div class="fsplit__visual-inner">
-          <div class="fitz-scorecard">
-            <div class="fitz-scorecard__label">Scorecard Fitz — Candidato</div>
-            <div class="fitz-score-row">
-              <span class="fitz-score-row__name">Fit técnico</span>
-              <div class="fitz-score-row__bar"><div class="fitz-score-row__fill" style="width:92%"></div></div>
-              <span class="fitz-score-row__val">92</span>
-            </div>
-            <div class="fitz-score-row">
-              <span class="fitz-score-row__name">Fit cultural</span>
-              <div class="fitz-score-row__bar"><div class="fitz-score-row__fill" style="width:88%"></div></div>
-              <span class="fitz-score-row__val">88</span>
-            </div>
-            <div class="fitz-score-row">
-              <span class="fitz-score-row__name">Velocidade ramp-up</span>
-              <div class="fitz-score-row__bar"><div class="fitz-score-row__fill" style="width:95%"></div></div>
-              <span class="fitz-score-row__val">95</span>
-            </div>
-            <div class="fitz-score-row">
-              <span class="fitz-score-row__name">Track record</span>
-              <div class="fitz-score-row__bar"><div class="fitz-score-row__fill" style="width:80%"></div></div>
-              <span class="fitz-score-row__val">80</span>
-            </div>
-            <div class="fitz-scorecard__total">
-              <span class="fitz-scorecard__total-label">Score geral</span>
-              <span class="fitz-scorecard__total-val">89/100</span>
-            </div>
-          </div>
-        </div>
+    <div class="feature-cards__header">
+      <span class="feature-cards__eyebrow">Diferenciais</span>
+      <h2 class="feature-cards__title">Reconhece algum destes problemas?</h2>
+      <p class="feature-cards__description">Se o seu time de Revenue tem rotatividade alta, demora para contratar ou novos profissionais custam meses para entregar resultado — a Fitz foi feita para você.</p>
+    </div>
+
+    <div class="feature-cards__grid">
+
+      <div class="feature-cards__card">
+        <svg class="feature-cards__card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        <p class="feature-cards__card-title">Alto turnover no time de Revenue</p>
+        <p class="feature-cards__card-body">Substituir um profissional de Revenue custa entre 1,5× e 2× o salário anual. A Fitz seleciona pelo fit cultural medido, não apenas pelo técnico, garantindo retenção real e duradoura.</p>
+        <a href="#contato" class="feature-cards__card-link">
+          Quero reduzir turnover
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="feature-cards__card-media feature-cards__card-media--1" aria-hidden="true"></div>
       </div>
 
-      <!-- Copy -->
-      <div class="fsplit__copy">
-        <span class="eyebrow">Nosso método</span>
-        <h2 class="heading-lg">Mais do que um recrutamento — uma parceria de crescimento.</h2>
-        <p>Cada candidato que apresentamos passou por uma triagem rigorosa que vai muito além do currículo. O Scorecard Fitz mede o que realmente importa para a sua empresa.</p>
-        <ul class="fsplit__checklist">
-          <li class="fsplit__item">
-            <div class="fsplit__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="fsplit__item-body">
-              <div class="fsplit__item-title">Curadoria Premium</div>
-              <div class="fsplit__item-desc">Avaliamos mais de 200 candidatos para entregar os 3 mais aderentes ao seu perfil — com parecer técnico detalhado de cada um.</div>
-            </div>
-          </li>
-          <li class="fsplit__item">
-            <div class="fsplit__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            <div class="fsplit__item-body">
-              <div class="fsplit__item-title">Fit cultural mensurável</div>
-              <div class="fsplit__item-desc">Nossa metodologia proprietária quantifica a compatibilidade entre o candidato e a cultura da sua empresa — não é feeling, é dado.</div>
-            </div>
-          </li>
-          <li class="fsplit__item">
-            <div class="fsplit__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div class="fsplit__item-body">
-              <div class="fsplit__item-title">Modelo de construção e sustentação</div>
-              <div class="fsplit__item-desc">Não apenas contratamos — acompanhamos os primeiros 90 dias para garantir que o profissional performa e permanece.</div>
-            </div>
-          </li>
-        </ul>
+      <div class="feature-cards__card">
+        <svg class="feature-cards__card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <p class="feature-cards__card-title">Recrutamento lento — vagas abertas há meses</p>
+        <p class="feature-cards__card-body">Processos longos custam receita e sobrecarregam o time. Com a Fitz, do briefing à oferta em até 30 dias — sem comprometer a qualidade ou o rigor da seleção.</p>
+        <a href="#contato" class="feature-cards__card-link">
+          Quero fechar mais rápido
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="feature-cards__card-media feature-cards__card-media--2" aria-hidden="true"></div>
       </div>
-    </div>
-  </div>
-</section>
 
-
-<!-- ══════════════════════════════════════
-     4. FEATURE CARDS — V1
-     "Os problemas que resolvemos"
-══════════════════════════════════════ -->
-<section class="section section--light" id="diferenciais">
-  <div class="container">
-    <div class="fcards__header">
-      <span class="eyebrow">Diferenciais</span>
-      <h2 class="heading-lg">Reconhece algum destes problemas?</h2>
-      <p>Se o seu time de Revenue tem rotatividade alta, demora para contratar ou novos profissionais custam meses para entregar resultado — a Fitz foi feita para você.</p>
-    </div>
-    <div class="fcards__grid">
-
-      <!-- Card 1 — Turnover -->
-      <article class="fcard">
-        <div class="fcard__visual fcard__visual--1">
-          <span class="fcard__tag">Problema nº 1</span>
-          <div class="fcard__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-          </div>
-        </div>
-        <div class="fcard__body">
-          <p class="fcard__problem">Alto turnover</p>
-          <h3 class="fcard__title">Seu time de Revenue não para de girar?</h3>
-          <p class="fcard__desc">Substituir um profissional de Revenue custa entre 1,5× e 2× o salário anual. A Fitz seleciona pelo fit cultural medido, não apenas pelo técnico, garantindo retenção real.</p>
-          <a href="#contato" class="fcard__link">
-            Quero reduzir turnover
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 2 — Recrutamento lento -->
-      <article class="fcard">
-        <div class="fcard__visual fcard__visual--2">
-          <span class="fcard__tag">Problema nº 2</span>
-          <div class="fcard__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-        </div>
-        <div class="fcard__body">
-          <p class="fcard__problem">Recrutamento lento</p>
-          <h3 class="fcard__title">Vagas abertas há meses sem o candidato certo?</h3>
-          <p class="fcard__desc">Processos longos custam receita e sobrecarregam o time. Com a Fitz, do briefing à oferta em até 30 dias — sem comprometer a qualidade da seleção.</p>
-          <a href="#contato" class="fcard__link">
-            Quero fechar mais rápido
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Card 3 — Ramp-up longo -->
-      <article class="fcard">
-        <div class="fcard__visual fcard__visual--3">
-          <span class="fcard__tag">Problema nº 3</span>
-          <div class="fcard__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-        </div>
-        <div class="fcard__body">
-          <p class="fcard__problem">Ramp-up lento</p>
-          <h3 class="fcard__title">Novos profissionais demoram 6+ meses para performar?</h3>
-          <p class="fcard__desc">Medimos a velocidade histórica de ramp-up de cada candidato antes de apresentá-lo. Quem contratamos com a Fitz entrega resultado em metade do tempo.</p>
-          <a href="#contato" class="fcard__link">
-            Quero resultados mais rápidos
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </article>
+      <div class="feature-cards__card">
+        <svg class="feature-cards__card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <p class="feature-cards__card-title">Ramp-up longo — 6+ meses para performar</p>
+        <p class="feature-cards__card-body">Medimos a velocidade histórica de ramp-up de cada candidato antes de apresentá-lo. Quem contratamos com a Fitz entrega resultado em metade do tempo típico do mercado.</p>
+        <a href="#contato" class="feature-cards__card-link">
+          Quero resultados mais rápidos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="feature-cards__card-media feature-cards__card-media--3" aria-hidden="true"></div>
+      </div>
 
     </div>
   </div>
@@ -1305,219 +902,219 @@
 
 
 <!-- ══════════════════════════════════════
-     5. FEATURE ACCORDION — V1
+     5. FEATURE ACCORDION — V1 (imagem esq. + accordion dir.)
      "Especialidades"
 ══════════════════════════════════════ -->
-<section class="section section--white">
+<section class="feature-accordion">
+  <div class="feature-accordion__inner container">
+
+    <div class="feature-accordion__media" aria-hidden="true">
+      <!-- CSS gradient visual -->
+    </div>
+
+    <div class="feature-accordion__content">
+      <h2 class="feature-accordion__title">Especialistas em cada frente da sua receita.</h2>
+      <p class="feature-accordion__description">Não recrutamos generalistas. Mapeamos, avaliamos e apresentamos especialistas profundos em cada disciplina de Revenue — com certificações e histórico validado.</p>
+
+      <div class="feature-accordion__list">
+
+        <details class="feature-accordion__item" open>
+          <summary class="feature-accordion__trigger">
+            <span class="feature-accordion__question">RevOps Specialists</span>
+            <span class="feature-accordion__icon-wrap" aria-hidden="true">
+              <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+            </span>
+          </summary>
+          <div class="feature-accordion__panel">
+            <div class="feature-accordion__panel-inner">
+              <p class="feature-accordion__answer">Profissionais de operações de receita que dominam o ciclo completo: da arquitetura de funil à entrega de relatórios executivos. Especialistas em eliminar fricção entre Marketing, Vendas e CS para maximizar a conversão em cada etapa.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="feature-accordion__item">
+          <summary class="feature-accordion__trigger">
+            <span class="feature-accordion__question">CRM Specialists</span>
+            <span class="feature-accordion__icon-wrap" aria-hidden="true">
+              <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+            </span>
+          </summary>
+          <div class="feature-accordion__panel">
+            <div class="feature-accordion__panel-inner">
+              <p class="feature-accordion__answer">Especialistas certificados em HubSpot, Salesforce e Pipedrive que implementam, otimizam e evoluem seu CRM com foco em adoção real e resultados mensuráveis. Não apenas configuram — garantem que o time usa e vende mais.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="feature-accordion__item">
+          <summary class="feature-accordion__trigger">
+            <span class="feature-accordion__question">Marketing Managers</span>
+            <span class="feature-accordion__icon-wrap" aria-hidden="true">
+              <svg class="feature-accordion__icon-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+            </span>
+          </summary>
+          <div class="feature-accordion__panel">
+            <div class="feature-accordion__panel-inner">
+              <p class="feature-accordion__answer">Gestores de Demand Generation, Growth e Marketing de Produto com histórico comprovado em geração de pipeline qualificado. Especialistas em conectar marketing com resultado de receita — não apenas com impressões e cliques.</p>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     6. INTEGRATIONS GRID — V1 (adaptado como CTA de método)
+     "Transforme seu processo de recrutamento com o método Fitz"
+══════════════════════════════════════ -->
+<section class="integrations-grid" id="contato">
   <div class="container">
-    <div class="faccordion">
+    <div class="integrations-grid__header">
+      <span class="integrations-grid__eyebrow">Método Fitz</span>
+      <h2 class="integrations-grid__title">
+        Transforme seu processo de<br>
+        <span class="integrations-grid__title-accent">recrutamento em Revenue.</span>
+      </h2>
+    </div>
 
-      <!-- Visual -->
-      <div class="faccordion__visual" aria-hidden="true">
-        <div class="fitz-profile">
-          <div class="fitz-profile__card">
-            <div class="fitz-profile__av"></div>
-            <div class="fitz-profile__name">Rafael M.</div>
-            <div class="fitz-profile__role">Head of RevOps · 8 anos de exp.</div>
-            <div class="fitz-profile__badge">Fit Fitz: 94/100</div>
-            <div class="fitz-profile__score-row">
-              <span class="fitz-profile__score-label">HubSpot certified</span>
-              <span class="fitz-profile__score-val">✓</span>
-            </div>
-            <div class="fitz-profile__score-row">
-              <span class="fitz-profile__score-label">Salesforce admin</span>
-              <span class="fitz-profile__score-val">✓</span>
-            </div>
-            <div class="fitz-profile__score-row">
-              <span class="fitz-profile__score-label">Ramp-up médio</span>
-              <span class="fitz-profile__score-val">47 dias</span>
-            </div>
-          </div>
-          <div class="fitz-profile__card" style="opacity:.55; transform: scale(.95);">
-            <div class="fitz-profile__av" style="background: linear-gradient(135deg, #15371C, #2a6b38);"></div>
-            <div class="fitz-profile__name">Camila R.</div>
-            <div class="fitz-profile__role">CRM Specialist · 5 anos de exp.</div>
-            <div class="fitz-profile__badge">Fit Fitz: 89/100</div>
-          </div>
+    <div class="integrations-grid__list">
+
+      <div class="integrations-grid__card">
+        <div class="integrations-grid__card-head">
+          <svg class="integrations-grid__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span class="integrations-grid__badge">Success fee</span>
         </div>
+        <p class="integrations-grid__card-title">Sem risco financeiro</p>
+        <p class="integrations-grid__card-body">Cobramos apenas quando a contratação é concluída com sucesso. Nenhum custo antecipado, nenhuma taxa de exclusividade. Nosso incentivo é o mesmo que o seu: fechar a vaga certa.</p>
+        <a href="mailto:hello@fitz.example" class="button button--filled button--sm" style="align-self:flex-start">Falar com a Fitz</a>
       </div>
 
-      <!-- Accordion copy -->
-      <div class="faccordion__copy">
-        <span class="eyebrow">Especialidades</span>
-        <h2 class="heading-lg">Talentos especializados para cada frente da sua receita.</h2>
-        <p>Não recrutamos generalistas. Mapeamos, avaliamos e apresentamos especialistas profundos em cada disciplina de Revenue.</p>
-
-        <div class="facc-list">
-
-          <details class="facc-item" open>
-            <summary>
-              <div class="facc-summary-inner">
-                <span class="facc-num">01</span>
-                <span class="facc-title">RevOps Specialists</span>
-              </div>
-              <span class="facc-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="facc-body">
-              Profissionais de operações de receita que dominam o ciclo completo: desde a arquitetura de funil até a entrega de relatórios executivos. Especialistas em eliminar fricção entre Marketing, Vendas e CS.
-              <div class="facc-tags">
-                <span class="facc-tag">Revenue Operations</span>
-                <span class="facc-tag">Pipeline Management</span>
-                <span class="facc-tag">BI & Analytics</span>
-                <span class="facc-tag">Forecast</span>
-              </div>
-            </div>
-          </details>
-
-          <details class="facc-item">
-            <summary>
-              <div class="facc-summary-inner">
-                <span class="facc-num">02</span>
-                <span class="facc-title">CRM Specialists</span>
-              </div>
-              <span class="facc-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="facc-body">
-              Especialistas certificados em HubSpot, Salesforce e Pipedrive que implementam, otimizam e evoluem seu CRM com foco em adoção real e resultados mensuráveis para o time comercial.
-              <div class="facc-tags">
-                <span class="facc-tag">HubSpot</span>
-                <span class="facc-tag">Salesforce</span>
-                <span class="facc-tag">Pipedrive</span>
-                <span class="facc-tag">Automações</span>
-              </div>
-            </div>
-          </details>
-
-          <details class="facc-item">
-            <summary>
-              <div class="facc-summary-inner">
-                <span class="facc-num">03</span>
-                <span class="facc-title">Marketing Managers</span>
-              </div>
-              <span class="facc-chevron" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-              </span>
-            </summary>
-            <div class="facc-body">
-              Gestores de Demand Generation, Growth e Marketing de Produto com histórico comprovado em geração de pipeline qualificado. Especialistas em conectar marketing com resultado de receita.
-              <div class="facc-tags">
-                <span class="facc-tag">Demand Gen</span>
-                <span class="facc-tag">Growth</span>
-                <span class="facc-tag">Product Marketing</span>
-                <span class="facc-tag">ABM</span>
-              </div>
-            </div>
-          </details>
-
+      <div class="integrations-grid__card">
+        <div class="integrations-grid__card-head">
+          <svg class="integrations-grid__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="integrations-grid__badge">30 dias</span>
         </div>
+        <p class="integrations-grid__card-title">Do briefing à oferta</p>
+        <p class="integrations-grid__card-body">Diagnóstico, hunting ativo, curadoria com scorecard, parecer técnico por especialistas sêniors e apresentação dos finalistas — tudo em até 30 dias corridos.</p>
+        <a href="mailto:hello@fitz.example" class="button button--filled button--sm" style="align-self:flex-start">Iniciar processo</a>
       </div>
+
+      <div class="integrations-grid__card">
+        <div class="integrations-grid__card-head">
+          <svg class="integrations-grid__icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span class="integrations-grid__badge">3 meses</span>
+        </div>
+        <p class="integrations-grid__card-title">Garantia de retenção</p>
+        <p class="integrations-grid__card-body">Se o profissional sair ou não performar nos primeiros 3 meses, refazemos o processo completo sem custo adicional. Nossa garantia mostra que acreditamos no nosso próprio método.</p>
+        <a href="mailto:hello@fitz.example" class="button button--filled button--sm" style="align-self:flex-start">Quero contratar agora</a>
+      </div>
+
     </div>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════
-     6. CTA / INTEGRATIONS — V1
+     7. BLOG POSTS — V1 (carousel de 5 etapas do processo)
+     "5 etapas do método Fitz"
 ══════════════════════════════════════ -->
-<section class="section cta-section" id="contato">
+<section class="blog-posts" data-js="blog-posts">
   <div class="container">
-    <div class="cta-section__inner">
-      <div>
-        <span class="eyebrow cta-section__eyebrow">Método Fitz</span>
-        <h2 class="cta-section__title">Transforme seu processo de recrutamento com o método Fitz.</h2>
-        <p class="cta-section__sub">Empresas B2B que usam a Fitz fecham vagas 3× mais rápido e com taxa de retenção 60% maior do que o mercado.</p>
-        <div class="cta-badges">
-          <span class="cta-badge">Sem risco — success fee</span>
-          <span class="cta-badge">Garantia de 3 meses</span>
-          <span class="cta-badge">Prazo de 30 dias</span>
-        </div>
+
+    <div class="blog-posts__header">
+      <div class="blog-posts__header-text">
+        <span class="blog-posts__eyebrow">Processo</span>
+        <h2 class="blog-posts__title">
+          Como funciona a curadoria Fitz.
+        </h2>
       </div>
-      <div class="cta-section__actions">
-        <a href="mailto:hello@fitz.example" class="btn btn--lime">
-          Quero contratar agora
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="tel:+551100000000" class="btn btn--outline-light">Agendar uma call</a>
+      <div class="blog-posts__arrows">
+        <button class="blog-posts__arrow blog-posts__arrow--prev" aria-label="Etapa anterior" data-js="prev" disabled>
+          <svg aria-hidden="true" focusable="false"><use href="#icon-chevron-left"/></svg>
+        </button>
+        <button class="blog-posts__arrow blog-posts__arrow--next" aria-label="Próxima etapa" data-js="next">
+          <svg aria-hidden="true" focusable="false"><use href="#icon-chevron-right"/></svg>
+        </button>
       </div>
     </div>
-  </div>
-</section>
 
+    <hr class="blog-posts__divider">
 
-<!-- ══════════════════════════════════════
-     7. BLOG / METHODOLOGY STEPS — V1
-     "Nosso processo"
-══════════════════════════════════════ -->
-<section class="section section--light">
-  <div class="container">
-    <div class="method__header">
-      <span class="eyebrow">Processo</span>
-      <h2 class="heading-lg">Como funciona a curadoria Fitz.</h2>
-      <p>Cinco etapas estruturadas para entregar o candidato certo — com rapidez e precisão.</p>
+    <div class="blog-posts__slider">
+      <div class="blog-posts__track" data-js="track">
+
+        <article class="blog-posts__card fitz-step--1" data-js="card">
+          <div class="blog-posts__card-link" tabindex="0">
+            <div class="blog-posts__card-image">
+              <div class="fitz-step__num" aria-hidden="true">01</div>
+            </div>
+            <div class="blog-posts__card-meta">
+              <span class="blog-posts__card-category">1–2 dias</span>
+            </div>
+            <h3 class="blog-posts__card-title">Diagnóstico</h3>
+            <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);line-height:var(--line-height-relaxed);">Entendemos sua empresa em profundidade: stack, cultura, momento de crescimento e o perfil exato que vai fazer diferença — não apenas o que está no job description.</p>
+          </div>
+        </article>
+
+        <article class="blog-posts__card fitz-step--2" data-js="card">
+          <div class="blog-posts__card-link" tabindex="0">
+            <div class="blog-posts__card-image">
+              <div class="fitz-step__num" aria-hidden="true">02</div>
+            </div>
+            <div class="blog-posts__card-meta">
+              <span class="blog-posts__card-category">5–10 dias</span>
+            </div>
+            <h3 class="blog-posts__card-title">Hunting</h3>
+            <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);line-height:var(--line-height-relaxed);">Buscamos ativamente nos pools especializados de Revenue — não publicamos vagas em job boards genéricos. Mapeamos candidatos passivos que seus concorrentes não encontram.</p>
+          </div>
+        </article>
+
+        <article class="blog-posts__card fitz-step--3" data-js="card">
+          <div class="blog-posts__card-link" tabindex="0">
+            <div class="blog-posts__card-image">
+              <div class="fitz-step__num" aria-hidden="true">03</div>
+            </div>
+            <div class="blog-posts__card-meta">
+              <span class="blog-posts__card-category">7–14 dias</span>
+            </div>
+            <h3 class="blog-posts__card-title">Curadoria</h3>
+            <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);line-height:var(--line-height-relaxed);">Aplicamos o Scorecard Fitz: avaliação de fit técnico, fit cultural, velocidade de ramp-up e histórico de resultados. Mais de 200 candidatos avaliados para entregar os 3 melhores.</p>
+          </div>
+        </article>
+
+        <article class="blog-posts__card fitz-step--4" data-js="card">
+          <div class="blog-posts__card-link" tabindex="0">
+            <div class="blog-posts__card-image">
+              <div class="fitz-step__num" aria-hidden="true">04</div>
+            </div>
+            <div class="blog-posts__card-meta">
+              <span class="blog-posts__card-category">3–5 dias</span>
+            </div>
+            <h3 class="blog-posts__card-title">Parecer técnico</h3>
+            <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);line-height:var(--line-height-relaxed);">Entrevistas técnicas conduzidas por profissionais sêniors da mesma área — não por RH generalista. Validamos profundidade real, não capacidade de decorar respostas de entrevista.</p>
+          </div>
+        </article>
+
+        <article class="blog-posts__card fitz-step--5" data-js="card">
+          <div class="blog-posts__card-link" tabindex="0">
+            <div class="blog-posts__card-image">
+              <div class="fitz-step__num" aria-hidden="true">05</div>
+            </div>
+            <div class="blog-posts__card-meta">
+              <span class="blog-posts__card-category">1–2 dias</span>
+            </div>
+            <h3 class="blog-posts__card-title">Seleção</h3>
+            <p style="font-size:var(--font-size-sm);color:var(--color-text-muted);line-height:var(--line-height-relaxed);">Apresentamos os 3 finalistas com parecer completo: pontuação no Scorecard, highlights de carreira, áreas de desenvolvimento e nossa recomendação fundamentada. A decisão final é sua.</p>
+          </div>
+        </article>
+
+      </div>
     </div>
 
-    <div class="method__steps">
-
-      <div class="method__step">
-        <div class="method__num-wrap">
-          <div class="method__num">1</div>
-        </div>
-        <div class="method__content">
-          <h3 class="method__step-title">Diagnóstico</h3>
-          <p class="method__step-desc">Entendemos sua empresa em profundidade: stack tecnológica, cultura, momento de crescimento, desafios do time e o perfil exato que vai fazer diferença — não apenas o que está no job description.</p>
-          <span class="method__step-tag">1–2 dias</span>
-        </div>
-      </div>
-
-      <div class="method__step">
-        <div class="method__num-wrap">
-          <div class="method__num">2</div>
-        </div>
-        <div class="method__content">
-          <h3 class="method__step-title">Hunting</h3>
-          <p class="method__step-desc">Buscamos ativamente nos pools especializados de Revenue — não publicamos vagas em job boards genéricos. Mapeamos candidatos passivos que os seus concorrentes não encontram.</p>
-          <span class="method__step-tag">5–10 dias</span>
-        </div>
-      </div>
-
-      <div class="method__step">
-        <div class="method__num-wrap">
-          <div class="method__num">3</div>
-        </div>
-        <div class="method__content">
-          <h3 class="method__step-title">Curadoria</h3>
-          <p class="method__step-desc">Aplicamos o Scorecard Fitz: avaliação proprietária de fit técnico, fit cultural, velocidade de ramp-up e histórico de resultados. Mais de 200 candidatos avaliados para entregar os 3 melhores.</p>
-          <span class="method__step-tag">7–14 dias</span>
-        </div>
-      </div>
-
-      <div class="method__step">
-        <div class="method__num-wrap">
-          <div class="method__num">4</div>
-        </div>
-        <div class="method__content">
-          <h3 class="method__step-title">Parecer técnico</h3>
-          <p class="method__step-desc">Entrevistas técnicas conduzidas por profissionais seniores da mesma área — não por RH generalista. Validamos profundidade real, não capacidade de decorar respostas.</p>
-          <span class="method__step-tag">3–5 dias</span>
-        </div>
-      </div>
-
-      <div class="method__step">
-        <div class="method__num-wrap">
-          <div class="method__num">5</div>
-        </div>
-        <div class="method__content">
-          <h3 class="method__step-title">Seleção</h3>
-          <p class="method__step-desc">Apresentamos os 3 finalistas com parecer completo: pontuação no Scorecard, highlights de carreira, áreas de desenvolvimento e nossa recomendação fundamentada. A decisão final é sua, com toda a informação necessária.</p>
-          <span class="method__step-tag">1–2 dias</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -1525,156 +1122,247 @@
 <!-- ══════════════════════════════════════
      8. FAQ ACCORDION — V1 Enclosed
 ══════════════════════════════════════ -->
-<section class="section section--white" id="faq">
+<section class="faq-accordion faq-accordion--enclosed" id="faq">
   <div class="container">
-    <div class="faq__header">
-      <span class="eyebrow">Perguntas frequentes</span>
-      <h2 class="heading-lg">Tudo o que você precisa saber.</h2>
-      <p>Ainda tem dúvidas? <a href="mailto:hello@fitz.example" style="color: var(--fz-primary); font-weight:600">Fale com a gente.</a></p>
+    <div class="faq-accordion__header">
+      <h2 class="faq-accordion__title">Perguntas frequentes</h2>
+      <p class="faq-accordion__subtitle">Ainda tem dúvidas? <a href="mailto:hello@fitz.example" style="color:var(--color-primary);font-weight:600">Fale com a gente.</a></p>
     </div>
 
-    <div class="faq__list">
+    <div class="faq-accordion__list">
 
-      <details class="faq__item">
-        <summary>
-          <span class="faq__question">Quanto tempo leva o processo de recrutamento?</span>
-          <span class="faq__toggle" aria-hidden="true">+</span>
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">Quanto tempo leva o processo de recrutamento?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="9" y1="2" x2="9" y2="16"/>
+              <line class="icon-plus__v" x1="2" y1="9" x2="16" y2="9"/>
+            </svg>
+          </span>
         </summary>
-        <div class="faq__answer">
-          Em média, do briefing à oferta aceita em 30 dias corridos. O Diagnóstico e Hunting levam de 5 a 12 dias, a Curadoria e Parecer Técnico mais 7 a 10 dias, e a apresentação dos finalistas 1 a 2 dias. O tempo final depende da disponibilidade do seu time para entrevistas internas.
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Em média, do briefing à oferta aceita em 30 dias corridos. O Diagnóstico e Hunting levam de 5 a 12 dias, a Curadoria e Parecer Técnico mais 7 a 10 dias, e a apresentação dos finalistas 1 a 2 dias. O tempo final depende da disponibilidade do seu time para entrevistas.</p>
+          </div>
         </div>
       </details>
 
-      <details class="faq__item">
-        <summary>
-          <span class="faq__question">Qual é o modelo de cobrança da Fitz?</span>
-          <span class="faq__toggle" aria-hidden="true">+</span>
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">Qual é o modelo de cobrança da Fitz?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="9" y1="2" x2="9" y2="16"/>
+              <line class="icon-plus__v" x1="2" y1="9" x2="16" y2="9"/>
+            </svg>
+          </span>
         </summary>
-        <div class="faq__answer">
-          Trabalhamos exclusivamente em success fee — você não paga nada até que a contratação seja concluída com sucesso. O valor é calculado como percentual do pacote de remuneração anual do profissional contratado. Sem custos de exclusividade ou antecipações.
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Trabalhamos exclusivamente em success fee — você não paga nada até que a contratação seja concluída. O valor é calculado como percentual do pacote de remuneração anual do profissional contratado. Sem custos de exclusividade ou antecipações.</p>
+          </div>
         </div>
       </details>
 
-      <details class="faq__item">
-        <summary>
-          <span class="faq__question">O que acontece se o profissional sair nos primeiros meses?</span>
-          <span class="faq__toggle" aria-hidden="true">+</span>
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">O que acontece se o profissional sair nos primeiros meses?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="9" y1="2" x2="9" y2="16"/>
+              <line class="icon-plus__v" x1="2" y1="9" x2="16" y2="9"/>
+            </svg>
+          </span>
         </summary>
-        <div class="faq__answer">
-          Oferecemos garantia de 3 meses: se o profissional sair ou não performar dentro deste período, reiniciamos o processo completo sem custo adicional. É nossa maneira de colocar pele no jogo e reforçar a confiança no nosso método.
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Oferecemos garantia de 3 meses: se o profissional sair ou não performar dentro deste período, reiniciamos o processo completo sem custo adicional. É nossa maneira de colocar pele no jogo e reforçar a confiança no método.</p>
+          </div>
         </div>
       </details>
 
-      <details class="faq__item">
-        <summary>
-          <span class="faq__question">A Fitz atende empresas de qual porte?</span>
-          <span class="faq__toggle" aria-hidden="true">+</span>
+      <details class="faq-accordion__item">
+        <summary class="faq-accordion__trigger">
+          <span class="faq-accordion__question">A Fitz atende empresas de qual porte?</span>
+          <span class="faq-accordion__icon-wrap" aria-hidden="true">
+            <svg class="faq-accordion__icon-plus" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="9" y1="2" x2="9" y2="16"/>
+              <line class="icon-plus__v" x1="2" y1="9" x2="16" y2="9"/>
+            </svg>
+          </span>
         </summary>
-        <div class="faq__answer">
-          Atendemos startups a partir de Série A até scale-ups com times de 50+ pessoas em Revenue. Nosso sweet spot são empresas B2B SaaS ou de tecnologia que já têm um processo comercial estruturado e precisam de especialistas para escalar — não de generalistas para começar do zero.
+        <div class="faq-accordion__panel">
+          <div class="faq-accordion__panel-inner">
+            <p class="faq-accordion__answer">Atendemos startups a partir de Série A até scale-ups com times de 50+ pessoas em Revenue. Nosso sweet spot são empresas B2B SaaS ou de tecnologia que já têm um processo comercial estruturado e precisam de especialistas para escalar — não de generalistas para começar do zero.</p>
+          </div>
         </div>
       </details>
 
+    </div>
+
+    <div class="faq-accordion__footer">
+      <a href="mailto:hello@fitz.example" class="button button--filled button--md">
+        Falar com a Fitz
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
+</main>
+
 
 <!-- ══════════════════════════════════════
-     9. FOOTER FULL — V1
+     9. FOOTER FULL — V1 (desc + CTA | cols + social)
 ══════════════════════════════════════ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer__grid">
+<footer class="footer-full">
+  <div class="footer-full__grid container">
 
-      <!-- Brand col -->
-      <div class="footer__brand">
-        <div class="footer__logo">Fitz<em>.</em></div>
-        <p class="footer__desc">Recrutamento especializado em Revenue Operations, CRM e Growth Marketing para empresas B2B que querem crescer com o talento certo.</p>
-        <div class="footer__social" aria-label="Redes sociais">
-          <a href="#" class="footer__social-link" aria-label="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <div class="footer-full__brand">
+      <a href="/" class="footer-full__logo" aria-label="Fitz — Página inicial">
+        <span class="footer-full__logo-text">Fitz<em>.</em></span>
+      </a>
+      <p class="footer-full__description">
+        Recrutamento especializado em Revenue Operations, CRM e Growth Marketing para empresas B2B que querem crescer com o talento certo.
+      </p>
+      <a href="mailto:hello@fitz.example" class="button button--outline button--md" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.8)">
+        Entrar em contato
+        <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-full__links">
+
+      <div class="footer-full__group">
+        <p class="footer-full__group-title">Empresa</p>
+        <ul class="footer-full__group-list" role="list">
+          <li><a class="footer-full__group-link" href="#sobre">Sobre a Fitz</a></li>
+          <li><a class="footer-full__group-link" href="#diferenciais">Método</a></li>
+          <li><a class="footer-full__group-link" href="#beneficios">Como funciona</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-full__group">
+        <p class="footer-full__group-title">Especialidades</p>
+        <ul class="footer-full__group-list" role="list">
+          <li><a class="footer-full__group-link" href="#diferenciais">RevOps Specialists</a></li>
+          <li><a class="footer-full__group-link" href="#diferenciais">CRM Specialists</a></li>
+          <li><a class="footer-full__group-link" href="#diferenciais">Marketing Managers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-full__group">
+        <p class="footer-full__group-title">Contato</p>
+        <ul class="footer-full__group-list" role="list">
+          <li><a class="footer-full__group-link" href="mailto:hello@fitz.example">hello@fitz.com</a></li>
+          <li><a class="footer-full__group-link" href="tel:+551100000000">+55 11 0000-0000</a></li>
+          <li><a class="footer-full__group-link" href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-full__group">
+        <p class="footer-full__group-title">Redes sociais</p>
+        <div class="footer-full__group-social" style="margin-block-start:var(--space-sm)">
+          <a href="#" class="footer-full__social-link" aria-label="LinkedIn">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
           </a>
-          <a href="#" class="footer__social-link" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <a href="#" class="footer-full__social-link" aria-label="Instagram">
+            <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#icon-instagram"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Links -->
-      <div>
-        <div class="footer__col-title">Empresa</div>
-        <ul class="footer__links">
-          <li><a href="#sobre">Sobre a Fitz</a></li>
-          <li><a href="#diferenciais">Método</a></li>
-          <li><a href="#beneficios">Como funciona</a></li>
-          <li><a href="#contato">Carreiras</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer__col-title">Especialidades</div>
-        <ul class="footer__links">
-          <li><a href="#diferenciais">RevOps Specialists</a></li>
-          <li><a href="#diferenciais">CRM Specialists</a></li>
-          <li><a href="#diferenciais">Marketing Managers</a></li>
-          <li><a href="#diferenciais">Sales Enablement</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer__col-title">Contato</div>
-        <ul class="footer__links">
-          <li><a href="mailto:hello@fitz.example">hello@fitz.com</a></li>
-          <li><a href="tel:+551100000000">+55 11 0000-0000</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contato" class="btn btn--lime" style="padding: 10px 20px; font-size: 13px; margin-top: 4px; display: inline-flex;">Falar com a Fitz</a></li>
-        </ul>
-      </div>
-
     </div>
 
-    <div class="footer__bottom">
-      <span>© Fitz. Todos os direitos reservados. Em conformidade com a LGPD.</span>
-      <div style="display: flex; gap: 20px;">
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de Uso</a>
-      </div>
+  </div>
+
+  <hr class="footer-full__divider">
+
+  <div class="footer-full__bottom container">
+    <div class="footer-full__bottom-inner">
+      <span class="footer-full__copyright">© Fitz. Todos os direitos reservados. Em conformidade com a LGPD.</span>
+      <ul class="footer-full__bottom-links" role="list">
+        <li><a class="footer-full__bottom-link" href="#">Política de Privacidade</a></li>
+        <li><a class="footer-full__bottom-link" href="#">Termos de Uso</a></li>
+      </ul>
     </div>
   </div>
 </footer>
 
 
 <script>
+/* ── Header Simple — nav toggle (header-simple/script.js) ── */
 (function () {
   'use strict';
-
-  /* Mobile menu toggle */
-  var hamburger = document.getElementById('hamburger');
-  var mobilePanel = document.getElementById('mobile-panel');
-
-  if (hamburger && mobilePanel) {
-    hamburger.addEventListener('click', function () {
-      var isOpen = mobilePanel.classList.toggle('is-open');
-      hamburger.setAttribute('aria-expanded', String(isOpen));
+  document.querySelectorAll('.header-simple').forEach(function (header) {
+    var toggle = header.querySelector('[data-js="nav-toggle"]');
+    var panel  = header.querySelector('[data-js="nav-panel"]');
+    if (!toggle || !panel) return;
+    toggle.addEventListener('click', function () {
+      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      var next   = !isOpen;
+      toggle.setAttribute('aria-expanded', String(next));
+      panel.classList.toggle('header-simple__mobile-panel--open', next);
     });
-    /* Close on any link click */
-    mobilePanel.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobilePanel.classList.remove('is-open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+      toggle.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('header-simple__mobile-panel--open');
+      toggle.focus();
     });
-  }
-
-  /* Close mobile panel on Escape */
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && mobilePanel && mobilePanel.classList.contains('is-open')) {
-      mobilePanel.classList.remove('is-open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
   });
+})();
 
+/* ── Blog Posts — carousel (blog-posts/script.js) ── */
+(function () {
+  'use strict';
+  document.querySelectorAll('[data-js="blog-posts"]').forEach(function (section) {
+    var track   = section.querySelector('[data-js="track"]');
+    var cards   = section.querySelectorAll('[data-js="card"]');
+    var prevBtn = section.querySelector('[data-js="prev"]');
+    var nextBtn = section.querySelector('[data-js="next"]');
+    var current = 0;
+    var total   = cards.length;
+    if (!track || !total) return;
+    function getGap() {
+      var styles = getComputedStyle(track);
+      var v = parseFloat(styles.columnGap);
+      if (!isNaN(v) && v > 0) return v;
+      return parseFloat(styles.gap) || 0;
+    }
+    function visibleCount() {
+      var sliderW = track.parentElement.offsetWidth;
+      var gap     = getGap();
+      var step    = cards[0].offsetWidth + gap;
+      if (step <= 0) return 1;
+      return Math.max(1, Math.floor((sliderW + gap) / step));
+    }
+    function maxIndex() { return Math.max(0, total - visibleCount()); }
+    function goTo(index) {
+      var max = maxIndex();
+      current = Math.max(0, Math.min(index, max));
+      var step = cards[0].offsetWidth + getGap();
+      track.style.transform = 'translateX(-' + (current * step) + 'px)';
+      if (prevBtn) prevBtn.disabled = current === 0;
+      if (nextBtn) nextBtn.disabled = current >= max;
+    }
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    var touchStartX = 0;
+    track.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { goTo(current); }, 150);
+    });
+    goTo(0);
+  });
 })();
 </script>
 
