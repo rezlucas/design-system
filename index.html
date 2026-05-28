@@ -1006,7 +1006,7 @@
     #vprev-name { font-family: var(--fn-ui); font-size: 11.5px; font-weight: 600; color: var(--ds-text); }
     #vprev-var-label { font-family: var(--fn-mono); font-size: 10px; color: var(--ds-accent); letter-spacing: 0.04em; }
     #vprev-frame-wrap { width: 380px; height: 256px; overflow: hidden; position: relative; background: #fff; }
-    #vprev-iframe { width: 1280px; height: 862px; border: none; transform: scale(0.297); transform-origin: top left; display: block; }
+    #vprev-iframe { width: 1280px; height: 5000px; border: none; transform: scale(0.297); transform-origin: top left; display: block; position: absolute; top: 0; left: 0; }
     #vprev-loading {
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
       font-family: var(--fn-ui); font-size: 11px; color: var(--ds-text-subtle);
@@ -2268,19 +2268,28 @@
   var vprevTimeout = null;
   var vprevCurrentSrc = '';
 
+  var VPREV_SCALE = 0.297;
+
   function scrollIframeToVariant (iframeEl, variantIndex) {
     try {
       var doc = iframeEl.contentDocument || iframeEl.contentWindow.document;
+      /* Oculta barras de scroll internas */
+      if (doc.body) doc.body.style.overflow = 'hidden';
       var labels = doc.querySelectorAll('.demo-label');
       var target = labels[variantIndex - 1];
+      var targetY = 0;
       if (target) {
-        var top = 0; var el = target;
-        while (el) { top += (el.offsetTop || 0); el = el.offsetParent; }
-        iframeEl.contentWindow.scrollTo(0, Math.max(0, top - 52));
-      } else {
-        iframeEl.contentWindow.scrollTo(0, 0);
+        /* offsetTop absoluto no documento — não depende do scroll atual */
+        var el = target;
+        while (el) { targetY += (el.offsetTop || 0); el = el.offsetParent; }
+        targetY = Math.max(0, targetY - 8);
       }
-    } catch (e) {}
+      /* Posiciona o iframe via CSS top em vez de scrollTo,
+         evitando o limite scrollTo = (docHeight - iframeHeight) */
+      iframeEl.style.top = '-' + Math.round(targetY * VPREV_SCALE) + 'px';
+    } catch (e) {
+      iframeEl.style.top = '0';
+    }
   }
 
   function showVariantPreview (btn, cardName, componentUrl, variantIndex) {
@@ -2312,13 +2321,14 @@
       vprevCurrentSrc = componentUrl;
       loading.classList.remove('hidden');
       iframe.dataset.targetVariant = variantIndex;
+      iframe.style.top = '0';  /* Reset antes de carregar nova URL */
       iframe.src = componentUrl;
       iframe.onload = function () {
         loading.classList.add('hidden');
         scrollIframeToVariant(iframe, parseInt(iframe.dataset.targetVariant, 10));
       };
     } else {
-      /* Mesmo componente, só muda variante */
+      /* Mesmo componente, só muda variante — reposiciona imediatamente */
       iframe.dataset.targetVariant = variantIndex;
       scrollIframeToVariant(iframe, variantIndex);
     }
