@@ -112,225 +112,202 @@
       .nav-header__meta { display: none; }
     }
 
-    /* ══ MEGA NAV ══════════════════════════════════════════════ */
-    .mega-nav {
+    /* ══ SIDEBAR LAYOUT ══════════════════════════════════════════════ */
+
+    .ds-layout {
+      display: flex;
+      position: relative;
+      min-height: calc(100vh - 48px);
+    }
+
+    /* ── Sidebar ── */
+    .ds-sidebar {
+      width: 224px;
+      flex-shrink: 0;
+      background: var(--ds-surface);
+      border-right: 1px solid var(--ds-border);
       position: sticky;
       top: 48px;
-      z-index: 150;
-      background: rgba(11,13,26,0.97);
-      border-bottom: 1px solid var(--ds-border);
-      overflow: hidden;
-    }
-
-    .mega-nav__scroller {
-      overflow-x: auto;
-      width: 100%;
-      scrollbar-width: none;
-    }
-    .mega-nav__scroller::-webkit-scrollbar { display: none; }
-
-    .mega-nav__list {
+      height: calc(100vh - 48px);
+      overflow-y: auto;
+      overflow-x: hidden;
       display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0 var(--space-md);
-      gap: 1px;
-      white-space: nowrap;
+      flex-direction: column;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ds-border-md) transparent;
+      z-index: 100;
+    }
+    .ds-sidebar::-webkit-scrollbar { width: 3px; }
+    .ds-sidebar::-webkit-scrollbar-thumb { background: var(--ds-border-md); border-radius: 4px; }
+
+    /* Logo area */
+    .ds-sidebar__brand {
+      padding: 18px 16px 16px;
+      border-bottom: 1px solid var(--ds-border);
+      flex-shrink: 0;
+    }
+    .ds-sidebar__logo-img {
+      height: 30px;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: left center;
     }
 
-    .mega-nav__item {
+    /* Search */
+    .ds-sidebar__search {
+      padding: 12px 10px 8px;
+      flex-shrink: 0;
+    }
+    .ds-sidebar__search-wrap {
       position: relative;
     }
-
-    .mega-nav__trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 0 12px;
-      height: 42px;
-      font-family: var(--fn-ui);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ds-text-muted);
-      text-decoration: none;
-      border-radius: 6px;
-      background: transparent;
-      cursor: pointer;
-      transition: color 0.13s, background 0.13s;
-      line-height: 1;
-      border: none;
-      outline: none;
-      letter-spacing: 0.01em;
-    }
-    .mega-nav__trigger:hover,
-    .mega-nav__item--open .mega-nav__trigger {
-      color: var(--ds-text);
-      background: var(--ds-surface-2);
-    }
-    .mega-nav__trigger:focus-visible {
-      outline: 2px solid var(--ds-accent);
-      outline-offset: -2px;
-    }
-
-    .mega-nav__dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 9999px;
-      flex-shrink: 0;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .mega-nav__item--open .mega-nav__dot {
-      transform: scale(1.5);
-      box-shadow: 0 0 6px currentColor;
-    }
-
-    .mega-nav__chevron {
-      width: 9px;
-      height: 9px;
-      opacity: 0.25;
-      flex-shrink: 0;
-      transition: transform 0.2s, opacity 0.15s;
-    }
-    .mega-nav__trigger:hover .mega-nav__chevron { opacity: 0.5; }
-    .mega-nav__item--open .mega-nav__chevron {
-      transform: rotate(180deg);
-      opacity: 0.65;
-    }
-
-    .mega-nav__panel {
-      position: fixed;
-      min-width: 264px;
-      background: var(--ds-surface);
-      border: 1px solid var(--ds-border-md);
-      border-radius: 12px;
-      box-shadow:
-        0 4px 16px rgba(0,0,0,0.4),
-        0 20px 60px rgba(0,0,0,0.5),
-        0 0 0 1px rgba(255,255,255,0.04);
-      z-index: 9000;
-      overflow: hidden;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transform: translateY(6px) scale(0.985);
-      transform-origin: top left;
-      transition: opacity 0.16s ease, visibility 0.16s ease, transform 0.16s ease;
-    }
-    .mega-nav__item--open .mega-nav__panel {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: translateY(0) scale(1);
-    }
-    .mega-nav__item--flip .mega-nav__panel {
-      transform-origin: top right;
-    }
-
-    .mega-nav__panel-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--ds-border);
-      background: var(--ds-surface-2);
-    }
-    .mega-nav__panel-accent {
-      width: 3px;
-      height: 30px;
-      border-radius: 9999px;
-      flex-shrink: 0;
-    }
-    .mega-nav__panel-cat {
-      font-family: var(--fn-ui);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--ds-text);
-      display: block;
-      line-height: 1.2;
-    }
-    .mega-nav__panel-desc {
-      font-family: var(--fn-ui);
-      font-size: 10px;
+    .ds-sidebar__search-icon {
+      position: absolute;
+      left: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
       color: var(--ds-text-subtle);
-      display: block;
-      margin-block-start: 2px;
+      pointer-events: none;
+      flex-shrink: 0;
     }
+    .ds-sidebar__search-input {
+      width: 100%;
+      padding: 7px 10px 7px 28px;
+      background: var(--ds-surface-2);
+      border: 1px solid var(--ds-border-md);
+      border-radius: 8px;
+      color: var(--ds-text);
+      font-family: var(--fn-ui);
+      font-size: 12px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.15s;
+    }
+    .ds-sidebar__search-input::placeholder { color: var(--ds-text-subtle); }
+    .ds-sidebar__search-input:focus { border-color: var(--ds-accent); }
 
-    .mega-nav__panel-body { padding: 6px; }
-
-    .mega-nav__comp {
+    /* Sidenav */
+    .ds-sidenav {
+      padding: 12px 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .ds-sidenav__group {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .ds-sidenav__group-label {
+      font-family: var(--fn-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ds-text-subtle);
+      padding: 0 8px;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .ds-sidenav__item {
       display: flex;
       align-items: center;
       gap: 9px;
-      padding: 7px 9px;
-      border-radius: 7px;
+      padding: 8px 10px;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background 0.1s;
-    }
-    .mega-nav__comp:hover { background: var(--ds-surface-2); }
-
-    .mega-nav__comp-stripe {
-      width: 3px;
-      align-self: stretch;
-      border-radius: 9999px;
-      flex-shrink: 0;
-      opacity: 0.7;
-    }
-    .mega-nav__comp-info { flex: 1; min-width: 0; }
-    .mega-nav__comp-name {
+      color: var(--ds-text-muted);
       font-family: var(--fn-ui);
       font-size: 12.5px;
       font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .ds-sidenav__item:hover {
+      background: var(--ds-surface-2);
       color: var(--ds-text);
-      display: block;
-      line-height: 1.2;
     }
-    .mega-nav__comp-meta {
-      font-family: var(--fn-ui);
-      font-size: 10px;
-      color: var(--ds-text-subtle);
-      display: block;
-      margin-block-start: 2px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    .ds-sidenav__item.is-active {
+      background: var(--ds-accent-dim);
+      color: var(--ds-accent);
     }
-    .mega-nav__comp-badge {
-      font-family: var(--fn-mono);
-      font-size: 9px;
-      font-weight: 500;
-      padding: 2px 7px;
-      border-radius: 4px;
-      background: var(--ds-surface-3);
-      color: var(--ds-text-subtle);
-      border: 1px solid var(--ds-border);
+    .ds-sidenav__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       flex-shrink: 0;
-      white-space: nowrap;
-      letter-spacing: 0.03em;
+    }
+    .ds-sidenav__name { flex: 1; }
+    .ds-sidenav__badge {
+      font-family: var(--fn-mono);
+      font-size: 9.5px;
+      color: var(--ds-text-subtle);
+      background: var(--ds-surface-3);
+      border: 1px solid var(--ds-border);
+      padding: 1px 6px;
+      border-radius: 4px;
+      flex-shrink: 0;
     }
 
-    .mega-nav__panel-foot {
-      padding: 7px 14px;
+    /* Sidebar footer */
+    .ds-sidebar__footer {
+      padding: 14px 16px;
       border-top: 1px solid var(--ds-border);
-      display: flex;
-      justify-content: flex-end;
+      flex-shrink: 0;
     }
-    .mega-nav__panel-cta {
-      font-family: var(--fn-ui);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ds-accent);
-      text-decoration: none;
-      display: inline-flex;
+
+    /* Content area */
+    .ds-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Mobile sidebar toggle button */
+    .ds-sidebar-toggle {
+      display: none;
       align-items: center;
-      gap: 3px;
-      transition: gap 0.15s;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--ds-border-md);
+      border-radius: 7px;
+      background: transparent;
+      color: var(--ds-text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      flex-shrink: 0;
     }
-    .mega-nav__panel-cta:hover { gap: 7px; }
+    .ds-sidebar-toggle:hover { background: var(--ds-surface-2); color: var(--ds-text); }
+
+    /* Backdrop (mobile) */
+    .ds-sidebar-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      z-index: 99;
+    }
+    .ds-sidebar-backdrop.open { display: block; }
 
     @media (max-width: 900px) {
-      .mega-nav__panel { display: none !important; }
-      .mega-nav__chevron { display: none; }
+      .ds-sidebar {
+        position: fixed;
+        top: 0;
+        left: -240px;
+        height: 100vh;
+        width: 240px;
+        z-index: 500;
+        transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .ds-sidebar.open { left: 0; }
+      .ds-sidebar-toggle { display: flex; }
     }
 
     /* ── Hero de apresentação ── */
@@ -423,7 +400,7 @@
     /* ── Seção de categoria ── */
     .nav-section {
       margin-block-end: var(--space-3xl);
-      scroll-margin-top: 100px;
+      scroll-margin-top: 58px;
     }
 
     .nav-section__heading {
@@ -1011,11 +988,16 @@
 ════════════════════════════════════════ -->
 <header class="nav-header" role="banner">
   <div class="nav-header__inner container">
-    <a href="index.html" class="nav-header__brand" aria-label="Design System — Página inicial">
-      <img class="nav-header__mark" src="assets/images/placeholders/favicon-ds.png" alt="Design System" width="32" height="32" style="object-fit:contain;border-radius:0;background:transparent">
-      <span class="nav-header__name">Design System</span>
-      <span class="nav-header__pill">v1.0</span>
-    </a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="ds-sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir menu lateral" aria-expanded="false">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="index.html" class="nav-header__brand" aria-label="Design System — Página inicial">
+        <img class="nav-header__mark" src="assets/images/placeholders/favicon-ds.png" alt="Design System" width="28" height="28" style="object-fit:contain;border-radius:0;background:transparent">
+        <span class="nav-header__name">Design System</span>
+        <span class="nav-header__pill">v1.0</span>
+      </a>
+    </div>
     <button class="builder-btn" id="builder-toggle" onclick="toggleBuilder()" title="Ativar modo de construção de página">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       Construtor de Página
@@ -1026,354 +1008,104 @@
 
 
 <!-- ════════════════════════════════════════
-     MEGA NAV — Navegação de categorias com flyout de preview
+     LAYOUT — Sidebar + Conteúdo
 ════════════════════════════════════════ -->
-<nav class="mega-nav" aria-label="Ir para categoria">
-  <div class="mega-nav__scroller">
-    <ul class="mega-nav__list" role="list">
+<div class="ds-layout">
 
-      <!-- NAVEGAÇÃO -->
-      <li class="mega-nav__item" data-panel="mega-nav">
-        <a class="mega-nav__trigger" href="#navegacao">
-          <span class="mega-nav__dot" style="background:#0052CC"></span>
-          Navegação
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-nav" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#0052CC"></span>
-            <span><span class="mega-nav__panel-cat">Navegação</span><span class="mega-nav__panel-desc">Barras de menu e navegação principal</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/headers/header-simple/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0052CC"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Header Simple</span><span class="mega-nav__comp-meta">Sticky · dark · floating pill glass</span></span>
-              <span class="mega-nav__comp-badge">3 var.</span>
-            </a>
-            <a href="components/sections/headers/header-utility/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0052CC"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Header Utility</span><span class="mega-nav__comp-meta">2 fileiras + dropdowns acessíveis</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/headers/header-megamenu/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0052CC"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Header Megamenu</span><span class="mega-nav__comp-meta">3 breakpoints · overlay · dropdown · inline</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#navegacao" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
+<!-- ── Sidebar ── -->
+<aside class="ds-sidebar" id="ds-sidebar" aria-label="Menu lateral">
 
-      <!-- ABERTURA DE PÁGINA -->
-      <li class="mega-nav__item" data-panel="mega-abertura">
-        <a class="mega-nav__trigger" href="#abertura">
-          <span class="mega-nav__dot" style="background:#4F46E5"></span>
-          Abertura de Página
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-abertura" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#4F46E5"></span>
-            <span><span class="mega-nav__panel-cat">Abertura de Página</span><span class="mega-nav__panel-desc">A primeira grande seção que o usuário vê</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/heroes/hero-background/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Background</span><span class="mega-nav__comp-meta">Imagem full-bleed com overlay e gradiente</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/heroes/hero-split/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Split</span><span class="mega-nav__comp-meta">2 colunas · checklist · desc+CTAs · reverse</span></span>
-              <span class="mega-nav__comp-badge">3 estilos</span>
-            </a>
-            <a href="components/sections/heroes/hero-portfolio/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Personal</span><span class="mega-nav__comp-meta">Foto recortada + título gigante (portfólio)</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/heroes/hero-centered/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Centered</span><span class="mega-nav__comp-meta">Overlay centralizado · foto z-index</span></span>
-              <span class="mega-nav__comp-badge">2 var.</span>
-            </a>
-            <a href="components/sections/heroes/hero-countdown/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Hero Countdown</span><span class="mega-nav__comp-meta">Coming soon · timer regressivo JS</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#abertura" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- APRESENTAÇÃO DE PRODUTO -->
-      <li class="mega-nav__item" data-panel="mega-produto">
-        <a class="mega-nav__trigger" href="#produto">
-          <span class="mega-nav__dot" style="background:#0891B2"></span>
-          Apresentação
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-produto" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#0891B2"></span>
-            <span><span class="mega-nav__panel-cat">Apresentação de Produto</span><span class="mega-nav__panel-desc">Mostre funcionalidades, serviços e benefícios</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/features/feature-split/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Split</span><span class="mega-nav__comp-meta">2-col · reverse · mission · icon-list</span></span>
-              <span class="mega-nav__comp-badge">4 estilos</span>
-            </a>
-            <a href="components/sections/features/feature-overview/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Overview</span><span class="mega-nav__comp-meta">Checklist · 2 colunas · steps numerados</span></span>
-              <span class="mega-nav__comp-badge">4 var.</span>
-            </a>
-            <a href="components/sections/features/feature-cards/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Cards</span><span class="mega-nav__comp-meta">Grade de cards com ícone + título</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/features/feature-accordion/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Feature Accordion</span><span class="mega-nav__comp-meta">Imagem + itens colapsáveis laterais</span></span>
-              <span class="mega-nav__comp-badge">4 var.</span>
-            </a>
-            <a href="components/sections/services/services-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Services Grid</span><span class="mega-nav__comp-meta">cards · pastel · bento · icon-box · bleed</span></span>
-              <span class="mega-nav__comp-badge">8 var.</span>
-            </a>
-            <a href="components/sections/tabs/tabs-section/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0891B2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Tabs Section</span><span class="mega-nav__comp-meta">Pills + conteúdo dinâmico + imagem</span></span>
-              <span class="mega-nav__comp-badge">5 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#produto" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- CREDIBILIDADE & PROVA SOCIAL -->
-      <li class="mega-nav__item" data-panel="mega-credibilidade">
-        <a class="mega-nav__trigger" href="#credibilidade">
-          <span class="mega-nav__dot" style="background:#DB2777"></span>
-          Credibilidade
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-credibilidade" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#DB2777"></span>
-            <span><span class="mega-nav__panel-cat">Credibilidade & Prova Social</span><span class="mega-nav__panel-desc">Depoimentos, números, equipe e parceiros</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/social-proof/testimonials-cards/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Testimonials Cards</span><span class="mega-nav__comp-meta">aspas · stars · media · fullquote · grid · social</span></span>
-              <span class="mega-nav__comp-badge">6 var.</span>
-            </a>
-            <a href="components/sections/stats/stats-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Stats Grid</span><span class="mega-nav__comp-meta">Cascata de cards com big number e ícone</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/stats/stats-highlighted/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Stats Highlighted</span><span class="mega-nav__comp-meta">Big number + descrição + imagens duplas</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/integrations/integrations-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Integrations Grid</span><span class="mega-nav__comp-meta">Grade tracejada · badges Popular · ícones SVG</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/team/team-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Team Grid</span><span class="mega-nav__comp-meta">Portrait 4-col · horizontal · carousel P&B</span></span>
-              <span class="mega-nav__comp-badge">3 var.</span>
-            </a>
-            <a href="components/sections/blog/blog-posts/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Blog Posts</span><span class="mega-nav__comp-meta">Grid de artigos com thumb, categoria e data</span></span>
-              <span class="mega-nav__comp-badge">1 var.</span>
-            </a>
-            <a href="components/sections/galleries/image-carousel/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#DB2777"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Image Carousel</span><span class="mega-nav__comp-meta">Gallery peek lateral · photo-grid 2 linhas</span></span>
-              <span class="mega-nav__comp-badge">2 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#credibilidade" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- CONVERSÃO -->
-      <li class="mega-nav__item" data-panel="mega-conversao">
-        <a class="mega-nav__trigger" href="#conversao">
-          <span class="mega-nav__dot" style="background:#E11D48"></span>
-          Conversão
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-conversao" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#E11D48"></span>
-            <span><span class="mega-nav__panel-cat">Conversão</span><span class="mega-nav__panel-desc">Leve o usuário a tomar uma ação</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/ctas/cta-banner/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#E11D48"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">CTA Banner</span><span class="mega-nav__comp-meta">card-split · overlay esq/center · split · courses</span></span>
-              <span class="mega-nav__comp-badge">5 var.</span>
-            </a>
-            <a href="components/sections/pricing/pricing-grid/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#E11D48"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Pricing Grid</span><span class="mega-nav__comp-meta">3 planos (featured dark) · --compare tabela ✓/✕</span></span>
-              <span class="mega-nav__comp-badge">2 var.</span>
-            </a>
-            <a href="components/sections/faq/faq-accordion/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#E11D48"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">FAQ Accordion</span><span class="mega-nav__comp-meta">Enclosed · cards · split · dark 3-col</span></span>
-              <span class="mega-nav__comp-badge">4 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#conversao" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- RODAPÉ — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-rodape">
-        <a class="mega-nav__trigger" href="#rodape">
-          <span class="mega-nav__dot" style="background:#475569"></span>
-          Rodapé
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-rodape" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#475569"></span>
-            <span><span class="mega-nav__panel-cat">Rodapé</span><span class="mega-nav__panel-desc">Parte inferior da página</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/sections/footers/footer-full/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#475569"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Footer Full</span><span class="mega-nav__comp-meta">Multi-coluna + newsletter + social</span></span>
-              <span class="mega-nav__comp-badge">5 var.</span>
-            </a>
-            <a href="components/sections/footers/footer-simple/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#475569"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Footer Simple</span><span class="mega-nav__comp-meta">Logo + nav central + copyright</span></span>
-              <span class="mega-nav__comp-badge">3 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#rodape" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- BASE — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-base">
-        <a class="mega-nav__trigger" href="#base">
-          <span class="mega-nav__dot" style="background:#7C3AED"></span>
-          Base
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-base" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#7C3AED"></span>
-            <span><span class="mega-nav__panel-cat">Base</span><span class="mega-nav__panel-desc">Elementos fundamentais reutilizáveis</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="components/atoms/buttons/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#7C3AED"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Buttons</span><span class="mega-nav__comp-meta">filled · outline · link · pill · glass · icon-circle</span></span>
-              <span class="mega-nav__comp-badge">6 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#base" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- TEMPLATES — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-templates">
-        <a class="mega-nav__trigger" href="#templates">
-          <span class="mega-nav__dot" style="background:#94A3B8"></span>
-          Templates
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-templates" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:#94A3B8"></span>
-            <span><span class="mega-nav__panel-cat">Templates</span><span class="mega-nav__panel-desc">Páginas completas prontas para personalizar</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="templates/saas-template/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#6C73F2"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Template SaaS</span><span class="mega-nav__comp-meta">8 seções · header-utility · tabs · FAQ split</span></span>
-            </a>
-            <a href="templates/404/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#94A3B8"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Página 404</span><span class="mega-nav__comp-meta">Tipográfico gigante · centered coral flutuante</span></span>
-              <span class="mega-nav__comp-badge">2 var.</span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#templates" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-      <!-- DEMOS — flip -->
-      <li class="mega-nav__item mega-nav__item--flip" data-panel="mega-demos">
-        <a class="mega-nav__trigger" href="#demos">
-          <span class="mega-nav__dot" style="background:linear-gradient(135deg,#4F46E5,#06B6D4);border-radius:9999px"></span>
-          Demos
-          <svg class="mega-nav__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-        </a>
-        <div class="mega-nav__panel" id="mega-demos" role="region">
-          <div class="mega-nav__panel-head">
-            <span class="mega-nav__panel-accent" style="background:linear-gradient(180deg,#4F46E5,#06B6D4)"></span>
-            <span><span class="mega-nav__panel-cat">Demos</span><span class="mega-nav__panel-desc">Landing pages de exemplo com copy real</span></span>
-          </div>
-          <div class="mega-nav__panel-body">
-            <a href="demos/nexio/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#4F46E5"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Nexio — Automação B2B</span><span class="mega-nav__comp-meta">8 componentes · indigo · SaaS</span></span>
-            </a>
-            <a href="demos/brsamor/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#F15922"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">BR Samor — Logística</span><span class="mega-nav__comp-meta">Navy/laranja · Roboto · cliente real</span></span>
-            </a>
-            <a href="demos/fluxo/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#0369A1"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Fluxo — FinTech</span><span class="mega-nav__comp-meta">Sky blue · SaaS financeiro · freelancers</span></span>
-            </a>
-            <a href="demos/kova/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#059669"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Tappa — Maquininhas de Cartão</span><span class="mega-nav__comp-meta">Emerald · Inter · fintech / payments</span></span>
-            </a>
-            <a href="demos/wine4friends/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#B02040"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Wine4Friends — Clube de Vinhos</span><span class="mega-nav__comp-meta">Vinho/dourado · Syne + Inter · assinatura</span></span>
-            </a>
-            <a href="demos/wine4friends-2/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#8B1A35"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Wine4Friends v2 — Template SaaS</span><span class="mega-nav__comp-meta">#8B1A35 · Syne + Inter · header-utility</span></span>
-            </a>
-            <a href="demos/prime/index.html" class="mega-nav__comp">
-              <span class="mega-nav__comp-stripe" style="background:#1D1D1D"></span>
-              <span class="mega-nav__comp-info"><span class="mega-nav__comp-name">Prime — Motorista Privado</span><span class="mega-nav__comp-meta">Charcoal/Gold · Montserrat + Hanken · premium</span></span>
-            </a>
-          </div>
-          <div class="mega-nav__panel-foot"><a href="#demos" class="mega-nav__panel-cta">Ver categoria →</a></div>
-        </div>
-      </li>
-
-    </ul>
+  <div class="ds-sidebar__brand">
+    <img
+      class="ds-sidebar__logo-img"
+      src="assets/images/placeholders/logo-ds.png"
+      alt="Tegrus Design System"
+      width="160"
+      height="30"
+    >
   </div>
-</nav>
 
+  <div class="ds-sidebar__search">
+    <div class="ds-sidebar__search-wrap">
+      <svg class="ds-sidebar__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input
+        type="search"
+        class="ds-sidebar__search-input"
+        id="sidebar-search"
+        placeholder="Buscar componente..."
+        aria-label="Buscar componente"
+        autocomplete="off"
+      >
+    </div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     CONTEÚDO
-════════════════════════════════════════ -->
+  <nav class="ds-sidenav" aria-label="Categorias">
+    <div class="ds-sidenav__group">
+      <span class="ds-sidenav__group-label">Componentes</span>
+      <a class="ds-sidenav__item" href="#navegacao" data-section="navegacao">
+        <span class="ds-sidenav__dot" style="background:#0052CC"></span>
+        <span class="ds-sidenav__name">Navegação</span>
+        <span class="ds-sidenav__badge">4</span>
+      </a>
+      <a class="ds-sidenav__item" href="#abertura" data-section="abertura">
+        <span class="ds-sidenav__dot" style="background:#4F46E5"></span>
+        <span class="ds-sidenav__name">Abertura</span>
+        <span class="ds-sidenav__badge">6</span>
+      </a>
+      <a class="ds-sidenav__item" href="#produto" data-section="produto">
+        <span class="ds-sidenav__dot" style="background:#0891B2"></span>
+        <span class="ds-sidenav__name">Apresentação</span>
+        <span class="ds-sidenav__badge">8</span>
+      </a>
+      <a class="ds-sidenav__item" href="#credibilidade" data-section="credibilidade">
+        <span class="ds-sidenav__dot" style="background:#DB2777"></span>
+        <span class="ds-sidenav__name">Credibilidade</span>
+        <span class="ds-sidenav__badge">7</span>
+      </a>
+      <a class="ds-sidenav__item" href="#conversao" data-section="conversao">
+        <span class="ds-sidenav__dot" style="background:#E11D48"></span>
+        <span class="ds-sidenav__name">Conversão</span>
+        <span class="ds-sidenav__badge">5</span>
+      </a>
+      <a class="ds-sidenav__item" href="#rodape" data-section="rodape">
+        <span class="ds-sidenav__dot" style="background:#475569"></span>
+        <span class="ds-sidenav__name">Rodapé</span>
+        <span class="ds-sidenav__badge">3</span>
+      </a>
+      <a class="ds-sidenav__item" href="#base" data-section="base">
+        <span class="ds-sidenav__dot" style="background:#7C3AED"></span>
+        <span class="ds-sidenav__name">Base</span>
+        <span class="ds-sidenav__badge">1</span>
+      </a>
+    </div>
+    <div class="ds-sidenav__group">
+      <span class="ds-sidenav__group-label">Recursos</span>
+      <a class="ds-sidenav__item" href="#templates" data-section="templates">
+        <span class="ds-sidenav__dot" style="background:#94A3B8"></span>
+        <span class="ds-sidenav__name">Templates</span>
+        <span class="ds-sidenav__badge">3</span>
+      </a>
+      <a class="ds-sidenav__item" href="#demos" data-section="demos">
+        <span class="ds-sidenav__dot" style="background:linear-gradient(135deg,#4F46E5,#06B6D4)"></span>
+        <span class="ds-sidenav__name">Demos</span>
+        <span class="ds-sidenav__badge">7</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="ds-sidebar__footer">
+    <div style="font-family:var(--fn-mono);font-size:9px;color:var(--ds-text-subtle);letter-spacing:0.06em;line-height:1.6;text-align:center">
+      TEGRUS DESIGN SYSTEM v1.0<br>27 componentes · 2 templates · 7 demos
+    </div>
+  </div>
+
+</aside>
+
+<!-- Backdrop mobile -->
+<div class="ds-sidebar-backdrop" id="sidebar-backdrop" onclick="closeSidebar()"></div>
+
+<!-- ── Área de conteúdo ── -->
+<div class="ds-content">
 <main class="nav-main" id="nav-content">
 
   <!-- ── Hero ── -->
@@ -2059,6 +1791,8 @@
 
   </div>
 </main>
+</div><!-- ds-content -->
+</div><!-- ds-layout -->
 
 
 <!-- ════════════════════════════════════════
@@ -2225,90 +1959,85 @@
 </script>
 
 <!-- ═══════════════════════════════════════════
-     MEGA NAV — hover com delay para evitar flicker
+     SIDEBAR — Active state, mobile toggle, search
 ════════════════════════════════════════════ -->
 <script>
 (function () {
-  var items = document.querySelectorAll('.mega-nav__item[data-panel]');
-  var closeTimers = new Map();
+  'use strict';
 
-  /* Posiciona o panel (fixed) abaixo do trigger */
-  function positionPanel(item) {
-    var trigger = item.querySelector('.mega-nav__trigger');
-    var panel   = item.querySelector('.mega-nav__panel');
-    if (!trigger || !panel) return;
+  /* ── Mobile sidebar toggle ── */
+  var sidebar   = document.getElementById('ds-sidebar');
+  var backdrop  = document.getElementById('sidebar-backdrop');
+  var toggleBtn = document.getElementById('sidebar-toggle');
 
-    var rect = trigger.getBoundingClientRect();
-    var panelW = panel.offsetWidth || 260;
+  window.toggleSidebar = function () {
+    var open = sidebar.classList.toggle('open');
+    backdrop.classList.toggle('open', open);
+    if (toggleBtn) toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
 
-    panel.style.top = (rect.bottom + 6) + 'px';
+  window.closeSidebar = function () {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('open');
+    if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+  };
 
-    if (item.classList.contains('mega-nav__item--flip')) {
-      /* Abre para a esquerda: alinha borda direita do panel com borda direita do trigger */
-      var rightEdge = window.innerWidth - rect.right;
-      panel.style.left  = '';
-      panel.style.right = rightEdge + 'px';
-    } else {
-      /* Abre para a direita: alinha borda esquerda */
-      var left = rect.left;
-      /* Garante que não ultrapassa a borda direita da janela */
-      if (left + panelW > window.innerWidth - 8) {
-        left = window.innerWidth - panelW - 8;
-      }
-      panel.style.left  = left + 'px';
-      panel.style.right = '';
-    }
-  }
-
-  function openItem(item) {
-    items.forEach(function (i) {
-      if (i !== item) closeItem(i, 0);
-    });
-    clearTimeout(closeTimers.get(item));
-    positionPanel(item);
-    item.classList.add('mega-nav__item--open');
-    var panel = item.querySelector('.mega-nav__panel');
-    if (panel) panel.setAttribute('aria-hidden', 'false');
-  }
-
-  function closeItem(item, delay) {
-    if (delay === undefined) delay = 160;
-    clearTimeout(closeTimers.get(item));
-    var t = setTimeout(function () {
-      item.classList.remove('mega-nav__item--open');
-      var panel = item.querySelector('.mega-nav__panel');
-      if (panel) panel.setAttribute('aria-hidden', 'true');
-    }, delay);
-    closeTimers.set(item, t);
-  }
-
-  items.forEach(function (item) {
-    var panel = item.querySelector('.mega-nav__panel');
-    if (!panel) return;
-    panel.setAttribute('aria-hidden', 'true');
-
-    var trigger = item.querySelector('.mega-nav__trigger');
-
-    trigger.addEventListener('mouseenter', function () { openItem(item); });
-    trigger.addEventListener('mouseleave', function () { closeItem(item); });
-
-    panel.addEventListener('mouseenter', function () { clearTimeout(closeTimers.get(item)); });
-    panel.addEventListener('mouseleave', function () { closeItem(item); });
-  });
-
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.mega-nav__item')) {
-      items.forEach(function (i) { closeItem(i, 0); });
-    }
-  });
-
+  /* Close on Escape */
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') items.forEach(function (i) { closeItem(i, 0); });
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) closeSidebar();
   });
 
-  window.addEventListener('resize', function () {
-    items.forEach(function (i) { closeItem(i, 0); });
+  /* ── Active state via IntersectionObserver ── */
+  var sideItems = document.querySelectorAll('.ds-sidenav__item[data-section]');
+
+  function setActive(sectionId) {
+    sideItems.forEach(function (item) {
+      item.classList.toggle('is-active', item.dataset.section === sectionId);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var sections = document.querySelectorAll('.nav-section[id]');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+
+  /* Close sidebar when a sidenav link is clicked on mobile */
+  sideItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+      if (window.innerWidth <= 900) closeSidebar();
+    });
   });
+
+  /* ── Search filter ── */
+  var searchInput = document.getElementById('sidebar-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      var q = searchInput.value.trim().toLowerCase();
+      var cards = document.querySelectorAll('.nav-card');
+      var sections = document.querySelectorAll('.nav-section');
+
+      cards.forEach(function (card) {
+        var name = (card.querySelector('.nav-card__name') || {}).textContent || '';
+        var desc = (card.querySelector('.nav-card__desc') || {}).textContent || '';
+        var match = !q || (name + ' ' + desc).toLowerCase().includes(q);
+        card.style.display = match ? '' : 'none';
+      });
+
+      /* Hide section headings when all their cards are hidden */
+      sections.forEach(function (sec) {
+        var visible = sec.querySelectorAll('.nav-card:not([style*="display: none"])').length;
+        var anyHidden = sec.querySelectorAll('.nav-card[style*="display: none"]').length;
+        sec.style.display = (q && visible === 0) ? 'none' : '';
+      });
+    });
+  }
+
 })();
 </script>
 
