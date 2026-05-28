@@ -645,6 +645,36 @@
               </div>
               <p>A automação de e-mails eliminou pelo menos 3 horas de trabalho manual por dia do nosso time. Agora focamos 100% em conversas que realmente fecham negócios.</p>
             </article>
+            <article class="t-dark-card">
+              <div class="t-dark-person">
+                <span class="t-avatar ta1"></span>
+                <div>
+                  <h3>Juliana Costa</h3>
+                  <p>Gerente de CRM, SoftBrasil</p>
+                </div>
+              </div>
+              <p>O suporte em português fez toda a diferença na implantação. Em 48 horas já tínhamos o time operando com total confiança na plataforma Nexio.</p>
+            </article>
+            <article class="t-dark-card">
+              <div class="t-dark-person">
+                <span class="t-avatar ta2"></span>
+                <div>
+                  <h3>Bruno Almeida</h3>
+                  <p>VP Comercial, DataFlow</p>
+                </div>
+              </div>
+              <p>Os relatórios em tempo real me deram visibilidade que nunca tive antes. Consigo identificar gargalos no funil antes que se tornem problemas sérios para o negócio.</p>
+            </article>
+            <article class="t-dark-card">
+              <div class="t-dark-person">
+                <span class="t-avatar ta3"></span>
+                <div>
+                  <h3>Ana Lucia Faria</h3>
+                  <p>Coordenadora de Vendas, MedLink</p>
+                </div>
+              </div>
+              <p>A integração com WhatsApp Business foi decisiva para nós. Toda a comunicação com leads agora fica registrada automaticamente no CRM sem esforço.</p>
+            </article>
           </div>
           <button class="t-round-ctrl t-next" aria-label="Next review"><span></span></button>
         </div>
@@ -676,7 +706,36 @@
     .ze-tdark .t-next span { right: 29px; transform: rotate(135deg); }
     @media (max-width: 980px) { .ze-tdark .t-dark-grid { width: min(100%, 520px); grid-template-columns: 1fr; } .ze-tdark .t-round-ctrl { display: none; } }
     @media (max-width: 640px) { .ze-tdark .t-dark-section { padding: 80px 0; } .ze-tdark .t-dark-heading h2 { font-size: 30px; line-height: 40px; } .ze-tdark .t-dark-card > p { font-size: 17px; line-height: 28px; } }
+    .ze-tdark .t-round-ctrl:disabled { opacity: 0.35; cursor: not-allowed; }
   </style>
+  <script>
+    (function () {
+      var wrap    = document.querySelector('.ze-tdark .t-dark-wrap');
+      if (!wrap) return;
+      var cards   = Array.from(wrap.querySelectorAll('.t-dark-card'));
+      var prevBtn = wrap.querySelector('.t-prev');
+      var nextBtn = wrap.querySelector('.t-next');
+      var perPage = 3;
+      var total   = cards.length;
+      var pages   = Math.ceil(total / perPage);
+      var current = 0;
+
+      function showPage(n) {
+        current = Math.max(0, Math.min(n, pages - 1));
+        cards.forEach(function (c, i) {
+          var page = Math.floor(i / perPage);
+          c.style.display = (page === current) ? '' : 'none';
+        });
+        if (prevBtn) prevBtn.disabled = current === 0;
+        if (nextBtn) nextBtn.disabled = current >= pages - 1;
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { showPage(current - 1); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { showPage(current + 1); });
+
+      showPage(0);
+    })();
+  </script>
 
 
   <!-- ═══════════════════════════════════════════

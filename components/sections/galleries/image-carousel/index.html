@@ -148,19 +148,33 @@
       const track  = carousel.querySelector('[data-js="track"]');
       const slides = Array.from(track.children);
       const dots   = Array.from(carousel.querySelectorAll('[data-js="dots"] [data-index]'));
+      const prevBtn = carousel.querySelector('[data-js="prev"]');
+      const nextBtn = carousel.querySelector('[data-js="next"]');
       let current  = 0;
+      const total  = slides.length;
 
-      function go(idx) {
-        current = (idx + slides.length) % slides.length;
-        const slideW = slides[0].getBoundingClientRect().width +
-          parseFloat(getComputedStyle(track).gap || 0);
-        track.style.transform = `translateX(calc(${-current * slideW}px - ${current} * var(--space-lg, 24px)))`;
-        dots.forEach((d, i) => d.classList.toggle('image-carousel__dot--active', i === current));
+      function getGap() {
+        const s = getComputedStyle(track);
+        const v = parseFloat(s.columnGap);
+        if (!isNaN(v) && v > 0) return v;
+        return parseFloat(s.gap) || 0;
       }
 
-      carousel.querySelector('[data-js="prev"]')?.addEventListener('click', () => go(current - 1));
-      carousel.querySelector('[data-js="next"]')?.addEventListener('click', () => go(current + 1));
+      function go(idx) {
+        current = (idx + total) % total;
+        const slideW = slides[0].getBoundingClientRect().width + getGap();
+        track.style.transform = `translateX(${-current * slideW}px)`;
+        dots.forEach((d, i) => d.classList.toggle('image-carousel__dot--active', i === current));
+        if (prevBtn) prevBtn.disabled = current === 0;
+        if (nextBtn) nextBtn.disabled = current === total - 1;
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', () => go(current - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => go(current + 1));
       dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.index)));
+
+      window.addEventListener('resize', () => go(current));
+      go(0);
     });
   </script>
 

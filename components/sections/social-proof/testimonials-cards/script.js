@@ -10,12 +10,14 @@
     var carousel = section.querySelector('[data-js="carousel"]');
     if (!carousel) return;
 
-    var track   = carousel.querySelector('[data-js="track"]');
-    var cards   = carousel.querySelectorAll('[data-js="card"]');
-    var prevBtn = section.querySelector('[data-js="prev"]');
-    var nextBtn = section.querySelector('[data-js="next"]');
-    var current = 0;
-    var total   = cards.length;
+    var track    = carousel.querySelector('[data-js="track"]');
+    var cards    = carousel.querySelectorAll('[data-js="card"]');
+    /* querySelectorAll para suportar múltiplos pares prev/next por seção
+       (ex: Variante 4 tem setas no header [hidden via CSS] e no rodapé) */
+    var prevBtns = section.querySelectorAll('[data-js="prev"]');
+    var nextBtns = section.querySelectorAll('[data-js="next"]');
+    var current  = 0;
+    var total    = cards.length;
 
     if (!track || !total) return;
 
@@ -45,12 +47,12 @@
       var step = cards[0].offsetWidth + getGap();
       track.style.transform = 'translateX(-' + (current * step) + 'px)';
 
-      if (prevBtn) prevBtn.disabled = current === 0;
-      if (nextBtn) nextBtn.disabled = current >= max;
+      prevBtns.forEach(function (b) { b.disabled = current === 0; });
+      nextBtns.forEach(function (b) { b.disabled = current >= max; });
     }
 
-    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    prevBtns.forEach(function (btn) { btn.addEventListener('click', function () { goTo(current - 1); }); });
+    nextBtns.forEach(function (btn) { btn.addEventListener('click', function () { goTo(current + 1); }); });
 
     /* Swipe touch */
     var touchStartX = 0;
