@@ -342,6 +342,26 @@
     .ds-hero__inner {
       position: relative;
       z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .ds-hero__text { flex: 1; min-width: 0; }
+    .ds-hero__logo-wrap {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .ds-hero__logo {
+      width: clamp(140px, 18vw, 240px);
+      height: auto;
+      opacity: 0.85;
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .ds-hero__logo-wrap { display: none; }
     }
     .ds-hero__label {
       font-family: var(--fn-mono);
@@ -1106,23 +1126,34 @@
   <!-- ── Hero ── -->
   <div class="ds-hero">
     <div class="ds-hero__inner container">
-      <p class="ds-hero__label">Tegrus · Design System v1.0</p>
-      <h1 class="ds-hero__title">Biblioteca de<br><em>Componentes</em></h1>
-      <div class="ds-hero__stats">
-        <div class="ds-hero__stat">
-          <strong>27</strong>
-          <span>Componentes</span>
+      <div class="ds-hero__text">
+        <p class="ds-hero__label">Tegrus · Design System v1.0</p>
+        <h1 class="ds-hero__title">Biblioteca de<br><em>Componentes</em></h1>
+        <div class="ds-hero__stats">
+          <div class="ds-hero__stat">
+            <strong>27</strong>
+            <span>Componentes</span>
+          </div>
+          <div class="ds-hero__divider"></div>
+          <div class="ds-hero__stat">
+            <strong>2</strong>
+            <span>Templates</span>
+          </div>
+          <div class="ds-hero__divider"></div>
+          <div class="ds-hero__stat">
+            <strong>7</strong>
+            <span>Demos</span>
+          </div>
         </div>
-        <div class="ds-hero__divider"></div>
-        <div class="ds-hero__stat">
-          <strong>2</strong>
-          <span>Templates</span>
-        </div>
-        <div class="ds-hero__divider"></div>
-        <div class="ds-hero__stat">
-          <strong>7</strong>
-          <span>Demos</span>
-        </div>
+      </div>
+      <div class="ds-hero__logo-wrap">
+        <img
+          class="ds-hero__logo"
+          src="assets/images/placeholders/logo-ds.png"
+          alt="Tegrus Design System"
+          width="240"
+          height="80"
+        >
       </div>
     </div>
   </div>
