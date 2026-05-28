@@ -582,15 +582,19 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── Badge NEW ── */
+    /* ── Badge NEW — gradiente arco-íris animado ── */
     .nav-card__new {
       position: absolute;
       top: 10px;
       right: 10px;
-      width: 34px;
-      height: 34px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: #E11D27;
+      background: linear-gradient(115deg,
+        #F72585 0%, #FF6B35 18%, #FFD600 36%,
+        #43D66C 54%, #00D4FF 72%, #A855F7 88%, #F72585 100%
+      );
+      background-size: 200% auto;
       color: #fff;
       font-family: var(--fn-ui);
       font-size: 8px;
@@ -600,22 +604,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        0 0 0 2px rgba(225,29,39,.25),
-        0 3px 10px rgba(225,29,39,.4);
-      animation: new-badge-pop .4s cubic-bezier(.34,1.56,.64,1) both;
-      /* Serrilhado com clip-path */
-      clip-path: polygon(
-        50% 0%, 61% 4%, 72% 2%, 79% 11%, 90% 13%,
-        92% 24%, 100% 31%, 97% 42%, 100% 53%,
-        93% 61%, 92% 72%, 82% 77%, 79% 88%,
-        68% 90%, 61% 99%, 50% 96%, 39% 99%,
-        32% 90%, 21% 88%, 18% 77%, 8% 72%,
-        7% 61%, 0% 53%, 3% 42%, 0% 31%,
-        8% 24%, 10% 13%, 21% 11%, 28% 2%, 39% 4%
-      );
-      width: 38px;
-      height: 38px;
+      box-shadow: 0 2px 12px rgba(168,85,247,.35);
+      animation:
+        new-badge-pop .4s cubic-bezier(.34,1.56,.64,1) both,
+        chameleon-shift 6s linear infinite;
     }
     @keyframes new-badge-pop {
       from { transform: scale(0) rotate(-15deg); opacity: 0; }
@@ -628,17 +620,21 @@
       align-items: center;
       justify-content: center;
       height: 16px;
-      padding: 0 5px;
-      border-radius: 4px;
-      background: #E11D27;
+      padding: 0 6px;
+      border-radius: 99px;
+      background: linear-gradient(115deg,
+        #F72585 0%, #FF6B35 18%, #FFD600 36%,
+        #43D66C 54%, #00D4FF 72%, #A855F7 88%, #F72585 100%
+      );
+      background-size: 200% auto;
       color: #fff;
       font-size: 8px;
       font-weight: 800;
       letter-spacing: .05em;
       text-transform: uppercase;
-      margin-left: auto;
       margin-right: 4px;
       flex-shrink: 0;
+      animation: chameleon-shift 6s linear infinite;
     }
 
     .nav-card__cta {
