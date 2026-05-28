@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials Dark — Design System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Testimonials Dark</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+<!-- ═══════════ V1 — 3 cards grid navy + setas circulares ═══════════ -->
+
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-badge dark-badge">Testimonials</span>
+      <h2>Customer Reviews</h2>
+    </div>
+    <div class="testimonial-wrap">
+      <button class="round-control prev" aria-label="Previous review">
+        <span></span>
+      </button>
+      <div class="testimonial-grid">
+        <article class="review-card">
+          <div class="review-person">
+            <span class="avatar a1"></span>
+            <div>
+              <h3>Cameron Williamson</h3>
+              <p>TechSolutions Inc.</p>
+            </div>
+          </div>
+          <p>
+            Zenify has become an integral part of our financial
+            management. The data-driven solutions for modern businesses
+            have been instrumental in our decision-making process.
+          </p>
+        </article>
+        <article class="review-card">
+          <div class="review-person">
+            <span class="avatar a2"></span>
+            <div>
+              <h3>Brooklyn Simmons</h3>
+              <p>Innovate Solutions</p>
+            </div>
+          </div>
+          <p>
+            Zenify has become an integral part of our financial
+            management. The customizable dashboards provide a clear
+            overview, making financial insights accessible and actionable.
+          </p>
+        </article>
+        <article class="review-card">
+          <div class="review-person">
+            <span class="avatar a3"></span>
+            <div>
+              <h3>Marvin McKinney</h3>
+              <p>Dynamics Ltd.</p>
+            </div>
+          </div>
+          <p>
+            Zenify has become an integral part of our financial
+            management. The data-driven solutions for modern businesses
+            have been instrumental in our decision-making process.
+          </p>
+        </article>
+      </div>
+      <button class="round-control next" aria-label="Next review">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

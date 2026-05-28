@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Editorial — Design System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Blog Editorial</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+<!-- ═══════════ V1 — Post destaque grande + 3 posts laterais ═══════════ -->
+
+<section class="blog-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-badge">Our Blog</span>
+      <h2>Articles &amp; Resources</h2>
+    </div>
+
+    <div class="blog-layout">
+      <article class="featured-post">
+        <div class="post-image blog-main" aria-hidden="true"></div>
+        <div class="post-meta">
+          <time datetime="2024-02-13">Feb 13, 2024</time>
+          <span>-</span>
+          <span>Marketing Strategy</span>
+        </div>
+        <h3>
+          Explore the transformative impact of artificial intelligence on
+          modern marketing strategies.
+        </h3>
+      </article>
+
+      <div class="post-list">
+        <article class="side-post">
+          <div class="thumb thumb-one" aria-hidden="true"></div>
+          <div>
+            <div class="post-meta">
+              <time datetime="2024-02-13">Feb 13, 2024</time>
+              <span>-</span><span>Development</span>
+            </div>
+            <h3>The evolution of design thinking in development</h3>
+          </div>
+        </article>
+        <article class="side-post">
+          <div class="thumb thumb-two" aria-hidden="true"></div>
+          <div>
+            <div class="post-meta">
+              <time datetime="2024-02-13">Feb 13, 2024</time>
+              <span>-</span><span>Branding</span>
+            </div>
+            <h3>The art of crafting compelling brand stories</h3>
+          </div>
+        </article>
+        <article class="side-post">
+          <div class="thumb thumb-three" aria-hidden="true"></div>
+          <div>
+            <div class="post-meta">
+              <time datetime="2024-02-13">Feb 13, 2024</time>
+              <span>-</span><span>Cybersecurity</span>
+            </div>
+            <h3>Cybersecurity best practices for small businesses</h3>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="center-action">
+      <a class="pill-button" href="#">
+        View All Blogs
+        <span class="chevron" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

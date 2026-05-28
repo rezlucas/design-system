@@ -1,0 +1,70 @@
+/* ════════════════════════════════════════════════════════════
+   Integrations Orbit — Zenify style
+   Fundo navy escuro com anéis circulares + ícones de integrações em fileira
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Base ── */
+:root { --navy: #031621; --navy-2: #052233; --container: 1280px; }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--navy); font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(var(--container), calc(100% - 80px)); margin: 0 auto; }
+.section-badge { display: inline-flex; align-items: center; min-height: 27px; padding: 3px 13px; border-radius: 999px; font-size: 14px; }
+.dark-badge { color: #fff; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); }
+.section-heading { margin-bottom: 32px; }
+.section-heading.centered { text-align: center; }
+.section-heading h2 { margin: 4px 0 0; font-size: 34px; line-height: 51px; font-weight: 700; color: #fff; }
+.pill-button { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 16px 25px; border-radius: 999px; font-size: 14px; font-weight: 600; border: 1px solid #fff; color: #fff; background: transparent; transition: transform 180ms ease; white-space: nowrap; cursor: pointer; }
+.pill-button:hover { transform: translateY(-1px); }
+.arrow-icon.white { position: relative; display: inline-block; width: 24px; height: 24px; }
+.arrow-icon.white::before, .arrow-icon.white::after { content: ""; position: absolute; top: 50%; transform: translateY(-50%); }
+.arrow-icon.white::before { left: 3px; width: 18px; height: 2px; background: #fff; }
+.arrow-icon.white::after { right: 3px; width: 8px; height: 8px; border-top: 2px solid #fff; border-right: 2px solid #fff; background: transparent; transform: translateY(-50%) rotate(45deg); }
+
+/* ── Component ── */
+.integrations-section { position: relative; min-height: 548px; background: var(--navy); overflow: hidden; }
+.rings {
+  position: absolute; left: 50%; top: -108px;
+  width: 753px; height: 753px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.rings::before, .rings::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.16); }
+.rings::before { width: 483px; height: 483px; left: 134px; top: 135px; }
+.rings::after  { width: 289px; height: 289px; left: 231px; top: 232px; border-color: rgba(255,255,255,0.2); }
+.integrations-inner { position: relative; z-index: 1; min-height: 548px; padding: 80px 0; text-align: center; }
+.integration-orbit { height: 160px; margin: 34px auto 70px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+.integration-icon { display: inline-grid; place-items: center; border-radius: 50%; background: #fff; color: #fff; font-weight: 800; }
+.integration-icon.tiny   { width: 57px;  height: 57px; }
+.integration-icon.small  { width: 80px;  height: 80px; }
+.integration-icon.medium { width: 100px; height: 100px; }
+.integration-icon.large  { width: 120px; height: 120px; }
+.integration-icon.core   { width: 140px; height: 140px; background: var(--navy-2); border: 1px solid rgba(255,255,255,0.08); font-size: 42px; color: #fff; }
+.integration-icon.blue   { background: linear-gradient(135deg, #a4bcfd, #3538cd); }
+.integration-icon.orange { background: #ff4405; }
+.integration-icon.yellow { background: linear-gradient(135deg, #fcb400 0 55%, #18bfff 55%); }
+.integration-icon.indigo { background: radial-gradient(circle at 35% 35%, #a4bcfd 0 10%, #6172f3 11% 28%, #3538cd 29%); }
+.integration-icon.sky    { background: linear-gradient(135deg, #f38744 0 35%, #53b1fd 35% 70%, #2e90fa 70%); }
+.integration-icon.teal   { background: #2a9d8f; }
+.integration-icon.mixed  { background: linear-gradient(135deg, #efd515 0 50%, #2e90fa 50%); }
+.integration-icon.coral  { background: #f07167; }
+
+/* ── Responsive ── */
+@media (max-width: 1180px) {
+  .integration-orbit { gap: 8px; }
+  .integration-icon.tiny   { width: 48px; height: 48px; }
+  .integration-icon.small  { width: 64px; height: 64px; }
+  .integration-icon.medium { width: 82px; height: 82px; }
+  .integration-icon.large  { width: 100px; height: 100px; }
+  .integration-icon.core   { width: 118px; height: 118px; }
+}
+@media (max-width: 980px) {
+  .container { width: min(100% - 40px, var(--container)); }
+  .integration-orbit { flex-wrap: wrap; height: auto; max-width: 620px; margin-bottom: 42px; }
+}
+@media (max-width: 640px) {
+  .container { width: calc(100% - 32px); }
+  .integrations-inner { padding: 70px 0; }
+  .section-heading h2 { font-size: 30px; line-height: 40px; }
+}

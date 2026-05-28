@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer Dark Nav — Design System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Footer Dark Nav</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+<!-- ═══════════ V1 — Intro + nav 4-col + copyright bar ═══════════ -->
+
+<footer class="footer">
+  <div class="container footer-main">
+    <div class="footer-intro">
+      <p>4517 Washington Ave. Manchester,<br>Kentucky 39495</p>
+      <div class="status-pill dark-status">
+        <span class="live-dot"></span>
+        <span>Systems running smoothly</span>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a href="#" aria-label="Twitter"></a>
+        <a href="#" aria-label="Facebook"></a>
+        <a href="#" aria-label="YouTube"></a>
+        <a href="#" aria-label="LinkedIn"></a>
+      </div>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer navigation">
+      <div>
+        <h3>Product</h3>
+        <a href="#">About us</a>
+        <a href="#">Features</a>
+        <a href="#">Blogs</a>
+        <a href="#">Reviews</a>
+        <a href="#">Pricing</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="#">Integrations</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact us</a>
+        <a href="#">FAQ's</a>
+      </div>
+      <div>
+        <h3>Resources</h3>
+        <a href="#">Changelog</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Coming Soon</a>
+        <a href="#">Error 404</a>
+      </div>
+      <div>
+        <h3>Utilities</h3>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Licensing</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Password</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>Copyright &copy; 2024 Zenify. All rights reserved.</p>
+      <p>Designed by Onmix. Powered by Webflow.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

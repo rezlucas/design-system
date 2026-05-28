@@ -1,0 +1,102 @@
+/* ════════════════════════════════════════════════════════════
+   Header Light — Zenify style
+   Nav 1 linha: logo + links + ações + CTA pill + menu mobile
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Base ── */
+:root {
+  --ink: #000; --text: #333; --line: rgba(0,0,0,0.1);
+  --green: #71cb31; --radius: 4px; --container: 1280px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: #fff; font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; }
+a { color: inherit; text-decoration: none; }
+button { border: 0; background: transparent; cursor: pointer; font: inherit; }
+.container { width: min(var(--container), calc(100% - 80px)); margin: 0 auto; }
+
+.pill-button, .text-link { display: inline-flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; }
+.pill-button { min-height: 52px; padding: 16px 25px; border-radius: 999px; font-size: 14px; font-weight: 600; line-height: 14px; border: 1px solid #000; transition: transform 180ms ease; }
+.pill-button:hover { transform: translateY(-1px); }
+.pill-button.small { min-height: 46px; padding: 15px 25px; }
+.pill-button.outline { background: #fff; }
+
+/* ── Component ── */
+.nav {
+  position: relative;
+  z-index: 10;
+  height: 73px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.nav-inner {
+  width: min(1336px, calc(100% - 80px));
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  min-width: 78px;
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 800;
+}
+.brand span:first-child {
+  display: inline-grid;
+  place-items: center;
+  width: 18px; height: 18px;
+  color: #fff;
+  background: #000;
+  border-radius: 2px;
+  font-size: 12px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  margin-left: 18px;
+  font-size: 14px;
+  line-height: 21px;
+}
+.nav-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 14px;
+  line-height: 21px;
+}
+.menu-button {
+  display: none;
+  width: 42px; height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50px;
+  margin-left: auto;
+  position: relative;
+}
+.menu-button span {
+  position: absolute;
+  left: 12px;
+  width: 16px; height: 1.5px;
+  background: #000;
+}
+.menu-button span:first-child { top: 16px; }
+.menu-button span:last-child  { top: 24px; }
+
+/* Demo spacer */
+.demo-spacer { height: 160px; background: #f5f5f5; border: 1px dashed rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; font-size: 13px; color: #888; }
+.demo-label  { padding: 20px 0 16px; text-align: center; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #aaa; }
+
+/* ── Responsive ── */
+@media (max-width: 1180px) { .nav-links { gap: 22px; } .nav-actions { gap: 16px; } }
+@media (max-width: 980px) {
+  .nav-inner { width: calc(100% - 40px); }
+  .nav-links, .nav-actions { display: none; }
+  .menu-button { display: block; }
+}
+@media (max-width: 640px) { .nav-inner { width: calc(100% - 32px); } .nav { height: 66px; } }
