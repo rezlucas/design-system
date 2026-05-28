@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Geo Map — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--color-background); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Feature Geo Map · Apresentação</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 1 — Map Card + Markers
+════════════════════════════════════ -->
+<p class="demo-label">Variant 1 — Map Card com Marcadores Interativos</p>
+
+<section class="fgm-section fgm-section--dark">
+  <div class="container">
+    <div class="fgm-heading">
+      <span class="fgm-eyebrow fgm-eyebrow--light">Country Availability</span>
+      <h2 class="fgm-title fgm-title--light">Cobrimos mais de<br />30 países</h2>
+      <p class="fgm-sub fgm-sub--light">Selecione um país para ver os planos disponíveis na sua região.</p>
+    </div>
+
+    <div class="fgm-card">
+      <div class="fgm-select" id="fgm-select-1">
+        <button type="button" class="fgm-select__btn" aria-expanded="false" aria-controls="fgm-menu-1">
+          <svg class="fgm-select__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span data-fgm-selected>Escolha um país</span>
+          <span class="fgm-chevron" aria-hidden="true"></span>
+        </button>
+        <div id="fgm-menu-1" class="fgm-dropdown" role="listbox">
+          <button type="button" data-country="Ireland" data-code="IE">🇮🇪 Irlanda</button>
+          <button type="button" data-country="United Kingdom" data-code="UK">🇬🇧 Reino Unido</button>
+          <button type="button" data-country="Germany" data-code="DE">🇩🇪 Alemanha</button>
+          <button type="button" data-country="France" data-code="FR">🇫🇷 França</button>
+          <button type="button" data-country="Netherlands" data-code="NL">🇳🇱 Países Baixos</button>
+          <button type="button" data-country="Spain" data-code="ES">🇪🇸 Espanha</button>
+        </div>
+      </div>
+
+      <div class="fgm-map" aria-label="Mapa de cobertura por país">
+        <div class="fgm-map__grid" aria-hidden="true"></div>
+        <!-- Markers positioned on abstract Europe map -->
+        <div class="fgm-marker" style="left:44%;top:40%" data-code="IE">
+          <button type="button" class="fgm-marker__pin" aria-label="Ireland">IE</button>
+          <div class="fgm-tooltip" role="tooltip">Irlanda · 12 planos</div>
+        </div>
+        <div class="fgm-marker" style="left:49%;top:36%" data-code="UK">
+          <button type="button" class="fgm-marker__pin" aria-label="United Kingdom">UK</button>
+          <div class="fgm-tooltip" role="tooltip">Reino Unido · 18 planos</div>
+        </div>
+        <div class="fgm-marker" style="left:57%;top:44%" data-code="DE">
+          <button type="button" class="fgm-marker__pin" aria-label="Germany">DE</button>
+          <div class="fgm-tooltip" role="tooltip">Alemanha · 15 planos</div>
+        </div>
+        <div class="fgm-marker" style="left:52%;top:52%" data-code="FR">
+          <button type="button" class="fgm-marker__pin" aria-label="France">FR</button>
+          <div class="fgm-tooltip" role="tooltip">França · 14 planos</div>
+        </div>
+        <div class="fgm-marker" style="left:55%;top:38%" data-code="NL">
+          <button type="button" class="fgm-marker__pin" aria-label="Netherlands">NL</button>
+          <div class="fgm-tooltip" role="tooltip">Países Baixos · 10 planos</div>
+        </div>
+        <div class="fgm-marker" style="left:46%;top:62%" data-code="ES">
+          <button type="button" class="fgm-marker__pin" aria-label="Spain">ES</button>
+          <div class="fgm-tooltip" role="tooltip">Espanha · 11 planos</div>
+        </div>
+      </div>
+
+      <div class="fgm-status">
+        <span class="fgm-status__text">Passe o cursor sobre um marcador ou selecione um país</span>
+        <span class="fgm-status__count">
+          <span class="fgm-status__dot"></span>
+          30+ países ativos
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 2 — Country Grid Cards
+════════════════════════════════════ -->
+<p class="demo-label">Variant 2 — Country Grid com Status Cards</p>
+
+<section class="fgm-section">
+  <div class="container">
+    <div class="fgm-heading">
+      <span class="fgm-eyebrow">Disponibilidade</span>
+      <h2 class="fgm-title">Cobertura global,<br />suporte local</h2>
+      <p class="fgm-sub">Planos de saúde, reforma e benefícios adaptados às regras de cada país.</p>
+    </div>
+
+    <div class="fgm-grid">
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇮🇪</div>
+        <div class="fgm-country-card__name">Irlanda</div>
+        <span class="fgm-country-card__status fgm-status--live">
+          <span class="fgm-status--dot"></span> Disponível
+        </span>
+        <span class="fgm-country-card__plans">Saúde · Reforma · Dental</span>
+      </div>
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇬🇧</div>
+        <div class="fgm-country-card__name">Reino Unido</div>
+        <span class="fgm-country-card__status fgm-status--live">
+          <span class="fgm-status--dot"></span> Disponível
+        </span>
+        <span class="fgm-country-card__plans">Saúde · Vida · PME</span>
+      </div>
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇩🇪</div>
+        <div class="fgm-country-card__name">Alemanha</div>
+        <span class="fgm-country-card__status fgm-status--live">
+          <span class="fgm-status--dot"></span> Disponível
+        </span>
+        <span class="fgm-country-card__plans">Saúde · Reforma</span>
+      </div>
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇫🇷</div>
+        <div class="fgm-country-card__name">França</div>
+        <span class="fgm-country-card__status fgm-status--live">
+          <span class="fgm-status--dot"></span> Disponível
+        </span>
+        <span class="fgm-country-card__plans">Saúde · Dental · Visão</span>
+      </div>
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇳🇱</div>
+        <div class="fgm-country-card__name">Países Baixos</div>
+        <span class="fgm-country-card__status fgm-status--live">
+          <span class="fgm-status--dot"></span> Disponível
+        </span>
+        <span class="fgm-country-card__plans">Saúde · Reforma</span>
+      </div>
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇪🇸</div>
+        <div class="fgm-country-card__name">Espanha</div>
+        <span class="fgm-country-card__status fgm-status--live">
+          <span class="fgm-status--dot"></span> Disponível
+        </span>
+        <span class="fgm-country-card__plans">Saúde · Dental</span>
+      </div>
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇵🇹</div>
+        <div class="fgm-country-card__name">Portugal</div>
+        <span class="fgm-country-card__status fgm-status--soon">
+          <span class="fgm-status--dot"></span> Em breve
+        </span>
+        <span class="fgm-country-card__plans">Saúde · Reforma</span>
+      </div>
+      <div class="fgm-country-card">
+        <div class="fgm-country-card__flag">🇮🇹</div>
+        <div class="fgm-country-card__name">Itália</div>
+        <span class="fgm-country-card__status fgm-status--soon">
+          <span class="fgm-status--dot"></span> Em breve
+        </span>
+        <span class="fgm-country-card__plans">Saúde</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 3 — Region Stats + Globe
+════════════════════════════════════ -->
+<p class="demo-label">Variant 3 — Globe Stats com Cobertura Regional</p>
+
+<section class="fgm-section fgm-section--dark">
+  <div class="container">
+    <div class="fgm-regions">
+      <!-- Abstract globe -->
+      <div class="fgm-globe" aria-hidden="true">
+        <div class="fgm-globe__circle">
+          <div class="fgm-globe__lines"></div>
+          <div class="fgm-globe__shine"></div>
+          <!-- Region dots -->
+          <div class="fgm-globe__dot" style="left:42%;top:38%"></div>
+          <div class="fgm-globe__dot" style="left:56%;top:44%"></div>
+          <div class="fgm-globe__dot" style="left:50%;top:52%"></div>
+          <div class="fgm-globe__dot" style="left:63%;top:35%"></div>
+          <div class="fgm-globe__dot" style="left:48%;top:28%"></div>
+          <div class="fgm-globe__dot" style="left:35%;top:55%"></div>
+          <!-- Labels -->
+          <span class="fgm-globe__label" style="left:42%;top:18%">América do Norte</span>
+          <span class="fgm-globe__label" style="left:56%;top:32%">Europa</span>
+          <span class="fgm-globe__label" style="left:68%;top:55%">Ásia-Pacífico</span>
+          <span class="fgm-globe__label" style="left:40%;top:68%">América Latina</span>
+        </div>
+      </div>
+
+      <!-- Region breakdown -->
+      <div class="fgm-region-list">
+        <div style="margin-bottom:8px">
+          <span class="fgm-eyebrow fgm-eyebrow--light">Cobertura Global</span>
+          <h2 class="fgm-title fgm-title--light" style="margin-top:8px">Presente em<br />4 regiões</h2>
+        </div>
+
+        <div class="fgm-region-item">
+          <div class="fgm-region-item__header">
+            <span class="fgm-region-item__name">Europa</span>
+            <span class="fgm-region-item__count">18 países</span>
+          </div>
+          <div class="fgm-region-item__bar">
+            <div class="fgm-region-item__fill" style="width:72%"></div>
+          </div>
+          <span class="fgm-region-item__countries">IE · UK · DE · FR · NL · ES · PT + 11</span>
+        </div>
+
+        <div class="fgm-region-item">
+          <div class="fgm-region-item__header">
+            <span class="fgm-region-item__name">América do Norte</span>
+            <span class="fgm-region-item__count">3 países</span>
+          </div>
+          <div class="fgm-region-item__bar">
+            <div class="fgm-region-item__fill" style="width:35%"></div>
+          </div>
+          <span class="fgm-region-item__countries">EUA · Canadá · México</span>
+        </div>
+
+        <div class="fgm-region-item">
+          <div class="fgm-region-item__header">
+            <span class="fgm-region-item__name">Ásia-Pacífico</span>
+            <span class="fgm-region-item__count">6 países</span>
+          </div>
+          <div class="fgm-region-item__bar">
+            <div class="fgm-region-item__fill" style="width:48%"></div>
+          </div>
+          <span class="fgm-region-item__countries">AU · SG · JP · HK · NZ · IN</span>
+        </div>
+
+        <div class="fgm-region-item">
+          <div class="fgm-region-item__header">
+            <span class="fgm-region-item__name">América Latina</span>
+            <span class="fgm-region-item__count">5 países</span>
+          </div>
+          <div class="fgm-region-item__bar">
+            <div class="fgm-region-item__fill" style="width:28%"></div>
+          </div>
+          <span class="fgm-region-item__countries">BR · AR · CL · CO · MX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  /* V1 — Select dropdown + marker sync */
+  var selectWrap = document.getElementById('fgm-select-1');
+  if (!selectWrap) return;
+  var btn       = selectWrap.querySelector('.fgm-select__btn');
+  var dropdown  = selectWrap.querySelector('.fgm-dropdown');
+  var labelEl   = selectWrap.querySelector('[data-fgm-selected]');
+  var markers   = document.querySelectorAll('.fgm-marker');
+
+  function setActive(code) {
+    markers.forEach(function(m) {
+      m.classList.toggle('is-active', m.dataset.code === code);
+    });
+  }
+
+  btn.addEventListener('click', function () {
+    var open = selectWrap.classList.toggle('fgm-select--open');
+    btn.setAttribute('aria-expanded', open);
+  });
+
+  dropdown.querySelectorAll('button').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      labelEl.textContent = opt.textContent.trim();
+      dropdown.querySelectorAll('button').forEach(function(o) { o.classList.remove('is-active'); });
+      opt.classList.add('is-active');
+      setActive(opt.dataset.code);
+      selectWrap.classList.remove('fgm-select--open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  markers.forEach(function (m) {
+    m.addEventListener('mouseenter', function () { setActive(m.dataset.code); });
+    m.addEventListener('mouseleave', function () {
+      if (!selectWrap.querySelector('.fgm-dropdown button.is-active')) {
+        setActive(null);
+      }
+    });
+    m.querySelector('.fgm-marker__pin').addEventListener('click', function () {
+      var code = m.dataset.code;
+      var opt = dropdown.querySelector('[data-code="' + code + '"]');
+      if (opt) opt.click();
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!selectWrap.contains(e.target)) {
+      selectWrap.classList.remove('fgm-select--open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Logos — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--color-background); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Provider Logos · Credibilidade</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 1 — Aside Card
+════════════════════════════════════ -->
+<p class="demo-label">Variant 1 — Aside Card (Copy + Logo Grid)</p>
+
+<section class="pl-section">
+  <div class="container">
+    <div class="pl-aside">
+      <div class="pl-aside__copy">
+        <span class="pl-eyebrow">Integrações</span>
+        <h2 class="pl-title">Conecta com as ferramentas que já usa</h2>
+        <p>Sincronize o seu RH, folha de pagamento e ferramentas de compliance — sem configuração manual.</p>
+        <a href="#" class="pl-aside__link">
+          Ver todas as integrações
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="pl-aside__grid">
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🟢</span>
+          <span class="pl-logo__name">Workday</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🔷</span>
+          <span class="pl-logo__name">BambooHR</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🔵</span>
+          <span class="pl-logo__name">Rippling</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🟠</span>
+          <span class="pl-logo__name">Gusto</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">⚫</span>
+          <span class="pl-logo__name">Deel</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🔴</span>
+          <span class="pl-logo__name">HiBob</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🟣</span>
+          <span class="pl-logo__name">Personio</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🔶</span>
+          <span class="pl-logo__name">Remote</span>
+        </div>
+        <div class="pl-logo">
+          <span class="pl-logo__icon" style="background:#f0f0f0">🌐</span>
+          <span class="pl-logo__name">Xero</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 2 — Logo Wall
+════════════════════════════════════ -->
+<p class="demo-label">Variant 2 — Logo Wall com Hover</p>
+
+<section class="pl-section pl-section--white">
+  <div class="container">
+    <div class="pl-wall-heading">
+      <span class="pl-eyebrow">Parceiros</span>
+      <h2 class="pl-title">Integrado com mais de 50 ferramentas</h2>
+      <p class="pl-sub">Do RH à contabilidade — os seus dados, sempre sincronizados.</p>
+    </div>
+    <div class="pl-wall">
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🟢</span>
+        <span class="pl-logo__name">Workday</span>
+        <span class="pl-logo__category">HCM</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🔷</span>
+        <span class="pl-logo__name">BambooHR</span>
+        <span class="pl-logo__category">HRIS</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🔵</span>
+        <span class="pl-logo__name">Rippling</span>
+        <span class="pl-logo__category">HR + Pay</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🟠</span>
+        <span class="pl-logo__name">Gusto</span>
+        <span class="pl-logo__category">Payroll</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">⚫</span>
+        <span class="pl-logo__name">Deel</span>
+        <span class="pl-logo__category">Global HR</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🔴</span>
+        <span class="pl-logo__name">HiBob</span>
+        <span class="pl-logo__category">HRIS</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🟣</span>
+        <span class="pl-logo__name">Personio</span>
+        <span class="pl-logo__category">HR</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🔶</span>
+        <span class="pl-logo__name">Remote</span>
+        <span class="pl-logo__category">Global HR</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🌐</span>
+        <span class="pl-logo__name">Xero</span>
+        <span class="pl-logo__category">Finance</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">💼</span>
+        <span class="pl-logo__name">QuickBooks</span>
+        <span class="pl-logo__category">Finance</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">🟦</span>
+        <span class="pl-logo__name">Slack</span>
+        <span class="pl-logo__category">Comms</span>
+      </div>
+      <div class="pl-logo">
+        <span class="pl-logo__icon">📋</span>
+        <span class="pl-logo__name">Notion</span>
+        <span class="pl-logo__category">Docs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 3 — Category Tabs
+════════════════════════════════════ -->
+<p class="demo-label">Variant 3 — Category Tabs Filtráveis</p>
+
+<section class="pl-section pl-section--dark">
+  <div class="container">
+    <div class="pl-tabs-heading">
+      <span class="pl-eyebrow pl-eyebrow--light">Ecossistema</span>
+      <h2 class="pl-title pl-title--light">Conecta com tudo o que precisa</h2>
+    </div>
+
+    <div class="pl-tabs-nav" role="tablist" aria-label="Categorias de integração">
+      <button class="pl-tab-btn active" role="tab" data-filter="all" aria-selected="true">Todos</button>
+      <button class="pl-tab-btn" role="tab" data-filter="hr" aria-selected="false">RH & HRIS</button>
+      <button class="pl-tab-btn" role="tab" data-filter="pay" aria-selected="false">Payroll</button>
+      <button class="pl-tab-btn" role="tab" data-filter="finance" aria-selected="false">Finanças</button>
+      <button class="pl-tab-btn" role="tab" data-filter="comms" aria-selected="false">Comunicação</button>
+    </div>
+
+    <div id="pl-panel-all" class="pl-tab-panel active" role="tabpanel">
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟢</span><span class="pl-logo__name">Workday</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🔷</span><span class="pl-logo__name">BambooHR</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🔵</span><span class="pl-logo__name">Rippling</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟠</span><span class="pl-logo__name">Gusto</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">⚫</span><span class="pl-logo__name">Deel</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🔴</span><span class="pl-logo__name">HiBob</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟣</span><span class="pl-logo__name">Personio</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🌐</span><span class="pl-logo__name">Xero</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">💼</span><span class="pl-logo__name">QuickBooks</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟦</span><span class="pl-logo__name">Slack</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">📋</span><span class="pl-logo__name">Notion</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">📧</span><span class="pl-logo__name">Gmail</span></div>
+    </div>
+    <div id="pl-panel-hr" class="pl-tab-panel" role="tabpanel">
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟢</span><span class="pl-logo__name">Workday</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🔷</span><span class="pl-logo__name">BambooHR</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🔴</span><span class="pl-logo__name">HiBob</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟣</span><span class="pl-logo__name">Personio</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">⚫</span><span class="pl-logo__name">Deel</span></div>
+    </div>
+    <div id="pl-panel-pay" class="pl-tab-panel" role="tabpanel">
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🔵</span><span class="pl-logo__name">Rippling</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟠</span><span class="pl-logo__name">Gusto</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🔶</span><span class="pl-logo__name">Remote</span></div>
+    </div>
+    <div id="pl-panel-finance" class="pl-tab-panel" role="tabpanel">
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🌐</span><span class="pl-logo__name">Xero</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">💼</span><span class="pl-logo__name">QuickBooks</span></div>
+    </div>
+    <div id="pl-panel-comms" class="pl-tab-panel" role="tabpanel">
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">🟦</span><span class="pl-logo__name">Slack</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">📋</span><span class="pl-logo__name">Notion</span></div>
+      <div class="pl-logo pl-logo--dark"><span class="pl-logo__icon">📧</span><span class="pl-logo__name">Gmail</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+  var tabs = document.querySelectorAll('.pl-tab-btn');
+  var panels = document.querySelectorAll('.pl-tab-panel');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      panels.forEach(function (p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      var target = document.getElementById('pl-panel-' + tab.dataset.filter);
+      if (target) target.classList.add('active');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

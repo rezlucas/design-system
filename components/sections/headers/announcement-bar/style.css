@@ -1,0 +1,218 @@
+/* ═══════════════════════════════════════════════════════
+   Announcement Bar — 3 variantes
+   V1: Dark Strip · V2: Brand Gradient · V3: Urgency + Dismiss
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Base ── */
+.announcement-bar {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.ab-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px 48px 10px 24px;
+}
+
+/* Link central (V1) */
+.ab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+/* Badge */
+.ab-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* Arrow icon */
+.ab-arrow {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+}
+.ab-arrow::before {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 2px;
+  background: currentColor;
+  top: 6px;
+  left: 2px;
+  border-radius: 2px;
+}
+.ab-arrow::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  top: 3px;
+  right: 1px;
+}
+a:hover .ab-arrow, button:hover .ab-arrow { transform: translateX(3px); }
+
+/* CTA link */
+.ab-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 4px 14px;
+  transition: background 180ms ease, transform 180ms ease, opacity 180ms ease;
+}
+.ab-cta:hover { transform: translateY(-1px); }
+
+/* Close button (V3) */
+.ab-close {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: .65;
+  transition: opacity 150ms ease, background 150ms ease;
+}
+.ab-close:hover { opacity: 1; background: rgba(255,255,255,.15); }
+
+/* ────────────────────────────────────
+   V1 — Dark Strip
+──────────────────────────────────── */
+.announcement-bar--dark {
+  background: #000;
+  color: #fff;
+}
+.announcement-bar--dark .ab-link {
+  color: #fff;
+  transition: background 180ms ease;
+}
+.announcement-bar--dark .ab-link:hover {
+  background: rgba(255,255,255,.1);
+}
+.announcement-bar--dark .ab-badge {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+}
+
+/* ────────────────────────────────────
+   V2 — Brand Gradient
+──────────────────────────────────── */
+.announcement-bar--brand {
+  background: linear-gradient(90deg, #6629de 0%, #0891B2 100%);
+  color: #fff;
+}
+.announcement-bar--brand::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.announcement-bar--brand .ab-badge--light {
+  background: rgba(255,255,255,.22);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.25);
+}
+.announcement-bar--brand .ab-cta {
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.3);
+}
+.announcement-bar--brand .ab-cta:hover {
+  background: rgba(255,255,255,.3);
+}
+
+/* ────────────────────────────────────
+   V3 — Urgency + Dismiss
+──────────────────────────────────── */
+.announcement-bar--urgent {
+  background: #1a0a2e;
+  color: #f0e6ff;
+  border-bottom: 1px solid rgba(198,128,255,.25);
+}
+.announcement-bar--urgent .ab-inner {
+  gap: 20px;
+}
+.ab-countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.ab-countdown__unit {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+}
+.ab-countdown__unit strong {
+  font-size: 16px;
+  font-weight: 800;
+  color: #c87eff;
+  line-height: 1;
+  min-width: 22px;
+  text-align: center;
+}
+.ab-countdown__unit em {
+  font-style: normal;
+  font-size: 10px;
+  opacity: .65;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.ab-countdown__sep {
+  font-size: 14px;
+  font-weight: 700;
+  color: #c87eff;
+  opacity: .6;
+  padding: 0 2px;
+}
+.announcement-bar--urgent .ab-cta--urgent {
+  background: linear-gradient(135deg, #c87eff, #824fe7);
+  color: #fff;
+  padding: 5px 16px;
+  font-size: 13px;
+}
+.announcement-bar--urgent .ab-cta--urgent:hover {
+  filter: brightness(1.1);
+}

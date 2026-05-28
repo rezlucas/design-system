@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials Interactive — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--color-background); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Testimonials Interactive · Credibilidade</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 1 — Sentence Chips
+════════════════════════════════════ -->
+<p class="demo-label">Variant 1 — Sentence Chips com Avatares</p>
+
+<section class="ti-section ti-section--dark">
+  <div class="container">
+    <div class="ti-chips-wrap">
+      <div class="ti-chips-heading">
+        <span class="ti-eyebrow ti-eyebrow--light">O que dizem</span>
+        <h2 class="ti-title ti-title--light">O que as equipas valorizam mais</h2>
+        <p style="color:rgba(220,215,255,.55);font-size:16px;margin-top:8px">Clique num avatar para ler o depoimento.</p>
+      </div>
+
+      <div class="ti-quote-display" aria-live="polite">
+        <p class="ti-quote-text ti-quote-text--light" id="ti-quote-v1">Clique num avatar para ler o depoimento.</p>
+      </div>
+
+      <div class="ti-chips" role="list">
+        <button type="button" class="ti-chip ti-chip--dark" role="listitem"
+          data-quote="A plataforma transformou a forma como gerimos benefícios. A nossa equipa está muito mais satisfeita."
+          data-name="Ana Silva" data-company="Startups Lisboa">
+          <span class="ti-chip__avatar">AS</span>
+          <span>
+            <div class="ti-chip__name">Ana Silva</div>
+            <div class="ti-chip__company">Startups Lisboa</div>
+          </span>
+        </button>
+        <button type="button" class="ti-chip ti-chip--dark" role="listitem"
+          data-quote="Configurámos benefícios para 5 países em menos de uma tarde. Impossível de acreditar antes de experimentar."
+          data-name="Marco Ferreira" data-company="TechGlobal">
+          <span class="ti-chip__avatar">MF</span>
+          <span>
+            <div class="ti-chip__name">Marco Ferreira</div>
+            <div class="ti-chip__company">TechGlobal</div>
+          </span>
+        </button>
+        <button type="button" class="ti-chip ti-chip--dark" role="listitem"
+          data-quote="O suporte é excepcional. Resolvem qualquer questão antes de eu sequer perceber que é um problema."
+          data-name="Sofia Costa" data-company="HealthCo">
+          <span class="ti-chip__avatar">SC</span>
+          <span>
+            <div class="ti-chip__name">Sofia Costa</div>
+            <div class="ti-chip__company">HealthCo</div>
+          </span>
+        </button>
+        <button type="button" class="ti-chip ti-chip--dark" role="listitem"
+          data-quote="A integração com o nosso HRIS foi perfeita. Nenhuma migração de dados manual, nenhuma dor de cabeça."
+          data-name="Pedro Lopes" data-company="RemoteFirst">
+          <span class="ti-chip__avatar">PL</span>
+          <span>
+            <div class="ti-chip__name">Pedro Lopes</div>
+            <div class="ti-chip__company">RemoteFirst</div>
+          </span>
+        </button>
+        <button type="button" class="ti-chip ti-chip--dark" role="listitem"
+          data-quote="Os colaboradores adoram a experiência. O onboarding de benefícios reduziu de semanas para horas."
+          data-name="Inês Rodrigues" data-company="ScaleUp">
+          <span class="ti-chip__avatar">IR</span>
+          <span>
+            <div class="ti-chip__name">Inês Rodrigues</div>
+            <div class="ti-chip__company">ScaleUp</div>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 2 — Pull Quote Rotator
+════════════════════════════════════ -->
+<p class="demo-label">Variant 2 — Pull Quote Rotator com Navegação</p>
+
+<section class="ti-section ti-section--white">
+  <div class="container">
+    <div class="ti-rotator">
+      <div class="ti-rotator__main">
+        <blockquote class="ti-rotator__quote" id="ti-rot-quote" aria-live="polite">
+          "A plataforma transformou a forma como gerimos benefícios globais. Configurámos planos para 8 países em menos de um dia."
+        </blockquote>
+        <div class="ti-rotator__author" id="ti-rot-author">
+          <div class="ti-rotator__avatar" id="ti-rot-av">AS</div>
+          <div>
+            <div class="ti-rotator__name" id="ti-rot-name">Ana Silva</div>
+            <div class="ti-rotator__role" id="ti-rot-role">Head of People · Startups Lisboa</div>
+          </div>
+        </div>
+        <div class="ti-rotator__controls">
+          <button type="button" class="ti-rotator__btn" id="ti-rot-prev" aria-label="Anterior">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="ti-rotator__btn" id="ti-rot-next" aria-label="Próximo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="ti-rotator__sidebar" role="list" aria-label="Depoimentos">
+        <div class="ti-rotator__thumb is-active" role="listitem" data-idx="0">
+          <div class="ti-rotator__thumb-av">AS</div>
+          <div>
+            <div class="ti-rotator__thumb-name">Ana Silva</div>
+            <div class="ti-rotator__thumb-co">Startups Lisboa</div>
+          </div>
+        </div>
+        <div class="ti-rotator__thumb" role="listitem" data-idx="1">
+          <div class="ti-rotator__thumb-av">MF</div>
+          <div>
+            <div class="ti-rotator__thumb-name">Marco Ferreira</div>
+            <div class="ti-rotator__thumb-co">TechGlobal</div>
+          </div>
+        </div>
+        <div class="ti-rotator__thumb" role="listitem" data-idx="2">
+          <div class="ti-rotator__thumb-av">SC</div>
+          <div>
+            <div class="ti-rotator__thumb-name">Sofia Costa</div>
+            <div class="ti-rotator__thumb-co">HealthCo</div>
+          </div>
+        </div>
+        <div class="ti-rotator__thumb" role="listitem" data-idx="3">
+          <div class="ti-rotator__thumb-av">PL</div>
+          <div>
+            <div class="ti-rotator__thumb-name">Pedro Lopes</div>
+            <div class="ti-rotator__thumb-co">RemoteFirst</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 3 — Rating Wall
+════════════════════════════════════ -->
+<p class="demo-label">Variant 3 — Rating Wall com Estrelas</p>
+
+<section class="ti-section">
+  <div class="container">
+    <div class="ti-rating-heading">
+      <span class="ti-eyebrow">Avaliações</span>
+      <h2 class="ti-title">4.9 de 5 estrelas</h2>
+      <p class="ti-rating-heading p">Baseado em mais de 800 avaliações verificadas.</p>
+    </div>
+    <div class="ti-rating-grid">
+      <article class="ti-rating-card">
+        <div class="ti-stars">★★★★★</div>
+        <p class="ti-rating-card__quote">"Nunca pensei que gerir benefícios internacionais pudesse ser tão simples. Literalmente mudou o nosso departamento de RH."</p>
+        <div class="ti-rating-card__footer">
+          <div class="ti-rating-card__av">AS</div>
+          <div>
+            <div class="ti-rating-card__name">Ana Silva</div>
+            <div class="ti-rating-card__company">Startups Lisboa · Head of People</div>
+          </div>
+        </div>
+      </article>
+      <article class="ti-rating-card">
+        <div class="ti-stars">★★★★★</div>
+        <p class="ti-rating-card__quote">"A integração com o nosso HRIS foi perfeita. Zero migração manual, zero dores de cabeça. Recomendo a qualquer empresa global."</p>
+        <div class="ti-rating-card__footer">
+          <div class="ti-rating-card__av">MF</div>
+          <div>
+            <div class="ti-rating-card__name">Marco Ferreira</div>
+            <div class="ti-rating-card__company">TechGlobal · CTO</div>
+          </div>
+        </div>
+      </article>
+      <article class="ti-rating-card">
+        <div class="ti-stars">★★★★★</div>
+        <p class="ti-rating-card__quote">"O onboarding de benefícios passou de semanas para horas. Os colaboradores adoram e o suporte é sempre rápido e eficaz."</p>
+        <div class="ti-rating-card__footer">
+          <div class="ti-rating-card__av">SC</div>
+          <div>
+            <div class="ti-rating-card__name">Sofia Costa</div>
+            <div class="ti-rating-card__company">HealthCo · HR Director</div>
+          </div>
+        </div>
+      </article>
+      <article class="ti-rating-card">
+        <div class="ti-stars">★★★★★</div>
+        <p class="ti-rating-card__quote">"Configurámos benefícios para 5 países em menos de uma tarde. Era impossível de imaginar antes de usar esta plataforma."</p>
+        <div class="ti-rating-card__footer">
+          <div class="ti-rating-card__av">PL</div>
+          <div>
+            <div class="ti-rating-card__name">Pedro Lopes</div>
+            <div class="ti-rating-card__company">RemoteFirst · People Ops</div>
+          </div>
+        </div>
+      </article>
+      <article class="ti-rating-card">
+        <div class="ti-stars">★★★★★</div>
+        <p class="ti-rating-card__quote">"Transparência total nos custos e compliance automático. A nossa equipa jurídica ficou tão satisfeita quanto o RH."</p>
+        <div class="ti-rating-card__footer">
+          <div class="ti-rating-card__av">IR</div>
+          <div>
+            <div class="ti-rating-card__name">Inês Rodrigues</div>
+            <div class="ti-rating-card__company">ScaleUp · General Counsel</div>
+          </div>
+        </div>
+      </article>
+      <article class="ti-rating-card">
+        <div class="ti-stars">★★★★★</div>
+        <p class="ti-rating-card__quote">"A melhor decisão que tomámos para escalar o nosso programa de benefícios. Simples, rápido e completamente fiável."</p>
+        <div class="ti-rating-card__footer">
+          <div class="ti-rating-card__av">RM</div>
+          <div>
+            <div class="ti-rating-card__name">Rui Mendes</div>
+            <div class="ti-rating-card__company">FinTechPT · VP of Operations</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  /* V1 — Sentence chips */
+  var chips = document.querySelectorAll('.ti-chip');
+  var quoteEl = document.getElementById('ti-quote-v1');
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('is-active'); });
+      chip.classList.add('is-active');
+      if (!quoteEl) return;
+      quoteEl.classList.add('is-fading');
+      setTimeout(function () {
+        quoteEl.textContent = '“' + chip.dataset.quote + '”';
+        quoteEl.classList.remove('is-fading');
+      }, 200);
+    });
+  });
+
+  /* V2 — Pull quote rotator */
+  var testimonials = [
+    {
+      quote: 'A plataforma transformou a forma como gerimos benefícios globais. Configurámos planos para 8 países em menos de um dia.',
+      av: 'AS', name: 'Ana Silva', role: 'Head of People · Startups Lisboa'
+    },
+    {
+      quote: 'Configurámos benefícios para 5 países em menos de uma tarde. Era impossível de imaginar antes de usar esta plataforma.',
+      av: 'MF', name: 'Marco Ferreira', role: 'CTO · TechGlobal'
+    },
+    {
+      quote: 'O onboarding de benefícios passou de semanas para horas. Os colaboradores adoram e o suporte é sempre rápido.',
+      av: 'SC', name: 'Sofia Costa', role: 'HR Director · HealthCo'
+    },
+    {
+      quote: 'A integração com o nosso HRIS foi perfeita. Zero migração manual, zero dores de cabeça. Recomendo a qualquer empresa global.',
+      av: 'PL', name: 'Pedro Lopes', role: 'People Ops · RemoteFirst'
+    }
+  ];
+  var current = 0;
+  var quoteBox  = document.getElementById('ti-rot-quote');
+  var authorBox = document.getElementById('ti-rot-author');
+  var avEl   = document.getElementById('ti-rot-av');
+  var nameEl = document.getElementById('ti-rot-name');
+  var roleEl = document.getElementById('ti-rot-role');
+  var thumbs = document.querySelectorAll('.ti-rotator__thumb');
+
+  function goTo(idx) {
+    if (!quoteBox) return;
+    quoteBox.classList.add('is-fading');
+    authorBox.classList.add('is-fading');
+    setTimeout(function () {
+      current = (idx + testimonials.length) % testimonials.length;
+      var t = testimonials[current];
+      quoteBox.textContent = '“' + t.quote + '”';
+      avEl.textContent   = t.av;
+      nameEl.textContent = t.name;
+      roleEl.textContent = t.role;
+      quoteBox.classList.remove('is-fading');
+      authorBox.classList.remove('is-fading');
+      thumbs.forEach(function (th, i) { th.classList.toggle('is-active', i === current); });
+    }, 250);
+  }
+
+  var prevBtn = document.getElementById('ti-rot-prev');
+  var nextBtn = document.getElementById('ti-rot-next');
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
+  thumbs.forEach(function (th, i) {
+    th.addEventListener('click', function () { if (i !== current) goTo(i); });
+  });
+})();
+</script>
+
+</body>
+</html>

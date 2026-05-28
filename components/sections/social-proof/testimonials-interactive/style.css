@@ -1,0 +1,356 @@
+/* ═══════════════════════════════════════════════════════
+   Testimonials Interactive — 3 variantes
+   V1: Sentence Chips · V2: Pull Quote Rotator · V3: Rating Wall
+   ═══════════════════════════════════════════════════════ */
+
+.ti-section {
+  padding: 80px 0;
+  background: var(--color-surface, #f7f7f7);
+}
+.ti-section--dark {
+  background: #0e1117;
+  color: #e8eaf0;
+}
+.ti-section--white {
+  background: #fff;
+}
+
+.container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ── Shared ── */
+.ti-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-primary, #6629de);
+  margin-bottom: 12px;
+}
+.ti-eyebrow--light { color: #a87fff; }
+.ti-title {
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text, #1a1a2a);
+  margin: 0 0 8px;
+}
+.ti-title--light { color: #f0eeff; }
+
+/* ════════════════════════════════════
+   V1 — Sentence Chips (avatar chips + quote)
+════════════════════════════════════ */
+.ti-chips-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.ti-chips-heading {
+  margin-bottom: 40px;
+}
+.ti-chips-heading p {
+  font-size: 16px;
+  color: var(--color-text-muted, #666);
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+
+.ti-quote-display {
+  min-height: 80px;
+  margin-bottom: 36px;
+  padding: 0 16px;
+}
+.ti-quote-text {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text, #1a1a2a);
+  transition: opacity .25s ease;
+}
+.ti-quote-text--light { color: #f0eeff; }
+.ti-quote-text.is-fading { opacity: 0; }
+
+.ti-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ti-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 8px;
+  border-radius: 99px;
+  border: 1px solid rgba(0,0,0,.1);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text, #1a1a2a);
+}
+.ti-chip:hover {
+  border-color: rgba(102,41,222,.3);
+  box-shadow: 0 2px 12px rgba(102,41,222,.12);
+  transform: translateY(-1px);
+}
+.ti-chip.is-active {
+  border-color: #6629de;
+  background: #f0eeff;
+  color: #6629de;
+}
+.ti-chip--dark {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.75);
+}
+.ti-chip--dark:hover {
+  border-color: rgba(168,127,255,.5);
+  background: rgba(102,41,222,.18);
+}
+.ti-chip--dark.is-active {
+  background: rgba(102,41,222,.3);
+  border-color: #a87fff;
+  color: #fff;
+}
+.ti-chip__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #6629de, #a87fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ti-chip__name {
+  font-weight: 600;
+}
+.ti-chip__company {
+  font-size: 11px;
+  opacity: .6;
+}
+
+/* ════════════════════════════════════
+   V2 — Pull Quote Rotator
+════════════════════════════════════ */
+.ti-rotator {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: start;
+}
+.ti-rotator__main {
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ti-rotator__quote {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text, #1a1a2a);
+  margin: 0 0 28px;
+  position: relative;
+  padding-left: 24px;
+  transition: opacity .3s;
+}
+.ti-rotator__quote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 2px;
+  background: #6629de;
+}
+.ti-rotator__quote.is-fading { opacity: 0; }
+.ti-rotator__author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: opacity .3s;
+}
+.ti-rotator__author.is-fading { opacity: 0; }
+.ti-rotator__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6629de, #a87fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ti-rotator__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text, #1a1a2a);
+}
+.ti-rotator__role {
+  font-size: 13px;
+  color: var(--color-text-muted, #666);
+}
+.ti-rotator__controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+}
+.ti-rotator__btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, border-color .15s;
+}
+.ti-rotator__btn:hover {
+  background: #6629de;
+  border-color: #6629de;
+  color: #fff;
+}
+.ti-rotator__btn svg { pointer-events: none; }
+
+.ti-rotator__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+}
+.ti-rotator__thumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.ti-rotator__thumb:hover { background: rgba(102,41,222,.06); }
+.ti-rotator__thumb.is-active {
+  background: #f0eeff;
+  border-color: rgba(102,41,222,.2);
+}
+.ti-rotator__thumb-av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6629de, #a87fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ti-rotator__thumb-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text, #1a1a2a);
+}
+.ti-rotator__thumb-co {
+  font-size: 11px;
+  color: var(--color-text-muted, #666);
+}
+
+/* ════════════════════════════════════
+   V3 — Rating Wall
+════════════════════════════════════ */
+.ti-rating-heading {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 44px;
+}
+.ti-rating-heading p {
+  font-size: 16px;
+  color: var(--color-text-muted, #666);
+  margin-top: 8px;
+}
+.ti-rating-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.ti-rating-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform .2s, box-shadow .2s;
+}
+.ti-rating-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.09);
+}
+.ti-stars {
+  display: flex;
+  gap: 3px;
+  color: #FFB400;
+  font-size: 16px;
+}
+.ti-rating-card__quote {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text, #1a1a2a);
+  flex: 1;
+  margin: 0;
+}
+.ti-rating-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+.ti-rating-card__av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6629de, #a87fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ti-rating-card__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text, #1a1a2a);
+}
+.ti-rating-card__company {
+  font-size: 12px;
+  color: var(--color-text-muted, #888);
+}
+
+@media (max-width: 768px) {
+  .ti-rotator { grid-template-columns: 1fr; }
+  .ti-rotator__sidebar { flex-direction: row; overflow-x: auto; padding-bottom: 8px; }
+  .ti-rotator__thumb { flex-shrink: 0; }
+  .ti-rating-grid { grid-template-columns: 1fr; }
+}

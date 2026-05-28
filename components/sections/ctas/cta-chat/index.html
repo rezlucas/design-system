@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTA Chat — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--color-background); }
+    .demo-label {
+      text-align: center;
+      padding-block: var(--space-xl);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">CTA Chat · Conversão</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 1 — Floating Widget
+════════════════════════════════════ -->
+<p class="demo-label">Variant 1 — Floating Chat Widget</p>
+
+<section class="cc-section">
+  <div class="container">
+    <div class="cc-demo-frame" id="cc-frame-1">
+      <span class="cc-demo-placeholder">Área de conteúdo da página — clique no botão ↘</span>
+
+      <!-- Chat panel -->
+      <aside class="cc-panel" id="cc-panel-1" role="dialog" aria-modal="true" aria-label="Chat de suporte" aria-hidden="true">
+        <div class="cc-panel__header">
+          <div class="cc-panel__av" aria-hidden="true">💬</div>
+          <div class="cc-panel__info">
+            <div class="cc-panel__name">Suporte Kota</div>
+            <div class="cc-panel__status">
+              <span class="cc-panel__status-dot"></span>
+              Online agora
+            </div>
+          </div>
+          <button type="button" class="cc-panel__close" id="cc-close-1" aria-label="Fechar chat">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="cc-panel__body">
+          <div class="cc-panel__bubble">
+            Olá! 👋 Como posso ajudar com benefícios, países ou integrações?
+          </div>
+          <a href="mailto:hello@kota.example" class="cc-panel__cta">Iniciar conversa</a>
+        </div>
+      </aside>
+
+      <!-- Float button -->
+      <button type="button" class="cc-float-btn" id="cc-toggle-1" aria-expanded="false" aria-controls="cc-panel-1" aria-label="Abrir chat">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="cc-float-btn__dot" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 2 — Embedded Section
+════════════════════════════════════ -->
+<p class="demo-label">Variant 2 — Embedded Chat Invitation</p>
+
+<section class="cc-section cc-section--dark">
+  <div class="container">
+    <div class="cc-embedded">
+      <div class="cc-embedded__copy">
+        <span class="cc-eyebrow cc-eyebrow--light">Fale Connosco</span>
+        <h2 class="cc-title cc-title--light">Tem dúvidas?<br />A nossa equipa responde.</h2>
+        <p>Especialistas em benefícios disponíveis para ajudar a escolher o plano certo para a sua equipa — sem compromissos.</p>
+
+        <div class="cc-avatar-stack">
+          <div class="cc-avatar-stack__av" aria-hidden="true">AS</div>
+          <div class="cc-avatar-stack__av" aria-hidden="true">MF</div>
+          <div class="cc-avatar-stack__av" aria-hidden="true">SC</div>
+          <div class="cc-avatar-stack__label">
+            <strong>Equipa de Suporte</strong>
+            Resposta em menos de 2 minutos
+          </div>
+        </div>
+
+        <div class="cc-embedded__actions">
+          <a href="#" class="cc-btn cc-btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Iniciar chat agora
+          </a>
+          <a href="mailto:hello@kota.example" class="cc-btn cc-btn--outline">Enviar email</a>
+        </div>
+      </div>
+
+      <div class="cc-embedded__mockup" aria-hidden="true">
+        <div class="cc-mockup-header">
+          <div class="cc-mockup-header__av">💬</div>
+          <div>
+            <div class="cc-mockup-header__name">Suporte Kota</div>
+            <div class="cc-mockup-header__status">● Online</div>
+          </div>
+        </div>
+        <div class="cc-mockup-body">
+          <div class="cc-mockup-msg cc-mockup-msg--in">Olá! Como posso ajudar hoje?</div>
+          <div class="cc-mockup-msg cc-mockup-msg--out">Tenho 20 colaboradores em 3 países...</div>
+          <div class="cc-mockup-msg cc-mockup-msg--in">Perfeito! Posso ajudá-lo a configurar isso em minutos. Qual é o primeiro país?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     VARIANT 3 — Contact Bar
+════════════════════════════════════ -->
+<p class="demo-label">Variant 3 — Contact Bar Multi-canal</p>
+
+<section class="cc-section cc-section--white">
+  <div class="container">
+    <div class="cc-bar">
+      <div class="cc-bar__copy">
+        <p class="cc-bar__title">Ainda tem dúvidas? Estamos aqui.</p>
+        <p class="cc-bar__sub">Escolha a forma de contacto que preferir — respondemos em qualquer canal.</p>
+      </div>
+      <div class="cc-bar__actions">
+        <button type="button" class="cc-bar-btn cc-bar-btn--chat">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Chat ao vivo
+        </button>
+        <a href="mailto:hello@kota.example" class="cc-bar-btn cc-bar-btn--email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+        <a href="tel:+351000000000" class="cc-bar-btn cc-bar-btn--phone">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Ligar
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  'use strict';
+
+  /* V1 — Floating chat toggle */
+  var toggleBtn = document.getElementById('cc-toggle-1');
+  var panel     = document.getElementById('cc-panel-1');
+  var closeBtn  = document.getElementById('cc-close-1');
+  var frame     = document.getElementById('cc-frame-1');
+
+  function openPanel() {
+    panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden', 'false');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel() {
+    panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden', 'true');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  if (toggleBtn) toggleBtn.addEventListener('click', function () {
+    panel.classList.contains('is-open') ? closePanel() : openPanel();
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel && panel.classList.contains('is-open')) closePanel();
+  });
+
+  if (frame) frame.addEventListener('click', function (e) {
+    if (!panel.contains(e.target) && e.target !== toggleBtn) closePanel();
+  });
+})();
+</script>
+
+</body>
+</html>
