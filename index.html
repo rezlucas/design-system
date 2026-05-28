@@ -117,7 +117,7 @@
     .ds-layout {
       display: flex;
       position: relative;
-      min-height: calc(100vh - 48px);
+      min-height: 100vh;
     }
 
     /* ── Sidebar ── */
@@ -127,8 +127,8 @@
       background: var(--ds-surface);
       border-right: 1px solid var(--ds-border);
       position: sticky;
-      top: 48px;
-      height: calc(100vh - 48px);
+      top: 0;
+      height: 100vh;
       overflow-y: auto;
       overflow-x: hidden;
       display: flex;
@@ -267,23 +267,6 @@
       min-width: 0;
     }
 
-    /* Mobile sidebar toggle button */
-    .ds-sidebar-toggle {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border: 1px solid var(--ds-border-md);
-      border-radius: 7px;
-      background: transparent;
-      color: var(--ds-text-muted);
-      cursor: pointer;
-      transition: all 0.15s;
-      flex-shrink: 0;
-    }
-    .ds-sidebar-toggle:hover { background: var(--ds-surface-2); color: var(--ds-text); }
-
     /* Backdrop (mobile) */
     .ds-sidebar-backdrop {
       display: none;
@@ -296,6 +279,27 @@
     }
     .ds-sidebar-backdrop.open { display: block; }
 
+    /* Floating mobile hamburger */
+    .ds-mob-toggle {
+      display: none;
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 600;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--ds-surface);
+      border: 1px solid var(--ds-border-md);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--ds-text-muted);
+      transition: all 0.15s;
+    }
+    .ds-mob-toggle:hover { color: var(--ds-text); border-color: var(--ds-border-hover); }
+
     @media (max-width: 900px) {
       .ds-sidebar {
         position: fixed;
@@ -307,7 +311,8 @@
         transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .ds-sidebar.open { left: 0; }
-      .ds-sidebar-toggle { display: flex; }
+      .ds-mob-toggle { display: flex; }
+      .ds-content { padding-top: 60px; }
     }
 
     /* ── Hero de apresentação ── */
@@ -986,22 +991,12 @@
 <!-- ════════════════════════════════════════
      BARRA DE TOPO
 ════════════════════════════════════════ -->
-<header class="nav-header" role="banner">
-  <div class="nav-header__inner container">
-    <div style="display:flex;align-items:center;gap:10px">
-      <button class="ds-sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir menu lateral" aria-expanded="false">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-      <a href="index.html" class="nav-header__brand" aria-label="Design System — Página inicial">
-        <img class="nav-header__mark" src="assets/images/placeholders/favicon-ds.png" alt="Design System" width="28" height="28" style="object-fit:contain;border-radius:0;background:transparent">
-        <span class="nav-header__name">Design System</span>
-        <span class="nav-header__pill">v1.0</span>
-      </a>
-    </div>
-    <span class="nav-header__meta">27 componentes · 2 templates · 7 demos</span>
-  </div>
-</header>
 
+
+<!-- Hamburguer mobile -->
+<button class="ds-mob-toggle" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir menu lateral" aria-expanded="false">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
 
 <!-- ════════════════════════════════════════
      LAYOUT — Sidebar + Conteúdo
