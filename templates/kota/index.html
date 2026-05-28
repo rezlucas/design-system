@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template — Kota Benefits</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar -->
+<div id="ds-nav-bar">
+  <a href="../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Template · Kota Benefits</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+<!-- ══ ANNOUNCEMENT BAR ════════════════════════════════════════════════════
+     Faixa de topo com link de destaque de produto
+════════════════════════════════════════════════════════════════════════ -->
+<div class="announcement">
+  <a href="#products" class="announcement__link">
+    <span>Life Assurance is now available on Kota</span>
+    <span class="icon-arrow" aria-hidden="true"></span>
+  </a>
+</div>
+
+<!-- ══ HEADER — NAV MEGAMENU ════════════════════════════════════════════════
+     Componente: components/sections/headers/header-megamenu/
+     Header sticky com dropdowns, hamburguer mobile e CTA de ação
+════════════════════════════════════════════════════════════════════════ -->
+<header class="site-header" data-theme="dark">
+  <nav class="site-nav container" aria-label="Primary navigation">
+    <a class="brand" href="#top" aria-label="Kota home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__word">Kota</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div id="nav-menu" class="nav-menu">
+      <div class="nav-item has-dropdown">
+        <button type="button" class="nav-link" aria-expanded="false">
+          Products
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <div class="dropdown">
+          <a href="#products">Health insurance</a>
+          <a href="#products">Retirement</a>
+          <a href="#products">Life insurance</a>
+        </div>
+      </div>
+      <div class="nav-item has-dropdown">
+        <button type="button" class="nav-link" aria-expanded="false">
+          Solutions
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <div class="dropdown">
+          <a href="#features">Startups</a>
+          <a href="#features">Mid-sized teams</a>
+          <a href="#developers">Developers</a>
+        </div>
+      </div>
+      <a class="nav-link" href="#pricing">Pricing</a>
+      <a class="nav-link" href="#countries">Country Availability</a>
+      <div class="nav-item has-dropdown">
+        <button type="button" class="nav-link" aria-expanded="false">
+          Resources
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <div class="dropdown">
+          <a href="#faq">Help centre</a>
+          <a href="#blog">Blog</a>
+          <a href="#footer">Careers</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#login" class="nav-login">Login</a>
+      <a href="#demo" class="button button--ghost">See a demo</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ══ HERO — SPLIT ═════════════════════════════════════════════════════════
+       Componente: components/sections/heroes/hero-split/
+       Hero com copy à esquerda, visual de app/produto à direita e bubbles geográficas
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <h1>Forget everything<br />you know about<br />managing benefits</h1>
+        <p>
+          Instant access to leading insurance and retirement providers globally, with
+          flexible contributions, automated accounting and a delightfully simple
+          employee app.
+        </p>
+        <form class="email-form" data-form="hero" novalidate>
+          <label class="sr-only" for="hero-email">What's your work email?</label>
+          <input id="hero-email" type="email" placeholder="What's your work email?" autocomplete="email" />
+          <button class="button button--cream" type="submit">Get started</button>
+          <span class="form-message" role="status"></span>
+        </form>
+      </div>
+
+      <div class="hero-visual" aria-label="Kota product preview">
+        <div class="phone-frame">
+          <div class="phone-top"></div>
+          <div class="benefit-card benefit-card--health">
+            <span>Health</span>
+            <strong>Active</strong>
+          </div>
+          <div class="benefit-card benefit-card--pension">
+            <span>Pension</span>
+            <strong>8%</strong>
+          </div>
+          <div class="hero-chart">
+            <span style="height: 46%"></span>
+            <span style="height: 72%"></span>
+            <span style="height: 55%"></span>
+            <span style="height: 88%"></span>
+            <span style="height: 64%"></span>
+          </div>
+          <div class="app-row">
+            <span class="app-icon"></span>
+            <div>
+              <strong>Payroll synced</strong>
+              <small>All regions reconciled</small>
+            </div>
+          </div>
+        </div>
+        <div class="hero-bubble hero-bubble--one">IE</div>
+        <div class="hero-bubble hero-bubble--two">UK</div>
+        <div class="hero-bubble hero-bubble--three">EU</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CLIENT BAND — LOGO MARQUEE ═══════════════════════════════════════════
+       Componente: components/sections/social-proof/client-band/
+       Faixa com logos de clientes em marquee contínuo
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="logo-band" aria-label="Customer logos">
+    <p>Powering core benefits and empowering teams at</p>
+    <div class="logo-track">
+      <button type="button" class="logo-pill">atlas</button>
+      <button type="button" class="logo-pill">nordic</button>
+      <button type="button" class="logo-pill">stripe</button>
+      <button type="button" class="logo-pill">foundry</button>
+      <button type="button" class="logo-pill">pilot</button>
+      <button type="button" class="logo-pill">atlas</button>
+      <button type="button" class="logo-pill">nordic</button>
+      <button type="button" class="logo-pill">stripe</button>
+      <button type="button" class="logo-pill">foundry</button>
+      <button type="button" class="logo-pill">pilot</button>
+    </div>
+  </section>
+
+  <!-- ══ FEATURE CARDS ═════════════════════════════════════════════════════════
+       Componente: components/sections/features/feature-cards/
+       Grid de cards de benefícios com visual decorativo e hover interativo
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section id="features" class="section section--light">
+    <div class="container">
+      <div class="section-heading centered">
+        <span class="eyebrow">Get started in minutes</span>
+        <h2>Enrol, control, pay, and scale your core benefits internationally.</h2>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card hover-card" tabindex="0">
+          <div class="card-copy">
+            <h3>Global benefits</h3>
+            <p>One place to start, manage and scale your benefits globally.</p>
+          </div>
+          <div class="mini-world" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </article>
+
+        <article class="feature-card hover-card" tabindex="0">
+          <div class="card-copy">
+            <h3>Automated</h3>
+            <p>Sync your HR tools and watch your benefits work on autopilot.</p>
+          </div>
+          <div class="sync-visual" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </article>
+
+        <article class="feature-card hover-card" tabindex="0">
+          <div class="card-copy">
+            <h3>Compliant</h3>
+            <p>Meet your auto-enrol pension requirements in the UK and Ireland.</p>
+          </div>
+          <div class="compliance-visual" aria-hidden="true">
+            <span class="stamp">OK</span>
+          </div>
+        </article>
+
+        <article class="feature-card feature-card--wide hover-card" tabindex="0">
+          <div class="card-copy">
+            <h3>Affordable</h3>
+            <p>Control spend, remove reporting admin, and say goodbye to broker fees.</p>
+          </div>
+          <div class="saving-visual" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </article>
+
+        <article class="feature-card feature-card--wide hover-card" tabindex="0">
+          <div class="card-copy">
+            <h3>All-in-one place</h3>
+            <p>Manage policies from multiple providers in one single platform.</p>
+          </div>
+          <div class="stack-visual" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURE CARDS LARGE — PRODUTOS ════════════════════════════════════════
+       Componente: components/sections/features/feature-cards-large/
+       Cards de produto com visual ilustrativo, cor de fundo e arte decorativa
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section id="products" class="section section--light products-section">
+    <div class="container">
+      <div class="section-heading centered">
+        <span class="eyebrow">Available products</span>
+        <h2>Set-up and scale your core benefits effortlessly</h2>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card product-card--green" tabindex="0">
+          <h3>Health insurance</h3>
+          <p>Health, dental and vision from local and global providers.</p>
+          <div class="product-art product-art--health" aria-hidden="true">
+            <span class="dot"></span>
+            <span class="person"></span>
+            <span class="shield"></span>
+          </div>
+        </article>
+        <article class="product-card product-card--purple" tabindex="0">
+          <h3>Workplace pension</h3>
+          <p>A workplace pension from a leading local provider.</p>
+          <div class="product-art product-art--pension" aria-hidden="true">
+            <span class="dot"></span>
+            <span class="coin"></span>
+            <span class="person"></span>
+          </div>
+        </article>
+        <article class="product-card product-card--orange" tabindex="0">
+          <h3>Life insurance</h3>
+          <p>Easily access Life Assurance coverage for your entire team.</p>
+          <div class="product-art product-art--life" aria-hidden="true">
+            <span class="dot"></span>
+            <span class="person"></span>
+            <span class="heart"></span>
+          </div>
+        </article>
+      </div>
+
+      <aside class="provider-card" id="pricing">
+        <div>
+          <h3>From leading providers</h3>
+          <p>Switch on packages from any of our integrated insurers and pension providers.</p>
+        </div>
+        <div class="provider-logos" aria-label="Provider logos">
+          <button type="button">vida</button>
+          <button type="button">well</button>
+          <button type="button">nest</button>
+          <button type="button">cover</button>
+          <button type="button">pension</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══ FEATURE SPLIT MEDIA — EMPLOYEE APP ════════════════════════════════════
+       Componente: components/sections/features/feature-split-media/
+       Secção split com copy + visual de app do empregado
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="split-feature section--light">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <span class="eyebrow">Employee app</span>
+        <h2>Empower your people</h2>
+        <p>Team members have the flexibility to choose cover or savings amounts that suit their budget and needs.</p>
+        <ul class="check-list">
+          <li>Enable members to personalise their selection</li>
+          <li>Flexibility to control their benefits in a tap</li>
+          <li>Remove hours of benefit queries every month</li>
+        </ul>
+      </div>
+      <div class="app-visual app-visual--phone" tabindex="0" aria-label="Employee app visual">
+        <div class="device">
+          <div class="device-row active"><span></span><strong>Health cover</strong><em>Selected</em></div>
+          <div class="device-row"><span></span><strong>Dental</strong><em>Add</em></div>
+          <div class="device-row"><span></span><strong>Pension</strong><em>8%</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURE SPLIT MEDIA — BENCHMARKING ════════════════════════════════════
+       Componente: components/sections/features/feature-split-media/
+       Secção split invertida com visual de barras de benchmark e copy
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="split-feature split-feature--reverse section--light">
+    <div class="container split-grid">
+      <div class="app-visual app-visual--benchmark" tabindex="0" aria-label="Market benchmarking visual">
+        <div class="benchmark-bars">
+          <span style="height: 54%"></span>
+          <span style="height: 74%"></span>
+          <span style="height: 42%"></span>
+          <span style="height: 91%"></span>
+          <span style="height: 63%"></span>
+        </div>
+        <div class="market-tag">Market median</div>
+      </div>
+      <div class="split-copy">
+        <span class="eyebrow">Local benchmarking</span>
+        <h2>Compare against the market</h2>
+        <p>Easily benchmark against local companies and create packages based on market data.</p>
+        <ul class="check-list">
+          <li>Analyse benefits package based on market data</li>
+          <li>Compare your benefits directly against the market</li>
+          <li>Design a package that meets employee expectations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURE SPLIT — FINANCE ═══════════════════════════════════════════════
+       Componente: components/sections/features/feature-split/
+       Split com copy de automação financeira e visual de stack de faturas
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="split-feature section--light">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <span class="eyebrow">Finance Automated</span>
+        <h2>Automate finance and payroll</h2>
+        <p>End-to-end automation means accurate, consolidated reporting for your finance department.</p>
+        <ul class="check-list">
+          <li>HRIS Sync keeps employee information accurate</li>
+          <li>Consolidated payroll reconciled against providers</li>
+          <li>Eliminating hours of manual work for finance</li>
+        </ul>
+      </div>
+      <div class="app-visual app-visual--finance" tabindex="0" aria-label="Finance automation visual">
+        <div class="invoice-stack">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS INTERATIVOS ═══════════════════════════════════════════════
+       Componente: components/sections/social-proof/testimonials-cards/
+       Secção de depoimentos com chips interactivos e frase dinâmica
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section id="testimonials" class="testimonial-section">
+    <div class="container">
+      <span class="eyebrow">Testimonials</span>
+      <div class="testimonial-line" aria-label="Interactive testimonial sentence">
+        <span>Loved</span>
+        <span>by</span>
+        <button type="button" class="people-chip" data-quote="People teams move faster without chasing providers."></button>
+        <span>people</span>
+        <span>and</span>
+        <span>finance</span>
+        <span>teams</span>
+        <span>that</span>
+        <button type="button" class="people-chip people-chip--alt" data-quote="Finance gets clean monthly reconciliation in one place."></button>
+        <span>care</span>
+        <span>about</span>
+        <span>their</span>
+        <button type="button" class="people-chip people-chip--third" data-quote="Employees can choose cover that actually fits."></button>
+        <span>people</span>
+        <span>and</span>
+        <span>their</span>
+        <span>finances</span>
+      </div>
+      <div class="hover-hint">
+        <span>Try to hover</span>
+        <span class="cursor-icon" aria-hidden="true"></span>
+      </div>
+      <p class="testimonial-quote" aria-live="polite">Hover a face to read what teams value most.</p>
+    </div>
+  </section>
+
+  <!-- ══ COUNTRIES — MAPA GEO ═══════════════════════════════════════════════════
+       Secção de disponibilidade por países com mapa abstraído e marcadores interactivos
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section id="countries" class="countries-section">
+    <div class="container">
+      <div class="section-heading centered section-heading--dark">
+        <span class="eyebrow eyebrow--dark">Country Availability</span>
+        <h2>We've got you covered in<br />over 30 countries</h2>
+        <a class="text-link text-link--light" href="#footer">Find all countries we cover <span class="icon-arrow"></span></a>
+      </div>
+
+      <div class="map-card">
+        <div class="country-select">
+          <button type="button" class="country-select__button" aria-expanded="false" aria-controls="country-menu">
+            <span class="search-icon" aria-hidden="true"></span>
+            <span data-selected-country>Pick a country</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div id="country-menu" class="country-menu">
+            <button type="button" data-country="Ireland">Ireland</button>
+            <button type="button" data-country="United Kingdom">United Kingdom</button>
+            <button type="button" data-country="Germany">Germany</button>
+            <button type="button" data-country="France">France</button>
+            <button type="button" data-country="Netherlands">Netherlands</button>
+          </div>
+        </div>
+        <div class="abstract-map" aria-label="Country map preview">
+          <button type="button" class="country-marker" style="left: 45%; top: 42%" data-country="Ireland">IE</button>
+          <button type="button" class="country-marker" style="left: 49%; top: 45%" data-country="United Kingdom">UK</button>
+          <button type="button" class="country-marker" style="left: 55%; top: 49%" data-country="France">FR</button>
+          <button type="button" class="country-marker" style="left: 58%; top: 43%" data-country="Germany">DE</button>
+          <button type="button" class="country-marker" style="left: 56%; top: 39%" data-country="Netherlands">NL</button>
+          <div class="map-tooltip" role="status">Hover a marker</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INTEGRATIONS — ORBIT ════════════════════════════════════════════════
+       Componente: components/sections/features/feature-overview/
+       Secção de integrações com nós em grid e sparks decorativos
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section id="integrations" class="integrations-section">
+    <div class="container">
+      <div class="section-heading centered section-heading--dark">
+        <span class="eyebrow eyebrow--dark">Integrate with existing tools</span>
+        <h2>Combine. Connect. Contribute.</h2>
+        <p>Sync the HR tools you already use to add your team members. We'll separate them by region and help you set up contributions.</p>
+        <a class="button button--outline-light" href="#footer">See all integrations</a>
+      </div>
+
+      <div class="integration-orbit" aria-label="Integration tools">
+        <button type="button" class="integration-node node-a">HR</button>
+        <button type="button" class="integration-node node-b">Pay</button>
+        <button type="button" class="integration-node node-c">ATS</button>
+        <button type="button" class="integration-node node-d">ERP</button>
+        <button type="button" class="integration-node node-e">API</button>
+        <button type="button" class="integration-node node-f">SSO</button>
+        <span class="spark spark-a"></span>
+        <span class="spark spark-b"></span>
+        <span class="spark spark-c"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DEVELOPERS — API ════════════════════════════════════════════════════
+       Componente: components/sections/features/feature-split/
+       Banner para developers com snippet de código e CTA
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section id="developers" class="developers-section">
+    <div class="container">
+      <div class="developer-banner">
+        <div>
+          <h2>For Developers</h2>
+          <p>Use our API and embed to sell health insurance within your product.</p>
+          <a class="button button--outline-dark" href="#footer">Learn more</a>
+        </div>
+        <div class="code-preview" aria-label="API code preview">
+          <pre><code>const kota = new Kota({ apiKey });
+await kota.benefits.create({
+  team: "global",
+  product: "health"
+});</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ACCORDION ══════════════════════════════════════════════════════
+       Componente: components/sections/faq/faq-accordion/
+       FAQ com acordeão animado, ilustração e CTA de contacto
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section id="faq" class="faq-section">
+    <div class="container faq-grid">
+      <div class="faq-intro">
+        <span class="eyebrow">FAQ</span>
+        <h2>What would you like to<br />know about Kota?</h2>
+        <a class="button button--outline-dark button--icon" href="mailto:hello@kota.example">
+          <span class="mail-icon" aria-hidden="true"></span>
+          Talk to us
+        </a>
+        <div class="faq-illustration" aria-hidden="true">
+          <span></span>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <article class="faq-item is-open">
+          <button type="button" aria-expanded="true">
+            <span>What is Kota?</span>
+            <span class="chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Kota is a benefits platform that helps companies offer insurance, retirement and employee benefits across countries from one place.</p>
+          </div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">
+            <span>How does it work?</span>
+            <span class="chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Connect your HR tools, choose the products you want to offer, and Kota automates enrolment, reporting and provider coordination.</p>
+          </div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">
+            <span>How much does it cost?</span>
+            <span class="chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Plans scale with your team and selected products. The product can be started without long commitments.</p>
+          </div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">
+            <span>What if I already have a benefits scheme in place?</span>
+            <span class="chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <p>You can bring existing policies into the platform and use Kota to centralise admin, employee access and finance workflows.</p>
+          </div>
+        </article>
+        <article class="faq-item">
+          <button type="button" aria-expanded="false">
+            <span>Do I need another broker?</span>
+            <span class="chevron"></span>
+          </button>
+          <div class="faq-answer">
+            <p>No. Kota helps coordinate providers and benefits workflows directly from the platform.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BANNER ════════════════════════════════════════════════════════
+       Componente: components/sections/ctas/cta-banner/
+       CTA final com email-form e visual decorativo
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="container cta-grid">
+      <div class="cta-copy">
+        <h2>Built for teams of<br />today, like yours.</h2>
+        <form class="email-form email-form--dark" data-form="cta" novalidate>
+          <label class="sr-only" for="cta-email">What's your work email?</label>
+          <input id="cta-email" type="email" placeholder="What's your work email?" autocomplete="email" />
+          <button class="button button--cream" type="submit">Get Started</button>
+          <span class="form-message" role="status"></span>
+        </form>
+        <p>Zero commitments - get started for free</p>
+      </div>
+      <div class="cta-visual" aria-hidden="true">
+        <div></div>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER FULL ════════════════════════════════════════════════════════
+     Componente: components/sections/footers/footer-full/
+     Footer completo com brand, colunas de links, blog e legal
+════════════════════════════════════════════════════════════════════════ -->
+<footer id="footer" class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <a class="brand brand--footer" href="#top" aria-label="Kota home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__word">Kota</span>
+      </a>
+      <div class="store-buttons">
+        <a href="#top">App Store</a>
+        <a href="#top">Google Play</a>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a href="#top" aria-label="LinkedIn">in</a>
+        <a href="#top" aria-label="X">x</a>
+        <a href="#top" aria-label="YouTube">yt</a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3>Benefits</h3>
+      <a href="#products">Health insurance</a>
+      <a href="#products">Retirement</a>
+    </div>
+    <div class="footer-column">
+      <h3>Solutions</h3>
+      <a href="#features">Startups</a>
+      <a href="#features">Mid-sized</a>
+      <a href="#developers">Developers</a>
+    </div>
+    <div class="footer-column">
+      <h3>Resources</h3>
+      <a href="#faq">Help centre</a>
+      <a href="#blog">Blog</a>
+      <a href="#pricing">Cost Calculator</a>
+      <a href="#footer">Careers</a>
+      <a href="#footer">Become a partner</a>
+    </div>
+
+    <div id="blog" class="footer-blog">
+      <h3>Our Blog</h3>
+      <div class="blog-tags">
+        <button type="button">Ireland</button>
+        <button type="button">UK</button>
+        <button type="button">Health Insurance</button>
+        <button type="button">Retirement</button>
+        <button type="button">Employee Benefits</button>
+        <button type="button">Partnerships</button>
+        <button type="button">Product</button>
+        <button type="button">Meet the team</button>
+        <button type="button">Company News</button>
+      </div>
+      <div class="blog-posts">
+        <a href="#blog">
+          <span class="post-thumb"></span>
+          <strong>Kota raise &euro;5M Seed led by EQT Ventures</strong>
+        </a>
+        <a href="#blog">
+          <span class="post-thumb post-thumb--alt"></span>
+          <strong>Life Assurance is now available on Kota</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-legal">
+    <p>
+      <span>&copy; Copyright 2024</span>
+      <span>Built with love from Europe</span>
+    </p>
+    <p>
+      Yonder Technology Limited, trading as Kota, is a Tied Intermediary of Tailored Finance Limited for Insurance and Pensions. Tailored Finance Limited is regulated by the Central Bank of Ireland. Company Registration No. 711366. Registered Office: 128 Baggot Street Lower, Dublin 2, D02 A430, Ireland.
+    </p>
+    <div class="legal-links">
+      <a href="#footer">Terms of Service</a>
+      <a href="#footer">Privacy Policy</a>
+      <a href="#footer">Regulatory</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CHAT BUTTON ════════════════════════════════════════════════════════
+     Widget de chat flutuante com painel de contacto
+════════════════════════════════════════════════════════════════════════ -->
+<button class="chat-button" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="Open chat">
+  <span></span>
+</button>
+<aside id="chat-panel" class="chat-panel" aria-hidden="true">
+  <strong>Talk to Kota</strong>
+  <p>Ask about benefits, countries or integrations.</p>
+  <a class="button button--cream" href="mailto:hello@kota.example">Start chat</a>
+</aside>
+
+<script src="./script.js" defer></script>
+</body>
+</html>
