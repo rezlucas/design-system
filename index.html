@@ -963,6 +963,32 @@
       background: #22C55E; margin-right: 5px; vertical-align: middle;
       box-shadow: 0 0 6px rgba(34,197,94,0.7);
     }
+    .modal-divider { border: none; border-top: 1px solid var(--ds-border); margin: 20px 0 18px; }
+    .form-input textarea, textarea.form-input { resize: vertical; min-height: 64px; line-height: 1.55; }
+
+    /* ── Variant preview popover ── */
+    #vprev-popover {
+      position: fixed; z-index: 99999; width: 380px;
+      background: var(--ds-surface); border: 1px solid var(--ds-border-md);
+      border-radius: 12px; overflow: hidden; display: none; pointer-events: none;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.72), 0 0 0 1px rgba(255,255,255,0.04);
+      animation: vprev-in 0.14s ease;
+    }
+    @keyframes vprev-in { from { opacity:0; transform:scale(0.94) translateY(6px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    #vprev-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 12px; background: var(--ds-surface-2); border-bottom: 1px solid var(--ds-border);
+    }
+    #vprev-name { font-family: var(--fn-ui); font-size: 11.5px; font-weight: 600; color: var(--ds-text); }
+    #vprev-var-label { font-family: var(--fn-mono); font-size: 10px; color: var(--ds-accent); letter-spacing: 0.04em; }
+    #vprev-frame-wrap { width: 380px; height: 256px; overflow: hidden; position: relative; background: #fff; }
+    #vprev-iframe { width: 1280px; height: 862px; border: none; transform: scale(0.297); transform-origin: top left; display: block; }
+    #vprev-loading {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: var(--fn-ui); font-size: 11px; color: var(--ds-text-subtle);
+      background: var(--ds-surface-2); transition: opacity 0.2s;
+    }
+    #vprev-loading.hidden { opacity: 0; pointer-events: none; }
   </style>
 </head>
 <body>
@@ -2288,6 +2314,21 @@
 
 
 <!-- ════════════════════════════════════════
+     CONSTRUTOR — Variant Preview Popover
+════════════════════════════════════════ -->
+<div id="vprev-popover" role="tooltip" aria-live="polite">
+  <div id="vprev-header">
+    <span id="vprev-name"></span>
+    <span id="vprev-var-label"></span>
+  </div>
+  <div id="vprev-frame-wrap">
+    <div id="vprev-loading">Carregando preview…</div>
+    <iframe id="vprev-iframe" sandbox="allow-scripts allow-same-origin" title="Preview da variante"></iframe>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
      CONSTRUTOR — Tray flutuante
 ════════════════════════════════════════ -->
 <div class="builder-tray" id="builder-tray" role="toolbar" aria-label="Construtor de página">
@@ -2376,6 +2417,33 @@
         </div>
       </div>
 
+      <hr class="modal-divider">
+
+      <p class="form-label" style="margin-bottom:14px;font-size:11px;letter-spacing:.03em;text-transform:none;font-weight:700;color:var(--ds-text)">Copy da Página</p>
+
+      <div class="form-group">
+        <label class="form-label" for="copy-headline">Título principal (H1)</label>
+        <input class="form-input" id="copy-headline" type="text" placeholder="Ex: Venda mais com menos esforço">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="copy-sub">Subtítulo / proposta de valor</label>
+        <textarea class="form-input" id="copy-sub" rows="2" placeholder="Ex: O CRM que equipes de vendas B2B escolhem para fechar mais negócios com total visibilidade do pipeline."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="copy-cta">Texto do botão CTA principal</label>
+        <input class="form-input" id="copy-cta" type="text" placeholder="Ex: Começar grátis, Falar com vendas, Ver demonstração…">
+      </div>
+
+      <div class="form-group" style="margin-bottom:0">
+        <label class="form-label" for="copy-extra">
+          Copy adicional
+          <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:var(--ds-text-subtle);margin-left:4px">(opcional)</span>
+        </label>
+        <textarea class="form-input" id="copy-extra" rows="4" placeholder="Cole aqui textos extras: descrições de features, depoimentos, perguntas frequentes, itens de pricing, endereço, redes sociais…"></textarea>
+      </div>
+
     </div>
     <div class="ds-modal__footer">
       <button class="modal-btn" onclick="closeBrandModal()">Cancelar</button>
@@ -2429,8 +2497,75 @@
   var brandData = {
     name: '',
     colors: { primary: '#2563EB', secondary: '#7C3AED', accent: '#F59E0B', background: '#FFFFFF', text: '#1E293B' },
-    fonts: { heading: 'DM Serif Display', body: 'Inter' }
+    fonts: { heading: 'DM Serif Display', body: 'Inter' },
+    copy: { headline: '', subtitle: '', cta: '', extra: '' }
   };
+
+  /* ─── Variant preview ─── */
+  var vprevTimeout = null;
+  var vprevCurrentSrc = '';
+
+  function scrollIframeToVariant (iframeEl, variantIndex) {
+    try {
+      var doc = iframeEl.contentDocument || iframeEl.contentWindow.document;
+      var labels = doc.querySelectorAll('.demo-label');
+      var target = labels[variantIndex - 1];
+      if (target) {
+        var top = 0; var el = target;
+        while (el) { top += (el.offsetTop || 0); el = el.offsetParent; }
+        iframeEl.contentWindow.scrollTo(0, Math.max(0, top - 52));
+      } else {
+        iframeEl.contentWindow.scrollTo(0, 0);
+      }
+    } catch (e) {}
+  }
+
+  function showVariantPreview (btn, cardName, componentUrl, variantIndex) {
+    clearTimeout(vprevTimeout);
+    var popover  = document.getElementById('vprev-popover');
+    var iframe   = document.getElementById('vprev-iframe');
+    var loading  = document.getElementById('vprev-loading');
+    var nameEl   = document.getElementById('vprev-name');
+    var varLbl   = document.getElementById('vprev-var-label');
+
+    nameEl.textContent  = cardName;
+    varLbl.textContent  = 'Variante ' + variantIndex;
+
+    /* Posicionamento */
+    var rect  = btn.getBoundingClientRect();
+    var popW  = 380; var popH = 292;
+    var left  = rect.right + 14;
+    if (left + popW > window.innerWidth - 12) left = rect.left - popW - 14;
+    left = Math.max(12, left);
+    var top = rect.top - 32;
+    if (top + popH > window.innerHeight - 12) top = window.innerHeight - popH - 12;
+    top = Math.max(60, top);
+
+    popover.style.left = left + 'px';
+    popover.style.top  = top  + 'px';
+    popover.style.display = 'block';
+
+    if (vprevCurrentSrc !== componentUrl) {
+      vprevCurrentSrc = componentUrl;
+      loading.classList.remove('hidden');
+      iframe.dataset.targetVariant = variantIndex;
+      iframe.src = componentUrl;
+      iframe.onload = function () {
+        loading.classList.add('hidden');
+        scrollIframeToVariant(iframe, parseInt(iframe.dataset.targetVariant, 10));
+      };
+    } else {
+      /* Mesmo componente, só muda variante */
+      iframe.dataset.targetVariant = variantIndex;
+      scrollIframeToVariant(iframe, variantIndex);
+    }
+  }
+
+  function hideVariantPreview () {
+    vprevTimeout = setTimeout(function () {
+      document.getElementById('vprev-popover').style.display = 'none';
+    }, 140);
+  }
 
   /* ─── Toggle builder mode ─── */
   window.toggleBuilder = function () {
@@ -2472,6 +2607,9 @@
         lbl.className = 'nav-card__vpick-label';
         lbl.textContent = 'Escolha a variante:';
         vpick.appendChild(lbl);
+        var cardHref = card.getAttribute('href') || '';
+        var cardNameEl = card.querySelector('.nav-card__name');
+        var cardName = cardNameEl ? cardNameEl.textContent.trim() : '';
         for (var v = 1; v <= count; v++) {
           (function (vNum) {
             var btn = document.createElement('button');
@@ -2487,6 +2625,11 @@
               btn.classList.add('active');
               updateTray();
             });
+            /* Preview on hover */
+            btn.addEventListener('mouseenter', function () {
+              showVariantPreview(btn, cardName, cardHref, vNum);
+            });
+            btn.addEventListener('mouseleave', hideVariantPreview);
             vpick.appendChild(btn);
           })(v);
         }
@@ -2540,12 +2683,16 @@
       if (p) p.value = brandData.colors[k];
       if (h) h.value = brandData.colors[k];
     });
-    document.getElementById('color-bg').value    = brandData.colors.background;
-    document.getElementById('hex-bg').value      = brandData.colors.background;
+    document.getElementById('color-bg').value     = brandData.colors.background;
+    document.getElementById('hex-bg').value       = brandData.colors.background;
     document.getElementById('color-text-c').value = brandData.colors.text;
     document.getElementById('hex-text-c').value   = brandData.colors.text;
     document.getElementById('font-heading').value = brandData.fonts.heading;
     document.getElementById('font-body').value    = brandData.fonts.body;
+    document.getElementById('copy-headline').value = brandData.copy.headline;
+    document.getElementById('copy-sub').value      = brandData.copy.subtitle;
+    document.getElementById('copy-cta').value      = brandData.copy.cta;
+    document.getElementById('copy-extra').value    = brandData.copy.extra;
     modal.classList.add('open');
   };
 
@@ -2565,8 +2712,12 @@
     brandData.colors.accent         = readColor('accent',     'hex-accent');
     brandData.colors.background     = readColor('background', 'hex-bg');
     brandData.colors.text           = readColor('text',       'hex-text-c');
-    brandData.fonts.heading         = document.getElementById('font-heading').value;
-    brandData.fonts.body            = document.getElementById('font-body').value;
+    brandData.fonts.heading  = document.getElementById('font-heading').value;
+    brandData.fonts.body     = document.getElementById('font-body').value;
+    brandData.copy.headline  = document.getElementById('copy-headline').value.trim();
+    brandData.copy.subtitle  = document.getElementById('copy-sub').value.trim();
+    brandData.copy.cta       = document.getElementById('copy-cta').value.trim();
+    brandData.copy.extra     = document.getElementById('copy-extra').value.trim();
     closeBrandModal();
     /* Feedback visual no botão */
     var btn = document.getElementById('tray-brand-btn');
@@ -2637,6 +2788,12 @@
         fonts: {
           heading: brandData.fonts.heading,
           body:    brandData.fonts.body
+        },
+        copy: {
+          headline: brandData.copy.headline || '',
+          subtitle: brandData.copy.subtitle || '',
+          cta:      brandData.copy.cta      || '',
+          extra:    brandData.copy.extra     || ''
         }
       },
       page: sections,
