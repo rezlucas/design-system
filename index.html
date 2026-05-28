@@ -755,6 +755,214 @@
     @media (max-width: 900px) {
       #ds-preview { display: none !important; }
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       CONSTRUTOR DE PÁGINA — Builder Mode
+    ══════════════════════════════════════════════════════════════ */
+
+    /* ── Botão no header ── */
+    .builder-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 14px; border-radius: 8px;
+      border: 1px solid rgba(108,115,242,0.35);
+      background: rgba(108,115,242,0.08); color: var(--ds-accent);
+      font-family: var(--fn-ui); font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: all 0.15s; white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .builder-btn:hover { background: rgba(108,115,242,0.16); border-color: rgba(108,115,242,0.55); }
+    .builder-btn.active {
+      background: rgba(108,115,242,0.22); border-color: rgba(108,115,242,0.7);
+      color: #fff; box-shadow: 0 0 12px rgba(108,115,242,0.3);
+    }
+
+    /* ── Cards em modo builder ── */
+    body.builder-mode .nav-card { cursor: pointer; }
+    body.builder-mode .nav-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      border: 2px solid transparent; pointer-events: none; z-index: 2;
+      transition: border-color 0.15s;
+    }
+    body.builder-mode .nav-card:hover::after { border-color: rgba(108,115,242,0.45); }
+    body.builder-mode .nav-card.selected::after { border-color: #22C55E; }
+
+    /* Checkmark */
+    .nav-card__check {
+      display: none; position: absolute; top: 10px; right: 10px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: #22C55E; align-items: center; justify-content: center;
+      z-index: 4; font-size: 11px; font-weight: 800; color: #000; line-height: 1;
+      box-shadow: 0 2px 8px rgba(34,197,94,0.5);
+    }
+    body.builder-mode .nav-card.selected .nav-card__check { display: flex; }
+
+    /* Variant picker */
+    .nav-card__vpick {
+      display: none; flex-wrap: wrap; gap: 5px;
+      padding: 10px 14px; border-top: 1px solid var(--ds-border);
+      background: rgba(0,0,0,0.25);
+    }
+    body.builder-mode .nav-card.selected .nav-card__vpick { display: flex; }
+    .nav-card__vpick-label {
+      width: 100%; font-family: var(--fn-mono); font-size: 9px;
+      color: var(--ds-text-subtle); letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .vpick-btn {
+      display: inline-flex; align-items: center; height: 22px; padding: 0 9px;
+      border-radius: 4px; border: 1px solid var(--ds-border-md);
+      background: transparent; color: var(--ds-text-muted);
+      font-family: var(--fn-mono); font-size: 10px; cursor: pointer; transition: all 0.1s;
+    }
+    .vpick-btn:hover { border-color: rgba(255,255,255,0.3); color: var(--ds-text); }
+    .vpick-btn.active { background: #22C55E; border-color: #22C55E; color: #000; font-weight: 700; }
+
+    /* ── Tray flutuante ── */
+    .builder-tray {
+      position: fixed; bottom: 24px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      z-index: 9998; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      background: var(--ds-surface); border: 1px solid var(--ds-border-md);
+      border-radius: 16px; padding: 10px 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+      max-width: calc(100vw - 48px); opacity: 0; pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
+    }
+    body.builder-mode .builder-tray {
+      transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto;
+    }
+    .builder-tray__label {
+      font-family: var(--fn-mono); font-size: 10px;
+      color: var(--ds-accent); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+    }
+    .builder-tray__count {
+      font-family: var(--fn-ui); font-size: 13px; font-weight: 600;
+      color: var(--ds-text); white-space: nowrap; min-width: 150px;
+    }
+    .builder-tray__divider { width: 1px; height: 24px; background: var(--ds-border-md); }
+    .builder-tray__btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 13px; border-radius: 8px; font-family: var(--fn-ui); font-size: 12px;
+      font-weight: 600; cursor: pointer; border: 1px solid var(--ds-border-md);
+      background: var(--ds-surface-2); color: var(--ds-text-muted);
+      transition: all 0.15s; white-space: nowrap;
+    }
+    .builder-tray__btn:hover { color: var(--ds-text); border-color: var(--ds-border-hover); }
+    .builder-tray__btn--brand { border-color: rgba(251,191,36,0.3); color: #FBBD24; background: rgba(251,191,36,0.06); }
+    .builder-tray__btn--brand:hover { border-color: rgba(251,191,36,0.6); background: rgba(251,191,36,0.12); }
+    .builder-tray__btn--generate { border-color: rgba(34,197,94,0.4); color: #22C55E; background: rgba(34,197,94,0.08); }
+    .builder-tray__btn--generate:hover:not(:disabled) { border-color: rgba(34,197,94,0.7); background: rgba(34,197,94,0.14); }
+    .builder-tray__btn--generate:disabled { opacity: 0.35; cursor: not-allowed; }
+    .builder-tray__btn--clear { color: rgba(248,113,113,0.7); border-color: rgba(248,113,113,0.2); background: transparent; }
+    .builder-tray__btn--clear:hover { color: rgba(248,113,113,1); border-color: rgba(248,113,113,0.45); background: transparent; }
+
+    /* ── Modal overlay ── */
+    .ds-modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.72);
+      z-index: 10000; align-items: center; justify-content: center;
+      padding: 24px; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+    }
+    .ds-modal-overlay.open { display: flex; }
+    .ds-modal {
+      background: var(--ds-surface); border: 1px solid var(--ds-border-md);
+      border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,0.75);
+      width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; scrollbar-width: thin;
+    }
+    .ds-modal__header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px 16px; border-bottom: 1px solid var(--ds-border);
+    }
+    .ds-modal__title { font-family: var(--fn-display); font-size: 18px; color: #fff; font-weight: 400; }
+    .ds-modal__close {
+      width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--ds-border);
+      background: transparent; color: var(--ds-text-muted); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all 0.1s;
+    }
+    .ds-modal__close:hover { background: var(--ds-surface-2); color: var(--ds-text); }
+    .ds-modal__body { padding: 20px 24px; }
+    .ds-modal__footer {
+      padding: 14px 24px; border-top: 1px solid var(--ds-border);
+      display: flex; justify-content: flex-end; gap: 10px;
+    }
+
+    /* Formulário */
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      display: block; font-family: var(--fn-ui); font-size: 10.5px; font-weight: 600;
+      color: var(--ds-text-muted); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 7px;
+    }
+    .form-input, .form-select {
+      width: 100%; padding: 9px 12px; border-radius: 8px;
+      border: 1px solid var(--ds-border-md); background: var(--ds-surface-2);
+      color: var(--ds-text); font-family: var(--fn-ui); font-size: 13px;
+      outline: none; transition: border-color 0.15s; box-sizing: border-box;
+    }
+    .form-select { cursor: pointer; }
+    .form-input:focus, .form-select:focus { border-color: var(--ds-accent); }
+    .form-input::placeholder { color: var(--ds-text-subtle); }
+
+    /* Cores */
+    .color-group {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 18px;
+    }
+    .color-swatch { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+    .color-swatch__label { font-family: var(--fn-ui); font-size: 9.5px; color: var(--ds-text-subtle); text-align: center; }
+    .color-swatch__picker {
+      width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--ds-border-md);
+      cursor: pointer; overflow: hidden; padding: 0; background: none; transition: border-color 0.15s;
+    }
+    .color-swatch__picker:hover { border-color: var(--ds-border-hover); }
+    .color-swatch__picker::-webkit-color-swatch-wrapper { padding: 0; }
+    .color-swatch__picker::-webkit-color-swatch { border: none; border-radius: 8px; }
+    .color-swatch__hex {
+      width: 62px; padding: 3px 4px; border-radius: 4px; border: 1px solid var(--ds-border);
+      background: var(--ds-surface-2); color: var(--ds-text-muted);
+      font-family: var(--fn-mono); font-size: 9px; text-align: center; outline: none;
+      transition: border-color 0.15s; box-sizing: border-box;
+    }
+    .color-swatch__hex:focus { border-color: var(--ds-accent); color: var(--ds-text); }
+
+    .font-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* Botões modais */
+    .modal-btn {
+      padding: 9px 20px; border-radius: 8px; font-family: var(--fn-ui); font-size: 13px;
+      font-weight: 600; cursor: pointer; border: 1px solid var(--ds-border-md);
+      background: transparent; color: var(--ds-text-muted); transition: all 0.15s;
+    }
+    .modal-btn:hover { color: var(--ds-text); border-color: var(--ds-border-hover); }
+    .modal-btn--primary { background: var(--ds-accent); border-color: var(--ds-accent); color: #fff; }
+    .modal-btn--primary:hover { background: #7a82f5; border-color: #7a82f5; }
+
+    /* Modal de resultado JSON */
+    .ds-modal--json { max-width: 680px; }
+    .json-output {
+      margin: 0; padding: 16px; background: #020306;
+      border: 1px solid var(--ds-border); border-radius: 10px;
+      font-family: var(--fn-mono); font-size: 11px; line-height: 1.7;
+      color: #86efac; overflow-x: auto; max-height: 320px; overflow-y: auto; white-space: pre;
+    }
+    .json-copy-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+    .json-hint { font-family: var(--fn-ui); font-size: 12px; color: var(--ds-text-subtle); }
+    .json-copy-btn {
+      display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px;
+      border-radius: 7px; border: 1px solid rgba(34,197,94,0.35);
+      background: rgba(34,197,94,0.08); color: #22C55E; font-family: var(--fn-ui);
+      font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s;
+    }
+    .json-copy-btn:hover { background: rgba(34,197,94,0.18); border-color: rgba(34,197,94,0.6); }
+    .json-instructions {
+      margin-top: 14px; padding: 12px 14px; border-radius: 10px;
+      background: rgba(108,115,242,0.07); border: 1px solid rgba(108,115,242,0.2);
+      font-family: var(--fn-ui); font-size: 12px; color: var(--ds-text-muted); line-height: 1.7;
+    }
+    .json-instructions strong { color: var(--ds-accent); }
+    .json-instructions em { color: var(--ds-text); font-style: normal; display: block; margin-top: 5px; }
+    .brand-saved-dot {
+      display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+      background: #22C55E; margin-right: 5px; vertical-align: middle;
+      box-shadow: 0 0 6px rgba(34,197,94,0.7);
+    }
   </style>
 </head>
 <body>
@@ -782,8 +990,11 @@
       <span class="nav-header__name">Design System</span>
       <span class="nav-header__pill">v1.0</span>
     </a>
+    <button class="builder-btn" id="builder-toggle" onclick="toggleBuilder()" title="Ativar modo de construção de página">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Construtor de Página
+    </button>
     <span class="nav-header__meta">27 componentes · 2 templates · 7 demos</span>
-    <!-- variantes adicionadas: feature-overview +1, pricing-grid +1, testimonials +1, team-grid +1 -->
   </div>
 </header>
 
@@ -2072,6 +2283,432 @@
   window.addEventListener('resize', function () {
     items.forEach(function (i) { closeItem(i, 0); });
   });
+})();
+</script>
+
+
+<!-- ════════════════════════════════════════
+     CONSTRUTOR — Tray flutuante
+════════════════════════════════════════ -->
+<div class="builder-tray" id="builder-tray" role="toolbar" aria-label="Construtor de página">
+  <span class="builder-tray__label">✦ Construtor</span>
+  <div class="builder-tray__divider"></div>
+  <span class="builder-tray__count" id="tray-count">0 seções selecionadas</span>
+  <div class="builder-tray__divider"></div>
+  <button class="builder-tray__btn builder-tray__btn--brand" id="tray-brand-btn" onclick="openBrandModal()">🎨 Configurar Marca</button>
+  <button class="builder-tray__btn builder-tray__btn--clear" onclick="clearSelection()">Limpar</button>
+  <button class="builder-tray__btn builder-tray__btn--generate" id="generate-btn" onclick="generateJson()" disabled>Gerar JSON →</button>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     CONSTRUTOR — Modal de Marca
+════════════════════════════════════════ -->
+<div class="ds-modal-overlay" id="brand-modal" role="dialog" aria-labelledby="brand-modal-title" aria-modal="true">
+  <div class="ds-modal">
+    <div class="ds-modal__header">
+      <span class="ds-modal__title" id="brand-modal-title">Configurar Marca</span>
+      <button class="ds-modal__close" onclick="closeBrandModal()" aria-label="Fechar">✕</button>
+    </div>
+    <div class="ds-modal__body">
+
+      <div class="form-group">
+        <label class="form-label" for="brand-name">Nome da empresa</label>
+        <input class="form-input" id="brand-name" type="text" placeholder="Ex: Nexio, Acme Corp, Minha Startup…">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Cores da marca</label>
+        <div class="color-group">
+          <div class="color-swatch">
+            <input class="color-swatch__picker" type="color" id="color-primary" value="#2563EB">
+            <input class="color-swatch__hex" id="hex-primary" value="#2563EB" maxlength="7">
+            <span class="color-swatch__label">Principal</span>
+          </div>
+          <div class="color-swatch">
+            <input class="color-swatch__picker" type="color" id="color-secondary" value="#7C3AED">
+            <input class="color-swatch__hex" id="hex-secondary" value="#7C3AED" maxlength="7">
+            <span class="color-swatch__label">Secundária</span>
+          </div>
+          <div class="color-swatch">
+            <input class="color-swatch__picker" type="color" id="color-accent" value="#F59E0B">
+            <input class="color-swatch__hex" id="hex-accent" value="#F59E0B" maxlength="7">
+            <span class="color-swatch__label">Destaque</span>
+          </div>
+          <div class="color-swatch">
+            <input class="color-swatch__picker" type="color" id="color-bg" value="#FFFFFF">
+            <input class="color-swatch__hex" id="hex-bg" value="#FFFFFF" maxlength="7">
+            <span class="color-swatch__label">Fundo</span>
+          </div>
+          <div class="color-swatch">
+            <input class="color-swatch__picker" type="color" id="color-text-c" value="#1E293B">
+            <input class="color-swatch__hex" id="hex-text-c" value="#1E293B" maxlength="7">
+            <span class="color-swatch__label">Texto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="font-grid">
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="font-heading">Fonte de títulos</label>
+          <select class="form-select" id="font-heading">
+            <option value="DM Serif Display">DM Serif Display</option>
+            <option value="Playfair Display">Playfair Display</option>
+            <option value="Fraunces">Fraunces</option>
+            <option value="Cormorant Garamond">Cormorant Garamond</option>
+            <option value="Lora">Lora</option>
+            <option value="Space Grotesk">Space Grotesk</option>
+            <option value="Syne">Syne</option>
+            <option value="Bebas Neue">Bebas Neue (display)</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="font-body">Fonte de texto</label>
+          <select class="form-select" id="font-body">
+            <option value="Inter">Inter</option>
+            <option value="Plus Jakarta Sans">Plus Jakarta Sans</option>
+            <option value="DM Sans">DM Sans</option>
+            <option value="Nunito">Nunito</option>
+            <option value="Outfit">Outfit</option>
+            <option value="Raleway">Raleway</option>
+            <option value="Source Sans 3">Source Sans 3</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <div class="ds-modal__footer">
+      <button class="modal-btn" onclick="closeBrandModal()">Cancelar</button>
+      <button class="modal-btn modal-btn--primary" onclick="saveBrand()">Salvar Marca</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     CONSTRUTOR — Modal de resultado JSON
+════════════════════════════════════════ -->
+<div class="ds-modal-overlay" id="json-modal" role="dialog" aria-labelledby="json-modal-title" aria-modal="true">
+  <div class="ds-modal ds-modal--json">
+    <div class="ds-modal__header">
+      <span class="ds-modal__title" id="json-modal-title">JSON da Página</span>
+      <button class="ds-modal__close" onclick="closeJsonModal()" aria-label="Fechar">✕</button>
+    </div>
+    <div class="ds-modal__body">
+      <pre class="json-output" id="json-output" aria-label="JSON gerado"></pre>
+      <div class="json-copy-bar">
+        <span class="json-hint" id="json-sections-count"></span>
+        <button class="json-copy-btn" id="json-copy-btn" onclick="copyJson()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copiar JSON
+        </button>
+      </div>
+      <div class="json-instructions">
+        <strong>Como usar:</strong> Copie o JSON e cole no chat do Claude ou Codex com a mensagem:<br>
+        <em>"Crie uma landing page HTML/CSS completa usando este JSON do Design System Tegrus."</em>
+      </div>
+    </div>
+    <div class="ds-modal__footer">
+      <button class="modal-btn" onclick="closeJsonModal()">Fechar</button>
+      <button class="modal-btn modal-btn--primary" onclick="copyJsonAndClose()">Copiar e Fechar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     CONSTRUTOR — JavaScript
+════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ─── Estado ─── */
+  var builderActive = false;
+  var jsonData = null;
+  var brandData = {
+    name: '',
+    colors: { primary: '#2563EB', secondary: '#7C3AED', accent: '#F59E0B', background: '#FFFFFF', text: '#1E293B' },
+    fonts: { heading: 'DM Serif Display', body: 'Inter' }
+  };
+
+  /* ─── Toggle builder mode ─── */
+  window.toggleBuilder = function () {
+    builderActive = !builderActive;
+    document.body.classList.toggle('builder-mode', builderActive);
+    document.getElementById('builder-toggle').classList.toggle('active', builderActive);
+    if (!builderActive) clearSelection();
+    updateTray();
+  };
+
+  /* ─── Inicializa cards ─── */
+  function initCards () {
+    document.querySelectorAll('.nav-card').forEach(function (card) {
+      if (card.dataset.builderInit) return;
+      card.dataset.builderInit = '1';
+
+      /* Checkmark */
+      var check = document.createElement('span');
+      check.className = 'nav-card__check';
+      check.setAttribute('aria-hidden', 'true');
+      check.textContent = '✓';
+      card.appendChild(check);
+
+      /* Quantidade de variantes */
+      var badge = card.querySelector('.nav-card__badge');
+      var count = 1;
+      if (badge) {
+        var m = badge.textContent.match(/(\d+)/);
+        if (m) count = parseInt(m[1], 10);
+      }
+      card.dataset.variantCount = count;
+      card.dataset.selectedVariant = '1';
+
+      /* Variant picker (só se > 1) */
+      if (count > 1) {
+        var vpick = document.createElement('div');
+        vpick.className = 'nav-card__vpick';
+        var lbl = document.createElement('span');
+        lbl.className = 'nav-card__vpick-label';
+        lbl.textContent = 'Escolha a variante:';
+        vpick.appendChild(lbl);
+        for (var v = 1; v <= count; v++) {
+          (function (vNum) {
+            var btn = document.createElement('button');
+            btn.className = 'vpick-btn' + (vNum === 1 ? ' active' : '');
+            btn.textContent = 'V' + vNum;
+            btn.type = 'button';
+            btn.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (!builderActive) return;
+              card.dataset.selectedVariant = vNum;
+              card.querySelectorAll('.vpick-btn').forEach(function (b) { b.classList.remove('active'); });
+              btn.classList.add('active');
+              updateTray();
+            });
+            vpick.appendChild(btn);
+          })(v);
+        }
+        card.appendChild(vpick);
+      }
+
+      /* Click: selecionar / desselecionar */
+      card.addEventListener('click', function (e) {
+        if (!builderActive) return;
+        e.preventDefault();
+        card.classList.toggle('selected');
+        /* Reset variant ao desselecionar */
+        if (!card.classList.contains('selected')) {
+          card.dataset.selectedVariant = '1';
+          card.querySelectorAll('.vpick-btn').forEach(function (b, i) {
+            b.classList.toggle('active', i === 0);
+          });
+        }
+        updateTray();
+      });
+    });
+  }
+
+  /* ─── Atualiza tray ─── */
+  function updateTray () {
+    var sel = document.querySelectorAll('.nav-card.selected');
+    var n = sel.length;
+    var countEl = document.getElementById('tray-count');
+    var genBtn  = document.getElementById('generate-btn');
+    if (countEl) countEl.textContent = n + (n === 1 ? ' seção selecionada' : ' seções selecionadas');
+    if (genBtn)  genBtn.disabled = n === 0;
+  }
+
+  /* ─── Limpar seleção ─── */
+  window.clearSelection = function () {
+    document.querySelectorAll('.nav-card.selected').forEach(function (c) {
+      c.classList.remove('selected');
+      c.dataset.selectedVariant = '1';
+      c.querySelectorAll('.vpick-btn').forEach(function (b, i) { b.classList.toggle('active', i === 0); });
+    });
+    updateTray();
+  };
+
+  /* ─── Modal de Marca ─── */
+  window.openBrandModal = function () {
+    var modal = document.getElementById('brand-modal');
+    document.getElementById('brand-name').value = brandData.name;
+    ['primary','secondary','accent'].forEach(function (k) {
+      var p = document.getElementById('color-' + k);
+      var h = document.getElementById('hex-' + k);
+      if (p) p.value = brandData.colors[k];
+      if (h) h.value = brandData.colors[k];
+    });
+    document.getElementById('color-bg').value    = brandData.colors.background;
+    document.getElementById('hex-bg').value      = brandData.colors.background;
+    document.getElementById('color-text-c').value = brandData.colors.text;
+    document.getElementById('hex-text-c').value   = brandData.colors.text;
+    document.getElementById('font-heading').value = brandData.fonts.heading;
+    document.getElementById('font-body').value    = brandData.fonts.body;
+    modal.classList.add('open');
+  };
+
+  window.closeBrandModal = function () {
+    document.getElementById('brand-modal').classList.remove('open');
+  };
+
+  window.saveBrand = function () {
+    var name = document.getElementById('brand-name').value.trim();
+    var readColor = function (key, inputId) {
+      var v = document.getElementById(inputId).value.trim();
+      return /^#[0-9a-fA-F]{6}$/.test(v) ? v : brandData.colors[key];
+    };
+    brandData.name                  = name;
+    brandData.colors.primary        = readColor('primary',    'hex-primary');
+    brandData.colors.secondary      = readColor('secondary',  'hex-secondary');
+    brandData.colors.accent         = readColor('accent',     'hex-accent');
+    brandData.colors.background     = readColor('background', 'hex-bg');
+    brandData.colors.text           = readColor('text',       'hex-text-c');
+    brandData.fonts.heading         = document.getElementById('font-heading').value;
+    brandData.fonts.body            = document.getElementById('font-body').value;
+    closeBrandModal();
+    /* Feedback visual no botão */
+    var btn = document.getElementById('tray-brand-btn');
+    if (btn) {
+      var orig = btn.innerHTML;
+      btn.innerHTML = '<span class="brand-saved-dot"></span> Marca salva';
+      setTimeout(function () { btn.innerHTML = orig; }, 2500);
+    }
+  };
+
+  /* Sincronizar color picker ↔ hex input */
+  function syncColorPair (pickerId, hexId) {
+    var picker = document.getElementById(pickerId);
+    var hex    = document.getElementById(hexId);
+    if (!picker || !hex) return;
+    picker.addEventListener('input', function () { hex.value = picker.value; });
+    hex.addEventListener('input', function () {
+      if (/^#[0-9a-fA-F]{6}$/.test(hex.value)) picker.value = hex.value;
+    });
+  }
+
+  /* ─── Gerar JSON ─── */
+  window.generateJson = function () {
+    var selected = document.querySelectorAll('.nav-card.selected');
+    if (!selected.length) return;
+
+    var sections = [];
+    selected.forEach(function (card, i) {
+      var nameEl = card.querySelector('.nav-card__name');
+      var descEl = card.querySelector('.nav-card__desc');
+      var href   = card.getAttribute('href') || '';
+      var variant = parseInt(card.dataset.selectedVariant || '1', 10);
+      var vCount  = parseInt(card.dataset.variantCount   || '1', 10);
+
+      /* Extrai category/slug da URL */
+      var catMatch = href.match(/components\/sections\/([^/]+)\/([^/]+)\//);
+      var tplMatch = href.match(/templates\/([^/]+)\//);
+      var category = catMatch ? catMatch[1] : (tplMatch ? 'template' : 'section');
+      var slug     = catMatch ? catMatch[2] : (tplMatch ? tplMatch[1] : '');
+
+      sections.push({
+        order:        i + 1,
+        component:    nameEl ? nameEl.textContent.trim() : 'Seção',
+        description:  descEl ? descEl.textContent.trim() : '',
+        category:     category,
+        slug:         slug,
+        variant:      variant,
+        variantCount: vCount,
+        file:         href
+      });
+    });
+
+    var payload = {
+      meta: {
+        tool:      'Tegrus Design System Builder',
+        version:   '1.0',
+        generated: new Date().toISOString()
+      },
+      brand: {
+        name:   brandData.name || 'Minha Empresa',
+        colors: {
+          primary:    brandData.colors.primary,
+          secondary:  brandData.colors.secondary,
+          accent:     brandData.colors.accent,
+          background: brandData.colors.background,
+          text:       brandData.colors.text
+        },
+        fonts: {
+          heading: brandData.fonts.heading,
+          body:    brandData.fonts.body
+        }
+      },
+      page: sections,
+      instructions: 'Crie uma landing page HTML/CSS completa e autocontida usando as seções do Design System Tegrus listadas em "page", na ordem indicada. Para cada seção implemente exatamente a variante do campo "variant" (você pode ver o HTML de referência no campo "file"). Use as cores de "brand.colors" e as fontes de "brand.fonts" em todo o projeto. O resultado deve ser um único arquivo HTML com todo o CSS incorporado em <style>.'
+    };
+
+    jsonData = JSON.stringify(payload, null, 2);
+
+    var out = document.getElementById('json-output');
+    if (out) out.textContent = jsonData;
+
+    var hint = document.getElementById('json-sections-count');
+    if (hint) hint.textContent = sections.length + ' seções · marca: ' + (brandData.name || 'não configurada');
+
+    document.getElementById('json-modal').classList.add('open');
+  };
+
+  window.closeJsonModal = function () {
+    document.getElementById('json-modal').classList.remove('open');
+  };
+
+  window.copyJson = function (andClose) {
+    if (!jsonData) return;
+    var btn = document.getElementById('json-copy-btn');
+    var doFeedback = function () {
+      if (btn) {
+        var orig = btn.innerHTML;
+        btn.textContent = '✓ Copiado!';
+        setTimeout(function () { btn.innerHTML = orig; }, 2200);
+      }
+      if (andClose) closeJsonModal();
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(jsonData).then(doFeedback).catch(function () { fallbackCopy(); doFeedback(); });
+    } else {
+      fallbackCopy(); doFeedback();
+    }
+  };
+
+  window.copyJsonAndClose = function () { copyJson(true); };
+
+  function fallbackCopy () {
+    var ta = document.createElement('textarea');
+    ta.value = jsonData;
+    ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  /* ─── Fechar modais no overlay ou Escape ─── */
+  document.querySelectorAll('.ds-modal-overlay').forEach(function (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) overlay.classList.remove('open');
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.ds-modal-overlay.open').forEach(function (m) { m.classList.remove('open'); });
+    }
+  });
+
+  /* ─── Init ─── */
+  initCards();
+  syncColorPair('color-primary',   'hex-primary');
+  syncColorPair('color-secondary', 'hex-secondary');
+  syncColorPair('color-accent',    'hex-accent');
+  syncColorPair('color-bg',        'hex-bg');
+  syncColorPair('color-text-c',    'hex-text-c');
+  updateTray();
+
 })();
 </script>
 
