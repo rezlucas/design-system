@@ -10,8 +10,8 @@
 
 ## Status geral
 
-- **Última atualização**: 2026-05-21
-- **Fase atual**: Atoms + Sections em construção — headers, heroes, features, footers, stats, blog e integrações adicionados
+- **Última atualização**: 2026-05-28
+- **Fase atual**: Navigator premium com sidebar + Construtor de Página + demos completos
 - **Próxima ação**: Inputs, pricing, forms, gallery-grid, logos-grid
 - **Agente em uso**: Claude Code (claude-sonnet-4-6)
 
@@ -111,7 +111,7 @@ Executado em 2026-05-19:
 - [x] `integrations/integrations-grid` — grade 3-col cards com borda tracejada, badge "Popular", ícones SVG inline, botão "Conectar"
 
 #### Stats
-- [ ] `stats/stats-grid`
+- [x] `stats/stats-grid` — 2 variantes: Big Number Cascade (texto esq. + 4 cards empilhados dir., último card com fundo primário) + Imagens + Métricas Split (indexado junto com stats-highlighted)
 - [x] `stats/stats-highlighted` — split 2-col: 2 imagens com label chip (esq.) + 4 métricas grandes + rodapé CTA (dir.)
 
 #### Services
@@ -129,19 +129,20 @@ Executado em 2026-05-19:
 - [ ] `steps/steps-numbered`
 
 #### Team
-- [ ] `team/team-grid`
+- [x] `team/team-grid` — variante com foto + nome + cargo + redes sociais em grade responsiva
 - [ ] `team/team-detailed`
 
 #### Galleries
+- [x] `galleries/image-carousel` — carousel de imagens com setas prev/next e indicadores
 - [ ] `galleries/gallery-grid`
 - [ ] `galleries/gallery-masonry`
 
 #### FAQ
-#### Blog
-- [x] `blog/blog-posts` — carousel de posts: eyebrow + título + divider + cards (imagem portrait + categoria colorida + título). Setas prev (dark) / next (acento). Script reutiliza padrão testimonials.
-
 - [x] `faq/faq-accordion` — 4 variantes: enclosed (+/−), dark 3-colunas (chevron), cards (chevron), split heading+lista (+/−). CSS-only via details/summary.
 - [ ] `faq/faq-grouped`
+
+#### Blog
+- [x] `blog/blog-posts` — 2 variantes: carousel de posts com setas prev/next (dark + acento) + Editorial (post destaque 2/3 + lista lateral 3 posts + CTA centralizado). Cards com imagem portrait + categoria + título.
 
 #### Forms
 - [ ] `forms/form-contact`
@@ -170,12 +171,46 @@ Executado em 2026-05-19:
 
 ---
 
-## Navegador de componentes
+## Navegador de componentes (index.html)
 
 - **Arquivo:** `index.html` na raiz do projeto
-- **Finalidade:** utilitário interno de visualização — lista todos os componentes com links diretos para seus `index.html`
-- **⚠️ NÃO é um componente do design system.** Não deve ser referenciado em projetos de clientes nem usado como base para componentes. Existe exclusivamente para facilitar a navegação entre demos durante o desenvolvimento.
-- Cada card abre o componente em nova aba. Organizado por categoria com faixas coloridas e contagem de variantes.
+- **Finalidade:** utilitário interno premium — lista todos os componentes, demos e templates
+- **⚠️ NÃO é um componente do design system.** Não deve ser referenciado em projetos de clientes.
+
+### Layout atual (sidebar + content)
+- **Sidebar esquerda** (224px, sticky): logo `logo-ds.png`, busca em tempo real, navegação por categoria com ícones SVG únicos por cor, botão "Construtor de Página" no rodapé
+- **Área de conteúdo** (flex: 1): hero section com logo, grade de cards por seção
+- **Mobile** (<900px): sidebar se torna drawer fixo off-screen, hamburger flutuante no topo-esquerdo, backdrop com clique para fechar
+
+### Construtor de Página
+Modo interativo de montagem de landing pages, ativado pelo botão "Construtor de Página" no rodapé da sidebar.
+
+**Comportamento:**
+- `body.builder-mode` — CSS class que ativa interatividade nos cards
+- Clique em card componente: seleciona / deseleciona (border verde + checkmark)
+- Picker de variante aparece no card selecionado (botões com preview via iframe em popover)
+- **Demos bloqueados:** cards com classe `nav-card--demo` ficam `opacity: 0.4; cursor: not-allowed` — não são selecionáveis
+- **Templates limpam seleção:** selecionar um template (href inicia com `templates/`) chama `clearSelection()` antes de se selecionar — template é para replicar completo
+- Tray inferior mostra contagem de seções selecionadas + botão "Gerar JSON"
+
+### Modal de Marca (Brand Modal)
+Abre ao clicar "Gerar JSON" — coleta dados para personalização:
+- **Aba Marca**: nome, 5 cores (primary/secondary/accent/background/text), 2 fontes (heading/body)
+- **Aba Conteúdo**: campos dinâmicos por componente, definidos via `COPY_SCHEMA` — cada tipo de seção tem seus campos específicos (hero: headline/subtitle/cta_primary/cta_secondary; header: cta/links; features: eyebrow/title/items; etc.)
+- Export JSON: objeto com `brand` + array `page` onde cada item tem `slug`, `variant` e `copy`
+
+### Demos disponíveis (não selecionáveis no builder)
+- `demos/nexio/` — Automação B2B (dark premium)
+- `demos/brsamor/` — Logística e Transporte
+- `demos/fluxo/` — SaaS Financeiro
+- `demos/kova/` (Tappa) — Maquininhas de Cartão
+- `demos/wine4friends/` — Clube de Vinhos
+- `demos/wine4friends-2/` — Wine4Friends v2
+- `demos/prime/` — Motorista Privado por Assinatura
+
+### Templates (selecionáveis, limpam seleção ao entrar)
+- `templates/saas-template/` — template SaaS completo
+- Outros templates em desenvolvimento
 
 ---
 
@@ -183,6 +218,8 @@ Executado em 2026-05-19:
 
 - `SKILL.md` na raiz do projeto é redundante — conteúdo já está em `skills/bem-structure/SKILL.md`. Pode ser removido quando conveniente.
 - Imagens placeholder físicas (`placeholder-square.jpg` etc.) ainda não existem — serão criadas/fornecidas quando o primeiro componente que as usa for construído.
+- Seções ainda pendentes: inputs, pricing, forms, gallery-grid, logos-grid, steps, text-blocks
+- Contagem no rodapé da sidebar (ex: "27 componentes · 2 templates · 7 demos") deve ser atualizada manualmente ao adicionar novos itens
 
 ---
 
@@ -222,3 +259,9 @@ _Nenhum cliente ativo ainda._
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado ctas/cta-banner: 4 variantes (card-split, overlay-left, overlay-center, split branco)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado services/services-grid: 6 variantes (base, pastel, icon-box, bento, centered, circular)
 - [2026-05-20] Claude Code (claude-sonnet-4-6) — criado social-proof/testimonials-cards: 5 variantes (aspas, estrelas+logo, media split, fullquote bold, grid estático)
+- [2026-05-21] Claude Code (claude-sonnet-4-6) — criados blog/blog-posts (2 variantes), stats/stats-grid (2 variantes), integrations/integrations-grid, heroes/hero-countdown, heroes/hero-portfolio; iniciado navigator index.html com mega-nav horizontal
+- [2026-05-22] Claude Code (claude-sonnet-4-6) — criados pricing/pricing-grid, services/services-grid variantes adicionais, team/team-grid, galleries/image-carousel; adicionados demos Nexio, BRSamor, Fluxo, Tappa, Wine4Friends, Prime
+- [2026-05-23] Claude Code (claude-sonnet-4-6) — implementado Construtor de Página no navigator: modo builder com seleção de cards, picker de variante com preview iframe, tray de seleção, modal de marca com export JSON
+- [2026-05-26] Claude Code (claude-sonnet-4-6) — campos de copy dinâmicos por componente no modal de marca: COPY_SCHEMA + SLUG_TO_SCHEMA + renderCopyFields(), copyData no brandData keyed por "order_slug"
+- [2026-05-27] Claude Code (claude-sonnet-4-6) — redesign completo do navigator: mega-nav horizontal → sidebar vertical esquerda (224px sticky); logo logo-ds.png + favicon favicon-ds.png atualizados; botão Construtor movido para rodapé da sidebar com estilo gradiente destaque; cabeçalho superior removido; logo adicionado ao hero section (esquerda); ícones SVG únicos por categoria substituindo dots coloridos; push para git/Vercel
+- [2026-05-28] Claude Code (claude-sonnet-4-6) — regras do builder: demos bloqueados (nav-card--demo → not-allowed + opacity 0.4); templates limpam seleção ao entrar (clearSelection() antes de selecionar); atualização de CONTEXT.md e README.md

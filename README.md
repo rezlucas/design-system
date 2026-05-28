@@ -468,7 +468,126 @@ Scripts de setup estão em `AGENTS.md` (seção 4).
 
 ---
 
-## 10. `CONTEXT.md` — Estado Vivo do Projeto
+## 10. Navigator e Construtor de Página (`index.html`)
+
+O arquivo `index.html` na raiz é o **hub central de navegação** do design system — uma single-page app interna que lista todos os componentes, demos e templates.
+
+> **⚠️ Não é um componente do design system.** Não deve ser incorporado em projetos de clientes.
+
+### Layout
+
+```
+┌─────────────────┬──────────────────────────────────────────┐
+│   Sidebar 224px │  Área de conteúdo (flex: 1)              │
+│                 │                                          │
+│  [logo]         │  [Hero section com logo]                 │
+│  [busca]        │                                          │
+│  Navegação      │  Seção: Navegação                        │
+│  ─ Navegação    │    [card] [card] [card] [card]           │
+│  ─ Abertura     │  Seção: Abertura                         │
+│  ─ Apresentação │    [card] [card] ...                     │
+│  ─ Credibilidade│                                          │
+│  ─ Conversão    │  ... (todas as categorias)               │
+│  ─ Rodapé       │                                          │
+│  ─ Base         │  Seção: Templates                        │
+│  ─ Templates    │    [card] ...                            │
+│  ─ Demos        │  Seção: Demos                            │
+│                 │    [card--demo] ...                      │
+│  [Construtor]   │                                          │
+│  [versão/stats] │                                          │
+└─────────────────┴──────────────────────────────────────────┘
+```
+
+Mobile (<900px): sidebar vira drawer off-screen com hamburger flutuante.
+
+### Construtor de Página
+
+Ferramenta integrada para montar landing pages combinando componentes.
+
+**Ativação:** botão "Construtor de Página" no rodapé da sidebar (gradiente indigo/cyan).
+
+**Como usar:**
+
+1. Ative o construtor — cards ficam clicáveis
+2. Clique nos componentes que deseja incluir (borda verde + checkmark ao selecionar)
+3. Escolha a variante em cada card selecionado (botões numerados; hover mostra preview)
+4. Clique "Gerar JSON" na tray inferior → abre modal de marca
+5. Preencha nome, cores, fontes e textos específicos de cada seção
+6. Copie o JSON gerado para usar com a IA na montagem da página
+
+**Regras do construtor:**
+
+| Tipo de card | Comportamento |
+|---|---|
+| Componente normal | Selecionável/deseleccionável, picker de variante |
+| Demo (`nav-card--demo`) | **Bloqueado** — não selecionável (opacity 0.4, cursor not-allowed) |
+| Template (`href` inicia com `templates/`) | Ao selecionar, **limpa toda a seleção anterior** — template é para replicar completo |
+
+**Modal de marca (Brand Modal):**
+
+- **Aba Marca**: nome da empresa, 5 cores (primary, secondary, accent, background, text), fontes (heading, body)
+- **Aba Conteúdo**: campos específicos por tipo de seção — definidos em `COPY_SCHEMA` no JS do index.html
+
+| Tipo de seção | Campos |
+|---|---|
+| Header | CTA, links de navegação |
+| Hero | Headline (H1), subtítulo, CTA primário, CTA secundário |
+| Features | Label, título, items (título\|descrição por linha) |
+| FAQ | Título, Q&A (formato P:/R:) |
+| Pricing | Título, subtítulo, planos |
+| CTA Banner | Título, subtítulo, CTA |
+| Footer | Slogan, links, rodapé |
+| Demais | Título, subtítulo, CTA genérico |
+
+**JSON exportado:**
+
+```json
+{
+  "brand": {
+    "name": "Acme Corp",
+    "colors": { "primary": "#2563EB", "secondary": "#7C3AED", ... },
+    "fonts": { "heading": "DM Serif Display", "body": "Inter" }
+  },
+  "page": [
+    { "order": 1, "slug": "header-simple", "variant": "1", "copy": { "cta": "Começar grátis" } },
+    { "order": 2, "slug": "hero-split", "variant": "2", "copy": { "headline": "...", "cta_primary": "..." } }
+  ]
+}
+```
+
+---
+
+## 11. Demos e Templates
+
+### Demos
+
+Páginas completas de referência — mostram o design system aplicado. Ficam em `demos/[nome]/`.
+
+| Demo | Segmento |
+|---|---|
+| `demos/nexio/` | Automação de vendas B2B (dark premium) |
+| `demos/brsamor/` | Logística e transporte |
+| `demos/fluxo/` | SaaS financeiro |
+| `demos/kova/` (Tappa) | Maquininhas de cartão |
+| `demos/wine4friends/` | Clube de vinhos |
+| `demos/wine4friends-2/` | Wine4Friends v2 |
+| `demos/prime/` | Motorista privado por assinatura |
+
+> Demos não podem ser selecionados no Construtor de Página — são exemplos visuais, não blocos reutilizáveis.
+
+### Templates
+
+Composições completas de landing page para servir de base. Ficam em `templates/[nome]/`.
+
+| Template | Descrição |
+|---|---|
+| `templates/saas-template/` | Landing page completa SaaS |
+
+> Selecionar um template no Construtor de Página limpa toda a seleção anterior.
+
+---
+
+## 13. `CONTEXT.md` — Estado Vivo do Projeto
 
 Arquivo de **manutenção contínua** que serve como memória persistente da IA entre sessões. Evita que o agente precise ler todos os arquivos do projeto a cada conversa.
 
@@ -518,7 +637,7 @@ Arquivo de **manutenção contínua** que serve como memória persistente da IA 
 
 ---
 
-## 11. Workflow de Criação
+## 14. Workflow de Criação
 
 ### Fase 1 — Setup inicial (uma vez)
 
@@ -545,7 +664,7 @@ A cada nova solicitação:
 
 ---
 
-## 12. Checklist de Qualidade (aplicar a todo componente novo)
+## 15. Checklist de Qualidade (aplicar a todo componente novo)
 
 Antes de considerar um componente "pronto":
 
