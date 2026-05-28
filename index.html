@@ -2419,30 +2419,7 @@
 
       <hr class="modal-divider">
 
-      <p class="form-label" style="margin-bottom:14px;font-size:11px;letter-spacing:.03em;text-transform:none;font-weight:700;color:var(--ds-text)">Copy da Página</p>
-
-      <div class="form-group">
-        <label class="form-label" for="copy-headline">Título principal (H1)</label>
-        <input class="form-input" id="copy-headline" type="text" placeholder="Ex: Venda mais com menos esforço">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="copy-sub">Subtítulo / proposta de valor</label>
-        <textarea class="form-input" id="copy-sub" rows="2" placeholder="Ex: O CRM que equipes de vendas B2B escolhem para fechar mais negócios com total visibilidade do pipeline."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="copy-cta">Texto do botão CTA principal</label>
-        <input class="form-input" id="copy-cta" type="text" placeholder="Ex: Começar grátis, Falar com vendas, Ver demonstração…">
-      </div>
-
-      <div class="form-group" style="margin-bottom:0">
-        <label class="form-label" for="copy-extra">
-          Copy adicional
-          <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:var(--ds-text-subtle);margin-left:4px">(opcional)</span>
-        </label>
-        <textarea class="form-input" id="copy-extra" rows="4" placeholder="Cole aqui textos extras: descrições de features, depoimentos, perguntas frequentes, itens de pricing, endereço, redes sociais…"></textarea>
-      </div>
+      <div id="copy-fields-container"></div>
 
     </div>
     <div class="ds-modal__footer">
@@ -2498,7 +2475,7 @@
     name: '',
     colors: { primary: '#2563EB', secondary: '#7C3AED', accent: '#F59E0B', background: '#FFFFFF', text: '#1E293B' },
     fonts: { heading: 'DM Serif Display', body: 'Inter' },
-    copy: { headline: '', subtitle: '', cta: '', extra: '' }
+    copyData: {}
   };
 
   /* ─── Variant preview ─── */
@@ -2673,6 +2650,172 @@
     updateTray();
   };
 
+  /* ─── Copy Schema por componente ─── */
+  var COPY_SCHEMA = {
+    '_default': [
+      { id: 'title',    label: 'Título da seção',    type: 'text',     ph: 'Título desta seção...' },
+      { id: 'subtitle', label: 'Subtítulo',           type: 'textarea', ph: 'Texto de apoio...' },
+      { id: 'cta',      label: 'Texto do botão CTA', type: 'text',     ph: 'Ex: Saiba mais' }
+    ],
+    '_header': [
+      { id: 'cta',   label: 'Texto do botão',                    type: 'text',     ph: 'Ex: Começar grátis' },
+      { id: 'links', label: 'Links de navegação (um por linha)', type: 'textarea', ph: 'Produto\nSoluções\nPreços\nContato' }
+    ],
+    '_hero': [
+      { id: 'headline',      label: 'Título principal (H1)', type: 'text',     ph: 'Ex: Venda mais com menos esforço' },
+      { id: 'subtitle',      label: 'Subtítulo',             type: 'textarea', ph: 'Proposta de valor em 1-2 frases...' },
+      { id: 'cta_primary',   label: 'CTA principal',         type: 'text',     ph: 'Ex: Começar grátis' },
+      { id: 'cta_secondary', label: 'CTA secundário',        type: 'text',     ph: 'Ex: Ver demonstração' }
+    ],
+    '_features': [
+      { id: 'eyebrow', label: 'Label da seção',                                         type: 'text',     ph: 'Ex: Funcionalidades' },
+      { id: 'title',   label: 'Título da seção',                                         type: 'text',     ph: 'Ex: Tudo que você precisa para vender mais' },
+      { id: 'items',   label: 'Features (Título | Descrição — uma por linha)', type: 'textarea', ph: 'Pipeline Visual | Acompanhe cada deal em tempo real\nAutomação | Sequências automáticas de e-mail\nRelatórios | Dashboards com métricas relevantes' }
+    ],
+    '_faq': [
+      { id: 'title', label: 'Título da seção',              type: 'text',     ph: 'Ex: Perguntas frequentes' },
+      { id: 'items', label: 'Q&A (formato: P: ... / R: ...)', type: 'textarea', ph: 'P: Há período de teste?\nR: Sim, 14 dias grátis.\n\nP: Preciso de cartão de crédito?\nR: Não, nenhum cartão necessário.' }
+    ],
+    '_pricing': [
+      { id: 'title', label: 'Título da seção',                                            type: 'text',     ph: 'Ex: Planos simples e transparentes' },
+      { id: 'plans', label: 'Planos (Nome | Preço | Features — um por linha)', type: 'textarea', ph: 'Starter | R$99/mês | Até 3 usuários, 500 contatos, Suporte email\nPro | R$249/mês | Ilimitados, 5.000 contatos, Automações\nEnterprise | Sob consulta | API, Customizações, SLA' }
+    ],
+    '_cta': [
+      { id: 'headline', label: 'Título do CTA', type: 'text',     ph: 'Ex: Pronto para transformar suas vendas?' },
+      { id: 'subtitle', label: 'Descrição',      type: 'textarea', ph: 'Texto de apoio curto...' },
+      { id: 'cta',      label: 'Texto do botão', type: 'text',     ph: 'Ex: Começar agora' }
+    ],
+    '_testimonials': [
+      { id: 'title', label: 'Título da seção',                                                              type: 'text',     ph: 'Ex: O que nossos clientes dizem' },
+      { id: 'items', label: 'Depoimentos (Nome | Cargo | Empresa | Texto — um por bloco vazio)', type: 'textarea', ph: 'Carlos Mendonça | Diretor Comercial | Logistika | Nossa conversão aumentou 34% em 6 meses.\n\nFernanda Aguiar | Head de Vendas | Inova Tech | O time adotou em menos de 30 dias.' }
+    ],
+    '_stats': [
+      { id: 'title', label: 'Título da seção',                                           type: 'text',     ph: 'Ex: Resultados que falam por si' },
+      { id: 'stats', label: 'Métricas (Número | Label | Descrição — uma por linha)', type: 'textarea', ph: '+47% | Taxa de Conversão | Aumento em 90 dias\n−68% | Trabalho Manual | Via automações\n3× | Mais Reuniões | Mesmo headcount' }
+    ],
+    '_blog': [
+      { id: 'title', label: 'Título da seção',                              type: 'text',     ph: 'Ex: Insights sobre vendas e CRM' },
+      { id: 'posts', label: 'Posts (Categoria | Título — um por linha)', type: 'textarea', ph: 'Automação | 7 automações que triplicam o engajamento\nVendas B2B | Pipeline previsível em 30 dias\nEstratégia | BANT vs SPIN: qual gera mais ROI?' }
+    ],
+    '_footer': [
+      { id: 'company',   label: 'Nome da empresa', type: 'text',     ph: 'Ex: Nexio' },
+      { id: 'address',   label: 'Endereço',         type: 'text',     ph: 'Ex: Av. Paulista, 1000 — São Paulo, SP' },
+      { id: 'copyright', label: 'Copyright',         type: 'text',     ph: 'Ex: © 2025 Nexio. Todos os direitos reservados.' },
+      { id: 'links',     label: 'Links (um por linha)', type: 'textarea', ph: 'Produto\nSobre\nCarreiras\nContato\nPrivacidade\nTermos' }
+    ],
+    '_team': [
+      { id: 'title',   label: 'Título da seção',                                    type: 'text',     ph: 'Ex: Conheça nossa equipe' },
+      { id: 'members', label: 'Membros (Nome | Cargo | Bio — um por linha)', type: 'textarea', ph: 'Ana Lima | CEO | 15 anos em SaaS B2B\nMarcos Silva | CTO | Ex-engenheiro do Nubank' }
+    ],
+    '_integrations': [
+      { id: 'title', label: 'Título da seção', type: 'text', ph: 'Ex: Conecte com suas ferramentas' },
+      { id: 'cta',   label: 'Texto do botão', type: 'text', ph: 'Ex: Ver todas as integrações' }
+    ],
+    '_services': [
+      { id: 'title', label: 'Título da seção',                                      type: 'text',     ph: 'Ex: O que oferecemos' },
+      { id: 'items', label: 'Serviços (Título | Descrição — um por linha)', type: 'textarea', ph: 'Pipeline | Visualize seu funil em tempo real\nAutomação | E-mails e tarefas automáticos\nRelatórios | Métricas que importam' }
+    ],
+    '_client_band': [
+      { id: 'title',    label: 'Título',     type: 'text',     ph: 'Ex: Confiado por +600 equipes de vendas' },
+      { id: 'subtitle', label: 'Descrição', type: 'textarea', ph: 'Texto de apoio...' }
+    ],
+    '_tabs': [
+      { id: 'title', label: 'Título da seção',                              type: 'text',     ph: 'Ex: Tudo em um só lugar' },
+      { id: 'tabs',  label: 'Abas (Nome | Conteúdo — uma por linha)', type: 'textarea', ph: 'Pipeline | Kanban com filtros avançados\nE-mails | Sequências automáticas\nRelatórios | Dashboards em tempo real' }
+    ],
+    '_gallery': [
+      { id: 'title',    label: 'Título da seção',                          type: 'text',     ph: 'Ex: Veja o produto em ação' },
+      { id: 'captions', label: 'Legendas das imagens (uma por linha)', type: 'textarea', ph: 'Dashboard principal com visão do pipeline\nGestão de contatos e histórico\nAutomação de e-mails' }
+    ]
+  };
+
+  var SLUG_TO_SCHEMA = {
+    'header-light': '_header', 'header-simple': '_header', 'header-megamenu': '_header', 'header-utility': '_header',
+    'hero-split': '_hero', 'hero-centered': '_hero', 'hero-background': '_hero', 'hero-saas': '_hero',
+    'hero-countdown': [
+      { id: 'headline',   label: 'Título',          type: 'text', ph: 'Ex: Não perca essa oportunidade' },
+      { id: 'event_date', label: 'Data do evento', type: 'text', ph: 'Ex: 2025-12-31T23:59:59' },
+      { id: 'cta',        label: 'CTA',             type: 'text', ph: 'Ex: Garantir minha vaga' }
+    ],
+    'hero-portfolio': [
+      { id: 'name', label: 'Nome',        type: 'text',     ph: 'Ex: João Silva' },
+      { id: 'role', label: 'Cargo/Título', type: 'text',     ph: 'Ex: Designer de Produto' },
+      { id: 'bio',  label: 'Bio curta',   type: 'textarea', ph: 'Apresentação em 1-2 frases...' }
+    ],
+    'feature-cards': '_features', 'feature-cards-large': '_features', 'feature-split': '_features',
+    'feature-split-media': '_features', 'feature-overview': '_features', 'feature-accordion': '_features',
+    'faq-accordion': '_faq',
+    'pricing-grid': '_pricing', 'pricing-two-col': '_pricing',
+    'cta-banner': '_cta', 'cta-image': '_cta',
+    'services-grid': '_services',
+    'testimonials-cards': '_testimonials', 'testimonials-dark': '_testimonials',
+    'client-band': '_client_band',
+    'integrations-grid': '_integrations', 'integrations-orbit': '_integrations',
+    'stats-grid': '_stats', 'stats-highlighted': '_stats',
+    'blog-posts': '_blog', 'blog-editorial': '_blog',
+    'footer-full': '_footer', 'footer-simple': '_footer', 'footer-dark-nav': '_footer',
+    'team-grid': '_team',
+    'tabs-section': '_tabs',
+    'image-carousel': '_gallery'
+  };
+
+  var SLUG_ICON = {
+    'header-light':'☰','header-simple':'☰','header-megamenu':'☰','header-utility':'☰',
+    'hero-split':'🎯','hero-centered':'🎯','hero-background':'🎯','hero-saas':'🎯','hero-countdown':'⏱','hero-portfolio':'👤',
+    'feature-cards':'⚡','feature-cards-large':'⚡','feature-split':'⚡','feature-split-media':'⚡','feature-overview':'⚡','feature-accordion':'⚡',
+    'faq-accordion':'❓','pricing-grid':'💰','pricing-two-col':'💰',
+    'cta-banner':'📢','cta-image':'📢','services-grid':'🔧',
+    'testimonials-cards':'⭐','testimonials-dark':'⭐','client-band':'🏢',
+    'integrations-grid':'🔌','integrations-orbit':'🔌',
+    'stats-grid':'📊','stats-highlighted':'📊',
+    'blog-posts':'📝','blog-editorial':'📝',
+    'footer-full':'📌','footer-simple':'📌','footer-dark-nav':'📌',
+    'team-grid':'👥','tabs-section':'🗂','image-carousel':'🖼'
+  };
+
+  function escHtml(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function renderCopyFields() {
+    var container = document.getElementById('copy-fields-container');
+    if (!container) return;
+    var selected = document.querySelectorAll('.nav-card.selected');
+    if (!selected.length) {
+      container.innerHTML = '<p style="font-family:var(--fn-ui);font-size:12px;color:var(--ds-text-subtle);padding:4px 0 8px;line-height:1.6">Selecione componentes no Construtor para configurar o copy de cada seção.</p>';
+      return;
+    }
+    var html = '<p style="font-family:var(--fn-ui);font-size:11px;font-weight:700;color:var(--ds-text);margin-bottom:14px;letter-spacing:.01em">Copy por Seção</p>';
+    selected.forEach(function(card, i) {
+      var nameEl  = card.querySelector('.nav-card__name');
+      var href    = card.getAttribute('href') || '';
+      var catMatch = href.match(/components\/sections\/([^/]+)\/([^/]+)\//);
+      var slug    = catMatch ? catMatch[2] : '';
+      var order   = i + 1;
+      var key     = order + '_' + slug;
+      var schemaRef = SLUG_TO_SCHEMA[slug];
+      var fields  = Array.isArray(schemaRef) ? schemaRef : (COPY_SCHEMA[schemaRef] || COPY_SCHEMA['_default']);
+      var icon    = SLUG_ICON[slug] || '▸';
+      var name    = nameEl ? nameEl.textContent.trim() : 'Seção';
+      var saved   = brandData.copyData[key] || {};
+      html += '<div class="copy-field-group" data-key="' + escHtml(key) + '" style="margin-bottom:14px;padding:14px;border:1px solid var(--ds-border);border-radius:10px;background:var(--ds-surface-2)">';
+      html += '<p style="font-family:var(--fn-ui);font-size:11px;font-weight:700;color:var(--ds-text);margin:0 0 12px;display:flex;align-items:center;gap:7px"><span>' + icon + '</span><span>' + order + '. ' + escHtml(name) + '</span></p>';
+      fields.forEach(function(field) {
+        var val = escHtml(saved[field.id] || '');
+        html += '<div style="margin-bottom:10px">';
+        html += '<label style="display:block;font-family:var(--fn-ui);font-size:10px;font-weight:600;color:var(--ds-text-muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px">' + escHtml(field.label) + '</label>';
+        if (field.type === 'textarea') {
+          html += '<textarea class="form-input dynamic-field" data-field="' + escHtml(field.id) + '" rows="3" placeholder="' + escHtml(field.ph) + '" style="resize:vertical">' + val + '</textarea>';
+        } else {
+          html += '<input class="form-input dynamic-field" type="text" data-field="' + escHtml(field.id) + '" placeholder="' + escHtml(field.ph) + '" value="' + val + '">';
+        }
+        html += '</div>';
+      });
+      html += '</div>';
+    });
+    container.innerHTML = html;
+  }
+
   /* ─── Modal de Marca ─── */
   window.openBrandModal = function () {
     var modal = document.getElementById('brand-modal');
@@ -2689,10 +2832,7 @@
     document.getElementById('hex-text-c').value   = brandData.colors.text;
     document.getElementById('font-heading').value = brandData.fonts.heading;
     document.getElementById('font-body').value    = brandData.fonts.body;
-    document.getElementById('copy-headline').value = brandData.copy.headline;
-    document.getElementById('copy-sub').value      = brandData.copy.subtitle;
-    document.getElementById('copy-cta').value      = brandData.copy.cta;
-    document.getElementById('copy-extra').value    = brandData.copy.extra;
+    renderCopyFields();
     modal.classList.add('open');
   };
 
@@ -2714,10 +2854,15 @@
     brandData.colors.text           = readColor('text',       'hex-text-c');
     brandData.fonts.heading  = document.getElementById('font-heading').value;
     brandData.fonts.body     = document.getElementById('font-body').value;
-    brandData.copy.headline  = document.getElementById('copy-headline').value.trim();
-    brandData.copy.subtitle  = document.getElementById('copy-sub').value.trim();
-    brandData.copy.cta       = document.getElementById('copy-cta').value.trim();
-    brandData.copy.extra     = document.getElementById('copy-extra').value.trim();
+    brandData.copyData = {};
+    document.querySelectorAll('.copy-field-group').forEach(function(group) {
+      var key = group.dataset.key;
+      if (!key) return;
+      brandData.copyData[key] = {};
+      group.querySelectorAll('.dynamic-field').forEach(function(f) {
+        brandData.copyData[key][f.dataset.field] = f.value.trim();
+      });
+    });
     closeBrandModal();
     /* Feedback visual no botão */
     var btn = document.getElementById('tray-brand-btn');
@@ -2758,6 +2903,7 @@
       var category = catMatch ? catMatch[1] : (tplMatch ? 'template' : 'section');
       var slug     = catMatch ? catMatch[2] : (tplMatch ? tplMatch[1] : '');
 
+      var copyKey = (i + 1) + '_' + slug;
       sections.push({
         order:        i + 1,
         component:    nameEl ? nameEl.textContent.trim() : 'Seção',
@@ -2766,7 +2912,8 @@
         slug:         slug,
         variant:      variant,
         variantCount: vCount,
-        file:         href
+        file:         href,
+        copy:         brandData.copyData[copyKey] || {}
       });
     });
 
@@ -2788,16 +2935,10 @@
         fonts: {
           heading: brandData.fonts.heading,
           body:    brandData.fonts.body
-        },
-        copy: {
-          headline: brandData.copy.headline || '',
-          subtitle: brandData.copy.subtitle || '',
-          cta:      brandData.copy.cta      || '',
-          extra:    brandData.copy.extra     || ''
         }
       },
       page: sections,
-      instructions: 'Crie uma landing page HTML/CSS completa e autocontida usando as seções do Design System Tegrus listadas em "page", na ordem indicada. Para cada seção implemente exatamente a variante do campo "variant" (você pode ver o HTML de referência no campo "file"). Use as cores de "brand.colors" e as fontes de "brand.fonts" em todo o projeto. O resultado deve ser um único arquivo HTML com todo o CSS incorporado em <style>.'
+      instructions: 'Crie uma landing page HTML/CSS completa e autocontida usando as seções do Design System Tegrus listadas em "page", na ordem indicada. Para cada seção: (1) implemente exatamente a variante do campo "variant" (veja o HTML de referência no campo "file"); (2) use os textos do campo "copy" de cada seção para preencher os textos reais — substitua todos os placeholders pelo copy fornecido. Use as cores de "brand.colors" e as fontes de "brand.fonts" em todo o projeto. O resultado deve ser um único arquivo HTML com todo o CSS incorporado em <style>.'
     };
 
     jsonData = JSON.stringify(payload, null, 2);
