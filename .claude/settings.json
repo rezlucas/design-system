@@ -10,7 +10,25 @@
       "Bash(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\cmplu\\\\OneDrive\\\\Documentos\\\\Projetos Tegrus\\\\Design System\\\\components\\\\sections\\\\pricing\\\\pricing-grid\")",
       "Bash(Out-Null)",
       "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\cmplu\\\\OneDrive\\\\Documentos\\\\Projetos Tegrus\\\\Design System\\\\components\\\\sections\\\\pricing\\\\pricing-grid\")",
-      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\cmplu\\\\OneDrive\\\\Documentos\\\\Projetos Tegrus\\\\Design System\\\\demos\\\\fluxo\")"
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\cmplu\\\\OneDrive\\\\Documentos\\\\Projetos Tegrus\\\\Design System\\\\demos\\\\fluxo\")",
+      "Bash(vercel --prod --yes)",
+      "Bash(vercel --prod --yes --name tegrus-design-system)",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('index.html','utf8'\\); const s=c.indexOf\\('<div class=\\\\\"container\\\\\">'\\); const e=c.indexOf\\('    <!-- ─── DEMOS ─── -->'\\); console.log\\('start='+s+' end='+e+' total='+c.length\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('index.html','utf8'\\); const lines=c.split\\('\\\\n'\\); let charCount=0; for\\(let i=0;i<lines.length;i++\\){charCount+=lines[i].length+1; if\\(charCount>46220\\){console.log\\('container starts at line '+\\(i+1\\)\\); break;}} charCount=0; for\\(let i=0;i<lines.length;i++\\){charCount+=lines[i].length+1; if\\(charCount>73288\\){console.log\\('demos starts at line '+\\(i+1\\)\\); break;}}\")",
+      "Bash(node replace-sections.js)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('index.html','utf8'\\); const sections=c.match\\(/<!-- ─── [A-ZÇÃÁÉÍÓÚ &]+ ─── -->/g\\); console.log\\(sections\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('index.html','utf8'\\); const triggers=c.match\\(/class=\\\\\"mega-nav__trigger\\\\\"[^>]*>[^<]*<span[^>]*><\\\\/span>\\\\s*\\([^\\\\n<]+\\)/g\\); console.log\\(triggers\\);\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const c=fs.readFileSync\\('index.html','utf8'\\); const navCards=c.match\\(/class=\\\\\"nav-card__name\\\\\">[^<]+/g\\); console.log\\(navCards\\);\")",
+      "Bash(del replace-sections.js)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\cmplu\\\\OneDrive\\\\Documentos\\\\Projetos Tegrus\\\\Design System\\\\replace-sections.js\")",
+      "Bash(node -e \"const fs=require\\('fs'\\); const html=fs.readFileSync\\('index.html','utf8'\\); const bodyStart=html.indexOf\\('<body>'\\); const excerpt=html.slice\\(bodyStart, bodyStart+2000\\); console.log\\(excerpt\\);\")",
+      "Bash(ls templates/)",
+      "Bash(dir templates *)",
+      "Bash(git -c core.sshCommand=\"ssh -p 443 -o StrictHostKeyChecking=no\" push origin master)",
+      "Bash(git -c core.sshCommand=\"ssh -p 443\" push origin master)",
+      "Bash(git -C \"c:\\\\Users\\\\cmplu\\\\OneDrive\\\\Documentos\\\\Projetos Tegrus\\\\Design System\" status)",
+      "Bash(git rm *)"
     ],
     "additionalDirectories": [
       "skills"
