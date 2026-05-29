@@ -945,14 +945,14 @@
       background: var(--ds-surface); border: 1px solid var(--ds-border-md);
       border-radius: 16px; padding: 10px 14px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
-      max-width: calc(100vw - 48px); width: 420px; opacity: 0; pointer-events: none;
+      max-width: calc(100vw - 48px); width: max-content; opacity: 0; pointer-events: none;
       transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
     }
     body.builder-mode .builder-tray {
       transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto;
     }
     .builder-tray__top {
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;
     }
     .builder-tray__label {
       font-family: var(--fn-mono); font-size: 10px;
