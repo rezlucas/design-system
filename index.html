@@ -941,15 +941,18 @@
     .builder-tray {
       position: fixed; bottom: 24px; left: 50%;
       transform: translateX(-50%) translateY(100px);
-      z-index: 9998; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      z-index: 9998; display: flex; flex-direction: column; align-items: stretch;
       background: var(--ds-surface); border: 1px solid var(--ds-border-md);
       border-radius: 16px; padding: 10px 14px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
-      max-width: calc(100vw - 48px); opacity: 0; pointer-events: none;
+      max-width: calc(100vw - 48px); width: 420px; opacity: 0; pointer-events: none;
       transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
     }
     body.builder-mode .builder-tray {
       transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto;
+    }
+    .builder-tray__top {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
     }
     .builder-tray__label {
       font-family: var(--fn-mono); font-size: 10px;
@@ -957,9 +960,9 @@
     }
     .builder-tray__count {
       font-family: var(--fn-ui); font-size: 13px; font-weight: 600;
-      color: var(--ds-text); white-space: nowrap; min-width: 150px;
+      color: var(--ds-text); white-space: nowrap; flex: 1;
     }
-    .builder-tray__divider { width: 1px; height: 24px; background: var(--ds-border-md); }
+    .builder-tray__divider { width: 1px; height: 24px; background: var(--ds-border-md); flex-shrink: 0; }
     .builder-tray__btn {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 7px 13px; border-radius: 8px; font-family: var(--fn-ui); font-size: 12px;
@@ -975,6 +978,40 @@
     .builder-tray__btn--generate:disabled { opacity: 0.35; cursor: not-allowed; }
     .builder-tray__btn--clear { color: rgba(248,113,113,0.7); border-color: rgba(248,113,113,0.2); background: transparent; }
     .builder-tray__btn--clear:hover { color: rgba(248,113,113,1); border-color: rgba(248,113,113,0.45); background: transparent; }
+
+    /* ── Lista de ordem de seções ── */
+    .builder-order-list {
+      display: none; flex-direction: column; gap: 3px;
+      margin-top: 10px; padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .builder-order-list.is-visible { display: flex; }
+    .builder-order-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 8px; border-radius: 7px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.1s;
+    }
+    .builder-order-num {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #22C55E; color: #0a0a0f;
+      font-size: 9px; font-weight: 800; font-family: var(--fn-mono);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .builder-order-name {
+      flex: 1; font-family: var(--fn-ui); font-size: 11px; color: var(--ds-text-muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
+    }
+    .builder-order-btns { display: flex; gap: 2px; flex-shrink: 0; }
+    .builder-order-btn {
+      width: 22px; height: 22px; border-radius: 5px;
+      border: 1px solid var(--ds-border); background: transparent;
+      color: var(--ds-text-subtle); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; line-height: 1; transition: all 0.1s;
+    }
+    .builder-order-btn:not(:disabled):hover { background: var(--ds-surface-2); color: var(--ds-text); border-color: var(--ds-border-hover); }
+    .builder-order-btn:disabled { opacity: 0.2; cursor: default; }
 
     /* ── Modal overlay ── */
     .ds-modal-overlay {
@@ -2325,13 +2362,16 @@
      CONSTRUTOR — Tray flutuante
 ════════════════════════════════════════ -->
 <div class="builder-tray" id="builder-tray" role="toolbar" aria-label="Construtor de página">
-  <span class="builder-tray__label">✦ Construtor</span>
-  <div class="builder-tray__divider"></div>
-  <span class="builder-tray__count" id="tray-count">0 seções selecionadas</span>
-  <div class="builder-tray__divider"></div>
-  <button class="builder-tray__btn builder-tray__btn--brand" id="tray-brand-btn" onclick="openBrandModal()">🎨 Configurar Marca</button>
-  <button class="builder-tray__btn builder-tray__btn--clear" onclick="clearSelection()">Limpar</button>
-  <button class="builder-tray__btn builder-tray__btn--generate" id="generate-btn" onclick="generateJson()" disabled>Gerar JSON →</button>
+  <div class="builder-tray__top">
+    <span class="builder-tray__label">✦ Construtor</span>
+    <div class="builder-tray__divider"></div>
+    <span class="builder-tray__count" id="tray-count">0 seções selecionadas</span>
+    <div class="builder-tray__divider"></div>
+    <button class="builder-tray__btn builder-tray__btn--brand" id="tray-brand-btn" onclick="openBrandModal()">🎨 Configurar Marca</button>
+    <button class="builder-tray__btn builder-tray__btn--clear" onclick="clearSelection()">Limpar</button>
+    <button class="builder-tray__btn builder-tray__btn--generate" id="generate-btn" onclick="generateJson()" disabled>Gerar JSON →</button>
+  </div>
+  <div class="builder-order-list" id="builder-order-list"></div>
 </div>
 
 
@@ -2463,6 +2503,7 @@
 
   /* ─── Estado ─── */
   var builderActive = false;
+  var selectedOrder = []; // cards em ordem de página
   var jsonData = null;
   var brandData = {
     name: '',
@@ -2622,19 +2663,22 @@
       card.addEventListener('click', function (e) {
         if (!builderActive) return;
         e.preventDefault();
-        if (isDemo) return; // demos são bloqueados no builder
-        /* Templates limpam toda a seleção antes de entrar */
+        if (isDemo) return;
         if (isTemplate && !card.classList.contains('selected')) {
           clearSelection();
         }
-        card.classList.toggle('selected');
-        /* Reset variant ao desselecionar */
-        if (!card.classList.contains('selected')) {
+        if (card.classList.contains('selected')) {
+          selectedOrder = selectedOrder.filter(function (c) { return c !== card; });
+          card.classList.remove('selected');
           card.dataset.selectedVariant = '1';
           card.querySelectorAll('.vpick-btn').forEach(function (b, i) {
             b.classList.toggle('active', i === 0);
           });
+        } else {
+          selectedOrder.push(card);
+          card.classList.add('selected');
         }
+        updatePositionBadges();
         updateTray();
       });
     });
@@ -2642,21 +2686,58 @@
 
   /* ─── Atualiza tray ─── */
   function updateTray () {
-    var sel = document.querySelectorAll('.nav-card.selected');
-    var n = sel.length;
+    var n      = selectedOrder.length;
     var countEl = document.getElementById('tray-count');
     var genBtn  = document.getElementById('generate-btn');
+    var listEl  = document.getElementById('builder-order-list');
     if (countEl) countEl.textContent = n + (n === 1 ? ' seção selecionada' : ' seções selecionadas');
     if (genBtn)  genBtn.disabled = n === 0;
+    if (!listEl) return;
+    if (n < 2) { listEl.classList.remove('is-visible'); listEl.innerHTML = ''; return; }
+    listEl.classList.add('is-visible');
+    listEl.innerHTML = selectedOrder.map(function (card, i) {
+      var nameEl = card.querySelector('.nav-card__name');
+      var name   = nameEl ? nameEl.textContent.trim() : 'Seção';
+      return '<div class="builder-order-item">' +
+        '<span class="builder-order-num">' + (i + 1) + '</span>' +
+        '<span class="builder-order-name">' + escHtml(name) + '</span>' +
+        '<div class="builder-order-btns">' +
+          '<button type="button" class="builder-order-btn" title="Mover para cima"' + (i === 0 ? ' disabled' : '') + ' onclick="moveOrderItem(' + i + ',-1)">↑</button>' +
+          '<button type="button" class="builder-order-btn" title="Mover para baixo"' + (i === selectedOrder.length - 1 ? ' disabled' : '') + ' onclick="moveOrderItem(' + i + ',1)">↓</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
   }
+
+  /* ─── Reordenar seções ─── */
+  function updatePositionBadges () {
+    document.querySelectorAll('.nav-card__check').forEach(function (el) { el.textContent = '✓'; });
+    selectedOrder.forEach(function (card, i) {
+      var check = card.querySelector('.nav-card__check');
+      if (check) check.textContent = i + 1;
+    });
+  }
+
+  window.moveOrderItem = function (index, dir) {
+    var newIndex = index + dir;
+    if (newIndex < 0 || newIndex >= selectedOrder.length) return;
+    var tmp = selectedOrder[index];
+    selectedOrder[index] = selectedOrder[newIndex];
+    selectedOrder[newIndex] = tmp;
+    updatePositionBadges();
+    updateTray();
+    renderCopyFields();
+  };
 
   /* ─── Limpar seleção ─── */
   window.clearSelection = function () {
-    document.querySelectorAll('.nav-card.selected').forEach(function (c) {
+    selectedOrder.forEach(function (c) {
       c.classList.remove('selected');
       c.dataset.selectedVariant = '1';
       c.querySelectorAll('.vpick-btn').forEach(function (b, i) { b.classList.toggle('active', i === 0); });
     });
+    selectedOrder = [];
+    updatePositionBadges();
     updateTray();
   };
 
@@ -2790,7 +2871,7 @@
   function renderCopyFields() {
     var container = document.getElementById('copy-fields-container');
     if (!container) return;
-    var selected = document.querySelectorAll('.nav-card.selected');
+    var selected = selectedOrder;
     if (!selected.length) {
       container.innerHTML = '<p style="font-family:var(--fn-ui);font-size:12px;color:var(--ds-text-subtle);padding:4px 0 8px;line-height:1.6">Selecione componentes no Construtor para configurar o copy de cada seção.</p>';
       return;
@@ -2896,7 +2977,7 @@
 
   /* ─── Gerar JSON ─── */
   window.generateJson = function () {
-    var selected = document.querySelectorAll('.nav-card.selected');
+    var selected = selectedOrder;
     if (!selected.length) return;
 
     var sections = [];
