@@ -228,3 +228,162 @@ O `SKILL.md` na raiz do projeto (arquivo legado) contém o conteúdo da skill `b
 | IA integrada | Claude Code (claude-sonnet-4-6) |
 
 **Sem frameworks. Sem build steps. Sem dependências externas.** O output final funciona em qualquer plataforma que aceite HTML estático.
+
+---
+
+## Como colocar o projeto na sua máquina
+
+Não há instalação de dependências nem processo de build. Basta clonar o repositório e abrir o arquivo `index.html` no navegador.
+
+### Pré-requisitos
+
+- **Git** instalado ([git-scm.com](https://git-scm.com/downloads))
+- Um navegador moderno (Chrome, Firefox, Edge, Safari)
+- Opcional: **VS Code** para editar os arquivos
+
+---
+
+### Opção A — Linha de comando
+
+Abra o terminal (PowerShell no Windows, Terminal no Mac/Linux) e execute:
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/rezlucas/design-system.git
+
+# 2. Entre na pasta
+cd design-system
+
+# 3. Abra o navigator no navegador
+#    Windows:
+start index.html
+
+#    Mac:
+open index.html
+
+#    Linux:
+xdg-open index.html
+```
+
+Para manter o projeto atualizado com as últimas mudanças:
+
+```bash
+# Dentro da pasta do projeto:
+git pull origin master
+```
+
+---
+
+### Opção B — Usando o Claude Code (recomendado)
+
+O Claude Code é o assistente de IA integrado ao terminal que já conhece todas as convenções deste projeto. Com ele você pode criar componentes, ajustar demos e trabalhar no design system conversando em linguagem natural.
+
+#### 1. Instale o Claude Code
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+> Requer Node.js 18+. Baixe em [nodejs.org](https://nodejs.org) se necessário.
+
+#### 2. Clone o projeto e abra com Claude Code
+
+```bash
+# Clone o repositório
+git clone https://github.com/rezlucas/design-system.git
+cd design-system
+
+# Inicie o Claude Code dentro da pasta
+claude
+```
+
+Na primeira vez, o Claude Code vai pedir para autenticar com sua conta Anthropic. Siga as instruções no terminal.
+
+#### 3. O que o Claude Code faz automaticamente
+
+Ao abrir o projeto, o Claude Code lê `CLAUDE.md` → `AGENTS.md` → `CONTEXT.md` e já sabe:
+
+- Todos os componentes existentes e seus estados
+- As convenções de código (BEM, tokens CSS, zero frameworks)
+- O histórico de decisões do projeto
+
+Você pode simplesmente pedir o que precisa em português:
+
+```
+"Crie uma nova variante do hero-split com formulário inline"
+"Adicione o componente de preços à demo do Nexio"
+"Mostre quais componentes ainda estão pendentes"
+```
+
+---
+
+### Opção C — Usando o Codex (OpenAI)
+
+O Codex CLI lê `AGENTS.md` automaticamente ao entrar na pasta do projeto, garantindo o mesmo comportamento que o Claude Code.
+
+#### 1. Instale o Codex CLI
+
+```bash
+npm install -g @openai/codex
+```
+
+#### 2. Clone e inicie
+
+```bash
+git clone https://github.com/rezlucas/design-system.git
+cd design-system
+
+# Inicie o Codex
+codex
+```
+
+Na primeira vez, configure sua chave de API OpenAI:
+
+```bash
+export OPENAI_API_KEY="sua-chave-aqui"
+```
+
+O Codex vai detectar `AGENTS.md` automaticamente e seguir as mesmas convenções do projeto.
+
+---
+
+### Visualizando o projeto localmente
+
+Por ser HTML puro, o projeto funciona simplesmente abrindo `index.html` no navegador, sem servidor local. Porém, alguns recursos (como os iframes de preview de variantes no construtor) funcionam melhor com um servidor local. Para isso:
+
+**Com VS Code** — instale a extensão [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) e clique em "Go Live" no canto inferior direito.
+
+**Com Python** (se instalado):
+```bash
+python -m http.server 3000
+# Acesse: http://localhost:3000
+```
+
+**Com Node.js** (se instalado):
+```bash
+npx serve .
+# Acesse: http://localhost:3000
+```
+
+---
+
+### Contribuindo com o projeto
+
+Depois de clonar e fazer alterações, suba as mudanças para o repositório:
+
+```bash
+# Veja o que mudou
+git status
+
+# Adicione os arquivos modificados
+git add nome-do-arquivo.html
+git add nome-do-arquivo.css
+
+# Crie um commit descrevendo o que foi feito
+git commit -m "feat: nova variante do hero-split com formulário"
+
+# Envie para o GitHub (Vercel faz o deploy automaticamente)
+git push origin master
+```
+
+> O Vercel está conectado ao repositório e publica qualquer push na branch `master` automaticamente em poucos segundos.
