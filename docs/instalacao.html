@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instalação &amp; setup · Documentação · Tegrus Design System</title>
+  <meta name="description" content="Como clonar o Tegrus Design System na sua máquina, por linha de comando, com o Claude Code ou com o Codex, e como contribuir de volta.">
+
+  <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css">
+
+  <style>
+    .inst-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 0; }
+    .inst-tab {
+      font-family: var(--fn-mono); font-size: 11.5px; letter-spacing: 0.05em;
+      padding: 10px 18px; border-radius: 10px 10px 0 0;
+      border: 1px solid var(--ds-border); border-bottom: none;
+      background: transparent; color: var(--ds-text-subtle); cursor: pointer;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .inst-tab:hover { color: var(--ds-text-muted); }
+    .inst-tab.is-active { color: var(--ds-accent); background: #0C0C0E; border-color: var(--ds-border); }
+    .inst-panels { border: 1px solid var(--ds-border); border-radius: 0 12px 12px 12px; background: #0C0C0E; padding: 26px 26px 8px; max-width: 74ch; }
+    .inst-panel { display: none; }
+    .inst-panel.is-active { display: block; animation: inst-fade 0.25s ease; }
+    @keyframes inst-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    .inst-panel p { color: var(--ds-text-muted); font-size: 13.5px; max-width: 64ch; }
+    .inst-panel h4 { font-family: var(--fn-ui); font-size: 14px; font-weight: 600; color: var(--ds-text); margin: 22px 0 8px; }
+  </style>
+</head>
+<body class="docs-body">
+
+  <header class="docs-topbar">
+    <a class="docs-topbar__back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Voltar ao Navigator
+    </a>
+    <span class="docs-topbar__crumb"><strong>Documentação</strong> <span class="sep">/</span> Instalação &amp; setup</span>
+    <button class="docs-topbar__toggle" aria-label="Abrir menu de documentação" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="docs-backdrop"></div>
+
+  <div class="docs-shell">
+
+    <nav class="ds-sidebar" aria-label="Páginas da documentação">
+      <div class="ds-sidebar__brand">
+        <img class="ds-sidebar__logo-img" src="../assets/images/placeholders/logo-ds.png" alt="Tegrus Design System">
+        <button class="ds-sidebar__collapse" type="button" aria-label="Recolher menu lateral" aria-pressed="false" title="Recolher menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="ds-sidenav">
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Guia</span>
+          <a class="ds-sidenav__item" href="index.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            <span class="ds-sidenav__name">Visão geral</span>
+            <span class="ds-sidenav__badge">01</span>
+          </a>
+          <a class="ds-sidenav__item" href="componentes.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="ds-sidenav__name">Componentes</span>
+            <span class="ds-sidenav__badge">02</span>
+          </a>
+          <a class="ds-sidenav__item" href="construtor.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
+            <span class="ds-sidenav__name">Construtor de Página</span>
+            <span class="ds-sidenav__badge">03</span>
+          </a>
+          <a class="ds-sidenav__item" href="demos-templates.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <span class="ds-sidenav__name">Demos &amp; Templates</span>
+            <span class="ds-sidenav__badge">04</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Projeto</span>
+          <a class="ds-sidenav__item" href="arquivos-md.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg></span>
+            <span class="ds-sidenav__name">Arquivos .md</span>
+            <span class="ds-sidenav__badge">05</span>
+          </a>
+          <a class="ds-sidenav__item" href="instalacao.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <span class="ds-sidenav__name">Instalação &amp; setup</span>
+            <span class="ds-sidenav__badge">06</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Extra</span>
+          <a class="ds-sidenav__item" href="video.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="ds-sidenav__name">Vídeo tutorial</span>
+            <span class="ds-sidenav__badge">07</span>
+          </a>
+        </div>
+      </div>
+      <div class="ds-sidebar__footer">
+        TEGRUS DESIGN SYSTEM<br>
+        Documentação v1.0 · <a href="../index.html">voltar ao navigator</a>
+      </div>
+    </nav>
+
+    <main class="docs-main">
+      <p class="docs-kicker">Capítulo 06 · Mãos à obra</p>
+      <h1 class="docs-title">Coloque o projeto<br>na sua máquina <em>em minutos</em></h1>
+      <p class="docs-lede">
+        Não há instalação de dependências nem processo de build. Basta clonar o repositório e abrir o
+        <code>index.html</code> no navegador. Escolha abaixo o caminho que combina com você.
+      </p>
+      <div class="docs-meta">
+        <span><strong>Git</strong> é o único pré-requisito real</span>
+        <span>Opcional: <strong>VS Code</strong> + Live Server</span>
+        <span>Deploy automático via <strong>Vercel</strong></span>
+      </div>
+
+      <article class="docs-chapter" id="pre-requisitos">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">6.1</span>
+          <h2 class="docs-chapter__title">Pré-requisitos</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <ul>
+            <li><strong>Git</strong> instalado, <a class="docs-link" href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com</a></li>
+            <li>Um navegador moderno: Chrome, Firefox, Edge ou Safari</li>
+            <li>Opcional: <strong>VS Code</strong>, para editar os arquivos com conforto</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="clonar">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">6.2</span>
+          <h2 class="docs-chapter__title">Escolha como clonar e abrir</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>As três opções chegam ao mesmo lugar, a diferença é o quanto de ajuda de IA você quer logo de cara.</p>
+
+          <div class="inst-tabs" role="tablist" aria-label="Métodos de instalação">
+            <button class="inst-tab is-active" data-tab="cli" role="tab" aria-selected="true">→ Linha de comando</button>
+            <button class="inst-tab" data-tab="claude" role="tab" aria-selected="false">→ Claude Code (recomendado)</button>
+            <button class="inst-tab" data-tab="codex" role="tab" aria-selected="false">→ Codex (OpenAI)</button>
+          </div>
+
+          <div class="inst-panels">
+
+            <!-- CLI -->
+            <div class="inst-panel is-active" data-panel="cli">
+              <p>Abra o terminal (PowerShell no Windows, Terminal no Mac/Linux) e execute:</p>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-comment"># 1. Clone o repositório</span>
+<span class="tok-cmd">git clone</span> <span class="tok-string">https://github.com/rezlucas/design-system.git</span>
+
+<span class="tok-comment"># 2. Entre na pasta</span>
+<span class="tok-cmd">cd</span> design-system
+
+<span class="tok-comment"># 3. Abra o navigator no navegador</span>
+<span class="tok-comment">#    Windows:</span>
+<span class="tok-cmd">start</span> index.html
+<span class="tok-comment">#    Mac:</span>
+<span class="tok-cmd">open</span> index.html
+<span class="tok-comment">#    Linux:</span>
+<span class="tok-cmd">xdg-open</span> index.html</pre>
+              </div>
+              <h4>Para manter atualizado</h4>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal, dentro da pasta do projeto</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-cmd">git pull</span> origin master</pre>
+              </div>
+            </div>
+
+            <!-- Claude Code -->
+            <div class="inst-panel" data-panel="claude">
+              <p>O Claude Code é o assistente de IA integrado ao terminal que já conhece todas as convenções deste projeto, você pode pedir o que precisa em português, conversando.</p>
+
+              <h4>1 · Instale o Claude Code</h4>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-cmd">npm install -g</span> @anthropic-ai/claude-code</pre>
+              </div>
+              <p style="font-size:12.5px">Requer Node.js 18+, baixe em <a class="docs-link" href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> se precisar.</p>
+
+              <h4>2 · Clone o projeto e abra com o Claude Code</h4>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-cmd">git clone</span> <span class="tok-string">https://github.com/rezlucas/design-system.git</span>
+<span class="tok-cmd">cd</span> design-system
+
+<span class="tok-comment"># Inicie o Claude Code dentro da pasta</span>
+<span class="tok-cmd">claude</span></pre>
+              </div>
+              <p style="font-size:12.5px">Na primeira vez, ele vai pedir para autenticar com sua conta Anthropic, siga as instruções no terminal.</p>
+
+              <h4>3 · O que ele já sabe ao abrir o projeto</h4>
+              <p>Lê <code>CLAUDE.md → AGENTS.md → CONTEXT.md</code> automaticamente e passa a conhecer todos os componentes existentes, as convenções de código (BEM, tokens CSS, zero frameworks) e o histórico de decisões. Você pode simplesmente pedir:</p>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">exemplos, em português, no chat</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-string">"Crie uma nova variante do hero-split com formulário inline"</span>
+<span class="tok-string">"Adicione o componente de preços à demo do Nexio"</span>
+<span class="tok-string">"Mostre quais componentes ainda estão pendentes"</span></pre>
+              </div>
+            </div>
+
+            <!-- Codex -->
+            <div class="inst-panel" data-panel="codex">
+              <p>O Codex CLI lê <code>AGENTS.md</code> automaticamente ao entrar na pasta do projeto, mesmo comportamento e convenções do Claude Code.</p>
+
+              <h4>1 · Instale o Codex CLI</h4>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-cmd">npm install -g</span> @openai/codex</pre>
+              </div>
+
+              <h4>2 · Clone e inicie</h4>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-cmd">git clone</span> <span class="tok-string">https://github.com/rezlucas/design-system.git</span>
+<span class="tok-cmd">cd</span> design-system
+
+<span class="tok-comment"># Inicie o Codex</span>
+<span class="tok-cmd">codex</span></pre>
+              </div>
+              <p style="font-size:12.5px">Na primeira vez, configure sua chave de API da OpenAI:</p>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-cmd">export</span> OPENAI_API_KEY=<span class="tok-string">"sua-chave-aqui"</span></pre>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="visualizar">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">6.3</span>
+          <h2 class="docs-chapter__title">Visualizando localmente</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>
+            Por ser HTML puro, o projeto roda só de abrir o <code>index.html</code>, sem servidor. Mas alguns recursos
+            (como os iframes de preview do Construtor) funcionam melhor com um servidor local:
+          </p>
+          <ul>
+            <li><strong>VS Code</strong>, instale a extensão <a class="docs-link" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank" rel="noopener">Live Server</a> e clique em "Go Live"</li>
+            <li><strong>Python</strong>, <code>python -m http.server 3000</code> e acesse <code>localhost:3000</code></li>
+            <li><strong>Node.js</strong>, <code>npx serve .</code> e acesse <code>localhost:3000</code></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="contribuindo">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">6.4</span>
+          <h2 class="docs-chapter__title">Contribuindo de volta</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>Depois de fazer alterações, suba as mudanças para o repositório:</p>
+          <div class="docs-code">
+            <div class="docs-code__bar">
+              <span class="docs-code__label">terminal, dentro da pasta do projeto</span>
+              <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+            </div>
+            <pre><span class="tok-comment"># Veja o que mudou</span>
+<span class="tok-cmd">git status</span>
+
+<span class="tok-comment"># Adicione os arquivos modificados</span>
+<span class="tok-cmd">git add</span> nome-do-arquivo.html
+
+<span class="tok-comment"># Crie um commit descrevendo o que foi feito</span>
+<span class="tok-cmd">git commit -m</span> <span class="tok-string">"feat: nova variante do hero-split com formulário"</span>
+
+<span class="tok-comment"># Envie para o GitHub, o Vercel publica automaticamente</span>
+<span class="tok-cmd">git push</span> origin master</pre>
+          </div>
+          <div class="docs-note docs-note--cyan">
+            <strong>Deploy automático:</strong> o Vercel está conectado ao repositório e publica qualquer push na
+            branch <code>master</code> em poucos segundos, sem passos extras.
+          </div>
+        </div>
+      </article>
+
+      <div class="docs-pager">
+        <a class="docs-pager__link" href="arquivos-md.html">
+          <span class="docs-pager__dir">← Capítulo anterior</span>
+          <span class="docs-pager__name">Arquivos .md</span>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="video.html">
+          <span class="docs-pager__dir">Próximo capítulo</span>
+          <span class="docs-pager__name">Vídeo tutorial →</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-toc" aria-label="Nesta página">
+      <p class="docs-toc__title">Nesta página</p>
+      <ul class="docs-toc__list">
+        <li><a href="#pre-requisitos">Pré-requisitos</a></li>
+        <li><a href="#clonar">Clonar e abrir</a></li>
+        <li><a href="#visualizar">Visualizar localmente</a></li>
+        <li><a href="#contribuindo">Contribuindo</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="docs.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.inst-tab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.inst-panel'));
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+          panels.forEach(function (p) { p.classList.remove('is-active'); });
+          tab.classList.add('is-active');
+          tab.setAttribute('aria-selected', 'true');
+          var target = document.querySelector('.inst-panel[data-panel="' + tab.dataset.tab + '"]');
+          if (target) target.classList.add('is-active');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

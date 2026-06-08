@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes · Documentação · Tegrus Design System</title>
+  <meta name="description" content="Os 33 componentes do Tegrus Design System organizados por categoria, com variantes e descrições, busque e filtre em tempo real.">
+
+  <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css">
+
+  <style>
+    .cmp-toolbar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+      margin: 0 0 28px;
+    }
+    .cmp-search {
+      display: flex; align-items: center; gap: 9px;
+      flex: 1 1 240px; max-width: 320px;
+      padding: 10px 14px;
+      border: 1px solid var(--ds-border);
+      border-radius: 10px;
+      background: var(--ds-surface);
+    }
+    .cmp-search svg { width: 15px; height: 15px; color: var(--ds-text-subtle); flex: none; }
+    .cmp-search input {
+      border: none; outline: none; background: transparent;
+      color: var(--ds-text); font-family: var(--fn-ui); font-size: 13.5px; width: 100%;
+    }
+    .cmp-search input::placeholder { color: var(--ds-text-subtle); }
+    .cmp-chip {
+      font-family: var(--fn-mono); font-size: 10.5px; letter-spacing: 0.06em;
+      padding: 8px 14px; border-radius: 999px; border: 1px solid var(--ds-border);
+      background: transparent; color: var(--ds-text-muted); cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    }
+    .cmp-chip:hover { color: var(--ds-text); border-color: var(--ds-border-hover); }
+    .cmp-chip.is-active { color: #fff; background: var(--ds-accent); border-color: var(--ds-accent); font-weight: 500; }
+    .cmp-empty { display: none; padding: 18px; color: var(--ds-text-subtle); font-size: 13px; font-family: var(--fn-mono); }
+    .cmp-empty.is-visible { display: block; }
+    tr.is-hidden { display: none; }
+    .cmp-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; vertical-align:middle; }
+  </style>
+</head>
+<body class="docs-body">
+
+  <header class="docs-topbar">
+    <a class="docs-topbar__back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Voltar ao Navigator
+    </a>
+    <span class="docs-topbar__crumb"><strong>Documentação</strong> <span class="sep">/</span> Componentes</span>
+    <button class="docs-topbar__toggle" aria-label="Abrir menu de documentação" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="docs-backdrop"></div>
+
+  <div class="docs-shell">
+
+    <nav class="ds-sidebar" aria-label="Páginas da documentação">
+      <div class="ds-sidebar__brand">
+        <img class="ds-sidebar__logo-img" src="../assets/images/placeholders/logo-ds.png" alt="Tegrus Design System">
+        <button class="ds-sidebar__collapse" type="button" aria-label="Recolher menu lateral" aria-pressed="false" title="Recolher menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="ds-sidenav">
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Guia</span>
+          <a class="ds-sidenav__item" href="index.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            <span class="ds-sidenav__name">Visão geral</span>
+            <span class="ds-sidenav__badge">01</span>
+          </a>
+          <a class="ds-sidenav__item" href="componentes.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="ds-sidenav__name">Componentes</span>
+            <span class="ds-sidenav__badge">02</span>
+          </a>
+          <a class="ds-sidenav__item" href="construtor.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
+            <span class="ds-sidenav__name">Construtor de Página</span>
+            <span class="ds-sidenav__badge">03</span>
+          </a>
+          <a class="ds-sidenav__item" href="demos-templates.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <span class="ds-sidenav__name">Demos &amp; Templates</span>
+            <span class="ds-sidenav__badge">04</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Projeto</span>
+          <a class="ds-sidenav__item" href="arquivos-md.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg></span>
+            <span class="ds-sidenav__name">Arquivos .md</span>
+            <span class="ds-sidenav__badge">05</span>
+          </a>
+          <a class="ds-sidenav__item" href="instalacao.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <span class="ds-sidenav__name">Instalação &amp; setup</span>
+            <span class="ds-sidenav__badge">06</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Extra</span>
+          <a class="ds-sidenav__item" href="video.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="ds-sidenav__name">Vídeo tutorial</span>
+            <span class="ds-sidenav__badge">07</span>
+          </a>
+        </div>
+      </div>
+      <div class="ds-sidebar__footer">
+        TEGRUS DESIGN SYSTEM<br>
+        Documentação v1.0 · <a href="../index.html">voltar ao navigator</a>
+      </div>
+    </nav>
+
+    <main class="docs-main">
+      <p class="docs-kicker">Capítulo 02 · Biblioteca</p>
+      <h1 class="docs-title">33 componentes,<br><em>6 categorias</em>, infinitas combinações</h1>
+      <p class="docs-lede">
+        Cada componente é um bloco autocontido, HTML semântico, CSS com tokens e (quando precisa) JS vanilla, pronto
+        para ser arrastado para dentro de qualquer página. Use a busca ou os filtros abaixo para encontrar o que precisa,
+        ou explore por categoria.
+      </p>
+      <div class="docs-meta">
+        <span><strong>33</strong> componentes</span>
+        <span><strong>6</strong> categorias</span>
+        <span><strong>+90</strong> variantes visuais</span>
+        <span>Abertos a partir do <a class="docs-link" href="../index.html">Navigator</a></span>
+      </div>
+
+      <!-- ── Busca e filtros ── -->
+      <div class="cmp-toolbar">
+        <label class="cmp-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" id="cmp-search" placeholder="Buscar componente, ex: hero, footer, faq..." autocomplete="off">
+        </label>
+        <button class="cmp-chip is-active" data-filter="all">Todos · 33</button>
+        <button class="cmp-chip" data-filter="navegacao">Navegação · 5</button>
+        <button class="cmp-chip" data-filter="abertura">Abertura · 6</button>
+        <button class="cmp-chip" data-filter="apresentacao">Apresentação · 8</button>
+        <button class="cmp-chip" data-filter="credibilidade">Credibilidade · 8</button>
+        <button class="cmp-chip" data-filter="conversao">Conversão · 6</button>
+        <button class="cmp-chip" data-filter="rodape">Rodapé · 3</button>
+      </div>
+
+      <p class="cmp-empty" id="cmp-empty">Nenhum componente corresponde à busca, tente outro termo, ex.: "pricing" ou "carousel".</p>
+
+      <!-- ── NAVEGAÇÃO ── -->
+      <article class="docs-chapter" id="cat-navegacao">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num"><span class="cmp-dot" style="background:#0052CC"></span>Navegação</span>
+          <h2 class="docs-chapter__title">Barras de menu e topo de página</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-table-wrap">
+            <table class="docs-table" data-category="navegacao">
+              <thead><tr><th>Componente</th><th>Variantes</th><th>Descrição</th></tr></thead>
+              <tbody>
+                <tr data-name="header simple"><td><strong>Header Simple</strong></td><td>3</td><td>Sticky dark com hamburger mobile</td></tr>
+                <tr data-name="header utility"><td><strong>Header Utility</strong></td><td>3</td><td>2 fileiras: barra utilitária + nav com dropdowns</td></tr>
+                <tr data-name="header megamenu"><td><strong>Header Megamenu</strong></td><td>3</td><td>3 breakpoints: mobile full-screen / tablet / desktop inline</td></tr>
+                <tr data-name="header light"><td><strong>Header Light</strong></td><td>3</td><td>Fundo branco, tema claro</td></tr>
+                <tr data-name="announcement bar"><td><strong>Announcement Bar</strong></td><td>3</td><td>Faixa de aviso com countdown e dismiss</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── ABERTURA ── -->
+      <article class="docs-chapter" id="cat-abertura">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num"><span class="cmp-dot" style="background:#818CF8"></span>Abertura</span>
+          <h2 class="docs-chapter__title">A primeira impressão da página</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-table-wrap">
+            <table class="docs-table" data-category="abertura">
+              <thead><tr><th>Componente</th><th>Variantes</th><th>Descrição</th></tr></thead>
+              <tbody>
+                <tr data-name="hero background"><td><strong>Hero Background</strong></td><td>3</td><td>Imagem full-bleed com overlay e conteúdo sobreposto</td></tr>
+                <tr data-name="hero split"><td><strong>Hero Split</strong></td><td>3</td><td>Duas colunas: texto e imagem</td></tr>
+                <tr data-name="hero centered"><td><strong>Hero Centered</strong></td><td>3</td><td>Conteúdo 100% centralizado, overlay uniforme</td></tr>
+                <tr data-name="hero personal"><td><strong>Hero Personal</strong></td><td>3</td><td>Para portfólios e consultores</td></tr>
+                <tr data-name="hero countdown"><td><strong>Hero Countdown</strong></td><td>3</td><td>Contagem regressiva para lançamento</td></tr>
+                <tr data-name="hero saas"><td><strong>Hero SaaS</strong></td><td>3</td><td>Copy + mockup de dashboard flutuante</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── APRESENTAÇÃO E FEATURES ── -->
+      <article class="docs-chapter" id="cat-apresentacao">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num"><span class="cmp-dot" style="background:#22D3EE"></span>Apresentação</span>
+          <h2 class="docs-chapter__title">Como contar a história do produto</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-table-wrap">
+            <table class="docs-table" data-category="apresentacao">
+              <thead><tr><th>Componente</th><th>Variantes</th><th>Descrição</th></tr></thead>
+              <tbody>
+                <tr data-name="feature split"><td><strong>Feature Split</strong></td><td>4</td><td>Texto e imagem lado a lado, com modifier --reverse</td></tr>
+                <tr data-name="feature overview"><td><strong>Feature Overview</strong></td><td>4</td><td>Header centralizado + checklist + imagem</td></tr>
+                <tr data-name="feature cards"><td><strong>Feature Cards</strong></td><td>3</td><td>Grade de cards com ícone + título + descrição</td></tr>
+                <tr data-name="feature accordion"><td><strong>Feature Accordion</strong></td><td>4</td><td>Imagem + accordion expansível lado a lado</td></tr>
+                <tr data-name="feature cards large"><td><strong>Feature Cards Large</strong></td><td>3</td><td>Cards maiores com imagem de destaque</td></tr>
+                <tr data-name="feature split media"><td><strong>Feature Split Media</strong></td><td>3</td><td>Variante split com mídia em destaque</td></tr>
+                <tr data-name="tabs section"><td><strong>Tabs Section</strong></td><td>5</td><td>Conteúdo em abas: carousel, split, cards, steps</td></tr>
+                <tr data-name="services grid"><td><strong>Services Grid</strong></td><td>6</td><td>Grade de serviços em 6 estilos visuais</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── CREDIBILIDADE ── -->
+      <article class="docs-chapter" id="cat-credibilidade">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num"><span class="cmp-dot" style="background:#F472B6"></span>Credibilidade</span>
+          <h2 class="docs-chapter__title">Provas sociais e números que convencem</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-table-wrap">
+            <table class="docs-table" data-category="credibilidade">
+              <thead><tr><th>Componente</th><th>Variantes</th><th>Descrição</th></tr></thead>
+              <tbody>
+                <tr data-name="testimonials cards"><td><strong>Testimonials Cards</strong></td><td>5</td><td>Depoimentos em 5 layouts, aspas, estrelas, media, fullquote, grid</td></tr>
+                <tr data-name="stats grid"><td><strong>Stats Grid</strong></td><td>2</td><td>Métricas em destaque, Big Number Cascade</td></tr>
+                <tr data-name="stats highlighted"><td><strong>Stats Highlighted</strong></td><td>2</td><td>Split com imagens + métricas grandes</td></tr>
+                <tr data-name="client band"><td><strong>Client Band</strong></td><td>3</td><td>Faixa de logos de clientes</td></tr>
+                <tr data-name="integrations grid"><td><strong>Integrations Grid</strong></td><td>3</td><td>Grade de integrações com cards tracejados</td></tr>
+                <tr data-name="team grid"><td><strong>Team Grid</strong></td><td>3</td><td>Equipe com foto, nome, cargo e redes sociais</td></tr>
+                <tr data-name="blog posts"><td><strong>Blog Posts</strong></td><td>2</td><td>Carousel de posts e versão editorial</td></tr>
+                <tr data-name="image carousel"><td><strong>Image Carousel</strong></td><td>3</td><td>Galeria de imagens com setas e indicadores</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── CONVERSÃO ── -->
+      <article class="docs-chapter" id="cat-conversao">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num"><span class="cmp-dot" style="background:#FB7185"></span>Conversão</span>
+          <h2 class="docs-chapter__title">Onde a decisão acontece</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-table-wrap">
+            <table class="docs-table" data-category="conversao">
+              <thead><tr><th>Componente</th><th>Variantes</th><th>Descrição</th></tr></thead>
+              <tbody>
+                <tr data-name="cta banner"><td><strong>CTA Banner</strong></td><td>4</td><td>Chamadas para ação, card-split, overlay, split branco</td></tr>
+                <tr data-name="cta image"><td><strong>CTA Image</strong></td><td>3</td><td>CTA com imagem de fundo</td></tr>
+                <tr data-name="cta chat"><td><strong>CTA Chat</strong></td><td>3</td><td>Widget de chat flutuante, seção embedded e barra multi-canal</td></tr>
+                <tr data-name="pricing grid"><td><strong>Pricing Grid</strong></td><td>3</td><td>Tabela de preços com toggle e destaque</td></tr>
+                <tr data-name="pricing two col"><td><strong>Pricing Two Col</strong></td><td>3</td><td>Preços em duas colunas</td></tr>
+                <tr data-name="faq accordion"><td><strong>FAQ Accordion</strong></td><td>4</td><td>Perguntas frequentes, enclosed, dark, cards, split</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── RODAPÉ ── -->
+      <article class="docs-chapter" id="cat-rodape">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num"><span class="cmp-dot" style="background:#94A3B8"></span>Rodapé</span>
+          <h2 class="docs-chapter__title">O fechamento da página</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-table-wrap">
+            <table class="docs-table" data-category="rodape">
+              <thead><tr><th>Componente</th><th>Variantes</th><th>Descrição</th></tr></thead>
+              <tbody>
+                <tr data-name="footer simple"><td><strong>Footer Simple</strong></td><td>3</td><td>Rodapé compacto com nav centralizada ou à direita</td></tr>
+                <tr data-name="footer full"><td><strong>Footer Full</strong></td><td>5</td><td>Rodapé completo com colunas, CTA e newsletter</td></tr>
+                <tr data-name="footer dark nav"><td><strong>Footer Dark Nav</strong></td><td>3</td><td>Rodapé escuro com navegação destacada</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <div class="docs-note docs-note--cyan">
+        <strong>Dica:</strong> todos esses componentes podem ser abertos diretamente no
+        <a class="docs-link" href="../index.html">Navigator</a>, cada card mostra o preview ao vivo e o caminho do arquivo.
+        Para montá-los em uma página automaticamente, veja o capítulo sobre o
+        <a class="docs-link" href="construtor.html">Construtor de Página</a>.
+      </div>
+
+      <div class="docs-pager">
+        <a class="docs-pager__link" href="index.html">
+          <span class="docs-pager__dir">← Capítulo anterior</span>
+          <span class="docs-pager__name">Visão geral</span>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="construtor.html">
+          <span class="docs-pager__dir">Próximo capítulo</span>
+          <span class="docs-pager__name">Construtor de Página →</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-toc" aria-label="Nesta página">
+      <p class="docs-toc__title">Nesta página</p>
+      <ul class="docs-toc__list">
+        <li><a href="#cat-navegacao">Navegação</a></li>
+        <li><a href="#cat-abertura">Abertura</a></li>
+        <li><a href="#cat-apresentacao">Apresentação</a></li>
+        <li><a href="#cat-credibilidade">Credibilidade</a></li>
+        <li><a href="#cat-conversao">Conversão</a></li>
+        <li><a href="#cat-rodape">Rodapé</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="docs.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var input = document.getElementById('cmp-search');
+      var chips = Array.prototype.slice.call(document.querySelectorAll('.cmp-chip'));
+      var tables = Array.prototype.slice.call(document.querySelectorAll('table.docs-table'));
+      var empty = document.getElementById('cmp-empty');
+      var activeFilter = 'all';
+
+      function apply() {
+        var term = (input.value || '').trim().toLowerCase();
+        var totalVisible = 0;
+
+        tables.forEach(function (table) {
+          var cat = table.dataset.category;
+          var tableMatches = (activeFilter === 'all' || activeFilter === cat);
+          var rows = Array.prototype.slice.call(table.querySelectorAll('tbody tr'));
+          var visibleInTable = 0;
+
+          rows.forEach(function (row) {
+            var name = row.dataset.name || '';
+            var matchesTerm = !term || name.indexOf(term) !== -1;
+            var show = tableMatches && matchesTerm;
+            row.classList.toggle('is-hidden', !show);
+            if (show) { visibleInTable++; totalVisible++; }
+          });
+
+          var chapter = table.closest('.docs-chapter');
+          if (chapter) chapter.style.display = (tableMatches && visibleInTable > 0) ? '' : 'none';
+        });
+
+        empty.classList.toggle('is-visible', totalVisible === 0);
+      }
+
+      input.addEventListener('input', apply);
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          chips.forEach(function (c) { c.classList.remove('is-active'); });
+          chip.classList.add('is-active');
+          activeFilter = chip.dataset.filter;
+          apply();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

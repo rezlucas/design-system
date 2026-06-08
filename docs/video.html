@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeo tutorial · Documentação · Tegrus Design System</title>
+  <meta name="description" content="Tutorial em vídeo de como usar o Tegrus Design System, Navigator, Construtor de Página e fluxo de trabalho completo.">
+
+  <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css">
+
+  <style>
+    .vid-chapters { list-style: none; margin: 0; padding: 0; max-width: 64ch; }
+    .vid-chapters li {
+      display: flex; align-items: baseline; gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--ds-border);
+      font-size: 13.5px; color: var(--ds-text-muted);
+    }
+    .vid-chapters li:last-child { border-bottom: none; }
+    .vid-chapters time {
+      font-family: var(--fn-mono); font-size: 11.5px; color: var(--ds-text-subtle);
+      flex: none; min-width: 52px;
+      padding: 3px 9px; border: 1px solid var(--ds-border); border-radius: 6px; text-align: center;
+    }
+    .vid-notify {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+      margin-top: 14px; padding: 16px 20px;
+      border: 1px dashed var(--ds-border); border-radius: 14px;
+      max-width: 64ch;
+    }
+    .vid-notify input {
+      flex: 1 1 220px;
+      background: var(--ds-surface); border: 1px solid var(--ds-border); border-radius: 9px;
+      padding: 10px 14px; color: var(--ds-text); font-family: var(--fn-ui); font-size: 13px; outline: none;
+    }
+    .vid-notify input::placeholder { color: var(--ds-text-subtle); }
+    .vid-notify button {
+      font-family: var(--fn-ui); font-size: 13px; font-weight: 500;
+      padding: 10px 20px; border-radius: 9px; border: 1px solid var(--ds-accent);
+      background: var(--ds-accent); color: #fff; cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .vid-notify button:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -10px rgba(108,115,242,0.55); }
+    .vid-notify__msg { width: 100%; font-family: var(--fn-mono); font-size: 11.5px; color: var(--doc-cyan); display: none; }
+    .vid-notify__msg.is-visible { display: block; }
+  </style>
+</head>
+<body class="docs-body">
+
+  <header class="docs-topbar">
+    <a class="docs-topbar__back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Voltar ao Navigator
+    </a>
+    <span class="docs-topbar__crumb"><strong>Documentação</strong> <span class="sep">/</span> Vídeo tutorial</span>
+    <button class="docs-topbar__toggle" aria-label="Abrir menu de documentação" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="docs-backdrop"></div>
+
+  <div class="docs-shell">
+
+    <nav class="ds-sidebar" aria-label="Páginas da documentação">
+      <div class="ds-sidebar__brand">
+        <img class="ds-sidebar__logo-img" src="../assets/images/placeholders/logo-ds.png" alt="Tegrus Design System">
+        <button class="ds-sidebar__collapse" type="button" aria-label="Recolher menu lateral" aria-pressed="false" title="Recolher menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="ds-sidenav">
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Guia</span>
+          <a class="ds-sidenav__item" href="index.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            <span class="ds-sidenav__name">Visão geral</span>
+            <span class="ds-sidenav__badge">01</span>
+          </a>
+          <a class="ds-sidenav__item" href="componentes.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="ds-sidenav__name">Componentes</span>
+            <span class="ds-sidenav__badge">02</span>
+          </a>
+          <a class="ds-sidenav__item" href="construtor.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
+            <span class="ds-sidenav__name">Construtor de Página</span>
+            <span class="ds-sidenav__badge">03</span>
+          </a>
+          <a class="ds-sidenav__item" href="demos-templates.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <span class="ds-sidenav__name">Demos &amp; Templates</span>
+            <span class="ds-sidenav__badge">04</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Projeto</span>
+          <a class="ds-sidenav__item" href="arquivos-md.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg></span>
+            <span class="ds-sidenav__name">Arquivos .md</span>
+            <span class="ds-sidenav__badge">05</span>
+          </a>
+          <a class="ds-sidenav__item" href="instalacao.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <span class="ds-sidenav__name">Instalação &amp; setup</span>
+            <span class="ds-sidenav__badge">06</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Extra</span>
+          <a class="ds-sidenav__item" href="video.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="ds-sidenav__name">Vídeo tutorial</span>
+            <span class="ds-sidenav__badge">07</span>
+          </a>
+        </div>
+      </div>
+      <div class="ds-sidebar__footer">
+        TEGRUS DESIGN SYSTEM<br>
+        Documentação v1.0 · <a href="../index.html">voltar ao navigator</a>
+      </div>
+    </nav>
+
+    <main class="docs-main">
+      <p class="docs-kicker">Capítulo 07 · Vídeo</p>
+      <h1 class="docs-title">Tutorial em vídeo,<br><em>em gravação</em></h1>
+      <p class="docs-lede">
+        Esta página está reservada para um tutorial em vídeo, mostrando o sistema em uso de ponta a ponta:
+        navegar pela biblioteca, montar uma página no Construtor e publicar o resultado. Assim que o vídeo for
+        gravado, basta substituir o player abaixo pelo embed definitivo.
+      </p>
+      <div class="docs-meta">
+        <span><strong>Status:</strong> aguardando gravação</span>
+        <span>Formato sugerido: <strong>screencast guiado</strong></span>
+        <span>Duração estimada: <strong>8–12 min</strong></span>
+      </div>
+
+      <article class="docs-chapter" id="player">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">7.1</span>
+          <h2 class="docs-chapter__title">Player</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-video" role="img" aria-label="Espaço reservado para o vídeo tutorial, em gravação">
+            <div class="docs-video__grain" aria-hidden="true"></div>
+            <div class="docs-video__inner">
+              <div class="docs-video__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <p class="docs-video__label">Em gravação</p>
+              <p class="docs-video__sub">O vídeo tutorial será incorporado aqui assim que estiver pronto</p>
+            </div>
+          </div>
+          <div class="docs-note">
+            <strong>Para quem for publicar o vídeo:</strong> troque o bloco <code>.docs-video</code> por um
+            <code>&lt;iframe&gt;</code> do YouTube/Vimeo (ou pela tag <code>&lt;video&gt;</code>, se o arquivo for
+            hospedado localmente). A largura máxima de <code>880px</code> e a proporção <code>16∶9</code> já estão
+            preparadas para encaixar sem retrabalho.
+          </div>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="roteiro">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">7.2</span>
+          <h2 class="docs-chapter__title">Roteiro sugerido</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>Uma estrutura de capítulos para guiar a gravação, cada bloco vira um marcador de tempo no player final.</p>
+          <ul class="vid-chapters">
+            <li><time>00:00</time> Abertura, o que é o Design System e quando usá-lo</li>
+            <li><time>01:30</time> Tour pelo Navigator: busca, categorias, sidebar e badges</li>
+            <li><time>03:15</time> Abrindo um componente, preview ao vivo e variantes</li>
+            <li><time>05:00</time> Construtor de Página, escolher, ordenar e sortear seções</li>
+            <li><time>07:45</time> Configurar Marca, tokens de cor, fonte e texto</li>
+            <li><time>09:30</time> Gerar o JSON e montar a página com o Claude</li>
+            <li><time>11:00</time> Publicando, git push e deploy automático no Vercel</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="avisar">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">7.3</span>
+          <h2 class="docs-chapter__title">Quer ser avisado quando estiver pronto?</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>Deixe seu e-mail aqui, é só um lembrete local neste navegador, não envia nada para nenhum servidor.</p>
+          <form class="vid-notify" id="vid-notify-form">
+            <input type="email" id="vid-notify-email" placeholder="seu@email.com" required>
+            <button type="submit">Avisar quando publicar</button>
+            <span class="vid-notify__msg" id="vid-notify-msg">Combinado, assim que o vídeo for ao ar, você lembra de conferir aqui. ✓</span>
+          </form>
+        </div>
+      </article>
+
+      <div class="docs-pager">
+        <a class="docs-pager__link" href="instalacao.html">
+          <span class="docs-pager__dir">← Capítulo anterior</span>
+          <span class="docs-pager__name">Instalação &amp; setup</span>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="index.html">
+          <span class="docs-pager__dir">Voltar ao início</span>
+          <span class="docs-pager__name">Visão geral →</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-toc" aria-label="Nesta página">
+      <p class="docs-toc__title">Nesta página</p>
+      <ul class="docs-toc__list">
+        <li><a href="#player">Player</a></li>
+        <li><a href="#roteiro">Roteiro sugerido</a></li>
+        <li><a href="#avisar">Avisar quando publicar</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="docs.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var form = document.getElementById('vid-notify-form');
+      var msg = document.getElementById('vid-notify-msg');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        msg.classList.add('is-visible');
+        form.querySelector('button').setAttribute('disabled', 'true');
+      });
+    })();
+  </script>
+</body>
+</html>

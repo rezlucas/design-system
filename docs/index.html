@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentação · Tegrus Design System</title>
+  <meta name="description" content="Documentação interativa do Tegrus Design System: visão geral, biblioteca de componentes, Construtor de Página, demos, templates e guia de instalação.">
+
+  <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs-body">
+
+  <!-- ── Barra superior ── -->
+  <header class="docs-topbar">
+    <a class="docs-topbar__back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Voltar ao Navigator
+    </a>
+    <span class="docs-topbar__crumb"><strong>Documentação</strong> <span class="sep">/</span> Visão geral</span>
+    <button class="docs-topbar__toggle" aria-label="Abrir menu de documentação" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="docs-backdrop"></div>
+
+  <div class="docs-shell docs-shell--no-toc">
+
+    <!-- ── Navegação dos docs ── -->
+    <nav class="ds-sidebar" aria-label="Páginas da documentação">
+      <div class="ds-sidebar__brand">
+        <img class="ds-sidebar__logo-img" src="../assets/images/placeholders/logo-ds.png" alt="Tegrus Design System">
+        <button class="ds-sidebar__collapse" type="button" aria-label="Recolher menu lateral" aria-pressed="false" title="Recolher menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="ds-sidenav">
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Guia</span>
+          <a class="ds-sidenav__item" href="index.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            <span class="ds-sidenav__name">Visão geral</span>
+            <span class="ds-sidenav__badge">01</span>
+          </a>
+          <a class="ds-sidenav__item" href="componentes.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="ds-sidenav__name">Componentes</span>
+            <span class="ds-sidenav__badge">02</span>
+          </a>
+          <a class="ds-sidenav__item" href="construtor.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
+            <span class="ds-sidenav__name">Construtor de Página</span>
+            <span class="ds-sidenav__badge">03</span>
+          </a>
+          <a class="ds-sidenav__item" href="demos-templates.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <span class="ds-sidenav__name">Demos &amp; Templates</span>
+            <span class="ds-sidenav__badge">04</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Projeto</span>
+          <a class="ds-sidenav__item" href="arquivos-md.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg></span>
+            <span class="ds-sidenav__name">Arquivos .md</span>
+            <span class="ds-sidenav__badge">05</span>
+          </a>
+          <a class="ds-sidenav__item" href="instalacao.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <span class="ds-sidenav__name">Instalação &amp; setup</span>
+            <span class="ds-sidenav__badge">06</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Extra</span>
+          <a class="ds-sidenav__item" href="video.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="ds-sidenav__name">Vídeo tutorial</span>
+            <span class="ds-sidenav__badge">07</span>
+          </a>
+        </div>
+      </div>
+      <div class="ds-sidebar__footer">
+        TEGRUS DESIGN SYSTEM<br>
+        Documentação v1.0 · <a href="../index.html">voltar ao navigator</a>
+      </div>
+    </nav>
+
+    <!-- ── Conteúdo ── -->
+    <main class="docs-main" style="padding-top:0">
+
+      <div class="docs-hero">
+        <span class="docs-hero__eyebrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          Manual do Design System · v1.0
+        </span>
+        <h1 class="docs-hero__title">Tudo o que você<br>precisa para montar<br><em>landing pages</em> aqui dentro.</h1>
+        <p class="docs-hero__lede">
+          Este é o manual de bordo do Tegrus Design System, a biblioteca de componentes, o Construtor de Página
+          e todas as convenções que mantêm o sistema consistente. Sete capítulos, do conceito ao "mãos à obra".
+          Escolha por onde começar ou siga a trilha numerada abaixo.
+        </p>
+        <div class="docs-hero__actions">
+          <a class="docs-btn docs-btn--primary" href="componentes.html">
+            Começar pela biblioteca
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a class="docs-btn docs-btn--ghost" href="construtor.html">Ver o Construtor de Página</a>
+          <a class="docs-btn docs-btn--ghost" href="../index.html">Abrir o Navigator</a>
+        </div>
+      </div>
+
+      <!-- ── Trilha numerada ── -->
+      <div class="docs-track">
+        <p class="docs-track__title">A trilha completa, em sete capítulos</p>
+
+        <div class="docs-cardgrid">
+
+          <a class="docs-card" href="index.html#o-que-e">
+            <span class="docs-card__num">01 · Conceito</span>
+            <h3 class="docs-card__title">O que é o Tegrus Design System</h3>
+            <p class="docs-card__desc">As três premissas centrais (variedade sem reinvenção, adaptação por tokens e zero dependências) e por que elas aceleram a criação de landing pages.</p>
+            <span class="docs-card__arrow">Ler nesta página <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+
+          <a class="docs-card" href="componentes.html">
+            <span class="docs-card__num">02 · Biblioteca</span>
+            <h3 class="docs-card__title">Componentes</h3>
+            <p class="docs-card__desc">33 componentes organizados em 6 categorias (navegação, abertura, apresentação, credibilidade, conversão e rodapé), cada um com variantes prontas.</p>
+            <span class="docs-card__arrow">Abrir capítulo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+
+          <a class="docs-card" href="construtor.html">
+            <span class="docs-card__num">03 · Ferramenta</span>
+            <h3 class="docs-card__title">Construtor de Página</h3>
+            <p class="docs-card__desc">Monte landing pages sem escrever código: escolha componentes, defina a ordem das seções, configure a marca e gere o JSON para o chat do Claude.</p>
+            <span class="docs-card__arrow">Abrir capítulo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+
+          <a class="docs-card" href="demos-templates.html">
+            <span class="docs-card__num">04 · Referências</span>
+            <h3 class="docs-card__title">Demos &amp; Templates</h3>
+            <p class="docs-card__desc">8 demos completas (incluindo a Fitz) que mostram o sistema em contextos reais e 4 templates prontos para adaptar por inteiro.</p>
+            <span class="docs-card__arrow">Abrir capítulo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+
+          <a class="docs-card" href="arquivos-md.html">
+            <span class="docs-card__num">05 · Convenções</span>
+            <h3 class="docs-card__title">Os arquivos .md</h3>
+            <p class="docs-card__desc">Para que servem AGENTS, CLAUDE, CONTEXT e as SKILLS, a convenção de documentação que faz humanos e IAs lerem o projeto da mesma forma.</p>
+            <span class="docs-card__arrow">Abrir capítulo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+
+          <a class="docs-card" href="instalacao.html">
+            <span class="docs-card__num">06 · Mãos à obra</span>
+            <h3 class="docs-card__title">Instalação &amp; setup</h3>
+            <p class="docs-card__desc">Passo a passo para clonar o projeto na máquina, por linha de comando, com o Claude Code ou com o Codex, e como contribuir de volta.</p>
+            <span class="docs-card__arrow">Abrir capítulo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+
+          <a class="docs-card" href="video.html">
+            <span class="docs-card__num">07 · Vídeo</span>
+            <h3 class="docs-card__title">Tutorial em vídeo</h3>
+            <p class="docs-card__desc">Espaço reservado para o tutorial em vídeo, uma demonstração guiada de como navegar, montar e publicar páginas com o sistema.</p>
+            <span class="docs-card__arrow">Abrir capítulo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ── Capítulo 01 embutido na home ── -->
+      <div class="container" style="padding:0 64px 40px">
+        <article class="docs-chapter" id="o-que-e" style="margin-top:24px">
+          <div class="docs-chapter__head">
+            <span class="docs-chapter__num">01</span>
+            <h2 class="docs-chapter__title">O que é o Tegrus Design System</h2>
+          </div>
+          <div class="docs-chapter__body">
+            <p>
+              O <strong>Tegrus Design System</strong> é uma biblioteca de componentes de interface construída para
+              acelerar a criação de landing pages para clientes da Tegrus. Funciona como um catálogo vivo: cada
+              componente é um bloco visual isolado e reutilizável que pode ser combinado com outros para montar
+              páginas completas, sem começar do zero a cada projeto.
+            </p>
+
+            <h3>As três premissas centrais</h3>
+            <ul>
+              <li><strong>Variedade sem reinvenção.</strong> Cada tipo de seção (hero, features, FAQ, footer...) tem múltiplas variantes visuais. Em vez de criar algo do zero para cada cliente, escolhe-se a combinação certa de componentes existentes.</li>
+              <li><strong>Adaptação por tokens.</strong> O que muda entre clientes são variáveis CSS, cores, fontes, espaçamentos. Os componentes em si são universais e não precisam ser reescritos.</li>
+              <li><strong>Zero dependências.</strong> HTML semântico + CSS puro + JavaScript Vanilla. Nenhum framework, nenhum build step. O resultado funciona em Vercel, Webflow, HubSpot ou qualquer hospedagem estática.</li>
+            </ul>
+
+            <div class="docs-note">
+              <strong>Por que isso importa:</strong> um cliente novo não significa recomeçar, significa escolher
+              entre variantes já testadas e ajustar tokens de marca. É isso que torna o sistema rápido <em>e</em> consistente.
+            </div>
+
+            <h3>Stack tecnológica</h3>
+            <div class="docs-table-wrap">
+              <table class="docs-table">
+                <thead><tr><th>Camada</th><th>Tecnologia</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Marcação</strong></td><td>HTML5 semântico</td></tr>
+                  <tr><td><strong>Estilo</strong></td><td>CSS3, Custom Properties, Grid, Flexbox</td></tr>
+                  <tr><td><strong>Comportamento</strong></td><td>JavaScript Vanilla (ES6+)</td></tr>
+                  <tr><td><strong>Hospedagem</strong></td><td>Git + Vercel, deploy automático a cada push</td></tr>
+                  <tr><td><strong>IA integrada</strong></td><td>Claude Code (claude-sonnet-4-6)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <div class="docs-pager">
+          <span></span>
+          <a class="docs-pager__link docs-pager__link--next" href="componentes.html">
+            <span class="docs-pager__dir">Próximo capítulo</span>
+            <span class="docs-pager__name">Componentes →</span>
+          </a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="docs.js"></script>
+</body>
+</html>

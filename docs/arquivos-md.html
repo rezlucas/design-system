@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquivos .md · Documentação · Tegrus Design System</title>
+  <meta name="description" content="Para que servem AGENTS.md, CLAUDE.md, CONTEXT.md, SKILL.md e README.md, a convenção de documentação cross-agent do Tegrus Design System.">
+
+  <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css">
+
+  <style>
+    .md-files { display: flex; flex-direction: column; gap: 10px; margin: 22px 0; max-width: 70ch; }
+    .md-file {
+      border: 1px solid var(--ds-border);
+      border-radius: 12px;
+      background: var(--ds-surface);
+      overflow: hidden;
+    }
+    .md-file__head {
+      display: flex; align-items: center; gap: 14px;
+      width: 100%; text-align: left;
+      padding: 16px 18px;
+      background: transparent; border: none; cursor: pointer;
+      color: var(--ds-text); font-family: var(--fn-ui);
+    }
+    .md-file__icon {
+      flex: none; width: 38px; height: 38px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fn-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.02em;
+      color: #14151A;
+    }
+    .md-file__name { font-family: var(--fn-mono); font-size: 14px; font-weight: 500; color: var(--ds-text); }
+    .md-file__tag { font-family: var(--fn-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-text-subtle); }
+    .md-file__chevron { margin-left: auto; flex: none; width: 16px; height: 16px; color: var(--ds-text-subtle); transition: transform 0.25s ease; }
+    .md-file.is-open .md-file__chevron { transform: rotate(180deg); }
+    .md-file__panel {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.32s ease;
+      border-top: 1px solid transparent;
+    }
+    .md-file.is-open .md-file__panel { max-height: 600px; border-top-color: var(--ds-border); }
+    .md-file__body { padding: 18px 18px 22px 70px; }
+    .md-file__body h4 { margin: 0 0 6px; font-size: 12px; font-family: var(--fn-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ds-accent); }
+    .md-file__body p { margin: 0 0 16px; font-size: 13.5px; color: var(--ds-text-muted); max-width: 60ch; }
+    .md-file__body ul { margin: 0 0 16px; padding-left: 18px; font-size: 13.5px; color: var(--ds-text-muted); }
+    .md-file__body li + li { margin-top: 5px; }
+    .md-file__body li::marker { color: var(--ds-accent); }
+  </style>
+</head>
+<body class="docs-body">
+
+  <header class="docs-topbar">
+    <a class="docs-topbar__back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Voltar ao Navigator
+    </a>
+    <span class="docs-topbar__crumb"><strong>Documentação</strong> <span class="sep">/</span> Arquivos .md</span>
+    <button class="docs-topbar__toggle" aria-label="Abrir menu de documentação" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="docs-backdrop"></div>
+
+  <div class="docs-shell">
+
+    <nav class="ds-sidebar" aria-label="Páginas da documentação">
+      <div class="ds-sidebar__brand">
+        <img class="ds-sidebar__logo-img" src="../assets/images/placeholders/logo-ds.png" alt="Tegrus Design System">
+        <button class="ds-sidebar__collapse" type="button" aria-label="Recolher menu lateral" aria-pressed="false" title="Recolher menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="ds-sidenav">
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Guia</span>
+          <a class="ds-sidenav__item" href="index.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            <span class="ds-sidenav__name">Visão geral</span>
+            <span class="ds-sidenav__badge">01</span>
+          </a>
+          <a class="ds-sidenav__item" href="componentes.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="ds-sidenav__name">Componentes</span>
+            <span class="ds-sidenav__badge">02</span>
+          </a>
+          <a class="ds-sidenav__item" href="construtor.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
+            <span class="ds-sidenav__name">Construtor de Página</span>
+            <span class="ds-sidenav__badge">03</span>
+          </a>
+          <a class="ds-sidenav__item" href="demos-templates.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <span class="ds-sidenav__name">Demos &amp; Templates</span>
+            <span class="ds-sidenav__badge">04</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Projeto</span>
+          <a class="ds-sidenav__item" href="arquivos-md.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg></span>
+            <span class="ds-sidenav__name">Arquivos .md</span>
+            <span class="ds-sidenav__badge">05</span>
+          </a>
+          <a class="ds-sidenav__item" href="instalacao.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <span class="ds-sidenav__name">Instalação &amp; setup</span>
+            <span class="ds-sidenav__badge">06</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Extra</span>
+          <a class="ds-sidenav__item" href="video.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="ds-sidenav__name">Vídeo tutorial</span>
+            <span class="ds-sidenav__badge">07</span>
+          </a>
+        </div>
+      </div>
+      <div class="ds-sidebar__footer">
+        TEGRUS DESIGN SYSTEM<br>
+        Documentação v1.0 · <a href="../index.html">voltar ao navigator</a>
+      </div>
+    </nav>
+
+    <main class="docs-main">
+      <p class="docs-kicker">Capítulo 05 · Convenções</p>
+      <h1 class="docs-title">Os arquivos <em>.md</em>,<br>uma linguagem comum entre humanos e IAs</h1>
+      <p class="docs-lede">
+        Este projeto usa uma convenção de documentação estruturada para ser lida tanto por pessoas quanto por
+        agentes de IA. Cada arquivo tem um papel único, clique em cada um para abrir os detalhes.
+      </p>
+      <div class="docs-meta">
+        <span><strong>5</strong> arquivos de convenção</span>
+        <span>Padrões abertos <strong>agents.md</strong> e <strong>Agent Skills</strong></span>
+      </div>
+
+      <article class="docs-chapter" id="ordem-leitura">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">5.1</span>
+          <h2 class="docs-chapter__title">A ordem de leitura importa</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>
+            Qualquer agente de IA que abrir este projeto deve seguir esta sequência antes de começar a trabalhar,
+            pois é isso que garante que humanos e IAs operem com o mesmo entendimento do estado atual.
+          </p>
+          <ol class="docs-steps" style="margin-top:24px">
+            <li class="docs-step">
+              <div><p class="docs-step__title">AGENTS.md</p><p class="docs-step__desc">O ponto de entrada, regras, workflow e skills disponíveis.</p></div>
+            </li>
+            <li class="docs-step">
+              <div><p class="docs-step__title">README.md</p><p class="docs-step__desc">Visão geral técnica do projeto para humanos.</p></div>
+            </li>
+            <li class="docs-step">
+              <div><p class="docs-step__title">CONTEXT.md</p><p class="docs-step__desc">O estado atual, o que já existe, o que está pendente, decisões tomadas.</p></div>
+            </li>
+            <li class="docs-step">
+              <div><p class="docs-step__title">skills/README.md</p><p class="docs-step__desc">As capacidades especializadas disponíveis para a tarefa em mãos.</p></div>
+            </li>
+          </ol>
+          <div class="docs-note">
+            <strong>Regra de ouro:</strong> se algo em outro arquivo conflitar com <code>AGENTS.md</code>, o <code>AGENTS.md</code> prevalece.
+          </div>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="cada-arquivo">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">5.2</span>
+          <h2 class="docs-chapter__title">Cada arquivo, em detalhe</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>Clique para expandir, veja para quem é, o que contém e por que existe.</p>
+
+          <div class="md-files" id="md-accordion">
+
+            <div class="md-file is-open">
+              <button class="md-file__head" aria-expanded="true">
+                <span class="md-file__icon" style="background:#3B82F6">MD</span>
+                <span><span class="md-file__name">AGENTS.md</span><br><span class="md-file__tag">Ponto de entrada para qualquer IA</span></span>
+                <svg class="md-file__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="md-file__panel">
+                <div class="md-file__body">
+                  <h4>Para quem</h4>
+                  <p>Claude Code, Codex, GitHub Copilot, Gemini CLI, ou seja, qualquer agente de IA que abrir o projeto.</p>
+                  <h4>O que contém</h4>
+                  <ul>
+                    <li>Ordem obrigatória de leitura antes de qualquer tarefa</li>
+                    <li>Princípios não-negociáveis: sem frameworks, BEM obrigatório, zero hardcoding</li>
+                    <li>Tabela de skills e quando ativá-las</li>
+                    <li>Workflow passo a passo para criar componentes, páginas de cliente e revisar código</li>
+                    <li>Comportamentos proibidos e o que exige confirmação antes de executar</li>
+                  </ul>
+                  <h4>Por que existe</h4>
+                  <p>Segue o padrão aberto <a class="docs-link" href="https://agents.md/" target="_blank" rel="noopener">agents.md</a>, formato cross-agent reconhecido por qualquer ferramenta como ponto de entrada, garantindo que toda IA receba as mesmas instruções.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="md-file">
+              <button class="md-file__head" aria-expanded="false">
+                <span class="md-file__icon" style="background:#67E8F9">MD</span>
+                <span><span class="md-file__name">CLAUDE.md</span><br><span class="md-file__tag">Compatibilidade com o Claude Code</span></span>
+                <svg class="md-file__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="md-file__panel">
+                <div class="md-file__body">
+                  <h4>Para quem</h4>
+                  <p>Versões mais antigas do Claude Code, que procuram exclusivamente por <code>CLAUDE.md</code>.</p>
+                  <h4>O que contém</h4>
+                  <ul><li>Apenas um redirecionamento, instrui o agente a ler <code>AGENTS.md</code> como ponto de entrada real.</li></ul>
+                  <h4>Por que existe</h4>
+                  <p>Garante retrocompatibilidade sem duplicar conteúdo. Um arquivo curto, de propósito único, você está lendo a documentação que ele aponta agora mesmo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="md-file">
+              <button class="md-file__head" aria-expanded="false">
+                <span class="md-file__icon" style="background:#6C73F2">MD</span>
+                <span><span class="md-file__name">CONTEXT.md</span><br><span class="md-file__tag">A memória viva do projeto</span></span>
+                <svg class="md-file__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="md-file__panel">
+                <div class="md-file__body">
+                  <h4>Para quem</h4>
+                  <p>A IA que retoma o trabalho em uma nova sessão e qualquer humano que precise saber o estado atual rapidamente.</p>
+                  <h4>O que contém</h4>
+                  <ul>
+                    <li>Status geral e fase atual do projeto</li>
+                    <li>Lista de componentes com status concluído/pendente</li>
+                    <li>Decisões técnicas com data: escala de espaçamento, breakpoints, fonte padrão</li>
+                    <li>Descrição do Navigator e do Construtor de Página</li>
+                    <li>Histórico cronológico de atualizações com agente responsável</li>
+                  </ul>
+                  <h4>Por que existe</h4>
+                  <p>Sem ele, cada sessão de IA precisaria reler todo o projeto para entender o estado atual: um processo lento, caro e arriscado. Com <code>CONTEXT.md</code> atualizado, um único arquivo já entrega a foto completa.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="md-file">
+              <button class="md-file__head" aria-expanded="false">
+                <span class="md-file__icon" style="background:#F472B6">MD</span>
+                <span><span class="md-file__name">SKILL.md / skills/*/SKILL.md</span><br><span class="md-file__tag">Conhecimento especializado sob demanda</span></span>
+                <svg class="md-file__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="md-file__panel">
+                <div class="md-file__body">
+                  <h4>Para quem</h4>
+                  <p>A IA, cada skill é ativada automaticamente antes de tarefas específicas.</p>
+                  <h4>As 4 skills do projeto</h4>
+                  <ul>
+                    <li><strong>bem-structure</strong>: anatomia BEM, antipadrões e checklist, ativada ao escrever ou revisar CSS</li>
+                    <li><strong>responsive-web-design</strong>: mobile-first, Grid vs Flexbox e breakpoints, ativada ao criar layouts</li>
+                    <li><strong>accessibility-basics</strong>: WCAG AA, semântica, contraste e ARIA, ativada ao criar interatividade</li>
+                    <li><strong>landing-page-anatomy</strong>: estrutura universal de LP e tipos de oferta, ativada ao iniciar uma página</li>
+                  </ul>
+                  <h4>Por que existem</h4>
+                  <p>Seguem o padrão aberto <a class="docs-link" href="https://agentskills.io" target="_blank" rel="noopener">Agent Skills</a>: em vez de empilhar todo o conhecimento em cada prompt, as skills entram em cena sob demanda, mantendo o foco na tarefa.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="md-file">
+              <button class="md-file__head" aria-expanded="false">
+                <span class="md-file__icon" style="background:#94A3B8">MD</span>
+                <span><span class="md-file__name">README.md</span><br><span class="md-file__tag">Referência técnica para humanos</span></span>
+                <svg class="md-file__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="md-file__panel">
+                <div class="md-file__body">
+                  <h4>Para quem</h4>
+                  <p>Desenvolvedores e designers humanos que trabalham diretamente no projeto.</p>
+                  <h4>O que contém</h4>
+                  <ul>
+                    <li>Visão geral, stack tecnológica e estrutura de pastas</li>
+                    <li>Anatomia de um componente, com exemplos completos</li>
+                    <li>Sistema de tokens com exemplos de código</li>
+                    <li>Convenção BEM, padrões de responsividade e de imagens placeholder</li>
+                    <li>Workflow completo de criação de componentes</li>
+                  </ul>
+                  <h4>Por que existe</h4>
+                  <p>É a documentação técnica principal, mais detalhada que <code>AGENTS.md</code> e sem as restrições de comportamento voltadas para IA. Referência ao construir, revisar ou integrar componentes.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </article>
+
+      <div class="docs-pager">
+        <a class="docs-pager__link" href="demos-templates.html">
+          <span class="docs-pager__dir">← Capítulo anterior</span>
+          <span class="docs-pager__name">Demos &amp; Templates</span>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="instalacao.html">
+          <span class="docs-pager__dir">Próximo capítulo</span>
+          <span class="docs-pager__name">Instalação &amp; setup →</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-toc" aria-label="Nesta página">
+      <p class="docs-toc__title">Nesta página</p>
+      <ul class="docs-toc__list">
+        <li><a href="#ordem-leitura">Ordem de leitura</a></li>
+        <li><a href="#cada-arquivo">Cada arquivo em detalhe</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="docs.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      document.querySelectorAll('#md-accordion .md-file__head').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var file = btn.closest('.md-file');
+          var open = file.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

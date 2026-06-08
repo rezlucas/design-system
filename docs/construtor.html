@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construtor de Página · Documentação · Tegrus Design System</title>
+  <meta name="description" content="Como usar o Construtor de Página: escolher componentes, ordenar seções, sortear estruturas, configurar a marca e gerar o JSON para o Claude.">
+
+  <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs-body">
+
+  <header class="docs-topbar">
+    <a class="docs-topbar__back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Voltar ao Navigator
+    </a>
+    <span class="docs-topbar__crumb"><strong>Documentação</strong> <span class="sep">/</span> Construtor de Página</span>
+    <button class="docs-topbar__toggle" aria-label="Abrir menu de documentação" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="docs-backdrop"></div>
+
+  <div class="docs-shell">
+
+    <nav class="ds-sidebar" aria-label="Páginas da documentação">
+      <div class="ds-sidebar__brand">
+        <img class="ds-sidebar__logo-img" src="../assets/images/placeholders/logo-ds.png" alt="Tegrus Design System">
+        <button class="ds-sidebar__collapse" type="button" aria-label="Recolher menu lateral" aria-pressed="false" title="Recolher menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="ds-sidenav">
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Guia</span>
+          <a class="ds-sidenav__item" href="index.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            <span class="ds-sidenav__name">Visão geral</span>
+            <span class="ds-sidenav__badge">01</span>
+          </a>
+          <a class="ds-sidenav__item" href="componentes.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="ds-sidenav__name">Componentes</span>
+            <span class="ds-sidenav__badge">02</span>
+          </a>
+          <a class="ds-sidenav__item" href="construtor.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
+            <span class="ds-sidenav__name">Construtor de Página</span>
+            <span class="ds-sidenav__badge">03</span>
+          </a>
+          <a class="ds-sidenav__item" href="demos-templates.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <span class="ds-sidenav__name">Demos &amp; Templates</span>
+            <span class="ds-sidenav__badge">04</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Projeto</span>
+          <a class="ds-sidenav__item" href="arquivos-md.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg></span>
+            <span class="ds-sidenav__name">Arquivos .md</span>
+            <span class="ds-sidenav__badge">05</span>
+          </a>
+          <a class="ds-sidenav__item" href="instalacao.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <span class="ds-sidenav__name">Instalação &amp; setup</span>
+            <span class="ds-sidenav__badge">06</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Extra</span>
+          <a class="ds-sidenav__item" href="video.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="ds-sidenav__name">Vídeo tutorial</span>
+            <span class="ds-sidenav__badge">07</span>
+          </a>
+        </div>
+      </div>
+      <div class="ds-sidebar__footer">
+        TEGRUS DESIGN SYSTEM<br>
+        Documentação v1.0 · <a href="../index.html">voltar ao navigator</a>
+      </div>
+    </nav>
+
+    <main class="docs-main">
+      <p class="docs-kicker">Capítulo 03 · Ferramenta</p>
+      <h1 class="docs-title">O Construtor de Página:<br>monte landing pages <em>sem escrever código</em></h1>
+      <p class="docs-lede">
+        Uma ferramenta interativa embutida no Navigator que transforma a escolha de componentes em um JSON pronto
+        para o chat do Claude montar a página completa, na ordem certa, com a marca certa.
+      </p>
+      <div class="docs-meta">
+        <span><strong>7</strong> passos</span>
+        <span><strong>6</strong> padrões de sorteio</span>
+        <span>Acesso pelo botão flutuante <strong>Construtor</strong> no Navigator</span>
+      </div>
+
+      <article class="docs-chapter" id="passo-a-passo">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">3.1</span>
+          <h2 class="docs-chapter__title">Passo a passo</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>Clique nos itens à medida que for testando, seu progresso fica salvo neste navegador.</p>
+
+          <ol class="docs-steps">
+            <li class="docs-step">
+              <div>
+                <p class="docs-step__title">Ative o modo construtor</p>
+                <p class="docs-step__desc">Clique no botão flutuante <strong>"Construtor de Página"</strong>, no canto da tela do Navigator. O corpo da página entra em <code>builder-mode</code>: os cards passam a ser clicáveis para seleção em vez de links.</p>
+              </div>
+            </li>
+            <li class="docs-step">
+              <div>
+                <p class="docs-step__title">Escolha os componentes</p>
+                <p class="docs-step__desc">Clique nos cards desejados. Cada um recebe um <strong>número de posição</strong> (1, 2, 3...) que substitui o selo de seleção: é a ordem em que a seção vai aparecer na página final.</p>
+              </div>
+            </li>
+            <li class="docs-step">
+              <div>
+                <p class="docs-step__title">Escolha a variante de cada um</p>
+                <p class="docs-step__desc">Componentes com múltiplas variantes mostram um seletor (V1, V2, V3...). Use o preview ao vivo para decidir qual estilo combina com o projeto.</p>
+              </div>
+            </li>
+            <li class="docs-step">
+              <div>
+                <p class="docs-step__title">Ou use o 🎲 Sortear</p>
+                <p class="docs-step__desc">Sem ideia de por onde começar? O botão <strong>Sortear</strong> gera uma estrutura completa a partir de 6 padrões pré-definidos: Landing SaaS, Agência Digital, Startup/MVP, Portfólio, E-commerce e Enterprise, sempre com header, abertura, prova social, conversão e rodapé na ordem certa.</p>
+              </div>
+            </li>
+            <li class="docs-step">
+              <div>
+                <p class="docs-step__title">Reordene com ↑ / ↓</p>
+                <p class="docs-step__desc">A partir de duas seções selecionadas, a bandeja inferior mostra uma lista reordenável. Use as setas para mover qualquer seção para cima ou para baixo, os números de posição se atualizam sozinhos.</p>
+              </div>
+            </li>
+            <li class="docs-step">
+              <div>
+                <p class="docs-step__title">Configure a marca</p>
+                <p class="docs-step__desc">Abra <strong>"Configurar Marca"</strong> para definir cores, fontes e textos de cada seção. Ao clicar fora do modal (ou apertar <kbd>Esc</kbd>), tudo é salvo automaticamente, nada se perde.</p>
+              </div>
+            </li>
+            <li class="docs-step">
+              <div>
+                <p class="docs-step__title">Gere o JSON e leve para o Claude</p>
+                <p class="docs-step__desc">O botão <strong>"Gerar JSON →"</strong> exporta a seleção (componentes, ordem, variantes e marca). Cole esse JSON no chat do Claude Code dentro do projeto: ele vai montar a página completa usando exclusivamente os componentes já existentes no sistema.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="docs-note">
+            <strong>Por que gerar JSON em vez de pedir "monte uma página" direto?</strong> O JSON registra exatamente
+            quais componentes, variantes, ordem e tokens de marca você escolheu, o Claude monta a página fiel à sua
+            decisão, sem inventar seções novas ou misturar estilos fora do sistema.
+          </div>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="checklist">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">3.2</span>
+          <h2 class="docs-chapter__title">Checklist antes de gerar o JSON</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>Use esta lista como revisão final, clique para marcar cada item conforme verifica.</p>
+          <ul class="docs-checklist">
+            <li data-key="ordem"><span class="docs-checklist__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> A ordem das seções faz sentido, header no topo, CTA e rodapé no fim?</li>
+            <li data-key="variantes"><span class="docs-checklist__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> As variantes escolhidas combinam visualmente entre si (mesma "temperatura" de design)?</li>
+            <li data-key="marca"><span class="docs-checklist__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> As cores, fontes e textos da marca estão preenchidos em "Configurar Marca"?</li>
+            <li data-key="essenciais"><span class="docs-checklist__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> A página tem header, hero, ao menos uma seção de prova social e um CTA final?</li>
+            <li data-key="json"><span class="docs-checklist__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Você copiou o JSON gerado e está pronto para colar no chat do Claude?</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="padroes-sorteio">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">3.3</span>
+          <h2 class="docs-chapter__title">Os 6 padrões do "Sortear"</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>
+            Em vez de sortear componentes de forma totalmente aleatória, o que poderia gerar páginas sem lógica,
+            o botão <strong>🎲 Sortear</strong> escolhe entre seis arquétipos de página. Cada um define a sequência de
+            tipos de seção; o sorteio decide apenas qual variante específica preenche cada posição.
+          </p>
+          <div class="docs-table-wrap">
+            <table class="docs-table">
+              <thead><tr><th>Padrão</th><th>Sequência típica</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Landing SaaS</strong></td><td>Header → Hero SaaS → Feature Cards → Stats → Depoimentos → Pricing → FAQ → Footer</td></tr>
+                <tr><td><strong>Agência Digital</strong></td><td>Header → Hero Split → Serviços → Cases/Equipe → Depoimentos → CTA → Footer</td></tr>
+                <tr><td><strong>Startup / MVP</strong></td><td>Header → Hero Countdown → Features → Integrações → CTA → Footer simples</td></tr>
+                <tr><td><strong>Portfólio / Consultor</strong></td><td>Header light → Hero Personal → Sobre/Feature → Depoimentos → Contato/CTA → Footer</td></tr>
+                <tr><td><strong>E-commerce / Produto</strong></td><td>Header → Hero Background → Carousel → Stats → Depoimentos → Pricing → Footer</td></tr>
+                <tr><td><strong>Enterprise / Serviço</strong></td><td>Header utility → Hero Centered → Serviços → Client Band → Stats → CTA → Footer dark</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="docs-note docs-note--cyan">
+            <strong>Resultado garantido:</strong> qualquer combinação sorteada tem começo (header + abertura), meio
+            (apresentação + prova social) e fim (conversão + rodapé), nunca uma página "torta".
+          </div>
+        </div>
+      </article>
+
+      <div class="docs-pager">
+        <a class="docs-pager__link" href="componentes.html">
+          <span class="docs-pager__dir">← Capítulo anterior</span>
+          <span class="docs-pager__name">Componentes</span>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="demos-templates.html">
+          <span class="docs-pager__dir">Próximo capítulo</span>
+          <span class="docs-pager__name">Demos &amp; Templates →</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-toc" aria-label="Nesta página">
+      <p class="docs-toc__title">Nesta página</p>
+      <ul class="docs-toc__list">
+        <li><a href="#passo-a-passo">Passo a passo</a></li>
+        <li><a href="#checklist">Checklist final</a></li>
+        <li><a href="#padroes-sorteio">Padrões do sorteio</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="docs.js"></script>
+</body>
+</html>

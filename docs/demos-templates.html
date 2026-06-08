@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demos &amp; Templates · Documentação · Tegrus Design System</title>
+  <meta name="description" content="As 8 demos e os 4 templates do Tegrus Design System: o que são, para que servem e quando usar cada um.">
+
+  <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body class="docs-body">
+
+  <header class="docs-topbar">
+    <a class="docs-topbar__back" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Voltar ao Navigator
+    </a>
+    <span class="docs-topbar__crumb"><strong>Documentação</strong> <span class="sep">/</span> Demos &amp; Templates</span>
+    <button class="docs-topbar__toggle" aria-label="Abrir menu de documentação" aria-expanded="false">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+
+  <div class="docs-backdrop"></div>
+
+  <div class="docs-shell">
+
+    <nav class="ds-sidebar" aria-label="Páginas da documentação">
+      <div class="ds-sidebar__brand">
+        <img class="ds-sidebar__logo-img" src="../assets/images/placeholders/logo-ds.png" alt="Tegrus Design System">
+        <button class="ds-sidebar__collapse" type="button" aria-label="Recolher menu lateral" aria-pressed="false" title="Recolher menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+      <div class="ds-sidenav">
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Guia</span>
+          <a class="ds-sidenav__item" href="index.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+            <span class="ds-sidenav__name">Visão geral</span>
+            <span class="ds-sidenav__badge">01</span>
+          </a>
+          <a class="ds-sidenav__item" href="componentes.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="ds-sidenav__name">Componentes</span>
+            <span class="ds-sidenav__badge">02</span>
+          </a>
+          <a class="ds-sidenav__item" href="construtor.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></span>
+            <span class="ds-sidenav__name">Construtor de Página</span>
+            <span class="ds-sidenav__badge">03</span>
+          </a>
+          <a class="ds-sidenav__item" href="demos-templates.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+            <span class="ds-sidenav__name">Demos &amp; Templates</span>
+            <span class="ds-sidenav__badge">04</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Projeto</span>
+          <a class="ds-sidenav__item" href="arquivos-md.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6M9 9h1"/></svg></span>
+            <span class="ds-sidenav__name">Arquivos .md</span>
+            <span class="ds-sidenav__badge">05</span>
+          </a>
+          <a class="ds-sidenav__item" href="instalacao.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+            <span class="ds-sidenav__name">Instalação &amp; setup</span>
+            <span class="ds-sidenav__badge">06</span>
+          </a>
+        </div>
+        <div class="ds-sidenav__group">
+          <span class="ds-sidenav__group-label">Extra</span>
+          <a class="ds-sidenav__item" href="video.html">
+            <span class="ds-sidenav__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9.5v5l4-2.5-4-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="ds-sidenav__name">Vídeo tutorial</span>
+            <span class="ds-sidenav__badge">07</span>
+          </a>
+        </div>
+      </div>
+      <div class="ds-sidebar__footer">
+        TEGRUS DESIGN SYSTEM<br>
+        Documentação v1.0 · <a href="../index.html">voltar ao navigator</a>
+      </div>
+    </nav>
+
+    <main class="docs-main">
+      <p class="docs-kicker">Capítulo 04 · Referências</p>
+      <h1 class="docs-title">Demos mostram o sistema<br><em>em contexto</em>. Templates te dão um <em>ponto de partida</em>.</h1>
+      <p class="docs-lede">
+        São dois tipos de página pronta, com propósitos diferentes, entender quando usar cada um evita misturar
+        referência visual com base de trabalho.
+      </p>
+      <div class="docs-meta">
+        <span><strong>8</strong> demos completas</span>
+        <span><strong>4</strong> templates base</span>
+        <span>Acesse pelos grupos <strong>Recursos</strong> no Navigator</span>
+      </div>
+
+      <article class="docs-chapter" id="demos">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">4.1</span>
+          <h2 class="docs-chapter__title">Demos, referências visuais</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>
+            Páginas reais ou fictícias que mostram o design system aplicado a contextos específicos de cliente.
+            <strong>Não são reutilizáveis como componentes</strong>, servem para inspirar combinações e ver os
+            tokens de marca em ação numa página inteira.
+          </p>
+          <div class="docs-table-wrap">
+            <table class="docs-table">
+              <thead><tr><th>Demo</th><th>Segmento</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Nexio</strong></td><td>Automação de vendas B2B, dark premium</td></tr>
+                <tr><td><strong>BRSamor</strong></td><td>Logística e transporte</td></tr>
+                <tr><td><strong>Fluxo</strong></td><td>SaaS financeiro</td></tr>
+                <tr><td><strong>Kova (Tappa)</strong></td><td>Maquininhas de cartão</td></tr>
+                <tr><td><strong>Wine4Friends</strong></td><td>Clube de vinhos</td></tr>
+                <tr><td><strong>Wine4Friends 2</strong></td><td>Wine4Friends, versão redesign</td></tr>
+                <tr><td><strong>Prime</strong></td><td>Motorista privado por assinatura</td></tr>
+                <tr><td><strong>Fitz</strong></td><td>Recrutamento especializado em Revenue</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="docs-note docs-note--cyan">
+            <strong>Use demos para:</strong> ver até onde os tokens de marca conseguem transformar a aparência dos
+            mesmos componentes, cada demo aplica uma paleta, tipografia e tom completamente diferentes sobre a mesma base.
+          </div>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="templates">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">4.2</span>
+          <h2 class="docs-chapter__title">Templates, composições prontas para adaptar</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <p>
+            Páginas completas pensadas para serem replicadas <strong>por inteiro</strong> e depois adaptadas com os
+            tokens do cliente. No Construtor de Página, selecionar um template limpa toda a seleção anterior, eles
+            não se misturam com componentes avulsos.
+          </p>
+          <div class="docs-table-wrap">
+            <table class="docs-table">
+              <thead><tr><th>Template</th><th>Descrição</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Kota</strong></td><td>Benefícios para equipes, tom dark e editorial</td></tr>
+                <tr><td><strong>Zenify</strong></td><td>Produto digital, tema verde e clean</td></tr>
+                <tr><td><strong>SaaS Template</strong></td><td>Landing page SaaS completa e genérica</td></tr>
+                <tr><td><strong>404</strong></td><td>Página de erro elegante com navegação de retorno</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="docs-note docs-note--rose">
+            <strong>Não misture:</strong> um template já é uma composição fechada e testada. Se precisar de algo
+            diferente, prefira montar do zero pelo Construtor, combinar um template com componentes avulsos costuma
+            quebrar a consistência visual.
+          </div>
+        </div>
+      </article>
+
+      <article class="docs-chapter" id="quando-usar">
+        <div class="docs-chapter__head">
+          <span class="docs-chapter__num">4.3</span>
+          <h2 class="docs-chapter__title">Qual escolher?</h2>
+        </div>
+        <div class="docs-chapter__body">
+          <div class="docs-cardgrid">
+            <div class="docs-card" style="cursor:default">
+              <span class="docs-card__num">Cenário</span>
+              <h3 class="docs-card__title">"Preciso de inspiração visual"</h3>
+              <p class="docs-card__desc">Explore as <strong>demos</strong>, veja como tokens de marca diferentes transformam os mesmos componentes em identidades completamente distintas.</p>
+            </div>
+            <div class="docs-card" style="cursor:default">
+              <span class="docs-card__num">Cenário</span>
+              <h3 class="docs-card__title">"Preciso montar algo rápido e genérico"</h3>
+              <p class="docs-card__desc">Comece de um <strong>template</strong>, replique por inteiro e troque cores, fontes e textos pelos tokens do cliente.</p>
+            </div>
+            <div class="docs-card" style="cursor:default">
+              <span class="docs-card__num">Cenário</span>
+              <h3 class="docs-card__title">"Tenho uma estrutura específica em mente"</h3>
+              <p class="docs-card__desc">Use o <a class="docs-link" href="construtor.html">Construtor de Página</a>, escolha, ordene e combine componentes individuais sob medida para o briefing.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="docs-pager">
+        <a class="docs-pager__link" href="construtor.html">
+          <span class="docs-pager__dir">← Capítulo anterior</span>
+          <span class="docs-pager__name">Construtor de Página</span>
+        </a>
+        <a class="docs-pager__link docs-pager__link--next" href="arquivos-md.html">
+          <span class="docs-pager__dir">Próximo capítulo</span>
+          <span class="docs-pager__name">Arquivos .md →</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="docs-toc" aria-label="Nesta página">
+      <p class="docs-toc__title">Nesta página</p>
+      <ul class="docs-toc__list">
+        <li><a href="#demos">Demos</a></li>
+        <li><a href="#templates">Templates</a></li>
+        <li><a href="#quando-usar">Qual escolher?</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <script src="docs.js"></script>
+</body>
+</html>
