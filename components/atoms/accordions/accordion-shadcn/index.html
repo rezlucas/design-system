@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+  <style>
+    /* ── Demo page only — não copie para produção ── */
+    body {
+      padding: var(--space-3xl) var(--space-xl);
+      background-color: var(--color-background-alt);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
+
+    .demo-section {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    .demo-section__title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-block-end: var(--space-lg);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Accordion</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Padrão (lista com divisores)
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-default">
+    <p class="demo-section__title" id="title-default">Padrão</p>
+
+    <div class="accordion" data-accordion>
+
+      <div class="accordion__item is-open">
+        <h3 class="accordion__heading">
+          <button class="accordion__trigger" type="button" aria-expanded="true" aria-controls="acc-1-panel" id="acc-1-trigger">
+            <span class="accordion__trigger-text">É acessível?</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </h3>
+        <div class="accordion__panel" id="acc-1-panel" role="region" aria-labelledby="acc-1-trigger">
+          <div class="accordion__panel-inner">
+            <p class="accordion__answer">Sim, segue o padrão de design WAI-ARIA, com navegação por teclado, foco visível e estados refletidos em <code>aria-expanded</code>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <h3 class="accordion__heading">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="acc-2-panel" id="acc-2-trigger">
+            <span class="accordion__trigger-text">Posso estilizar do meu jeito?</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </h3>
+        <div class="accordion__panel" id="acc-2-panel" role="region" aria-labelledby="acc-2-trigger">
+          <div class="accordion__panel-inner">
+            <p class="accordion__answer">Sim, todas as cores, espaçamentos e tipografia vêm dos tokens <code>--color-*</code> e <code>--space-*</code>, então herdam automaticamente a marca configurada.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <h3 class="accordion__heading">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="acc-3-panel" id="acc-3-trigger">
+            <span class="accordion__trigger-text">Tem animação?</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </h3>
+        <div class="accordion__panel" id="acc-3-panel" role="region" aria-labelledby="acc-3-trigger">
+          <div class="accordion__panel-inner">
+            <p class="accordion__answer">Sim, o painel abre e fecha com uma transição de <code>grid-template-rows</code>, suave e performática, sem medir alturas via JavaScript.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Bordered (cada item em card)
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-bordered">
+    <p class="demo-section__title" id="title-bordered">Bordered</p>
+
+    <div class="accordion accordion--bordered" data-accordion>
+
+      <div class="accordion__item">
+        <h3 class="accordion__heading">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="acc-4-panel" id="acc-4-trigger">
+            <span class="accordion__trigger-text">Funciona em qualquer navegador moderno?</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </h3>
+        <div class="accordion__panel" id="acc-4-panel" role="region" aria-labelledby="acc-4-trigger">
+          <div class="accordion__panel-inner">
+            <p class="accordion__answer">Sim, usa apenas recursos padrão de HTML, CSS Grid e JavaScript vanilla, sem dependências externas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <h3 class="accordion__heading">
+          <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="acc-5-panel" id="acc-5-trigger">
+            <span class="accordion__trigger-text">Posso ter mais de um item aberto ao mesmo tempo?</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </h3>
+        <div class="accordion__panel" id="acc-5-panel" role="region" aria-labelledby="acc-5-trigger">
+          <div class="accordion__panel-inner">
+            <p class="accordion__answer">O comportamento padrão é abertura única, mas basta remover o trecho que fecha os outros itens em <code>script.js</code> para permitir múltiplos abertos.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

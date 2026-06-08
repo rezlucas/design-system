@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+  <style>
+    /* ── Demo page only — não copie para produção ── */
+    body {
+      padding: var(--space-3xl) var(--space-xl);
+      background-color: var(--color-background-alt);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
+
+    .demo-section {
+      width: 100%;
+      max-width: 640px;
+      background-color: var(--color-background);
+      padding: var(--space-xl);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+
+    .demo-section__title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-block-end: var(--space-lg);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Tabs</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Underline (padrão)
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-underline">
+    <p class="demo-section__title" id="title-underline">Underline</p>
+
+    <div class="tabs" data-tabs>
+      <div class="tabs__list" role="tablist" aria-label="Planos">
+        <button class="tabs__trigger" type="button" role="tab" id="tab-conta" aria-controls="panel-conta" aria-selected="true" tabindex="0">Conta</button>
+        <button class="tabs__trigger" type="button" role="tab" id="tab-senha" aria-controls="panel-senha" aria-selected="false" tabindex="-1">Senha</button>
+        <button class="tabs__trigger" type="button" role="tab" id="tab-equipe" aria-controls="panel-equipe" aria-selected="false" tabindex="-1">Equipe</button>
+      </div>
+
+      <div class="tabs__panel" id="panel-conta" role="tabpanel" aria-labelledby="tab-conta" tabindex="0">
+        <p class="tabs__panel-title">Conta</p>
+        <p>Atualize seu nome, e-mail e foto de perfil. Essas informações aparecem para outras pessoas da sua equipe.</p>
+      </div>
+      <div class="tabs__panel" id="panel-senha" role="tabpanel" aria-labelledby="tab-senha" tabindex="0" hidden>
+        <p class="tabs__panel-title">Senha</p>
+        <p>Altere sua senha de acesso. Recomendamos usar uma combinação de letras, números e símbolos com pelo menos 12 caracteres.</p>
+      </div>
+      <div class="tabs__panel" id="panel-equipe" role="tabpanel" aria-labelledby="tab-equipe" tabindex="0" hidden>
+        <p class="tabs__panel-title">Equipe</p>
+        <p>Convide colegas, defina papéis de acesso e acompanhe quem está ativo no workspace neste momento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Pill
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-pill">
+    <p class="demo-section__title" id="title-pill">Pill</p>
+
+    <div class="tabs tabs--pill" data-tabs>
+      <div class="tabs__list" role="tablist" aria-label="Período de cobrança">
+        <button class="tabs__trigger" type="button" role="tab" id="tab-mensal" aria-controls="panel-mensal" aria-selected="true" tabindex="0">Mensal</button>
+        <button class="tabs__trigger" type="button" role="tab" id="tab-anual" aria-controls="panel-anual" aria-selected="false" tabindex="-1">Anual</button>
+      </div>
+
+      <div class="tabs__panel" id="panel-mensal" role="tabpanel" aria-labelledby="tab-mensal" tabindex="0">
+        <p class="tabs__panel-title">Cobrança mensal</p>
+        <p>Pague mês a mês, sem fidelidade. Ideal para times que estão validando o produto antes de um compromisso maior.</p>
+      </div>
+      <div class="tabs__panel" id="panel-anual" role="tabpanel" aria-labelledby="tab-anual" tabindex="0" hidden>
+        <p class="tabs__panel-title">Cobrança anual</p>
+        <p>Pague uma vez por ano e garanta dois meses grátis. Mesma plataforma, mesmo suporte, custo total menor.</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

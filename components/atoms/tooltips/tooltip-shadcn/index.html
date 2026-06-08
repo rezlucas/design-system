@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+  <style>
+    /* ── Demo page only — não copie para produção ── */
+    body {
+      padding: var(--space-3xl) var(--space-xl);
+      background-color: var(--color-background-alt);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
+
+    .demo-section {
+      width: 100%;
+      max-width: 640px;
+      background-color: var(--color-background);
+      padding: var(--space-2xl) var(--space-xl);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+
+    .demo-section__title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-block-end: var(--space-xl);
+      text-align: center;
+    }
+
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2xl);
+      padding-block: var(--space-md);
+    }
+
+    .demo-hint {
+      text-align: center;
+      font-size: var(--font-size-xs);
+      color: var(--color-text-subtle);
+      margin-block-start: var(--space-xl);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Tooltip</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="tip-icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="tip-icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>
+    </symbol>
+    <symbol id="tip-icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Em ícones de ação
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-icones">
+    <p class="demo-section__title" id="title-icones">Em ícones de ação</p>
+
+    <div class="demo-row">
+      <span class="tooltip tooltip--top">
+        <button class="tooltip__ref tooltip__ref--icon" type="button" aria-describedby="tip-copy">
+          <svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#tip-icon-copy"/></svg>
+        </button>
+        <span class="tooltip__bubble" role="tooltip" id="tip-copy">Copiar link</span>
+      </span>
+
+      <span class="tooltip tooltip--top">
+        <button class="tooltip__ref tooltip__ref--icon" type="button" aria-describedby="tip-info">
+          <svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#tip-icon-info"/></svg>
+        </button>
+        <span class="tooltip__bubble" role="tooltip" id="tip-info">Mais informações</span>
+      </span>
+
+      <span class="tooltip tooltip--top">
+        <button class="tooltip__ref tooltip__ref--icon" type="button" aria-describedby="tip-trash">
+          <svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#tip-icon-trash"/></svg>
+        </button>
+        <span class="tooltip__bubble" role="tooltip" id="tip-trash">Excluir item</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Posicionamento
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-posicoes">
+    <p class="demo-section__title" id="title-posicoes">Posicionamento</p>
+
+    <div class="demo-row">
+      <span class="tooltip tooltip--top">
+        <span class="tooltip__ref tooltip__ref--dotted" tabindex="0" aria-describedby="tip-pos-top">Acima</span>
+        <span class="tooltip__bubble" role="tooltip" id="tip-pos-top">Aparece acima da referência</span>
+      </span>
+
+      <span class="tooltip tooltip--bottom">
+        <span class="tooltip__ref tooltip__ref--dotted" tabindex="0" aria-describedby="tip-pos-bottom">Abaixo</span>
+        <span class="tooltip__bubble" role="tooltip" id="tip-pos-bottom">Aparece abaixo da referência</span>
+      </span>
+
+      <span class="tooltip tooltip--right">
+        <span class="tooltip__ref tooltip__ref--dotted" tabindex="0" aria-describedby="tip-pos-right">À direita</span>
+        <span class="tooltip__bubble" role="tooltip" id="tip-pos-right">Aparece à direita da referência</span>
+      </span>
+
+      <span class="tooltip tooltip--left">
+        <span class="tooltip__ref tooltip__ref--dotted" tabindex="0" aria-describedby="tip-pos-left">À esquerda</span>
+        <span class="tooltip__bubble" role="tooltip" id="tip-pos-left">Aparece à esquerda da referência</span>
+      </span>
+    </div>
+
+    <p class="demo-hint">Passe o mouse, use Tab para focar pelo teclado ou toque na tela (em dispositivos sensíveis ao toque).</p>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

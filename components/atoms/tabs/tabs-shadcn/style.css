@@ -1,0 +1,112 @@
+/* ─────────────────────────────────────────
+   tabs — atom (inspirado no Tabs do shadcn/ui)
+   Lista de gatilhos + painéis, navegação por teclado em seta.
+   Variantes: --underline (padrão) | --pill (cápsula sólida)
+   ───────────────────────────────────────── */
+
+.tabs {
+  width: 100%;
+  max-width: 640px;
+}
+
+/* ── Lista de gatilhos ── */
+.tabs__list {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-block-end: var(--space-xl);
+}
+
+.tabs__trigger {
+  position: relative;
+  padding: var(--space-sm) var(--space-lg);
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.tabs__trigger:hover {
+  color: var(--color-text-strong);
+}
+
+.tabs__trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tabs__trigger[aria-selected="true"] {
+  color: var(--color-text-strong);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ── Variante padrão: sublinhado deslizante ── */
+.tabs__list {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tabs__trigger::after {
+  content: '';
+  position: absolute;
+  left: var(--space-lg);
+  right: var(--space-lg);
+  bottom: -1px;
+  height: 2px;
+  background-color: transparent;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+}
+
+.tabs__trigger[aria-selected="true"]::after {
+  background-color: var(--color-text-strong);
+}
+
+/* ── Variante: --pill (fundo em cápsula sólida) ── */
+.tabs--pill .tabs__list {
+  border-bottom: none;
+  background-color: var(--color-background-alt);
+  padding: var(--space-xs);
+  border-radius: var(--radius-lg);
+  gap: 0;
+}
+
+.tabs--pill .tabs__trigger::after {
+  display: none;
+}
+
+.tabs--pill .tabs__trigger[aria-selected="true"] {
+  background-color: var(--color-background);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border-radius: var(--radius-md);
+}
+
+/* ── Painéis ── */
+.tabs__panel {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+}
+
+.tabs__panel[hidden] {
+  display: none;
+}
+
+.tabs__panel:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.tabs__panel-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-sm);
+}

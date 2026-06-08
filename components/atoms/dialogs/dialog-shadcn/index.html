@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialog — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+  <style>
+    /* ── Demo page only — não copie para produção ── */
+    body {
+      padding: var(--space-3xl) var(--space-xl);
+      background-color: var(--color-background-alt);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
+
+    .demo-section {
+      width: 100%;
+      max-width: 640px;
+      text-align: center;
+    }
+
+    .demo-section__title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-block-end: var(--space-lg);
+    }
+
+    .demo-row {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Dialog</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="dialog-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Confirmação
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-confirmacao">
+    <p class="demo-section__title" id="title-confirmacao">Confirmação</p>
+
+    <div class="demo-row">
+      <button class="button button--filled button--md dialog-demo__trigger" type="button" data-dialog-target="dialog-confirm">Excluir conta</button>
+    </div>
+
+    <dialog class="dialog" id="dialog-confirm" aria-labelledby="dialog-confirm-title" aria-describedby="dialog-confirm-desc">
+      <div class="dialog__header">
+        <div>
+          <h2 class="dialog__title" id="dialog-confirm-title">Excluir esta conta?</h2>
+          <p class="dialog__description" id="dialog-confirm-desc">Essa ação não pode ser desfeita. Todos os dados, projetos e integrações associados serão removidos permanentemente.</p>
+        </div>
+        <button class="dialog__close" type="button" data-dialog-close aria-label="Fechar">
+          <svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#dialog-icon-close"/></svg>
+        </button>
+      </div>
+      <div class="dialog__footer">
+        <button class="button button--outline button--sm" type="button" data-dialog-close>Cancelar</button>
+        <button class="button button--filled button--sm" type="button" data-dialog-close>Sim, excluir</button>
+      </div>
+    </dialog>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Formulário
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-formulario">
+    <p class="demo-section__title" id="title-formulario">Formulário</p>
+
+    <div class="demo-row">
+      <button class="button button--outline button--md dialog-demo__trigger" type="button" data-dialog-target="dialog-form">Convidar pessoa</button>
+    </div>
+
+    <dialog class="dialog" id="dialog-form" aria-labelledby="dialog-form-title" aria-describedby="dialog-form-desc">
+      <div class="dialog__header">
+        <div>
+          <h2 class="dialog__title" id="dialog-form-title">Convidar para a equipe</h2>
+          <p class="dialog__description" id="dialog-form-desc">Enviamos um link de acesso por e-mail, válido por 7 dias.</p>
+        </div>
+        <button class="dialog__close" type="button" data-dialog-close aria-label="Fechar">
+          <svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#dialog-icon-close"/></svg>
+        </button>
+      </div>
+      <form class="dialog__body" method="dialog">
+        <div class="dialog__field">
+          <label for="dialog-form-nome">Nome</label>
+          <input type="text" id="dialog-form-nome" name="nome" placeholder="Maria Souza" required>
+        </div>
+        <div class="dialog__field">
+          <label for="dialog-form-email">E-mail</label>
+          <input type="email" id="dialog-form-email" name="email" placeholder="maria@empresa.com" required>
+        </div>
+      </form>
+      <div class="dialog__footer">
+        <button class="button button--outline button--sm" type="button" data-dialog-close>Cancelar</button>
+        <button class="button button--filled button--sm" type="button" data-dialog-close>Enviar convite</button>
+      </div>
+    </dialog>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

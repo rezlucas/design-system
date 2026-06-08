@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badge — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+  <style>
+    /* ── Demo page only — não copie para produção ── */
+    body {
+      padding: var(--space-3xl) var(--space-xl);
+      background-color: var(--color-background-alt);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
+
+    .demo-section {
+      width: 100%;
+      max-width: 640px;
+      background-color: var(--color-background);
+      padding: var(--space-xl);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+    }
+
+    .demo-section__title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-block-end: var(--space-lg);
+    }
+
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .demo-row + .demo-row {
+      margin-block-start: var(--space-md);
+    }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Badge</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Cores sólidas e neutras
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-cores">
+    <p class="demo-section__title" id="title-cores">Cores</p>
+
+    <div class="demo-row" role="list">
+      <span class="badge badge--default">Novo</span>
+      <span class="badge badge--secondary">Beta</span>
+      <span class="badge badge--outline">Rascunho</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Estados com indicador
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-estados">
+    <p class="demo-section__title" id="title-estados">Estados</p>
+
+    <div class="demo-row" role="list">
+      <span class="badge badge--success"><span class="badge__dot" aria-hidden="true"></span>Ativo</span>
+      <span class="badge badge--warning"><span class="badge__dot" aria-hidden="true"></span>Pendente</span>
+      <span class="badge badge--error"><span class="badge__dot" aria-hidden="true"></span>Falhou</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Em contexto (cards / listas)
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-contexto">
+    <p class="demo-section__title" id="title-contexto">Em contexto</p>
+
+    <div class="demo-row" style="justify-content: space-between; width: 100%;">
+      <div>
+        <strong style="font-size: var(--font-size-sm); color: var(--color-text-strong);">Plano Pro</strong>
+        <span style="display:block; font-size: var(--font-size-xs); color: var(--color-text-muted);">Cobrança mensal · 12 usuários</span>
+      </div>
+      <span class="badge badge--default">Mais popular</span>
+    </div>
+
+    <div class="demo-row" style="justify-content: space-between; width: 100%;">
+      <div>
+        <strong style="font-size: var(--font-size-sm); color: var(--color-text-strong);">Integração com Slack</strong>
+        <span style="display:block; font-size: var(--font-size-xs); color: var(--color-text-muted);">Notificações automáticas em canais</span>
+      </div>
+      <span class="badge badge--success"><span class="badge__dot" aria-hidden="true"></span>Conectado</span>
+    </div>
+  </section>
+
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

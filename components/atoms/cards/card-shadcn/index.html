@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="../../../atoms/badges/badge-shadcn/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+  <style>
+    /* ── Demo page only — não copie para produção ── */
+    body {
+      padding: var(--space-3xl) var(--space-xl);
+      background-color: var(--color-background-alt);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
+
+    .demo-section {
+      width: 100%;
+      max-width: 880px;
+    }
+
+    .demo-section__title {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-wider);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-block-end: var(--space-lg);
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    @media (min-width: 640px) {
+      .demo-grid--3 { grid-template-columns: repeat(3, 1fr); }
+      .demo-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .card .button { width: auto; }
+  </style>
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Card</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <!-- DS reutilizável via <use> -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="card-icon-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/>
+    </symbol>
+    <symbol id="card-icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="card-icon-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </symbol>
+    <symbol id="card-icon-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 1 — Com mídia, conteúdo e ação
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-midia">
+    <p class="demo-section__title" id="title-midia">Com mídia e ação</p>
+
+    <div class="demo-grid demo-grid--3">
+
+      <article class="card">
+        <div class="card__media" aria-hidden="true"><svg width="32" height="32"><use href="#card-icon-image"/></svg></div>
+        <div class="card__header">
+          <h3 class="card__title">Relatório de performance</h3>
+          <p class="card__description">Resumo semanal de métricas e indicadores</p>
+        </div>
+        <div class="card__content">
+          <p>Acompanhe visitas, conversões e tempo médio de permanência consolidados num único painel exportável em PDF.</p>
+        </div>
+        <div class="card__footer">
+          <button class="button button--outline button--sm" type="button">Ver relatório</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media" aria-hidden="true"><svg width="32" height="32"><use href="#card-icon-image"/></svg></div>
+        <div class="card__header">
+          <h3 class="card__title">Onboarding guiado</h3>
+          <p class="card__description">Checklist para novos membros do time</p>
+        </div>
+        <div class="card__content">
+          <p>Defina etapas, responsáveis e prazos para que cada nova pessoa esteja produtiva já na primeira semana.</p>
+        </div>
+        <div class="card__footer">
+          <button class="button button--outline button--sm" type="button">Configurar</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media" aria-hidden="true"><svg width="32" height="32"><use href="#card-icon-image"/></svg></div>
+        <div class="card__header">
+          <h3 class="card__title">Integrações disponíveis</h3>
+          <p class="card__description">Conecte as ferramentas que seu time já usa</p>
+        </div>
+        <div class="card__content">
+          <p>Slack, Notion, Google Workspace e mais de 40 outras integrações prontas para ativar em poucos cliques.</p>
+        </div>
+        <div class="card__footer">
+          <button class="button button--outline button--sm" type="button">Explorar</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 2 — Interactive (clicável)
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-interactive">
+    <p class="demo-section__title" id="title-interactive">Interactive</p>
+
+    <div class="demo-grid demo-grid--2">
+
+      <a class="card card--interactive" href="#" style="text-decoration:none;">
+        <div class="card__header">
+          <h3 class="card__title">Documentação da API</h3>
+          <p class="card__description">Referência completa de endpoints, autenticação e exemplos de código prontos para copiar.</p>
+        </div>
+        <div class="card__footer">
+          <span class="badge badge--secondary">Atualizado</span>
+          <span style="margin-left:auto; display:inline-flex; color: var(--color-text-strong);"><svg width="18" height="18"><use href="#card-icon-arrow"/></svg></span>
+        </div>
+      </a>
+
+      <a class="card card--interactive" href="#" style="text-decoration:none;">
+        <div class="card__header">
+          <h3 class="card__title">Central de ajuda</h3>
+          <p class="card__description">Tutoriais em vídeo, perguntas frequentes e contato direto com o time de suporte.</p>
+        </div>
+        <div class="card__footer">
+          <span class="badge badge--outline">24 artigos</span>
+          <span style="margin-left:auto; display:inline-flex; color: var(--color-text-strong);"><svg width="18" height="18"><use href="#card-icon-arrow"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       VARIANT 3 — Métricas (dashboard)
+  ════════════════════════════════════ -->
+  <section class="demo-section" aria-labelledby="title-metricas">
+    <p class="demo-section__title" id="title-metricas">Métricas</p>
+
+    <div class="demo-grid demo-grid--3">
+
+      <article class="card">
+        <div class="card__header">
+          <p class="card__description">Receita recorrente mensal</p>
+        </div>
+        <div class="card__content">
+          <p class="card__stat">R$ 84.200</p>
+          <p class="card__trend card__trend--up"><svg width="14" height="14"><use href="#card-icon-up"/></svg> 12,4% vs. mês anterior</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__header">
+          <p class="card__description">Novos clientes</p>
+        </div>
+        <div class="card__content">
+          <p class="card__stat">312</p>
+          <p class="card__trend card__trend--up"><svg width="14" height="14"><use href="#card-icon-up"/></svg> 6,1% vs. mês anterior</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__header">
+          <p class="card__description">Cancelamentos</p>
+        </div>
+        <div class="card__content">
+          <p class="card__stat">18</p>
+          <p class="card__trend card__trend--down"><svg width="14" height="14"><use href="#card-icon-down"/></svg> 2,3% vs. mês anterior</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

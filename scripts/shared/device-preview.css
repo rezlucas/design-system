@@ -1,0 +1,106 @@
+/* ─────────────────────────────────────────
+   device-preview — utilitário compartilhado
+   Botões de "ver como tablet/celular" injetados na #ds-nav-bar
+   das páginas de demonstração de componentes, e overlay com
+   iframe que carrega a própria página num viewport reduzido
+   (assim os media queries do componente respondem de verdade).
+   Não faz parte de nenhum componente — não copie para produção.
+   ───────────────────────────────────────── */
+
+.dp-toolbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 22px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.dp-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.dp-btn:focus-visible {
+  outline: 2px solid #6C73F2;
+  outline-offset: 1px;
+}
+
+.dp-btn.is-active {
+  color: #fff;
+  background-color: rgba(108, 115, 242, 0.28);
+}
+
+.dp-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Overlay de prévia (cobre a área abaixo da #ds-nav-bar) ── */
+.dp-overlay {
+  position: fixed;
+  inset: 40px 0 0 0;
+  z-index: 9998;
+  background: #15141f;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(108, 115, 242, 0.12), transparent 55%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: auto;
+  padding: 40px 20px;
+}
+
+.dp-frame-wrap {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.dp-frame-label {
+  font: 500 11px/1 system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.38);
+  margin-block-end: 14px;
+}
+
+.dp-frame {
+  display: block;
+  border: 0;
+  border-radius: 22px;
+  outline: 8px solid #0c0b14;
+  outline-offset: 0;
+  box-shadow: 0 40px 100px -28px rgba(0, 0, 0, 0.7);
+  background: #fff;
+  max-width: 100%;
+}
+
+/* Recolhe o frame em telas pequenas, mantendo a proporção do device */
+@media (max-width: 460px) {
+  .dp-frame--mobile { transform: scale(0.86); transform-origin: top center; }
+}
+
+@media (max-width: 860px) {
+  .dp-frame--tablet { transform: scale(0.62); transform-origin: top center; }
+}
+
+/* Trava o scroll do documento principal enquanto a prévia está ativa */
+html.dp-is-previewing,
+html.dp-is-previewing body {
+  overflow: hidden;
+}
