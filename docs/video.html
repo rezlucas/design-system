@@ -13,6 +13,14 @@
   <link rel="stylesheet" href="docs.css">
 
   <style>
+    .vid-player {
+      width: 100%; max-width: 880px;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--ds-border);
+      background: #000;
+      box-shadow: 0 24px 64px -20px rgba(0,0,0,0.6);
+    }
+    .vid-player video { display: block; width: 100%; aspect-ratio: 16/9; }
     .vid-chapters { list-style: none; margin: 0; padding: 0; max-width: 64ch; }
     .vid-chapters li {
       display: flex; align-items: baseline; gap: 16px;
@@ -25,28 +33,9 @@
       font-family: var(--fn-mono); font-size: 11.5px; color: var(--ds-text-subtle);
       flex: none; min-width: 52px;
       padding: 3px 9px; border: 1px solid var(--ds-border); border-radius: 6px; text-align: center;
+      cursor: pointer; transition: border-color .15s, color .15s;
     }
-    .vid-notify {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
-      margin-top: 14px; padding: 16px 20px;
-      border: 1px dashed var(--ds-border); border-radius: 14px;
-      max-width: 64ch;
-    }
-    .vid-notify input {
-      flex: 1 1 220px;
-      background: var(--ds-surface); border: 1px solid var(--ds-border); border-radius: 9px;
-      padding: 10px 14px; color: var(--ds-text); font-family: var(--fn-ui); font-size: 13px; outline: none;
-    }
-    .vid-notify input::placeholder { color: var(--ds-text-subtle); }
-    .vid-notify button {
-      font-family: var(--fn-ui); font-size: 13px; font-weight: 500;
-      padding: 10px 20px; border-radius: 9px; border: 1px solid var(--ds-accent);
-      background: var(--ds-accent); color: #fff; cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .vid-notify button:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -10px rgba(108,115,242,0.55); }
-    .vid-notify__msg { width: 100%; font-family: var(--fn-mono); font-size: 11.5px; color: var(--doc-cyan); display: none; }
-    .vid-notify__msg.is-visible { display: block; }
+    .vid-chapters time:hover { border-color: var(--ds-accent); color: var(--ds-accent); }
   </style>
 </head>
 <body class="docs-body">
@@ -127,16 +116,14 @@
 
     <main class="docs-main">
       <p class="docs-kicker">Capítulo 07 · Vídeo</p>
-      <h1 class="docs-title">Tutorial em vídeo,<br><em>em gravação</em></h1>
+      <h1 class="docs-title">Tutorial em vídeo,<br><em>do zero à página publicada</em></h1>
       <p class="docs-lede">
-        Esta página está reservada para um tutorial em vídeo, mostrando o sistema em uso de ponta a ponta:
-        navegar pela biblioteca, montar uma página no Construtor e publicar o resultado. Assim que o vídeo for
-        gravado, basta substituir o player abaixo pelo embed definitivo.
+        Screencast completo mostrando o Design System de ponta a ponta: instalar, navegar pela biblioteca,
+        montar uma página no Construtor e publicar no Vercel.
       </p>
       <div class="docs-meta">
-        <span><strong>Status:</strong> aguardando gravação</span>
-        <span>Formato sugerido: <strong>screencast guiado</strong></span>
-        <span>Duração estimada: <strong>8–12 min</strong></span>
+        <span><strong>Formato:</strong> screencast guiado</span>
+        <span>Use os capítulos abaixo para navegar pelo vídeo</span>
       </div>
 
       <article class="docs-chapter" id="player">
@@ -145,21 +132,15 @@
           <h2 class="docs-chapter__title">Player</h2>
         </div>
         <div class="docs-chapter__body">
-          <div class="docs-video" role="img" aria-label="Espaço reservado para o vídeo tutorial, em gravação">
-            <div class="docs-video__grain" aria-hidden="true"></div>
-            <div class="docs-video__inner">
-              <div class="docs-video__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              <p class="docs-video__label">Em gravação</p>
-              <p class="docs-video__sub">O vídeo tutorial será incorporado aqui assim que estiver pronto</p>
-            </div>
-          </div>
-          <div class="docs-note">
-            <strong>Para quem for publicar o vídeo:</strong> troque o bloco <code>.docs-video</code> por um
-            <code>&lt;iframe&gt;</code> do YouTube/Vimeo (ou pela tag <code>&lt;video&gt;</code>, se o arquivo for
-            hospedado localmente). A largura máxima de <code>880px</code> e a proporção <code>16∶9</code> já estão
-            preparadas para encaixar sem retrabalho.
+          <div class="vid-player">
+            <video
+              controls
+              preload="metadata"
+              aria-label="Tutorial do Tegrus Design System"
+            >
+              <source src="../assets/tutorial-video/tutorial-video-ds.mp4" type="video/mp4">
+              Seu navegador não suporta reprodução de vídeo.
+            </video>
           </div>
         </div>
       </article>
@@ -167,10 +148,10 @@
       <article class="docs-chapter" id="roteiro">
         <div class="docs-chapter__head">
           <span class="docs-chapter__num">7.2</span>
-          <h2 class="docs-chapter__title">Roteiro sugerido</h2>
+          <h2 class="docs-chapter__title">Capítulos</h2>
         </div>
         <div class="docs-chapter__body">
-          <p>Uma estrutura de capítulos para guiar a gravação, cada bloco vira um marcador de tempo no player final.</p>
+          <p>Clique no tempo para pular direto para aquele trecho do vídeo.</p>
           <ul class="vid-chapters">
             <li><time>00:00</time> Abertura, o que é o Design System e quando usá-lo</li>
             <li><time>01:30</time> Tour pelo Navigator: busca, categorias, sidebar e badges</li>
@@ -180,21 +161,6 @@
             <li><time>09:30</time> Gerar o JSON e montar a página com o Claude</li>
             <li><time>11:00</time> Publicando, git push e deploy automático no Vercel</li>
           </ul>
-        </div>
-      </article>
-
-      <article class="docs-chapter" id="avisar">
-        <div class="docs-chapter__head">
-          <span class="docs-chapter__num">7.3</span>
-          <h2 class="docs-chapter__title">Quer ser avisado quando estiver pronto?</h2>
-        </div>
-        <div class="docs-chapter__body">
-          <p>Deixe seu e-mail aqui, é só um lembrete local neste navegador, não envia nada para nenhum servidor.</p>
-          <form class="vid-notify" id="vid-notify-form">
-            <input type="email" id="vid-notify-email" placeholder="seu@email.com" required>
-            <button type="submit">Avisar quando publicar</button>
-            <span class="vid-notify__msg" id="vid-notify-msg">Combinado, assim que o vídeo for ao ar, você lembra de conferir aqui. ✓</span>
-          </form>
         </div>
       </article>
 
@@ -214,8 +180,7 @@
       <p class="docs-toc__title">Nesta página</p>
       <ul class="docs-toc__list">
         <li><a href="#player">Player</a></li>
-        <li><a href="#roteiro">Roteiro sugerido</a></li>
-        <li><a href="#avisar">Avisar quando publicar</a></li>
+        <li><a href="#roteiro">Capítulos</a></li>
       </ul>
     </aside>
   </div>
@@ -224,13 +189,16 @@
   <script>
     (function () {
       'use strict';
-      var form = document.getElementById('vid-notify-form');
-      var msg = document.getElementById('vid-notify-msg');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        msg.classList.add('is-visible');
-        form.querySelector('button').setAttribute('disabled', 'true');
+      var video = document.querySelector('.vid-player video');
+      if (!video) return;
+      document.querySelectorAll('.vid-chapters time').forEach(function (t) {
+        t.addEventListener('click', function () {
+          var parts = t.textContent.trim().split(':').map(Number);
+          var secs  = parts.length === 3 ? parts[0]*3600 + parts[1]*60 + parts[2] : parts[0]*60 + parts[1];
+          video.currentTime = secs;
+          video.play();
+          video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
       });
     })();
   </script>
