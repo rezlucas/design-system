@@ -3372,6 +3372,13 @@
       '\n## Seções da página (em ordem)\n' +
       sectionLines.join('\n') + '\n' +
       '\n---\n\n' +
+      '## ⚠️ REGRA INVIOLÁVEL — leia antes de qualquer coisa\n\n' +
+      'Você está trabalhando com o **Tegrus Design System**. Isso significa:\n\n' +
+      '- **NÃO crie nenhum componente, seção ou classe CSS que não exista no JSON abaixo.**\n' +
+      '- **NÃO invente novos blocos visuais.** Use exclusivamente as seções listadas em `page`, na ordem indicada.\n' +
+      '- **NÃO altere os nomes de classe BEM originais** (ex: `.hero-saas`, `.feature-cards__card`, `.footer-full__col`). Eles devem ser copiados exatamente do HTML de referência de cada componente.\n' +
+      '- A única personalização permitida é via variáveis CSS no `:root` (cores e fontes da marca) e substituição de textos placeholder pelo copy real.\n\n' +
+      '---\n\n' +
       '## Sua tarefa: escrever o copy e montar a página\n\n' +
       '### Passo 1 — Escreva o copy de cada seção\n' +
       'Com base no tipo de negócio e na descrição acima, escreva textos reais, diretos e persuasivos para cada campo. ' +
@@ -3379,12 +3386,13 @@
       sectionBlocks.join('\n') +
       '\n### Passo 2 — Monte o HTML completo\n' +
       'Usando o JSON abaixo, crie uma landing page HTML única e autocontida. ' +
-      'Aplique o copy escrito no Passo 1 em cada seção correspondente. ' +
-      'Use as cores e fontes da marca via variáveis CSS no `:root` (--color-primary, --color-secondary, --font-heading, --font-body, etc.). ' +
-      'Regras obrigatórias: (1) Use SOMENTE os componentes do JSON — não crie componentes ou classes CSS fora do DS. ' +
-      '(2) Copie o CSS e o markup HTML exatos de cada variante, mantendo os nomes de classe BEM originais. ' +
-      '(3) Substitua imagens por gradientes CSS usando as cores da marca. ' +
-      '(4) Todo CSS em <style> no <head>, todo JS em <script> no fim do <body>. Nenhuma dependência externa além de Google Fonts.\n\n' +
+      'Aplique o copy escrito no Passo 1. Use as cores e fontes da marca via variáveis CSS no `:root`. ' +
+      'Regras técnicas obrigatórias:\n' +
+      '(1) Use SOMENTE os componentes listados em `page` — não crie seções, componentes ou classes CSS fora do Tegrus DS.\n' +
+      '(2) Para cada componente, copie o CSS e o markup HTML exatos da variante indicada (campo `variant`), lendo o arquivo de referência em `file`.\n' +
+      '(3) Mantenha todos os nomes de classe BEM originais intactos — nunca renomeie nem crie classes novas.\n' +
+      '(4) Substitua imagens por gradientes CSS usando as cores da marca.\n' +
+      '(5) Todo CSS em <style> no <head>, todo JS em <script> no fim do <body>. Nenhuma dependência externa além de Google Fonts.\n\n' +
       '```json\n' + jsonPayload + '\n```';
 
     var out  = document.getElementById('copy-prompt-output');
