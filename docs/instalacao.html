@@ -185,7 +185,7 @@
               </ul>
 
               <div class="docs-note">
-                <strong>Limitação:</strong> com o ZIP você visualiza e edita o projeto localmente, mas não consegue enviar alterações de volta ao repositório nem publicar no Vercel sem instalar o Git. Para publicar, veja a seção <a class="docs-link" href="#contribuindo">Contribuindo de volta</a> ou use a aba <strong>Linha de comando</strong>.
+                <strong>Limitação:</strong> com o ZIP você visualiza e edita o projeto localmente, mas não consegue enviar alterações de volta ao repositório nem publicar no Vercel sem instalar o Git. Para publicar, use a aba <strong>Linha de comando</strong> acima e instale o Git.
               </div>
             </div>
 
@@ -351,37 +351,6 @@
         </div>
       </article>
 
-      <article class="docs-chapter" id="contribuindo">
-        <div class="docs-chapter__head">
-          <span class="docs-chapter__num">6.4</span>
-          <h2 class="docs-chapter__title">Contribuindo de volta</h2>
-        </div>
-        <div class="docs-chapter__body">
-          <p>Depois de fazer alterações, suba as mudanças para o repositório. <strong>Esta seção requer o Git instalado</strong> — se você baixou o projeto via ZIP, veja <a class="docs-link" href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com</a> para instalar.</p>
-          <div class="docs-code">
-            <div class="docs-code__bar">
-              <span class="docs-code__label">terminal, dentro da pasta do projeto</span>
-              <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
-            </div>
-            <pre><span class="tok-comment"># Veja o que mudou</span>
-<span class="tok-cmd">git status</span>
-
-<span class="tok-comment"># Adicione os arquivos modificados</span>
-<span class="tok-cmd">git add</span> nome-do-arquivo.html
-
-<span class="tok-comment"># Crie um commit descrevendo o que foi feito</span>
-<span class="tok-cmd">git commit -m</span> <span class="tok-string">"feat: nova variante do hero-split com formulário"</span>
-
-<span class="tok-comment"># Envie para o GitHub, o Vercel publica automaticamente</span>
-<span class="tok-cmd">git push</span> origin master</pre>
-          </div>
-          <div class="docs-note docs-note--cyan">
-            <strong>Deploy automático:</strong> o Vercel está conectado ao repositório e publica qualquer push na
-            branch <code>master</code> em poucos segundos, sem passos extras.
-          </div>
-        </div>
-      </article>
-
       <div class="docs-pager">
         <a class="docs-pager__link" href="arquivos-md.html">
           <span class="docs-pager__dir">← Capítulo anterior</span>
@@ -400,7 +369,6 @@
         <li><a href="#pre-requisitos">Pré-requisitos</a></li>
         <li><a href="#clonar">Baixar e abrir</a></li>
         <li><a href="#visualizar">Visualizar localmente</a></li>
-        <li><a href="#contribuindo">Contribuindo</a></li>
       </ul>
     </aside>
   </div>

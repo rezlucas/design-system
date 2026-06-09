@@ -1108,6 +1108,9 @@
     .modal-btn:hover { color: var(--ds-text); border-color: var(--ds-border-hover); }
     .modal-btn--primary { background: var(--ds-accent); border-color: var(--ds-accent); color: #fff; }
     .modal-btn--primary:hover { background: #7a82f5; border-color: #7a82f5; }
+    .modal-btn--ai { border-color: rgba(167,139,250,.45); color: #C084FC; background: rgba(167,139,250,.08); }
+    .modal-btn--ai:hover { border-color: rgba(167,139,250,.75); background: rgba(167,139,250,.16); }
+    textarea.form-input { resize: vertical; min-height: 72px; line-height: 1.5; }
 
     /* Modal de resultado JSON */
     .ds-modal--json { max-width: 680px; }
@@ -2489,6 +2492,28 @@
       </div>
 
       <div class="form-group">
+        <label class="form-label" for="brand-business-type">Tipo de negócio</label>
+        <select class="form-select" id="brand-business-type">
+          <option value="">Selecione o tipo...</option>
+          <option value="SaaS / Software">SaaS / Software</option>
+          <option value="Agência Digital">Agência Digital</option>
+          <option value="Startup / MVP">Startup / MVP</option>
+          <option value="Consultoria / Serviços">Consultoria / Serviços</option>
+          <option value="E-commerce / Produto">E-commerce / Produto</option>
+          <option value="Saúde / Clínica">Saúde / Clínica</option>
+          <option value="Educação / Cursos online">Educação / Cursos online</option>
+          <option value="Imóveis / Construção">Imóveis / Construção</option>
+          <option value="Alimentação / Restaurante">Alimentação / Restaurante</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="brand-description">O que você oferece e para quem <em style="font-weight:400;color:var(--ds-text-subtle);font-style:normal">— 2-3 frases</em></label>
+        <textarea class="form-input" id="brand-description" rows="3" placeholder="Ex: Plataforma de gestão financeira para pequenas empresas. Ajuda donos de negócio a controlar fluxo de caixa, emitir boletos e gerar relatórios sem precisar de contador."></textarea>
+      </div>
+
+      <div class="form-group">
         <label class="form-label">Cores da marca</label>
         <div class="color-group">
           <div class="color-swatch">
@@ -2554,7 +2579,38 @@
     </div>
     <div class="ds-modal__footer">
       <button class="modal-btn" onclick="closeBrandModal()">Cancelar</button>
+      <button class="modal-btn modal-btn--ai" id="generate-copy-btn" onclick="generateCopyPrompt()">✨ Gerar Copy com IA</button>
       <button class="modal-btn modal-btn--primary" onclick="saveBrand()">Salvar Marca</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     CONSTRUTOR — Modal Gerar Copy com IA
+════════════════════════════════════════ -->
+<div class="ds-modal-overlay" id="copy-prompt-modal" role="dialog" aria-labelledby="copy-prompt-title" aria-modal="true">
+  <div class="ds-modal ds-modal--json">
+    <div class="ds-modal__header">
+      <span class="ds-modal__title" id="copy-prompt-title">✨ Prompt para IA — Copy + Página</span>
+      <button class="ds-modal__close" onclick="closeCopyPromptModal()" aria-label="Fechar">✕</button>
+    </div>
+    <div class="ds-modal__body">
+      <p style="font-family:var(--fn-ui);font-size:12.5px;color:var(--ds-text-muted);margin-bottom:14px;line-height:1.6">
+        Cole este prompt no chat do Claude Code. Ele vai escrever todo o copy para cada seção e montar a página completa com a sua marca.
+      </p>
+      <pre class="json-output" id="copy-prompt-output" aria-label="Prompt gerado"></pre>
+      <div class="json-copy-bar">
+        <span class="json-hint" id="copy-prompt-hint"></span>
+        <button class="json-copy-btn" id="copy-prompt-copy-btn" onclick="copyPromptOnly()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copiar Prompt
+        </button>
+      </div>
+    </div>
+    <div class="ds-modal__footer">
+      <button class="modal-btn" onclick="closeCopyPromptModal()">Fechar</button>
+      <button class="modal-btn modal-btn--primary" onclick="copyPromptAndClose()">Copiar e Fechar</button>
     </div>
   </div>
 </div>
@@ -2604,6 +2660,8 @@
   var jsonData = null;
   var brandData = {
     name: '',
+    businessType: '',
+    description: '',
     colors: { primary: '#2563EB', secondary: '#7C3AED', accent: '#F59E0B', background: '#FFFFFF', text: '#1E293B' },
     fonts: { heading: 'DM Serif Display', body: 'Inter' },
     copyData: {}
@@ -3080,7 +3138,9 @@
   /* ─── Modal de Marca ─── */
   window.openBrandModal = function () {
     var modal = document.getElementById('brand-modal');
-    document.getElementById('brand-name').value = brandData.name;
+    document.getElementById('brand-name').value          = brandData.name;
+    document.getElementById('brand-business-type').value = brandData.businessType || '';
+    document.getElementById('brand-description').value   = brandData.description  || '';
     ['primary','secondary','accent'].forEach(function (k) {
       var p = document.getElementById('color-' + k);
       var h = document.getElementById('hex-' + k);
@@ -3103,6 +3163,8 @@
 
   window.saveBrand = function () {
     var name = document.getElementById('brand-name').value.trim();
+    brandData.businessType = document.getElementById('brand-business-type').value;
+    brandData.description  = document.getElementById('brand-description').value.trim();
     var readColor = function (key, inputId) {
       var v = document.getElementById(inputId).value.trim();
       return /^#[0-9a-fA-F]{6}$/.test(v) ? v : brandData.colors[key];
@@ -3236,6 +3298,129 @@
   };
 
   window.copyJsonAndClose = function () { copyJson(true); };
+
+  /* ─── Gerar Copy com IA ─── */
+  var _copyPromptText = '';
+
+  window.generateCopyPrompt = function () {
+    saveBrand();
+    var selected = selectedOrder;
+    if (!selected.length) {
+      alert('Selecione ao menos uma seção no Construtor antes de gerar o copy.');
+      return;
+    }
+
+    var name = brandData.name         || 'Minha Empresa';
+    var biz  = brandData.businessType || 'Negócio';
+    var desc = brandData.description  || '';
+
+    var sectionLines  = [];
+    var sectionBlocks = [];
+    var sections      = [];
+
+    selected.forEach(function (card, i) {
+      var nameEl   = card.querySelector('.nav-card__name');
+      var descEl   = card.querySelector('.nav-card__desc');
+      var href     = card.getAttribute('href') || '';
+      var catMatch = href.match(/components\/sections\/([^/]+)\/([^/]+)\//);
+      var tplMatch = href.match(/templates\/([^/]+)\//);
+      var category = catMatch ? catMatch[1] : (tplMatch ? 'template' : 'section');
+      var slug     = catMatch ? catMatch[2] : (tplMatch ? tplMatch[1] : '');
+      var variant  = parseInt(card.dataset.selectedVariant || '1', 10);
+      var vCount   = parseInt(card.dataset.variantCount    || '1', 10);
+      var sName    = nameEl ? nameEl.textContent.trim() : 'Seção';
+      var order    = i + 1;
+      var copyKey  = order + '_' + slug;
+      var icon     = SLUG_ICON[slug] || '▸';
+
+      sectionLines.push(order + '. ' + sName + ' (Variante ' + variant + ')');
+
+      var schemaRef = SLUG_TO_SCHEMA[slug];
+      var fields    = Array.isArray(schemaRef) ? schemaRef : (COPY_SCHEMA[schemaRef] || COPY_SCHEMA['_default']);
+      var block     = icon + ' ' + order + '. ' + sName + '\n';
+      fields.forEach(function (f) { block += '  • ' + f.label + ':\n'; });
+      sectionBlocks.push(block);
+
+      sections.push({
+        order: order, component: sName,
+        description: descEl ? descEl.textContent.trim() : '',
+        category: category, slug: slug,
+        variant: variant, variantCount: vCount,
+        file: href, copy: brandData.copyData[copyKey] || {}
+      });
+    });
+
+    var jsonPayload = JSON.stringify({
+      meta: { tool: 'Tegrus Design System Builder', version: '1.0', generated: new Date().toISOString() },
+      brand: { name: name, colors: brandData.colors, fonts: brandData.fonts },
+      page: sections
+    }, null, 2);
+
+    _copyPromptText =
+      '# Briefing: Landing Page — ' + name + '\n\n' +
+      '## Empresa\n' +
+      '- **Nome:** ' + name + '\n' +
+      '- **Tipo de negócio:** ' + biz + '\n' +
+      (desc ? '- **O que oferece:** ' + desc + '\n' : '') +
+      '\n## Identidade Visual\n' +
+      '- Cor principal: ' + brandData.colors.primary    + '\n' +
+      '- Cor secundária: '+ brandData.colors.secondary  + '\n' +
+      '- Cor de destaque: '+ brandData.colors.accent    + '\n' +
+      '- Fundo: '          + brandData.colors.background+ '\n' +
+      '- Fonte de títulos: '+ brandData.fonts.heading   + '\n' +
+      '- Fonte de texto: ' + brandData.fonts.body       + '\n' +
+      '\n## Seções da página (em ordem)\n' +
+      sectionLines.join('\n') + '\n' +
+      '\n---\n\n' +
+      '## Sua tarefa: escrever o copy e montar a página\n\n' +
+      '### Passo 1 — Escreva o copy de cada seção\n' +
+      'Com base no tipo de negócio e na descrição acima, escreva textos reais, diretos e persuasivos para cada campo. ' +
+      'Adapte o tom ao público: profissional para B2B, acessível para B2C.\n\n' +
+      sectionBlocks.join('\n') +
+      '\n### Passo 2 — Monte o HTML completo\n' +
+      'Usando o JSON abaixo, crie uma landing page HTML única e autocontida. ' +
+      'Aplique o copy escrito no Passo 1 em cada seção correspondente. ' +
+      'Use as cores e fontes da marca via variáveis CSS no `:root` (--color-primary, --color-secondary, --font-heading, --font-body, etc.). ' +
+      'Regras obrigatórias: (1) Use SOMENTE os componentes do JSON — não crie componentes ou classes CSS fora do DS. ' +
+      '(2) Copie o CSS e o markup HTML exatos de cada variante, mantendo os nomes de classe BEM originais. ' +
+      '(3) Substitua imagens por gradientes CSS usando as cores da marca. ' +
+      '(4) Todo CSS em <style> no <head>, todo JS em <script> no fim do <body>. Nenhuma dependência externa além de Google Fonts.\n\n' +
+      '```json\n' + jsonPayload + '\n```';
+
+    var out  = document.getElementById('copy-prompt-output');
+    var hint = document.getElementById('copy-prompt-hint');
+    if (out)  out.textContent  = _copyPromptText;
+    if (hint) hint.textContent = selected.length + ' seções · ' + name + ' · ' + biz;
+
+    closeBrandModal();
+    document.getElementById('copy-prompt-modal').classList.add('open');
+  };
+
+  window.closeCopyPromptModal = function () {
+    document.getElementById('copy-prompt-modal').classList.remove('open');
+  };
+
+  window.copyPromptOnly = function (andClose) {
+    if (!_copyPromptText) return;
+    var btn = document.getElementById('copy-prompt-copy-btn');
+    var doFeedback = function () {
+      if (btn) { var orig = btn.innerHTML; btn.textContent = '✓ Copiado!'; setTimeout(function () { btn.innerHTML = orig; }, 2200); }
+      if (andClose) closeCopyPromptModal();
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(_copyPromptText).then(doFeedback).catch(function () {
+        var ta = document.createElement('textarea');
+        ta.value = _copyPromptText; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        doFeedback();
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = _copyPromptText; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      doFeedback();
+    }
+  };
+
+  window.copyPromptAndClose = function () { copyPromptOnly(true); };
 
   function fallbackCopy () {
     var ta = document.createElement('textarea');
