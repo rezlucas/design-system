@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instalação &amp; setup · Documentação · Tegrus Design System</title>
-  <meta name="description" content="Como clonar o Tegrus Design System na sua máquina, por linha de comando, com o Claude Code ou com o Codex, e como contribuir de volta.">
+  <meta name="description" content="Como baixar o Tegrus Design System: Download ZIP sem instalar nada, linha de comando, Claude Code ou Codex. E como publicar alterações de volta no Vercel.">
 
   <link rel="icon" type="image/png" href="../assets/images/placeholders/favicon-ds.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +29,14 @@
     @keyframes inst-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
     .inst-panel p { color: var(--ds-text-muted); font-size: 13.5px; max-width: 64ch; }
     .inst-panel h4 { font-family: var(--fn-ui); font-size: 14px; font-weight: 600; color: var(--ds-text); margin: 22px 0 8px; }
+    .inst-panel ul { color: var(--ds-text-muted); font-size: 13.5px; max-width: 64ch; padding-left: 20px; margin: 8px 0 16px; }
+    .inst-panel li + li { margin-top: 6px; }
+    .inst-panel li::marker { color: var(--ds-accent); }
+    .inst-panel kbd {
+      font-family: var(--fn-mono); font-size: 11px; color: var(--ds-text);
+      background: var(--ds-surface-2); border: 1px solid var(--ds-border-md); border-radius: 5px;
+      padding: 2px 6px; box-shadow: 0 1px 0 var(--ds-border-md);
+    }
   </style>
 </head>
 <body class="docs-body">
@@ -111,11 +119,11 @@
       <p class="docs-kicker">Capítulo 06 · Mãos à obra</p>
       <h1 class="docs-title">Coloque o projeto<br>na sua máquina <em>em minutos</em></h1>
       <p class="docs-lede">
-        Não há instalação de dependências nem processo de build. Basta clonar o repositório e abrir o
+        Não há instalação de dependências nem processo de build. Basta baixar o repositório e abrir o
         <code>index.html</code> no navegador. Escolha abaixo o caminho que combina com você.
       </p>
       <div class="docs-meta">
-        <span><strong>Git</strong> é o único pré-requisito real</span>
+        <span>Nenhum pré-requisito obrigatório</span>
         <span>Opcional: <strong>VS Code</strong> + Live Server</span>
         <span>Deploy automático via <strong>Vercel</strong></span>
       </div>
@@ -127,9 +135,9 @@
         </div>
         <div class="docs-chapter__body">
           <ul>
-            <li><strong>Git</strong> instalado, <a class="docs-link" href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com</a></li>
             <li>Um navegador moderno: Chrome, Firefox, Edge ou Safari</li>
             <li>Opcional: <strong>VS Code</strong>, para editar os arquivos com conforto</li>
+            <li>Opcional: <strong>Git</strong> (<a class="docs-link" href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com</a>), necessário apenas para enviar alterações de volta ao repositório e publicar no Vercel</li>
           </ul>
         </div>
       </article>
@@ -137,21 +145,52 @@
       <article class="docs-chapter" id="clonar">
         <div class="docs-chapter__head">
           <span class="docs-chapter__num">6.2</span>
-          <h2 class="docs-chapter__title">Escolha como clonar e abrir</h2>
+          <h2 class="docs-chapter__title">Escolha como baixar e abrir</h2>
         </div>
         <div class="docs-chapter__body">
-          <p>As três opções chegam ao mesmo lugar, a diferença é o quanto de ajuda de IA você quer logo de cara.</p>
+          <p>Todas as opções chegam ao mesmo lugar, a diferença é o quanto de ajuda de IA você quer logo de cara e se precisa enviar alterações de volta ao repositório.</p>
 
           <div class="inst-tabs" role="tablist" aria-label="Métodos de instalação">
-            <button class="inst-tab is-active" data-tab="cli" role="tab" aria-selected="true">→ Linha de comando</button>
+            <button class="inst-tab is-active" data-tab="zip" role="tab" aria-selected="true">→ Download ZIP (mais simples)</button>
+            <button class="inst-tab" data-tab="cli" role="tab" aria-selected="false">→ Linha de comando</button>
             <button class="inst-tab" data-tab="claude" role="tab" aria-selected="false">→ Claude Code (recomendado)</button>
+            <button class="inst-tab" data-tab="vscode" role="tab" aria-selected="false">→ Claude Code no VS Code</button>
             <button class="inst-tab" data-tab="codex" role="tab" aria-selected="false">→ Codex (OpenAI)</button>
           </div>
 
           <div class="inst-panels">
 
+            <!-- Download ZIP -->
+            <div class="inst-panel is-active" data-panel="zip">
+              <p>A forma mais rápida, sem precisar instalar nenhuma ferramenta. Ideal para visualizar os componentes e criar páginas com a ajuda do Claude Code no VS Code, sem configurar o terminal.</p>
+
+              <h4>1 · Baixe o projeto</h4>
+              <ul>
+                <li>Acesse <a class="docs-link" href="https://github.com/rezlucas/design-system" target="_blank" rel="noopener">github.com/rezlucas/design-system</a> no navegador</li>
+                <li>Clique no botão verde <strong>Code</strong> e depois em <strong>Download ZIP</strong></li>
+                <li>O arquivo <code>design-system-master.zip</code> vai para a sua pasta de Downloads</li>
+              </ul>
+
+              <h4>2 · Extraia a pasta</h4>
+              <ul>
+                <li><strong>Windows:</strong> clique com o botão direito no ZIP → <strong>Extrair tudo</strong></li>
+                <li><strong>Mac:</strong> clique duas vezes no ZIP — ele extrai automaticamente</li>
+              </ul>
+
+              <h4>3 · Abra no VS Code e navegue</h4>
+              <ul>
+                <li>No VS Code: <strong>File → Open Folder</strong> → selecione a pasta <code>design-system-master</code></li>
+                <li>Instale a extensão <a class="docs-link" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank" rel="noopener">Live Server</a>, clique com o botão direito no <code>index.html</code> e escolha <strong>Open with Live Server</strong></li>
+                <li>Ou simplesmente arraste o <code>index.html</code> para uma janela do Chrome</li>
+              </ul>
+
+              <div class="docs-note">
+                <strong>Limitação:</strong> com o ZIP você visualiza e edita o projeto localmente, mas não consegue enviar alterações de volta ao repositório nem publicar no Vercel sem instalar o Git. Para publicar, veja a seção <a class="docs-link" href="#contribuindo">Contribuindo de volta</a> ou use a aba <strong>Linha de comando</strong>.
+              </div>
+            </div>
+
             <!-- CLI -->
-            <div class="inst-panel is-active" data-panel="cli">
+            <div class="inst-panel" data-panel="cli">
               <p>Abra o terminal (PowerShell no Windows, Terminal no Mac/Linux) e execute:</p>
               <div class="docs-code">
                 <div class="docs-code__bar">
@@ -223,6 +262,38 @@
               </div>
             </div>
 
+            <!-- Claude Code via extensão do VS Code -->
+            <div class="inst-panel" data-panel="vscode">
+              <p>Prefere não sair do editor? O Claude Code também roda direto dentro do VS Code (ou forks como Cursor e Windsurf), como uma extensão com painel próprio, sem precisar abrir um terminal separado.</p>
+
+              <h4>1 · Instale a extensão</h4>
+              <ul>
+                <li>Abra a aba <strong>Extensões</strong> no VS Code (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>)</li>
+                <li>Busque por <strong>"Claude Code"</strong> (publicada pela Anthropic) e clique em <strong>Install</strong></li>
+                <li>Ou instale pela linha de comando, se preferir:</li>
+              </ul>
+              <div class="docs-code">
+                <div class="docs-code__bar">
+                  <span class="docs-code__label">terminal</span>
+                  <button class="docs-code__copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copiar</button>
+                </div>
+                <pre><span class="tok-cmd">code --install-extension</span> anthropic.claude-code</pre>
+              </div>
+
+              <h4>2 · Abra o projeto e inicie o painel</h4>
+              <ul>
+                <li>Em <strong>File → Open Folder</strong>, selecione a pasta do <code>design-system</code> (clonada ou extraída do ZIP)</li>
+                <li>Abra o painel do Claude Code pelo ícone na barra lateral, ou pelo atalho <kbd>Ctrl</kbd> + <kbd>Esc</kbd></li>
+                <li>Na primeira vez, ele vai pedir para autenticar com sua conta Anthropic, basta seguir o fluxo pelo navegador</li>
+              </ul>
+
+              <h4>3 · Use direto da interface</h4>
+              <p>O painel lê <code>CLAUDE.md → AGENTS.md → CONTEXT.md</code> automaticamente, igual ao terminal, e mostra os arquivos editados, diffs e comandos em uma interface visual. Você pode selecionar um trecho de código no editor e perguntar sobre ele, pedir alterações ou abrir novas páginas, sempre conversando em português.</p>
+              <div class="docs-note">
+                <strong>Dica:</strong> a extensão e a versão de terminal compartilham a mesma conta e o mesmo histórico de sessões, então você pode alternar entre editor e linha de comando sem perder contexto.
+              </div>
+            </div>
+
             <!-- Codex -->
             <div class="inst-panel" data-panel="codex">
               <p>O Codex CLI lê <code>AGENTS.md</code> automaticamente ao entrar na pasta do projeto, mesmo comportamento e convenções do Claude Code.</p>
@@ -286,7 +357,7 @@
           <h2 class="docs-chapter__title">Contribuindo de volta</h2>
         </div>
         <div class="docs-chapter__body">
-          <p>Depois de fazer alterações, suba as mudanças para o repositório:</p>
+          <p>Depois de fazer alterações, suba as mudanças para o repositório. <strong>Esta seção requer o Git instalado</strong> — se você baixou o projeto via ZIP, veja <a class="docs-link" href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com</a> para instalar.</p>
           <div class="docs-code">
             <div class="docs-code__bar">
               <span class="docs-code__label">terminal, dentro da pasta do projeto</span>
@@ -327,7 +398,7 @@
       <p class="docs-toc__title">Nesta página</p>
       <ul class="docs-toc__list">
         <li><a href="#pre-requisitos">Pré-requisitos</a></li>
-        <li><a href="#clonar">Clonar e abrir</a></li>
+        <li><a href="#clonar">Baixar e abrir</a></li>
         <li><a href="#visualizar">Visualizar localmente</a></li>
         <li><a href="#contribuindo">Contribuindo</a></li>
       </ul>
