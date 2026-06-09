@@ -2626,17 +2626,16 @@
       <button class="ds-modal__close" onclick="closeJsonModal()" aria-label="Fechar">✕</button>
     </div>
     <div class="ds-modal__body">
-      <pre class="json-output" id="json-output" aria-label="JSON gerado"></pre>
+      <pre class="json-output" id="json-output" aria-label="Prompt completo para o Claude"></pre>
       <div class="json-copy-bar">
         <span class="json-hint" id="json-sections-count"></span>
         <button class="json-copy-btn" id="json-copy-btn" onclick="copyJson()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copiar JSON
+          Copiar tudo
         </button>
       </div>
       <div class="json-instructions">
-        <strong>Como usar:</strong> Copie o JSON e cole no chat do Claude com a mensagem abaixo:<br>
-        <em>"Crie um arquivo HTML único e auto-contido usando este JSON do Design System Tegrus. Regras obrigatórias: (1) Use SOMENTE os componentes listados em `page` — não crie componentes, seções ou classes CSS que não existam no DS. (2) Para cada componente, copie o CSS e o markup HTML exatos da variante indicada, mantendo todos os nomes de classe BEM originais (ex: `.header-simple`, `.hero-background__media`, `.feature-cards__card`, etc.). (3) Aplique a marca via variáveis CSS no `:root` (--color-primary, --color-secondary, --font-heading, --font-body, etc.) — nunca via estilos inline ou classes novas. (4) Substitua imagens por gradientes CSS usando as cores da marca. (5) Todo CSS em &lt;style&gt; no &lt;head&gt;, todo JS em &lt;script&gt; no fim do &lt;body&gt;. Nenhuma dependência externa além de Google Fonts."</em>
+        <strong>Pronto.</strong> Cole diretamente no chat do Claude Code — a instrução e o JSON já estão juntos no texto acima.
       </div>
     </div>
     <div class="ds-modal__footer">
@@ -3264,7 +3263,9 @@
       instructions: 'Crie uma landing page HTML/CSS completa e autocontida usando as seções do Design System Tegrus listadas em "page", na ordem indicada. Para cada seção: (1) implemente exatamente a variante do campo "variant" (veja o HTML de referência no campo "file"); (2) use os textos do campo "copy" de cada seção para preencher os textos reais — substitua todos os placeholders pelo copy fornecido. Use as cores de "brand.colors" e as fontes de "brand.fonts" em todo o projeto. O resultado deve ser um único arquivo HTML com todo o CSS incorporado em <style>.'
     };
 
-    jsonData = JSON.stringify(payload, null, 2);
+    var jsonRaw = JSON.stringify(payload, null, 2);
+    var instruction = 'Crie um arquivo HTML único e auto-contido usando este JSON do Design System Tegrus. Regras obrigatórias: (1) Use SOMENTE os componentes listados em `page` — não crie componentes, seções ou classes CSS que não existam no DS. (2) Para cada componente, copie o CSS e o markup HTML exatos da variante indicada, mantendo todos os nomes de classe BEM originais (ex: `.header-simple`, `.hero-background__media`, `.feature-cards__card`, etc.). (3) Aplique a marca via variáveis CSS no `:root` (--color-primary, --color-secondary, --font-heading, --font-body, etc.) — nunca via estilos inline ou classes novas. (4) Substitua imagens por gradientes CSS usando as cores da marca. (5) Todo CSS em <style> no <head>, todo JS em <script> no fim do <body>. Nenhuma dependência externa além de Google Fonts.\n\n';
+    jsonData = instruction + jsonRaw;
 
     var out = document.getElementById('json-output');
     if (out) out.textContent = jsonData;
