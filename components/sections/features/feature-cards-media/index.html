@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Cards Media — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Feature Cards Media</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </symbol>
+    <symbol id="icon-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="12" rx="1.5"/>
+      <path d="M2 20h20"/>
+    </symbol>
+    <symbol id="icon-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 7.04 4.29l.06.06A1.65 1.65 0 0 0 8.92 4.7H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.3 9c.14.36.36.69.65.96.29.27.62.49.98.65V11a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+    </symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v5l3 3"/>
+    </symbol>
+    <symbol id="icon-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/>
+      <path d="M14 2v6h6M9 13h6M9 17h6"/>
+    </symbol>
+    <symbol id="icon-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0"/>
+      <line x1="12" y1="20" x2="12.01" y2="20"/>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+    </symbol>
+    <symbol id="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.4 8.5 8.5 0 0 1-4-1L3 20l1.1-3.3A8.5 8.5 0 1 1 21 11.5Z"/>
+    </symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21l7.78-7.55 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/>
+    </symbol>
+    <symbol id="icon-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v10M9.5 9.5c0-1.1 1.1-2 2.5-2s2.5.9 2.5 2-1.1 2-2.5 2-2.5.9-2.5 2 1.1 2 2.5 2 2.5-.9 2.5-2"/>
+    </symbol>
+    <symbol id="icon-percent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="19" y1="5" x2="5" y2="19"/>
+      <circle cx="6.5" cy="6.5" r="2.5"/>
+      <circle cx="17.5" cy="17.5" r="2.5"/>
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="20" x2="12" y2="10"/>
+      <line x1="18" y1="20" x2="18" y2="4"/>
+      <line x1="6" y1="20" x2="6" y2="16"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════ feature-cards-media — grade 2x2 de cards com imagem ao lado do conteúdo ═══════════ -->
+
+  <section class="feature-cards-media" aria-labelledby="fcm-title">
+    <div class="container">
+
+      <div class="feature-cards-media__header">
+        <span class="feature-cards-media__eyebrow">Por que escolher a gente?</span>
+        <h2 class="feature-cards-media__title" id="fcm-title">
+          Tudo que seu negócio precisa em um só lugar
+        </h2>
+        <p class="feature-cards-media__description">
+          Soluções completas, pensadas para simplificar o seu dia a dia e gerar
+          resultados reais para o seu negócio.
+        </p>
+      </div>
+
+      <ul class="feature-cards-media__grid" role="list">
+
+        <!-- Card 1 -->
+        <li class="feature-cards-media__card">
+          <div class="feature-cards-media__media">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt="painel digital com gráficos e indicadores em um notebook"
+              width="400" height="300"
+              loading="lazy" decoding="async"
+            >
+          </div>
+          <div class="feature-cards-media__content">
+            <h3 class="feature-cards-media__card-title">Gestão Completa</h3>
+            <ul class="feature-cards-media__list">
+              <li><svg aria-hidden="true"><use href="#icon-laptop"/></svg>Acesso 100% digital</li>
+              <li><svg aria-hidden="true"><use href="#icon-gear"/></svg>Processos automatizados</li>
+              <li><svg aria-hidden="true"><use href="#icon-lock"/></svg>Dados seguros na nuvem</li>
+            </ul>
+            <a href="#" class="button button--link button--md feature-cards-media__cta">
+              Solicitar orçamento
+              <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+            </a>
+          </div>
+        </li>
+
+        <!-- Card 2 -->
+        <li class="feature-cards-media__card">
+          <div class="feature-cards-media__media">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt="mãos digitando em notebook com ícones de checklist sobrepostos"
+              width="400" height="300"
+              loading="lazy" decoding="async"
+            >
+          </div>
+          <div class="feature-cards-media__content">
+            <h3 class="feature-cards-media__card-title">Processos Simplificados</h3>
+            <ul class="feature-cards-media__list">
+              <li><svg aria-hidden="true"><use href="#icon-clock"/></svg>Resposta em até 48h</li>
+              <li><svg aria-hidden="true"><use href="#icon-doc"/></svg>Documentação incluída</li>
+              <li><svg aria-hidden="true"><use href="#icon-wifi"/></svg>Processo 100% online</li>
+            </ul>
+            <a href="#" class="button button--link button--md feature-cards-media__cta">
+              Solicitar orçamento
+              <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+            </a>
+          </div>
+        </li>
+
+        <!-- Card 3 -->
+        <li class="feature-cards-media__card">
+          <div class="feature-cards-media__media">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt="equipe de atendimento sorrindo"
+              width="400" height="300"
+              loading="lazy" decoding="async"
+            >
+          </div>
+          <div class="feature-cards-media__content">
+            <h3 class="feature-cards-media__card-title">Atendimento Próximo</h3>
+            <ul class="feature-cards-media__list">
+              <li><svg aria-hidden="true"><use href="#icon-users"/></svg>Time dedicado ao seu negócio</li>
+              <li><svg aria-hidden="true"><use href="#icon-chat"/></svg>Respostas rápidas e claras</li>
+              <li><svg aria-hidden="true"><use href="#icon-heart"/></svg>Relacionamento próximo</li>
+            </ul>
+            <a href="#" class="button button--link button--md feature-cards-media__cta">
+              Solicitar orçamento
+              <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+            </a>
+          </div>
+        </li>
+
+        <!-- Card 4 -->
+        <li class="feature-cards-media__card">
+          <div class="feature-cards-media__media">
+            <img
+              src="../../../../assets/images/placeholders/placeholder-image.png"
+              alt="pessoa segurando dinheiro próximo a um notebook"
+              width="400" height="300"
+              loading="lazy" decoding="async"
+            >
+          </div>
+          <div class="feature-cards-media__content">
+            <h3 class="feature-cards-media__card-title">Resultados Financeiros</h3>
+            <ul class="feature-cards-media__list">
+              <li><svg aria-hidden="true"><use href="#icon-coin"/></svg>Pague apenas o necessário</li>
+              <li><svg aria-hidden="true"><use href="#icon-percent"/></svg>Melhor enquadramento</li>
+              <li><svg aria-hidden="true"><use href="#icon-chart"/></svg>Planejamento inteligente</li>
+            </ul>
+            <a href="#" class="button button--link button--md feature-cards-media__cta">
+              Solicitar orçamento
+              <svg class="button__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+            </a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

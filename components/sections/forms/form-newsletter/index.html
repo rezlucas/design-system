@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Newsletter — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Form Newsletter</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════ form-newsletter ═══════════════════════════════ -->
+
+  <section class="form-newsletter" aria-labelledby="fn-title">
+    <div class="container">
+      <div class="form-newsletter__inner">
+        <span class="form-newsletter__icon" aria-hidden="true"><svg><use href="#icon-mail"/></svg></span>
+        <h2 class="form-newsletter__title" id="fn-title">Receba novidades direto no seu e-mail</h2>
+        <p class="form-newsletter__description">
+          Conteúdo sobre o produto, bastidores e lançamentos. Sem spam, cancele quando quiser.
+        </p>
+
+        <form class="form-newsletter__form" novalidate>
+          <label class="sr-only" for="fn-email">E-mail</label>
+          <input class="form-newsletter__field" type="email" id="fn-email" name="email" placeholder="seu@email.com" autocomplete="email" required>
+          <button class="button button--filled button--lg button--inverse form-newsletter__submit" type="submit">Quero receber</button>
+        </form>
+
+        <p class="form-newsletter__legal">
+          Ao se inscrever, você concorda com nossa <a href="#">Política de Privacidade</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

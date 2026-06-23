@@ -1,0 +1,166 @@
+/* ─────────────────────────────────────────
+   feature-cards-media — section
+   Header (eyebrow + título + descrição) acima
+   + grade de cards com imagem ao lado do conteúdo
+   (ícone + título + checklist + link).
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST
+═══════════════════════════════════════ */
+
+.feature-cards-media {
+  background-color: var(--color-background);
+  padding-block: var(--space-3xl);
+}
+
+/* ── Header (centralizado) ── */
+.feature-cards-media__header {
+  text-align: center;
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-block-end: var(--space-3xl);
+}
+
+.feature-cards-media__eyebrow {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  margin-block-end: var(--space-md);
+}
+
+.feature-cards-media__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-md);
+}
+
+.feature-cards-media__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+}
+
+/* ── Grid de cards ── */
+.feature-cards-media__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+/* ── Card ── */
+.feature-cards-media__card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-background-alt);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.feature-cards-media__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Imagem do card */
+.feature-cards-media__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+
+.feature-cards-media__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Conteúdo do card (ícone + título + lista + link) */
+.feature-cards-media__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+}
+
+.feature-cards-media__card-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+}
+
+.feature-cards-media__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.feature-cards-media__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-body);
+}
+
+.feature-cards-media__list svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.feature-cards-media__cta {
+  margin-top: var(--space-xs);
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET (640px+) — card vira linha (imagem ao lado do conteúdo)
+═══════════════════════════════════════ */
+@media (min-width: 640px) {
+  .feature-cards-media__card {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .feature-cards-media__media {
+    flex: 0 0 40%;
+    aspect-ratio: auto;
+  }
+
+  .feature-cards-media__content {
+    flex: 1;
+    justify-content: center;
+    padding: var(--space-2xl);
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (900px+) — 2 cards por linha
+═══════════════════════════════════════ */
+@media (min-width: 900px) {
+  .feature-cards-media {
+    padding-block: var(--space-4xl);
+  }
+
+  .feature-cards-media__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl);
+  }
+}

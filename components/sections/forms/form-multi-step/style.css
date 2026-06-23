@@ -1,0 +1,153 @@
+/* ─────────────────────────────────────────
+   form-multi-step — section
+   Card centralizado com formulário dividido em
+   etapas (1 pergunta/grupo por vez) + barra de
+   progresso. Inspirado no padrão conversacional
+   de formulários do Typeform.
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST
+═══════════════════════════════════════ */
+
+.form-multi-step {
+  background-color: var(--color-background-alt);
+  padding-block: var(--space-3xl);
+}
+
+.form-multi-step__card {
+  max-width: 560px;
+  margin-inline: auto;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-xl);
+}
+
+/* ── Progresso ── */
+.form-multi-step__progress {
+  margin-block-end: var(--space-xl);
+}
+
+.form-multi-step__progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-sm);
+}
+
+.form-multi-step__progress-label span:last-child {
+  color: var(--color-primary);
+}
+
+.form-multi-step__progress-track {
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+
+.form-multi-step__progress-fill {
+  height: 100%;
+  width: 33.33%;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* ── Etapas ── */
+.form-multi-step__step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  animation: fms-fade-in 0.25s ease;
+}
+
+.form-multi-step__step[hidden] {
+  display: none;
+}
+
+@keyframes fms-fade-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.form-multi-step__step-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+}
+
+.form-multi-step__step-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-xs);
+}
+
+.form-multi-step__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  margin-block-start: var(--space-md);
+}
+
+.form-multi-step__actions--end {
+  justify-content: flex-end;
+}
+
+/* ── Tela de sucesso ── */
+.form-multi-step__success {
+  text-align: center;
+  padding-block: var(--space-lg);
+}
+
+.form-multi-step__success[hidden] {
+  display: none;
+}
+
+.form-multi-step__success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  margin-block-end: var(--space-lg);
+}
+
+.form-multi-step__success-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.form-multi-step__success-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-sm);
+}
+
+.form-multi-step__success-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-body);
+}
+
+
+/* ═══════════════════════════════════════
+   TABLET (560px+)
+═══════════════════════════════════════ */
+@media (min-width: 560px) {
+  .form-multi-step__card {
+    padding: var(--space-2xl);
+  }
+}

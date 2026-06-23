@@ -1,0 +1,245 @@
+/* ─────────────────────────────────────────
+   input-field — atom
+   Campos   : text | email | textarea | select
+   Variantes: input-check (checkbox) | input-radio (radio)
+   Estados  : hover | focus-visible | invalid | disabled
+   Inspirado no padrão de formulários minimalistas
+   (Stripe Elements, Linear): borda fina, foco com
+   anel suave, label sempre acima do campo.
+   ───────────────────────────────────────── */
+
+/* ── Wrapper ── */
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+.input-field__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+}
+
+.input-field__optional {
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-subtle);
+}
+
+/* ── Campo (input / textarea / select) ── */
+.input-field__control {
+  width: 100%;
+  min-height: 48px;
+  padding-inline: var(--space-md);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-strong);
+  background-color: var(--color-background);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-field__control::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.input-field__control:hover {
+  border-color: var(--color-border-strong);
+}
+
+.input-field__control:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.input-field__control:disabled {
+  background-color: var(--color-background-alt);
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+textarea.input-field__control {
+  min-height: 128px;
+  padding-block: var(--space-md);
+  line-height: var(--line-height-relaxed);
+  resize: vertical;
+}
+
+select.input-field__control {
+  appearance: none;
+  padding-right: var(--space-2xl);
+  background-repeat: no-repeat;
+  background-position: right var(--space-md) center;
+  background-size: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  cursor: pointer;
+}
+
+/* ── Texto de apoio / erro ── */
+.input-field__hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.input-field__error {
+  display: none;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+}
+
+.input-field__error svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Estado inválido ── */
+.input-field--invalid .input-field__control {
+  border-color: var(--color-error);
+}
+
+.input-field--invalid .input-field__control:focus-visible {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.input-field--invalid .input-field__hint {
+  display: none;
+}
+
+.input-field--invalid .input-field__error {
+  display: flex;
+}
+
+/* ─────────────────────────────────────────
+   Checkbox — input-check
+   ───────────────────────────────────────── */
+.input-check {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-body);
+  cursor: pointer;
+}
+
+.input-check__input {
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.input-check__box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-block-start: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-background);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.input-check__box svg {
+  width: 13px;
+  height: 13px;
+  color: var(--color-text-inverse);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.input-check__input:checked ~ .input-check__box {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input-check__input:checked ~ .input-check__box svg {
+  opacity: 1;
+}
+
+.input-check__input:focus-visible ~ .input-check__box {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────
+   Radio — input-radio
+   ───────────────────────────────────────── */
+.input-radio {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-body);
+  cursor: pointer;
+}
+
+.input-radio__input {
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.input-radio__box {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-block-start: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  background-color: var(--color-background);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.input-radio__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-inverse);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.input-radio__input:checked ~ .input-radio__box {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input-radio__input:checked ~ .input-radio__box .input-radio__dot {
+  opacity: 1;
+}
+
+.input-radio__input:focus-visible ~ .input-radio__box {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Grupo de opções (checkbox/radio em lista) ── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}

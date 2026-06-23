@@ -1,0 +1,155 @@
+/* ─────────────────────────────────────────
+   form-lead-capture — section
+   2 colunas: copy + benefícios (esq.) e
+   card de formulário elevado (dir.).
+   Inspirado em landing pages de geração de leads
+   B2B (HubSpot, Unbounce): card com sombra forte
+   destacado sobre fundo neutro.
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST
+═══════════════════════════════════════ */
+
+.form-lead-capture {
+  background-color: var(--color-background);
+  padding-block: var(--space-3xl);
+}
+
+.form-lead-capture__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+/* ── Copy ── */
+.form-lead-capture__eyebrow {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-block-end: var(--space-md);
+}
+
+.form-lead-capture__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-md);
+}
+
+.form-lead-capture__description {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  margin-block-end: var(--space-xl);
+}
+
+.form-lead-capture__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-block-end: var(--space-xl);
+}
+
+.form-lead-capture__benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--font-size-base);
+  color: var(--color-text-body);
+}
+
+.form-lead-capture__benefits svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--color-success);
+  margin-block-start: 1px;
+}
+
+.form-lead-capture__proof {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.form-lead-capture__avatars {
+  display: flex;
+}
+
+.form-lead-capture__avatars img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-background);
+  object-fit: cover;
+  margin-inline-start: -10px;
+}
+
+.form-lead-capture__avatars img:first-child {
+  margin-inline-start: 0;
+}
+
+.form-lead-capture__proof-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.form-lead-capture__proof-text strong {
+  color: var(--color-text-strong);
+}
+
+/* ── Card do formulário ── */
+.form-lead-capture__card {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-xl);
+}
+
+.form-lead-capture__card-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-xs);
+}
+
+.form-lead-capture__card-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-lg);
+}
+
+.form-lead-capture__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-lead-capture__submit {
+  width: 100%;
+  margin-block-start: var(--space-xs);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (960px+) — 2 colunas lado a lado
+═══════════════════════════════════════ */
+@media (min-width: 960px) {
+  .form-lead-capture {
+    padding-block: var(--space-4xl);
+  }
+
+  .form-lead-capture__grid {
+    grid-template-columns: 1fr 0.85fr;
+    gap: var(--space-4xl);
+  }
+}

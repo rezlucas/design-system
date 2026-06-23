@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Multi Step — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="../../../atoms/inputs/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Form Multi Step</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 13l4 4L19 7"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════ form-multi-step ═══════════════════════════════ -->
+
+  <section class="form-multi-step" aria-labelledby="fms-title">
+    <div class="container">
+      <h2 class="sr-only" id="fms-title">Cadastro em 3 etapas</h2>
+
+      <div class="form-multi-step__card">
+
+        <div class="form-multi-step__progress" data-js="progress">
+          <div class="form-multi-step__progress-label">
+            <span>Etapa <span data-js="progress-current">1</span> de 3</span>
+            <span data-js="progress-percent">33%</span>
+          </div>
+          <div class="form-multi-step__progress-track">
+            <div class="form-multi-step__progress-fill" data-js="progress-fill"></div>
+          </div>
+        </div>
+
+        <form data-js="multi-step-form" novalidate>
+
+          <div class="form-multi-step__step" data-js="step">
+            <h3 class="form-multi-step__step-title">Qual é o seu nome?</h3>
+            <p class="form-multi-step__step-subtitle">Vamos usar para personalizar sua experiência.</p>
+            <div class="input-field">
+              <label class="input-field__label sr-only" for="fms-name">Nome</label>
+              <input class="input-field__control" type="text" id="fms-name" name="name" placeholder="Seu nome completo" autocomplete="name" required>
+            </div>
+            <div class="form-multi-step__actions form-multi-step__actions--end">
+              <button class="button button--filled button--md" type="button" data-js="next">Continuar</button>
+            </div>
+          </div>
+
+          <div class="form-multi-step__step" data-js="step" hidden>
+            <h3 class="form-multi-step__step-title">Qual é o seu e-mail de trabalho?</h3>
+            <p class="form-multi-step__step-subtitle">Enviaremos o acesso para esse endereço.</p>
+            <div class="input-field">
+              <label class="input-field__label sr-only" for="fms-email">E-mail</label>
+              <input class="input-field__control" type="email" id="fms-email" name="email" placeholder="voce@empresa.com" autocomplete="email" required>
+            </div>
+            <div class="form-multi-step__actions">
+              <button class="button button--outline button--md" type="button" data-js="back">Voltar</button>
+              <button class="button button--filled button--md" type="button" data-js="next">Continuar</button>
+            </div>
+          </div>
+
+          <div class="form-multi-step__step" data-js="step" hidden>
+            <h3 class="form-multi-step__step-title">Qual o tamanho da sua empresa?</h3>
+            <p class="form-multi-step__step-subtitle">Isso nos ajuda a indicar o plano certo.</p>
+            <div class="input-field">
+              <label class="input-field__label sr-only" for="fms-size">Tamanho da empresa</label>
+              <select class="input-field__control" id="fms-size" name="size">
+                <option>Só eu</option>
+                <option>2 a 10 pessoas</option>
+                <option>11 a 50 pessoas</option>
+                <option>Mais de 50 pessoas</option>
+              </select>
+            </div>
+            <div class="form-multi-step__actions">
+              <button class="button button--outline button--md" type="button" data-js="back">Voltar</button>
+              <button class="button button--filled button--md" type="submit">Concluir cadastro</button>
+            </div>
+          </div>
+
+        </form>
+
+        <div class="form-multi-step__success" data-js="success" hidden>
+          <span class="form-multi-step__success-icon" aria-hidden="true"><svg><use href="#icon-check"/></svg></span>
+          <h3 class="form-multi-step__success-title">Cadastro concluído!</h3>
+          <p class="form-multi-step__success-text">Enviamos os próximos passos para o seu e-mail.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

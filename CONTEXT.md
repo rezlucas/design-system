@@ -10,9 +10,9 @@
 
 ## Status geral
 
-- **Última atualização**: 2026-05-28
-- **Fase atual**: Navigator premium com sidebar + Construtor de Página + demos completos
-- **Próxima ação**: Inputs, pricing, forms, gallery-grid, logos-grid
+- **Última atualização**: 2026-06-23
+- **Fase atual**: Navigator premium com sidebar + Construtor de Página + Marcas salvas (logo/cores/fontes por cliente via localStorage) + demos completos + 43 componentes
+- **Próxima ação**: export/import de presets de marca (JSON), pricing (variantes simple/comparison/toggle-annual), text-blocks/text-simple, services/services-list, team/team-detailed
 - **Agente em uso**: Claude Code (claude-sonnet-4-6)
 
 ---
@@ -60,12 +60,7 @@ Executado em 2026-05-19:
   - Estados: enabled, disabled (nativo + `aria-disabled`)
 
 #### Inputs
-- [ ] `inputs/input-text`
-- [ ] `inputs/input-email`
-- [ ] `inputs/input-textarea`
-- [ ] `inputs/input-select`
-- [ ] `inputs/input-checkbox`
-- [ ] `inputs/input-radio`
+- [x] `inputs/` — componente único cobrindo texto, e-mail, textarea, select, checkbox e radio via BEM (`input-field`, `input-check`, `input-radio`). Estado de erro com `--invalid` + `aria-describedby`. Inspirado em formulários minimalistas (Stripe Elements, Linear).
 
 #### Outros atoms
 - [ ] `cards/card-basic`
@@ -100,8 +95,8 @@ Executado em 2026-05-19:
 
 #### Text Blocks
 - [ ] `text-blocks/text-simple`
-- [ ] `text-blocks/text-with-image`
-- [ ] `text-blocks/text-two-column`
+- [x] `text-blocks/text-with-image` — bloco editorial texto+imagem, tipografia grande (clamp até 5xl), modifier `--reverse`. Inspirado em páginas de produto editoriais (Apple, Notion).
+- [x] `text-blocks/text-two-column` — título numa coluna estreita `sticky` no desktop + texto corrido numa coluna larga. Inspirado em manifestos/"sobre" (Basecamp Shape Up, docs Stripe).
 
 #### Social Proof
 - [ ] `social-proof/logos-grid`
@@ -124,9 +119,8 @@ Executado em 2026-05-19:
 - [ ] `pricing/pricing-toggle-annual`
 
 #### Steps
-- [ ] `steps/steps-horizontal`
-- [ ] `steps/steps-vertical`
-- [ ] `steps/steps-numbered`
+- [x] `steps/steps-horizontal` — header centralizado + 4 passos numerados. Pilha no mobile, fileira com linha conectora no desktop (900px+). Inspirado em "How it works" (Stripe, Notion).
+- [x] `steps/steps-vertical` — timeline vertical com trilho conectando marcadores numerados, chip de etapa + título + descrição. Inspirado em changelogs (Linear, GitHub).
 
 #### Team
 - [x] `team/team-grid` — variante com foto + nome + cargo + redes sociais em grade responsiva
@@ -134,8 +128,7 @@ Executado em 2026-05-19:
 
 #### Galleries
 - [x] `galleries/image-carousel` — carousel de imagens com setas prev/next e indicadores
-- [ ] `galleries/gallery-grid`
-- [ ] `galleries/gallery-masonry`
+- [x] `galleries/gallery-grid` — grade editorial com itens de tamanhos variados (masonry via grid-column/row span) + lightbox nativo (`<dialog>`) com navegação prev/next e teclado. Inspirado em galerias de portfólio (estilo Awwwards).
 
 #### FAQ
 - [x] `faq/faq-accordion` — 4 variantes: enclosed (+/−), dark 3-colunas (chevron), cards (chevron), split heading+lista (+/−). CSS-only via details/summary.
@@ -145,10 +138,10 @@ Executado em 2026-05-19:
 - [x] `blog/blog-posts` — 2 variantes: carousel de posts com setas prev/next (dark + acento) + Editorial (post destaque 2/3 + lista lateral 3 posts + CTA centralizado). Cards com imagem portrait + categoria + título.
 
 #### Forms
-- [ ] `forms/form-contact`
-- [ ] `forms/form-newsletter`
-- [ ] `forms/form-lead-capture`
-- [ ] `forms/form-multi-step`
+- [x] `forms/form-contact` — split: painel escuro com dados de contato (e-mail, telefone, endereço, social) + card branco com formulário. Inspirado em contact forms split-layout (Webflow showcase).
+- [x] `forms/form-newsletter` — banner full-width com input de e-mail inline + botão. Inspirado em newsletter signup (Mailchimp, Substack, rodapé de changelog Linear).
+- [x] `forms/form-lead-capture` — copy + benefícios + prova social (avatares) à esquerda, card de formulário elevado à direita. Inspirado em lead gen B2B (HubSpot, Unbounce).
+- [x] `forms/form-multi-step` — cadastro em 3 etapas com barra de progresso, 1 pergunta por vez, validação nativa e tela de sucesso. JS via `data-js` (`multi-step-form`/`step`/`next`/`back`). Inspirado no padrão conversacional do Typeform.
 
 #### CTAs
 - [x] `ctas/cta-banner` — 4 variantes: card-split (imagem|painel colorido), overlay-left (gradiente esq.), overlay-center (overlay uniforme centralizado), split (branco 2-col)
@@ -195,9 +188,16 @@ Modo interativo de montagem de landing pages, ativado pelo botão "Construtor de
 
 ### Modal de Marca (Brand Modal)
 Abre ao clicar "Gerar JSON" — coleta dados para personalização:
-- **Aba Marca**: nome, 5 cores (primary/secondary/accent/background/text), 2 fontes (heading/body)
+- **Aba Marca**: nome, logo (upload de imagem), 5 cores (primary/secondary/accent/background/text), 2 fontes (heading/body)
 - **Aba Conteúdo**: campos dinâmicos por componente, definidos via `COPY_SCHEMA` — cada tipo de seção tem seus campos específicos (hero: headline/subtitle/cta_primary/cta_secondary; header: cta/links; features: eyebrow/title/items; etc.)
-- Export JSON: objeto com `brand` + array `page` onde cada item tem `slug`, `variant` e `copy`
+- Export JSON: objeto com `brand` (inclui `logo` em base64) + array `page` onde cada item tem `slug`, `variant` e `copy`
+
+### Marcas salvas (presets de cliente, localStorage)
+- **O que é**: ao clicar "Salvar Marca", o nome/logo/cores/fontes/tipo de negócio/descrição ficam persistidos no navegador (`localStorage`, chave `tegrus-ds:brand-presets`), keyed pelo nome da empresa. O `copyData` (textos por seção) **não** é persistido no preset — é específico de cada página montada.
+- **Seletor "Marcas salvas"**: primeiro campo do Brand Modal. Lista os presets salvos (`<select id="brand-presets-select">`), opção "+ Nova marca" para começar em branco. Ao trocar, `loadBrandPreset(name)` recarrega `brandData` e repinta o formulário via `fillBrandFormFromData()`.
+- **Excluir**: botão 🗑 ao lado do seletor (`deleteBrandPreset()`), com `confirm()` nativo antes de remover — única ação destrutiva do fluxo.
+- **Logo**: campo de upload (`#brand-logo-input`, aceita PNG/JPG/SVG/WebP, limite 500KB) lido via `FileReader.readAsDataURL` e guardado como data URL em `brandData.logo`. Preview em `#logo-preview`, botão "Remover" para limpar.
+- **Limitação conhecida**: presets ficam no navegador/perfil local — não sincronizam entre máquinas. Se precisar levar uma marca para outro computador, ainda é necessário recriar o preset lá (não há export/import de presets ainda).
 
 ### Demos disponíveis (não selecionáveis no builder)
 - `demos/nexio/` — Automação B2B (dark premium)
@@ -218,8 +218,9 @@ Abre ao clicar "Gerar JSON" — coleta dados para personalização:
 
 - `SKILL.md` na raiz do projeto é redundante — conteúdo já está em `skills/bem-structure/SKILL.md`. Pode ser removido quando conveniente.
 - Imagens placeholder físicas (`placeholder-square.jpg` etc.) ainda não existem — serão criadas/fornecidas quando o primeiro componente que as usa for construído.
-- Seções ainda pendentes: inputs, pricing, forms, gallery-grid, logos-grid, steps, text-blocks
+- Seções ainda pendentes: pricing (variantes simple/comparison/toggle-annual — pricing-grid e pricing-two-col já existem), logos-grid (provider-logos já cobre o caso), text-blocks/text-simple
 - Contagem no rodapé da sidebar (ex: "27 componentes · 2 templates · 7 demos") deve ser atualizada manualmente ao adicionar novos itens
+- `docs/componentes.html` ficou desatualizado em relação ao Navigator (já tinha contagens por categoria inconsistentes entre si antes mesmo dos 10 componentes novos de 2026-06-22) — precisa de uma revisão dedicada somando as linhas de tabela reais por categoria, e não apenas refletir o total do Navigator
 
 ---
 
@@ -265,3 +266,5 @@ _Nenhum cliente ativo ainda._
 - [2026-05-26] Claude Code (claude-sonnet-4-6) — campos de copy dinâmicos por componente no modal de marca: COPY_SCHEMA + SLUG_TO_SCHEMA + renderCopyFields(), copyData no brandData keyed por "order_slug"
 - [2026-05-27] Claude Code (claude-sonnet-4-6) — redesign completo do navigator: mega-nav horizontal → sidebar vertical esquerda (224px sticky); logo logo-ds.png + favicon favicon-ds.png atualizados; botão Construtor movido para rodapé da sidebar com estilo gradiente destaque; cabeçalho superior removido; logo adicionado ao hero section (esquerda); ícones SVG únicos por categoria substituindo dots coloridos; push para git/Vercel
 - [2026-05-28] Claude Code (claude-sonnet-4-6) — regras do builder: demos bloqueados (nav-card--demo → not-allowed + opacity 0.4); templates limpam seleção ao entrar (clearSelection() antes de selecionar); atualização de CONTEXT.md e README.md
+- [2026-06-22] Claude Code (claude-sonnet-4-6) — pesquisa de padrões em sites de referência (Stripe, Linear, Webflow, Mailchimp, Typeform, Notion, Awwwards) e criação de 10 componentes novos: atoms/inputs (texto/e-mail/textarea/select/checkbox/radio); forms/form-contact, form-newsletter, form-lead-capture, form-multi-step (com JS de etapas); steps/steps-horizontal, steps-vertical; text-blocks/text-with-image, text-two-column; galleries/gallery-grid (com lightbox `<dialog>` nativo). Registrados no Navigator (cards, COPY_SCHEMA, SLUG_TO_SCHEMA, SLUG_ICON, contagens), total 43 componentes
+- [2026-06-23] Claude Code (claude-sonnet-4-6) — feature "Marcas salvas" no Construtor: upload de logo (FileReader → base64) no Brand Modal; persistência de presets de marca (nome, logo, cores, fontes, tipo de negócio, descrição) em `localStorage` (`tegrus-ds:brand-presets`); seletor para carregar/excluir marcas salvas; logo incluído no JSON e no prompt exportados para a IA

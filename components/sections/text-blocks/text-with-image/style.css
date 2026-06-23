@@ -1,0 +1,117 @@
+/* ─────────────────────────────────────────
+   text-with-image — section
+   Bloco editorial: texto + imagem em 2 colunas,
+   tipografia grande e bastante espaço em branco.
+   Modifier --reverse inverte os lados no desktop.
+   Inspirado em páginas de produto editoriais
+   (Apple, Notion).
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST
+═══════════════════════════════════════ */
+
+.text-with-image {
+  background-color: var(--color-background);
+  padding-block: var(--space-3xl);
+}
+
+.text-with-image__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.text-with-image__media {
+  order: -1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+}
+
+.text-with-image__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.text-with-image__eyebrow {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-block-end: var(--space-lg);
+}
+
+.text-with-image__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+  margin-block-end: var(--space-lg);
+}
+
+.text-with-image__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  max-width: 48ch;
+}
+
+.text-with-image__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-strong);
+  text-decoration: none;
+}
+
+.text-with-image__link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.text-with-image__link:hover svg {
+  transform: translateX(4px);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (900px+) — 2 colunas
+═══════════════════════════════════════ */
+@media (min-width: 900px) {
+  .text-with-image {
+    padding-block: var(--space-4xl);
+  }
+
+  .text-with-image__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+  }
+
+  .text-with-image__media {
+    order: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  /* Modifier: inverte os lados */
+  .text-with-image--reverse .text-with-image__media {
+    order: 1;
+  }
+
+  .text-with-image--reverse .text-with-image__content {
+    order: 0;
+  }
+}

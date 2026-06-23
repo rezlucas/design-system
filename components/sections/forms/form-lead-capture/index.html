@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Lead Capture — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="../../../atoms/buttons/style.css">
+  <link rel="stylesheet" href="../../../atoms/inputs/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Form Lead Capture</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/>
+    </symbol>
+  </svg>
+
+  <!-- ═══════════════════════════════ form-lead-capture ═══════════════════════════════ -->
+
+  <section class="form-lead-capture" aria-labelledby="flc-title">
+    <div class="container">
+      <div class="form-lead-capture__grid">
+
+        <div class="form-lead-capture__copy">
+          <span class="form-lead-capture__eyebrow">Demonstração gratuita</span>
+          <h2 class="form-lead-capture__title" id="flc-title">Veja a plataforma funcionando antes de decidir</h2>
+          <p class="form-lead-capture__description">
+            Agende uma demonstração de 20 minutos com nosso time e veja, na prática, como reduzir o tempo das suas operações.
+          </p>
+
+          <ul class="form-lead-capture__benefits" role="list">
+            <li><svg aria-hidden="true"><use href="#icon-check-circle"/></svg> Sem compromisso, sem cartão de crédito</li>
+            <li><svg aria-hidden="true"><use href="#icon-check-circle"/></svg> Demonstração personalizada para seu negócio</li>
+            <li><svg aria-hidden="true"><use href="#icon-check-circle"/></svg> Resposta em até 24h úteis</li>
+          </ul>
+
+          <div class="form-lead-capture__proof">
+            <div class="form-lead-capture__avatars">
+              <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="" width="36" height="36" loading="lazy">
+              <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="" width="36" height="36" loading="lazy">
+              <img src="../../../../assets/images/placeholders/placeholder-image.png" alt="" width="36" height="36" loading="lazy">
+            </div>
+            <p class="form-lead-capture__proof-text"><strong>+450 empresas</strong> já agendaram uma demo</p>
+          </div>
+        </div>
+
+        <div class="form-lead-capture__card">
+          <h3 class="form-lead-capture__card-title">Solicitar demonstração</h3>
+          <p class="form-lead-capture__card-subtitle">Preencha os dados abaixo</p>
+
+          <form class="form-lead-capture__form" novalidate>
+            <div class="input-field">
+              <label class="input-field__label" for="flc-name">Nome</label>
+              <input class="input-field__control" type="text" id="flc-name" name="name" placeholder="Seu nome" autocomplete="name">
+            </div>
+            <div class="input-field">
+              <label class="input-field__label" for="flc-email">E-mail corporativo</label>
+              <input class="input-field__control" type="email" id="flc-email" name="email" placeholder="voce@empresa.com" autocomplete="email">
+            </div>
+            <div class="input-field">
+              <label class="input-field__label" for="flc-company">Empresa</label>
+              <input class="input-field__control" type="text" id="flc-company" name="company" placeholder="Nome da empresa" autocomplete="organization">
+            </div>
+            <div class="input-field">
+              <label class="input-field__label" for="flc-size">Tamanho da equipe</label>
+              <select class="input-field__control" id="flc-size" name="size">
+                <option>1 a 10 pessoas</option>
+                <option>11 a 50 pessoas</option>
+                <option>51 a 200 pessoas</option>
+                <option>Mais de 200 pessoas</option>
+              </select>
+            </div>
+            <button class="button button--filled button--lg form-lead-capture__submit" type="submit">Agendar demonstração</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>

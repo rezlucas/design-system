@@ -1,0 +1,85 @@
+/* ─────────────────────────────────────────
+   text-two-column — section
+   Título numa coluna estreita (fixa ao rolar
+   no desktop) + texto corrido numa coluna larga.
+   Inspirado em manifestos e páginas "sobre"
+   editoriais (Basecamp Shape Up, docs da Stripe).
+   ───────────────────────────────────────── */
+
+/* ═══════════════════════════════════════
+   MOBILE FIRST
+═══════════════════════════════════════ */
+
+.text-two-column {
+  background-color: var(--color-background);
+  padding-block: var(--space-3xl);
+}
+
+.text-two-column__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.text-two-column__eyebrow {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-block-end: var(--space-md);
+}
+
+.text-two-column__title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-3xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-strong);
+}
+
+.text-two-column__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-body);
+  max-width: 68ch;
+}
+
+.text-two-column__body p strong {
+  color: var(--color-text-strong);
+}
+
+.text-two-column__quote {
+  border-left: 3px solid var(--color-primary);
+  padding-inline-start: var(--space-lg);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  font-style: italic;
+  color: var(--color-text-strong);
+  line-height: var(--line-height-snug);
+}
+
+
+/* ═══════════════════════════════════════
+   DESKTOP (900px+) — colunas lado a lado
+═══════════════════════════════════════ */
+@media (min-width: 900px) {
+  .text-two-column {
+    padding-block: var(--space-4xl);
+  }
+
+  .text-two-column__grid {
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-4xl);
+  }
+
+  .text-two-column__heading {
+    position: sticky;
+    top: var(--space-3xl);
+    align-self: start;
+  }
+}

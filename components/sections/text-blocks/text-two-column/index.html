@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Two Column — Design System</title>
+  <link rel="stylesheet" href="../../../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../../../base/reset.css">
+  <link rel="stylesheet" href="../../../../base/base.css">
+  <link rel="stylesheet" href="../../../../base/utilities.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../../scripts/shared/device-preview.css">
+</head>
+<body>
+
+<!-- DS Navigator Bar — utilitário de navegação, não é parte do componente -->
+<div id="ds-nav-bar">
+  <a href="../../../../index.html" id="ds-nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Todos os componentes
+  </a>
+  <span id="ds-nav-label">Text Two Column</span>
+</div>
+<style>
+  #ds-nav-bar { position: sticky; top: 0; z-index: 9999; background: #0F0E1A; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 40px; gap: 16px; font-family: system-ui, -apple-system, sans-serif; font-size: 12px; }
+  #ds-nav-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.65); text-decoration: none; font-weight: 500; transition: color .15s; white-space: nowrap; }
+  #ds-nav-back:hover { color: #fff; }
+  #ds-nav-back svg { flex-shrink: 0; }
+  #ds-nav-label { font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .04em; white-space: nowrap; }
+</style>
+
+  <!-- ═══════════════════════════════ text-two-column ═══════════════════════════════ -->
+
+  <section class="text-two-column" aria-labelledby="t2c-title">
+    <div class="container">
+      <div class="text-two-column__grid">
+
+        <div class="text-two-column__heading">
+          <span class="text-two-column__eyebrow">Manifesto</span>
+          <h2 class="text-two-column__title" id="t2c-title">Por que existimos</h2>
+        </div>
+
+        <div class="text-two-column__body">
+          <p>Toda empresa que cresce rápido demais acaba acumulando processos manuais, planilhas paralelas e ferramentas que não conversam entre si. Em algum momento, isso para de ser um detalhe e começa a custar tempo, dinheiro e clientes.</p>
+          <p>Construímos esta plataforma depois de viver esse problema na pele. Não como consultores observando de fora, mas como operadores tentando fazer o dia a dia funcionar com o que tínhamos disponível no mercado, e não encontrando.</p>
+          <p class="text-two-column__quote">"Software bom é aquele que desaparece, é aquele que você usa sem perceber que está usando."</p>
+          <p>Por isso priorizamos <strong>clareza</strong> acima de recursos, <strong>velocidade</strong> acima de promessas e <strong>suporte real</strong> acima de chatbot. Pequenas decisões, repetidas todos os dias, são o que constroem confiança.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="../../../../scripts/shared/device-preview.js"></script>
+</body>
+</html>
