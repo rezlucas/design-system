@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boden – Cafés Especiais Personalizados</title>
+  <meta name="description" content="Com café especial personalizado, sua marca ganha presença, sofisticação e propósito em cada detalhe. Ideal para celebrações, campanhas, eventos.">
+  <meta property="og:title" content="Boden – Cafés Especiais Personalizados">
+  <meta property="og:description" content="Com café especial personalizado, sua marca ganha presença, sofisticação e propósito em cada detalhe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════
+       TOKENS — Boden
+    ══════════════════════════════════════ */
+    :root {
+      --bg:             #0C0A08;
+      --bg-warm:        #181410;
+      --bg-section:     #211C14;
+      --bg-light:       #F5ECD8;
+      --green:          #7CAF65;
+      --green-dark:     #4F7840;
+      --green-deep:     #243D1A;
+      --cream:          #E0C98A;
+      --cream-light:    #F5ECD8;
+      --brown:          #9B5C2A;
+      --brown-mid:      #C4824E;
+      --brown-dark:     #5C3217;
+      --text:           #B8A890;
+      --text-muted:     #726658;
+      --text-dark:      #1A1410;
+      --white:          #F5F0E8;
+      --cta:            #25D366;
+      --radius-sm:      8px;
+      --radius:         16px;
+      --radius-lg:      28px;
+      --radius-xl:      100px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+    .reveal-d5 { transition-delay: 0.5s; }
+
+    /* ── Container ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-xl);
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      position: relative; overflow: hidden;
+    }
+    .btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0); transition: background 0.3s;
+      border-radius: inherit;
+    }
+    .btn:hover::after { background: rgba(255,255,255,0.1); }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--green); color: #0C0A08; font-weight: 700; }
+    .btn-primary:hover { box-shadow: 0 8px 28px rgba(124,175,101,0.45); }
+    .btn-whatsapp { background: var(--cta); color: #fff; font-weight: 700; }
+    .btn-whatsapp:hover { box-shadow: 0 8px 28px rgba(37,211,102,0.45); }
+    .btn-outline { background: transparent; color: var(--cream-light); border: 1.5px solid rgba(245,236,216,0.25); }
+    .btn-outline:hover { border-color: var(--cream); color: var(--cream); }
+    .btn-sm { padding: 10px 20px; font-size: 13px; }
+    .btn-lg { padding: 18px 36px; font-size: 15px; }
+    .btn-full { width: 100%; }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    .nav.scrolled {
+      background: rgba(12,10,8,0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .nav__logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 900;
+      color: var(--cream-light);
+      letter-spacing: 0.06em;
+    }
+    .nav__links {
+      display: none;
+      list-style: none;
+      gap: 28px; align-items: center;
+    }
+    .nav__links a {
+      font-size: 13px; font-weight: 500;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: var(--white); }
+    .nav__right { display: flex; align-items: center; gap: 12px; }
+    .nav__hamburger {
+      width: 28px; height: 20px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      cursor: pointer; background: none; border: none;
+    }
+    .nav__hamburger span {
+      display: block; height: 1.5px; background: var(--cream-light);
+      border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav__hamburger.is-open span:nth-child(1) { transform: translateY(9.25px) rotate(45deg); }
+    .nav__hamburger.is-open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.is-open span:nth-child(3) { transform: translateY(-9.25px) rotate(-45deg); }
+    @media (min-width: 768px) {
+      .nav__links { display: flex; }
+      .nav__hamburger { display: none; }
+    }
+
+    /* Mobile overlay menu */
+    .nav__mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 190;
+      background: rgba(12,10,8,0.97);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 36px;
+    }
+    .nav__mobile-menu.is-open { display: flex; }
+    .nav__mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 700; font-style: italic;
+      color: var(--cream-light);
+      transition: color 0.2s;
+    }
+    .nav__mobile-menu a:hover { color: var(--green); }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      position: relative; min-height: 100svh;
+      display: flex; align-items: center; overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* Noise grain overlay */
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      opacity: 0.45;
+    }
+
+    /* Liquid blob glow */
+    .hero__blob {
+      position: absolute; z-index: 0; pointer-events: none;
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+      animation: blob-morph 14s ease-in-out infinite;
+    }
+    .hero__blob--warm {
+      right: -15%; top: 40%; transform: translateY(-50%);
+      width: min(65vw, 720px); height: min(65vw, 720px);
+      background: radial-gradient(ellipse at 40% 40%,
+        rgba(155,92,42,0.28) 0%,
+        rgba(196,130,78,0.1) 35%,
+        transparent 65%);
+    }
+    .hero__blob--green {
+      left: -8%; bottom: -10%;
+      width: min(40vw, 480px); height: min(40vw, 480px);
+      background: radial-gradient(ellipse at 60% 60%,
+        rgba(79,120,64,0.15) 0%,
+        transparent 60%);
+      animation-delay: -7s;
+    }
+    @keyframes blob-morph {
+      0%,100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%; transform: translateY(-50%) rotate(0deg); }
+      25%      { border-radius: 30% 70% 40% 60% / 60% 30% 70% 40%; transform: translateY(-50%) rotate(4deg); }
+      50%      { border-radius: 70% 30% 50% 50% / 30% 70% 40% 60%; transform: translateY(-50%) rotate(-3deg); }
+      75%      { border-radius: 40% 60% 60% 40% / 70% 30% 50% 50%; transform: translateY(-50%) rotate(6deg); }
+    }
+    .hero__blob--green { animation: blob-morph-b 18s ease-in-out infinite; }
+    @keyframes blob-morph-b {
+      0%,100% { border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%; transform: rotate(0deg); }
+      33%     { border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%; transform: rotate(-5deg); }
+      66%     { border-radius: 40% 60% 50% 50% / 50% 50% 40% 60%; transform: rotate(5deg); }
+    }
+
+    /* Floating coffee beans */
+    .hero__beans { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .bean {
+      position: absolute; bottom: -20px;
+      width: 18px; height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 40% 35%, #7B4A28, #3A1E0A);
+      opacity: 0;
+      animation: float-bean linear infinite;
+    }
+    .bean::after {
+      content: ''; position: absolute;
+      left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 65%; height: 1.5px;
+      background: rgba(0,0,0,0.35); border-radius: 2px;
+    }
+    .bean:nth-child(1)  { left: 8%;  width:14px; height:8px;  animation-duration: 18s; animation-delay: 0s;   }
+    .bean:nth-child(2)  { left: 16%; width:20px; height:11px; animation-duration: 22s; animation-delay: -4s;  }
+    .bean:nth-child(3)  { left: 28%; width:12px; height:7px;  animation-duration: 16s; animation-delay: -8s;  }
+    .bean:nth-child(4)  { left: 42%; width:22px; height:12px; animation-duration: 24s; animation-delay: -2s;  }
+    .bean:nth-child(5)  { left: 55%; width:16px; height:9px;  animation-duration: 20s; animation-delay: -12s; }
+    .bean:nth-child(6)  { left: 68%; width:14px; height:8px;  animation-duration: 19s; animation-delay: -6s;  }
+    .bean:nth-child(7)  { left: 78%; width:18px; height:10px; animation-duration: 21s; animation-delay: -15s; }
+    .bean:nth-child(8)  { left: 88%; width:11px; height:7px;  animation-duration: 17s; animation-delay: -3s;  }
+    .bean:nth-child(9)  { left: 34%; width:20px; height:11px; animation-duration: 25s; animation-delay: -9s;  }
+    .bean:nth-child(10) { left: 62%; width:13px; height:7px;  animation-duration: 15s; animation-delay: -18s; }
+    @keyframes float-bean {
+      0%   { transform: translateY(0) rotate(0deg)  scale(0.8); opacity: 0; }
+      8%   { opacity: 0.45; }
+      85%  { opacity: 0.25; }
+      100% { transform: translateY(-110vh) rotate(200deg) scale(1.1); opacity: 0; }
+    }
+
+    /* Hero layout */
+    .hero__inner {
+      position: relative; z-index: 2; width: 100%;
+      padding: 112px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px; align-items: center;
+      max-width: 1160px; margin: 0 auto;
+    }
+
+    /* Hero text */
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 24px;
+      opacity: 0; animation: fade-up 0.8s ease 0.2s forwards;
+    }
+    .hero__eyebrow::before {
+      content: ''; display: block;
+      width: 28px; height: 1px; background: var(--cream);
+    }
+    .hero__headline { margin-bottom: 28px; }
+    .hero__pre {
+      display: block;
+      font-size: clamp(15px, 2.5vw, 22px); font-weight: 300;
+      color: rgba(245,236,216,0.6);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 2px;
+      opacity: 0; animation: fade-up 0.8s ease 0.35s forwards;
+    }
+    .hero__main {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(88px, 20vw, 200px);
+      font-weight: 900; font-style: italic;
+      color: var(--green);
+      line-height: 0.82;
+      letter-spacing: -0.02em;
+      opacity: 0; animation: fade-up 0.8s ease 0.45s forwards;
+    }
+    .hero__post {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 4vw, 44px);
+      font-weight: 700; color: var(--cream-light);
+      line-height: 1.1; margin-top: 6px;
+      opacity: 0; animation: fade-up 0.8s ease 0.55s forwards;
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero__badges {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 40px;
+      opacity: 0; animation: fade-up 0.8s ease 0.7s forwards;
+    }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 12px; font-weight: 500; color: var(--cream);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero__badge::before { content: '✓'; color: var(--green); font-size: 10px; }
+
+    .hero__ctas {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      opacity: 0; animation: fade-up 0.8s ease 0.85s forwards;
+    }
+
+    /* Hero visual — coffee product */
+    .hero__visual {
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; animation: fade-up 0.9s ease 0.6s forwards;
+    }
+    .hero__product-scene {
+      position: relative;
+      width: min(260px, 75vw);
+    }
+    .hero__bag {
+      width: 100%;
+      aspect-ratio: 5/7;
+      border-radius: 18px 18px 8px 8px;
+      background: linear-gradient(160deg, #5C3217 0%, #9B5C2A 45%, #C4824E 75%, #E0C98A 100%);
+      position: relative; overflow: hidden;
+      box-shadow: 0 48px 96px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    /* Shine on bag */
+    .hero__bag::before {
+      content: ''; position: absolute;
+      top: 0; left: 15%; right: 55%; bottom: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+      border-radius: 0 0 40% 0;
+    }
+    /* Bag label area */
+    .hero__bag-label {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 6px;
+    }
+    .hero__bag-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 900; font-style: italic;
+      color: rgba(245,236,216,0.85);
+      text-align: center; letter-spacing: 0.05em;
+    }
+    .hero__bag-sub {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(245,236,216,0.5);
+    }
+    .hero__bag-ring {
+      width: 48px; height: 6px;
+      background: rgba(224,201,138,0.25);
+      border-radius: 100px;
+      margin-bottom: 4px;
+    }
+    /* Steam wisps */
+    .steam {
+      position: absolute; bottom: 100%; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px; height: 60px;
+      align-items: flex-end;
+    }
+    .steam__wisp {
+      width: 6px;
+      background: linear-gradient(to top, rgba(255,255,255,0.18), transparent);
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+      animation: steam-rise 2.2s ease-in-out infinite;
+    }
+    .steam__wisp:nth-child(1) { height: 52px; animation-delay: 0s; }
+    .steam__wisp:nth-child(2) { height: 36px; animation-delay: 0.5s; }
+    .steam__wisp:nth-child(3) { height: 44px; animation-delay: 1s; }
+    @keyframes steam-rise {
+      0%   { transform: scaleX(1) translateY(0);   opacity: 0; }
+      20%  { opacity: 0.9; }
+      80%  { opacity: 0.3; }
+      100% { transform: scaleX(1.6) translateY(-12px); opacity: 0; }
+    }
+    /* Shadow under bag */
+    .hero__product-shadow {
+      width: 80%; height: 14px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.7) 0%, transparent 70%);
+      margin: -2px auto 0;
+    }
+
+    @media (min-width: 640px) {
+      .hero__inner { grid-template-columns: 1fr 1fr; padding: 128px 48px 80px; }
+      .hero__visual { justify-content: flex-end; }
+      .hero__product-scene { width: min(300px, 45vw); }
+    }
+    @media (min-width: 1024px) {
+      .hero__inner { padding: 160px 64px 100px; }
+      .hero__product-scene { width: 320px; }
+    }
+
+    /* ── Wave divider ── */
+    .wave { display: block; overflow: hidden; line-height: 0; }
+    .wave svg { display: block; width: 100%; }
+
+    /* ══════════════════════════════════════
+       MARQUEE — Social proof
+    ══════════════════════════════════════ */
+    .marquee-section {
+      background: var(--bg-warm);
+      padding: 40px 0; overflow: hidden;
+    }
+    .marquee-section__label {
+      text-align: center;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .marquee__rail { overflow: hidden; }
+    .marquee__track {
+      display: flex; gap: 0;
+      animation: marquee-scroll 22s linear infinite;
+    }
+    .marquee__track:hover { animation-play-state: paused; }
+    .marquee__group {
+      display: flex; gap: 0;
+      flex-shrink: 0;
+      animation: none;
+    }
+    .marquee__item {
+      flex-shrink: 0;
+      padding: 0 40px;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--text-muted);
+      display: flex; align-items: center; gap: 40px;
+      white-space: nowrap;
+      transition: color 0.3s;
+    }
+    .marquee__item span { color: var(--green); font-size: 22px; line-height: 1; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════ */
+    .about { padding: 96px 0; background: var(--bg); }
+    .about__grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 56px; align-items: center;
+    }
+    @media (min-width: 768px) {
+      .about__grid { grid-template-columns: 1fr 1fr; gap: 72px; }
+    }
+    @media (min-width: 1024px) {
+      .about__grid { grid-template-columns: 5fr 6fr; }
+    }
+    .about__image-wrap {
+      position: relative; border-radius: var(--radius-lg);
+      aspect-ratio: 4/5; overflow: hidden;
+      background: linear-gradient(145deg, #3A2010 0%, #7B4A22 40%, #C4824E 78%, #E0C98A 100%);
+      box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+    }
+    /* Liquid blob inside image */
+    .about__image-wrap::before {
+      content: ''; position: absolute;
+      width: 80%; height: 80%;
+      top: 10%; left: 10%;
+      background: radial-gradient(ellipse, rgba(245,236,216,0.12) 0%, transparent 70%);
+      border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+      animation: blob-morph 10s ease-in-out infinite;
+    }
+    .about__badge {
+      position: absolute; bottom: 20px; right: 20px;
+      background: var(--green); color: #0C0A08;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 8px 16px; border-radius: 100px;
+    }
+    .about__text { }
+    .about__eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 14px;
+    }
+    .about__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4.5vw, 50px);
+      font-weight: 900; color: var(--cream-light);
+      line-height: 1.05; margin-bottom: 20px;
+    }
+    .about__title em { font-style: italic; color: var(--green); }
+    .about__body {
+      font-size: 16px; line-height: 1.8;
+      color: var(--text); margin-bottom: 12px;
+    }
+    .about__stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin: 32px 0 40px;
+    }
+    .about__stat {
+      padding: 20px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+    }
+    .about__stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 700;
+      color: var(--green); line-height: 1;
+      margin-bottom: 4px;
+    }
+    .about__stat-label {
+      font-size: 12px; color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════════════
+       PERSONALIZE banner
+    ══════════════════════════════════════ */
+    .personalize {
+      padding: 72px 0;
+      background: var(--bg-warm);
+      position: relative; overflow: hidden;
+    }
+    .personalize::before {
+      content: ''; position: absolute;
+      top: -60%; right: -20%;
+      width: 70%; height: 140%;
+      background: radial-gradient(ellipse, rgba(124,175,101,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .personalize__inner {
+      position: relative;
+      display: grid; grid-template-columns: 1fr;
+      gap: 48px; align-items: center;
+    }
+    @media (min-width: 768px) {
+      .personalize__inner { grid-template-columns: 1fr 1fr; gap: 64px; }
+    }
+    .personalize__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 900; color: var(--cream-light);
+      line-height: 1.05; margin-bottom: 16px;
+    }
+    .personalize__title em { font-style: italic; color: var(--green); }
+    .personalize__body {
+      font-size: 16px; line-height: 1.75;
+      color: var(--text); margin-bottom: 28px;
+    }
+    /* Liquid fill pill on the "options" side */
+    .personalize__options {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .personalize__option {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .personalize__option:hover {
+      border-color: rgba(124,175,101,0.3);
+      background: rgba(124,175,101,0.04);
+    }
+    .personalize__option-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(124,175,101,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .personalize__option-title {
+      font-size: 14px; font-weight: 600; color: var(--cream-light);
+      margin-bottom: 2px;
+    }
+    .personalize__option-desc {
+      font-size: 12px; color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════════════
+       GALLERY
+    ══════════════════════════════════════ */
+    .gallery { padding: 96px 0; background: var(--bg); }
+    .gallery__header {
+      display: flex; flex-direction: column; gap: 16px;
+      margin-bottom: 40px;
+    }
+    @media (min-width: 640px) {
+      .gallery__header {
+        flex-direction: row; align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+    .gallery__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 900; color: var(--cream-light);
+    }
+    .gallery__title em { font-style: italic; color: var(--green); }
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @media (min-width: 640px) {
+      .gallery__grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    }
+    .gallery__item {
+      position: relative; border-radius: var(--radius);
+      aspect-ratio: 3/4; overflow: hidden;
+      cursor: pointer;
+    }
+    .gallery__item:nth-child(1) { background: linear-gradient(145deg,#281508,#5C3217,#9B5C2A,#C4824E); }
+    .gallery__item:nth-child(2) { background: linear-gradient(145deg,#081A04,#1C4A10,#3A7A22); }
+    .gallery__item:nth-child(3) { background: linear-gradient(145deg,#08101A,#182840,#2A4A70); }
+    .gallery__item:nth-child(4) { background: linear-gradient(145deg,#1A0810,#4A1A28,#7A3048); }
+    .gallery__item:nth-child(5) { background: linear-gradient(145deg,#181408,#3A3010,#6A5820); }
+    .gallery__item:nth-child(6) { background: linear-gradient(145deg,#081418,#183040,#286070); }
+    .gallery__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+      display: flex; align-items: flex-end; padding: 16px;
+      transition: background 0.3s;
+    }
+    .gallery__item:hover .gallery__overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(124,175,101,0.06) 100%);
+    }
+    .gallery__item-label {
+      font-size: 13px; font-weight: 600; color: var(--cream-light);
+    }
+    /* Liquid hover reveal */
+    .gallery__liquid {
+      position: absolute; inset: 0;
+      background: rgba(124,175,101,0.12);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+      border-radius: inherit;
+    }
+    .gallery__item:hover .gallery__liquid { transform: scaleY(1); }
+
+    /* ══════════════════════════════════════
+       HOW IT WORKS
+    ══════════════════════════════════════ */
+    .how { padding: 96px 0; background: var(--bg-warm); }
+    .how__header { text-align: center; margin-bottom: 64px; }
+    .how__eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 12px;
+    }
+    .how__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 900; color: var(--cream-light);
+    }
+    .how__steps {
+      max-width: 680px; margin: 0 auto;
+      display: flex; flex-direction: column;
+    }
+    .how__step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      position: relative;
+    }
+    /* Connecting line */
+    .how__step:not(:last-child)::after {
+      content: ''; position: absolute;
+      left: 27px; top: 56px;
+      width: 2px; height: calc(100% - 28px);
+      background: linear-gradient(to bottom, rgba(124,175,101,0.5), rgba(124,175,101,0.05));
+    }
+    .how__step-num {
+      width: 56px; height: 56px; flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700; color: var(--green);
+      position: relative; z-index: 1;
+    }
+    .how__step-body { padding: 10px 0 48px; }
+    .how__step-title {
+      font-size: 17px; font-weight: 700;
+      color: var(--cream-light); margin-bottom: 6px;
+    }
+    .how__step-desc {
+      font-size: 14px; line-height: 1.7; color: var(--text);
+    }
+    .how__cta { text-align: center; margin-top: 8px; }
+
+    /* ══════════════════════════════════════
+       PRODUCTS
+    ══════════════════════════════════════ */
+    .products { padding: 96px 0; background: var(--bg); }
+    .products__header { text-align: center; margin-bottom: 48px; }
+    .products__eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 12px;
+    }
+    .products__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 900; color: var(--cream-light);
+    }
+    .products__grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 600px) {
+      .products__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .products__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .product-card {
+      background: var(--bg-warm);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 56px rgba(0,0,0,0.4);
+      border-color: rgba(124,175,101,0.22);
+    }
+    .product-card__img {
+      aspect-ratio: 4/3; position: relative; overflow: hidden;
+    }
+    .product-card:nth-child(1) .product-card__img { background: linear-gradient(145deg,#1A0E06,#5C3217,#9B5C2A); }
+    .product-card:nth-child(2) .product-card__img { background: linear-gradient(145deg,#0E1A06,#325C17,#629B2A); }
+    .product-card:nth-child(3) .product-card__img { background: linear-gradient(145deg,#1A1206,#5C4417,#9B7F2A); }
+    .product-card__img-label {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700; font-style: italic;
+      color: rgba(245,236,216,0.4); text-align: center; padding: 20px;
+    }
+    /* Liquid fill on hover */
+    .product-card__img::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(124,175,101,0.1);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .product-card:hover .product-card__img::after { transform: scaleY(1); }
+
+    .product-card__body {
+      padding: 24px; flex: 1;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .product-card__name {
+      font-size: 17px; font-weight: 700; color: var(--cream-light);
+    }
+    .product-card__specs { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .product-card__specs li {
+      font-size: 13px; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .product-card__specs li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+    .product-card__min {
+      font-size: 11px; color: var(--text-muted);
+      padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: auto;
+    }
+    .product-card__cta { padding: 0 24px 24px; }
+
+    /* ══════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════ */
+    .testimonials { padding: 96px 0; background: var(--bg-warm); overflow: hidden; }
+    .testimonials__header { text-align: center; margin-bottom: 48px; }
+    .testimonials__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 900; color: var(--cream-light);
+    }
+    .testimonials__track {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 24px 32px;
+      scrollbar-width: none;
+    }
+    .testimonials__track::-webkit-scrollbar { display: none; }
+    @media (min-width: 1024px) {
+      .testimonials__track { padding: 8px 64px 32px; }
+    }
+    .t-card {
+      flex: 0 0 min(340px, 84vw);
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg); padding: 28px;
+      scroll-snap-align: start;
+      transition: border-color 0.3s;
+    }
+    .t-card:hover { border-color: rgba(124,175,101,0.2); }
+    .t-card__quote {
+      font-size: 14px; line-height: 1.8; color: var(--text);
+      margin-bottom: 20px; position: relative; padding-top: 28px;
+    }
+    .t-card__quote::before {
+      content: '"';
+      position: absolute; top: -4px; left: -4px;
+      font-family: 'Playfair Display', serif;
+      font-size: 64px; font-style: italic;
+      color: var(--green); opacity: 0.28; line-height: 1;
+    }
+    .t-card__author {
+      display: flex; align-items: center; gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 16px;
+    }
+    .t-card__avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--bg-section);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px; font-weight: 700; color: var(--green);
+      flex-shrink: 0;
+    }
+    .t-card__name {
+      font-size: 13px; font-weight: 600; color: var(--cream-light);
+    }
+    .t-card__company { font-size: 12px; color: var(--text-muted); }
+
+    /* ══════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════ */
+    .faq { padding: 96px 0; background: var(--bg); }
+    .faq__header { text-align: center; margin-bottom: 48px; }
+    .faq__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 900; color: var(--cream-light);
+    }
+    .faq__list {
+      max-width: 720px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .faq__item {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq__item.is-open { border-color: rgba(124,175,101,0.28); }
+    .faq__q {
+      width: 100%; text-align: left;
+      padding: 18px 20px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-size: 14px; font-weight: 600; color: var(--cream-light);
+      transition: color 0.2s;
+    }
+    .faq__q:hover { color: var(--white); }
+    .faq__icon {
+      width: 22px; height: 22px; flex-shrink: 0;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 16px; font-weight: 300;
+      transition: transform 0.35s ease, background 0.3s, border-color 0.3s, color 0.3s;
+      line-height: 1;
+    }
+    .faq__item.is-open .faq__icon {
+      transform: rotate(45deg);
+      background: var(--green); border-color: var(--green); color: #0C0A08;
+    }
+    .faq__a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      font-size: 14px; line-height: 1.75; color: var(--text);
+      padding: 0 20px;
+    }
+    .faq__item.is-open .faq__a { max-height: 350px; padding: 0 20px 18px; }
+
+    /* ══════════════════════════════════════
+       FORM
+    ══════════════════════════════════════ */
+    .form-sec { padding: 96px 0; background: var(--bg-warm); position: relative; overflow: hidden; }
+    .form-sec::before {
+      content: ''; position: absolute;
+      top: -50%; left: -20%;
+      width: 80%; height: 100%;
+      background: radial-gradient(ellipse, rgba(124,175,101,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .form-sec__inner {
+      position: relative;
+      display: grid; grid-template-columns: 1fr;
+      gap: 56px; align-items: start;
+    }
+    @media (min-width: 768px) {
+      .form-sec__inner { grid-template-columns: 1fr 1fr; gap: 80px; }
+    }
+    .form-sec__eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 14px;
+    }
+    .form-sec__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 900; color: var(--cream-light);
+      line-height: 1.1; margin-bottom: 14px;
+    }
+    .form-sec__body {
+      font-size: 15px; line-height: 1.75; color: var(--text); margin-bottom: 32px;
+    }
+    .form-sec__contacts { display: flex; flex-direction: column; gap: 14px; }
+    .form-sec__contact-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: var(--text);
+    }
+    .form-sec__ci {
+      width: 34px; height: 34px; flex-shrink: 0;
+      background: rgba(124,175,101,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 15px;
+    }
+    .form-box {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-lg); padding: 32px;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr;
+      gap: 14px; margin-bottom: 14px;
+    }
+    @media (min-width: 480px) {
+      .form-row { grid-template-columns: 1fr 1fr; }
+    }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; color: var(--white); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23726658' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .form-group select option { background: #181410; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-muted); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(124,175,101,0.15);
+    }
+    .form-group textarea { min-height: 90px; resize: vertical; }
+    .form-box__foot { margin-top: 18px; }
+    .form-box__alt {
+      margin-top: 14px; text-align: center;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .form-box__alt a { color: var(--cta); font-weight: 600; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 64px 0 32px;
+    }
+    .footer__grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 40px; margin-bottom: 48px;
+    }
+    @media (min-width: 640px) {
+      .footer__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .footer__grid { grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 28px; }
+    }
+    .footer__logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 900; color: var(--cream-light);
+      letter-spacing: 0.06em; margin-bottom: 10px;
+    }
+    .footer__desc {
+      font-size: 13px; line-height: 1.7;
+      color: var(--text-muted); max-width: 240px; margin-bottom: 20px;
+    }
+    .footer__social { display: flex; gap: 8px; }
+    .footer__social a {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .footer__social a:hover {
+      border-color: var(--green); color: var(--green);
+      background: rgba(124,175,101,0.08);
+    }
+    .footer__col-title {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 16px;
+    }
+    .footer__col-list {
+      list-style: none; display: flex; flex-direction: column; gap: 10px;
+    }
+    .footer__col-list a {
+      font-size: 13px; color: var(--text-muted); transition: color 0.2s;
+    }
+    .footer__col-list a:hover { color: var(--cream); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 24px;
+      display: flex; flex-direction: column; gap: 8px;
+      align-items: center; text-align: center;
+      font-size: 12px; color: var(--text-muted);
+    }
+    @media (min-width: 640px) {
+      .footer__bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+
+    /* ── WhatsApp Float ── */
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 100;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--cta); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: wa-pulse 3s ease-in-out infinite;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.7);
+      animation: none;
+    }
+    @keyframes wa-pulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 4px 28px rgba(37,211,102,0.75), 0 0 0 10px rgba(37,211,102,0.1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ NAV ════ -->
+  <nav class="nav" id="main-nav">
+    <a href="#" class="nav__logo">Boden</a>
+    <ul class="nav__links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#embalagens">Embalagens</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="#form" class="btn btn-primary btn-sm" style="display:none" id="nav-cta">Fazer pedido</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <nav class="nav__mobile-menu" id="mobile-menu" role="dialog" aria-label="Menu principal">
+    <a href="#sobre"          onclick="closeMobileMenu()">Sobre</a>
+    <a href="#embalagens"     onclick="closeMobileMenu()">Embalagens</a>
+    <a href="#como-funciona"  onclick="closeMobileMenu()">Como funciona</a>
+    <a href="#produtos"       onclick="closeMobileMenu()">Produtos</a>
+    <a href="#form" class="btn btn-primary" onclick="closeMobileMenu()">Fazer pedido</a>
+  </nav>
+
+  <!-- ════ HERO ════ -->
+  <section class="hero" id="inicio">
+    <div class="hero__blob hero__blob--warm"></div>
+    <div class="hero__blob hero__blob--green"></div>
+    <div class="hero__beans" aria-hidden="true">
+      <div class="bean"></div><div class="bean"></div>
+      <div class="bean"></div><div class="bean"></div>
+      <div class="bean"></div><div class="bean"></div>
+      <div class="bean"></div><div class="bean"></div>
+      <div class="bean"></div><div class="bean"></div>
+    </div>
+
+    <div class="hero__inner">
+      <div class="hero__text">
+        <p class="hero__eyebrow">Café especial das Montanhas Capixabas</p>
+        <h1 class="hero__headline">
+          <span class="hero__pre">Surpreenda com</span>
+          <span class="hero__main">Café</span>
+          <span class="hero__post">A sua marca<br>personalizada.</span>
+        </h1>
+        <div class="hero__badges">
+          <span class="hero__badge">Café 100% arábica</span>
+          <span class="hero__badge">Moído ou em grãos</span>
+          <span class="hero__badge">Especial 82+ pontos</span>
+          <span class="hero__badge">Origem Capixaba</span>
+        </div>
+        <div class="hero__ctas">
+          <a href="#form" class="btn btn-primary btn-lg">Fazer meu pedido</a>
+          <a href="#produtos" class="btn btn-outline btn-lg">Ver opções</a>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-label="Embalagem de café personalizado Boden">
+        <div class="hero__product-scene">
+          <div class="steam" aria-hidden="true">
+            <div class="steam__wisp"></div>
+            <div class="steam__wisp"></div>
+            <div class="steam__wisp"></div>
+          </div>
+          <div class="hero__bag">
+            <div class="hero__bag-label">
+              <div class="hero__bag-ring"></div>
+              <span class="hero__bag-name">Boden</span>
+              <span class="hero__bag-sub">Café Especial</span>
+            </div>
+          </div>
+          <div class="hero__product-shadow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 40 C360 0 1080 0 1440 40 L1440 40 L0 40 Z" fill="#181410"/>
+    </svg>
+  </div>
+
+  <!-- ════ MARQUEE ════ -->
+  <section class="marquee-section" aria-label="Marcas clientes">
+    <p class="marquee-section__label">Marcas que já encantaram com seus brindes</p>
+    <div class="marquee__rail" aria-hidden="true">
+      <div class="marquee__track">
+        <!-- group 1 -->
+        <div class="marquee__group">
+          <div class="marquee__item">Yooga <span>·</span></div>
+          <div class="marquee__item">Geraro <span>·</span></div>
+          <div class="marquee__item">Sicoob <span>·</span></div>
+          <div class="marquee__item">Takeat <span>·</span></div>
+          <div class="marquee__item">XP Educação <span>·</span></div>
+          <div class="marquee__item">Morar Construtora <span>·</span></div>
+          <div class="marquee__item">Ebanx <span>·</span></div>
+          <div class="marquee__item">Sinduscon <span>·</span></div>
+          <div class="marquee__item">Inbazz <span>·</span></div>
+          <div class="marquee__item">Spotx <span>·</span></div>
+          <div class="marquee__item">Aport <span>·</span></div>
+        </div>
+        <!-- group 2 (duplicate for seamless loop) -->
+        <div class="marquee__group" aria-hidden="true">
+          <div class="marquee__item">Yooga <span>·</span></div>
+          <div class="marquee__item">Geraro <span>·</span></div>
+          <div class="marquee__item">Sicoob <span>·</span></div>
+          <div class="marquee__item">Takeat <span>·</span></div>
+          <div class="marquee__item">XP Educação <span>·</span></div>
+          <div class="marquee__item">Morar Construtora <span>·</span></div>
+          <div class="marquee__item">Ebanx <span>·</span></div>
+          <div class="marquee__item">Sinduscon <span>·</span></div>
+          <div class="marquee__item">Inbazz <span>·</span></div>
+          <div class="marquee__item">Spotx <span>·</span></div>
+          <div class="marquee__item">Aport <span>·</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ ABOUT ════ -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="about__grid">
+        <div class="reveal">
+          <div class="about__image-wrap">
+            <div class="about__badge">Especial 82+ pts</div>
+          </div>
+        </div>
+        <div class="about__text reveal reveal-d2">
+          <p class="about__eyebrow">Sobre a Boden</p>
+          <h2 class="about__title">Cafés especiais para <em>todas as ocasiões</em></h2>
+          <p class="about__body">Transforme suas ações corporativas em experiências memoráveis.</p>
+          <p class="about__body">Com café especial personalizado, sua marca ganha presença, sofisticação e propósito em cada detalhe. Ideal para celebrações, campanhas, eventos e encontros que pedem algo além do óbvio.</p>
+          <div class="about__stats">
+            <div class="about__stat">
+              <div class="about__stat-value">82+</div>
+              <div class="about__stat-label">Pontos SCAA</div>
+            </div>
+            <div class="about__stat">
+              <div class="about__stat-value">100%</div>
+              <div class="about__stat-label">Arábica</div>
+            </div>
+            <div class="about__stat">
+              <div class="about__stat-value">ES</div>
+              <div class="about__stat-label">Origem Capixaba</div>
+            </div>
+            <div class="about__stat">
+              <div class="about__stat-value">BR</div>
+              <div class="about__stat-label">Todo o Brasil</div>
+            </div>
+          </div>
+          <a href="#form" class="btn btn-primary">Personalize com a Boden</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0 C360 40 1080 40 1440 0 L1440 40 L0 40 Z" fill="#181410"/>
+    </svg>
+  </div>
+
+  <!-- ════ PERSONALIZE ════ -->
+  <section class="personalize">
+    <div class="container">
+      <div class="personalize__inner">
+        <div class="reveal">
+          <h2 class="personalize__title">Personalize com <em>sua marca</em></h2>
+          <p class="personalize__body">Personalize seu café 100% arábica com rótulos exclusivos e escolha entre Drip Coffee, café moído ou em grãos. Ideal para empresas, eventos, casamentos e aniversários.</p>
+          <a href="https://api.whatsapp.com/send/?phone=5527997399467&text=Ei!%20Tenho%20interesse%20nos%20caf%C3%A9s%20personalizados" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Fazer orçamento via WhatsApp
+          </a>
+        </div>
+        <div class="personalize__options reveal reveal-d2">
+          <div class="personalize__option">
+            <div class="personalize__option-icon">☕</div>
+            <div>
+              <div class="personalize__option-title">Drip Coffee</div>
+              <div class="personalize__option-desc">Sachê 10g — mín. 100 unidades</div>
+            </div>
+          </div>
+          <div class="personalize__option">
+            <div class="personalize__option-icon">🎁</div>
+            <div>
+              <div class="personalize__option-title">Café Moído ou em Grãos</div>
+              <div class="personalize__option-desc">Pacotes 100g a 1kg — mín. 30 unidades</div>
+            </div>
+          </div>
+          <div class="personalize__option">
+            <div class="personalize__option-icon">🎨</div>
+            <div>
+              <div class="personalize__option-title">Arte Personalizada</div>
+              <div class="personalize__option-desc">Envie sua arte ou nossos designers criam</div>
+            </div>
+          </div>
+          <div class="personalize__option">
+            <div class="personalize__option-icon">📦</div>
+            <div>
+              <div class="personalize__option-title">Kit de Cafés</div>
+              <div class="personalize__option-desc">2 pacotes 250g + caixinha — mín. 30 kits</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ GALLERY ════ -->
+  <section class="gallery" id="embalagens">
+    <div class="container">
+      <div class="gallery__header">
+        <h2 class="gallery__title reveal">Confira nossas <em>embalagens</em></h2>
+        <a href="#form" class="btn btn-outline btn-sm reveal reveal-d2">Fazer orçamento</a>
+      </div>
+      <div class="gallery__grid">
+        <div class="gallery__item reveal">
+          <div class="gallery__liquid" aria-hidden="true"></div>
+          <div class="gallery__overlay"><span class="gallery__item-label">Morar Construtora</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-d1">
+          <div class="gallery__liquid" aria-hidden="true"></div>
+          <div class="gallery__overlay"><span class="gallery__item-label">Paytime</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-d2">
+          <div class="gallery__liquid" aria-hidden="true"></div>
+          <div class="gallery__overlay"><span class="gallery__item-label">Ebanx</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-d1">
+          <div class="gallery__liquid" aria-hidden="true"></div>
+          <div class="gallery__overlay"><span class="gallery__item-label">XP Educação</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-d2">
+          <div class="gallery__liquid" aria-hidden="true"></div>
+          <div class="gallery__overlay"><span class="gallery__item-label">Brindes para eventos</span></div>
+        </div>
+        <div class="gallery__item reveal reveal-d3">
+          <div class="gallery__liquid" aria-hidden="true"></div>
+          <div class="gallery__overlay"><span class="gallery__item-label">Rótulos para casamento</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ HOW IT WORKS ════ -->
+  <section class="how" id="como-funciona">
+    <div class="container">
+      <div class="how__header">
+        <p class="how__eyebrow reveal">Passo a passo</p>
+        <h2 class="how__title reveal reveal-d1">Como funciona</h2>
+      </div>
+      <div class="how__steps">
+        <div class="how__step reveal">
+          <div class="how__step-num">1</div>
+          <div class="how__step-body">
+            <h3 class="how__step-title">Escolha o formato</h3>
+            <p class="how__step-desc">Escolha entre Drip Coffee, pacotes de 100g, 200g, 250g ou Kit completo. Defina entre moído ou em grãos.</p>
+          </div>
+        </div>
+        <div class="how__step reveal">
+          <div class="how__step-num">2</div>
+          <div class="how__step-body">
+            <h3 class="how__step-title">Defina a quantidade</h3>
+            <p class="how__step-desc">Defina a quantidade desejada entre torrado, moído ou em grãos. Pedido mínimo: 100 un. para drip, 30 un. para pacotes.</p>
+          </div>
+        </div>
+        <div class="how__step reveal">
+          <div class="how__step-num">3</div>
+          <div class="how__step-body">
+            <h3 class="how__step-title">Personalize do seu jeito</h3>
+            <p class="how__step-desc">Nos envie sua arte ou nossos designers criam uma personalização exclusiva — seja ilustração ou algo corporativo.</p>
+          </div>
+        </div>
+        <div class="how__step reveal">
+          <div class="how__step-num">4</div>
+          <div class="how__step-body">
+            <h3 class="how__step-title">Finalização e pagamento</h3>
+            <p class="how__step-desc">Finalize os detalhes do seu rótulo com nossa equipe. Aceitamos pagamento via Pix ou cartão.</p>
+          </div>
+        </div>
+        <div class="how__step reveal">
+          <div class="how__step-num">5</div>
+          <div class="how__step-body" style="padding-bottom:0">
+            <h3 class="how__step-title">Receba no seu endereço</h3>
+            <p class="how__step-desc">Receba seus personalizados no seu endereço, em todo o Brasil. Prazo de produção: 10 a 15 dias após aprovação da arte.</p>
+          </div>
+        </div>
+      </div>
+      <div class="how__cta" style="margin-top:48px">
+        <a href="#form" class="btn btn-primary btn-lg reveal">Fazer minha cotação</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PRODUCTS ════ -->
+  <section class="products" id="produtos">
+    <div class="container">
+      <div class="products__header">
+        <p class="products__eyebrow reveal">Opções de pedidos</p>
+        <h2 class="products__title reveal reveal-d1">Escolha o seu formato</h2>
+      </div>
+      <div class="products__grid">
+        <div class="product-card reveal">
+          <div class="product-card__img">
+            <span class="product-card__img-label">Drip Coffee</span>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Drip Coffee</h3>
+            <ul class="product-card__specs">
+              <li>Sachê individual 10g</li>
+              <li>Moído especialmente para coar</li>
+              <li>Rótulo 100% personalizado</li>
+            </ul>
+            <p class="product-card__min">Pedido mínimo: 100 unidades</p>
+          </div>
+          <div class="product-card__cta">
+            <a href="#form" class="btn btn-outline btn-full">Fazer orçamento</a>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d2">
+          <div class="product-card__img">
+            <span class="product-card__img-label">Café Linha Boden</span>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Café Linha Boden</h3>
+            <ul class="product-card__specs">
+              <li>Tamanhos: 200g, 250g, 500g e 1kg</li>
+              <li>Moído ou em grãos</li>
+              <li>Arte exclusiva ou ilustrada</li>
+            </ul>
+            <p class="product-card__min">Pedido mínimo: 30 unidades</p>
+          </div>
+          <div class="product-card__cta">
+            <a href="#form" class="btn btn-primary btn-full">Fazer orçamento</a>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d4">
+          <div class="product-card__img">
+            <span class="product-card__img-label">Kit de Cafés</span>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Kit de Cafés</h3>
+            <ul class="product-card__specs">
+              <li>2 cafés 250g ou 200g</li>
+              <li>Caixinha personalizada inclusa</li>
+              <li>Presente corporativo premium</li>
+            </ul>
+            <p class="product-card__min">Pedido mínimo: 30 kits</p>
+          </div>
+          <div class="product-card__cta">
+            <a href="#form" class="btn btn-outline btn-full">Fazer orçamento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TESTIMONIALS ════ -->
+  <section class="testimonials">
+    <div class="testimonials__header container">
+      <h2 class="testimonials__title reveal">O que dizem nossos clientes</h2>
+    </div>
+    <div class="testimonials__track">
+      <div class="t-card">
+        <p class="t-card__quote">A experiência de comprar os cafés personalizados foi excelente. O processo foi fácil, o atendimento atencioso e o resultado superou as expectativas. O café tem ótima qualidade e a personalização fez toda a diferença. Compramos sempre!</p>
+        <div class="t-card__author">
+          <div class="t-card__avatar">L</div>
+          <div>
+            <div class="t-card__name">Luiz Carlos</div>
+            <div class="t-card__company">Megawork</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-card__quote">Café que aguça os sentidos. O aroma é maravilhoso e o sabor muito agradável. E o mais legal: é capixaba, e prestigiar os frutos da nossa terra faz toda a diferença. O sachê personalizado é uma ótima opção de mimo para confraternizações.</p>
+        <div class="t-card__author">
+          <div class="t-card__avatar">T</div>
+          <div>
+            <div class="t-card__name">Tania Toselli</div>
+            <div class="t-card__company">Sinduscon</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-card__quote">Café especial encanta todo mundo. É um presente que foge do comum, agrada muito e ainda valoriza a nossa marca, por estar associado a um produto de alta qualidade. O investimento é flexível: desde o drip até pacotes mais robustos.</p>
+        <div class="t-card__author">
+          <div class="t-card__avatar">L</div>
+          <div>
+            <div class="t-card__name">Luiz Felipe</div>
+            <div class="t-card__company">Inbazz</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-card__quote">Os cafés personalizados da Boden superaram nossas expectativas. Além da qualidade do café, todo o processo foi fácil, bem acompanhado e com um resultado final impecável.</p>
+        <div class="t-card__author">
+          <div class="t-card__avatar">L</div>
+          <div>
+            <div class="t-card__name">Lucas Oliveira</div>
+            <div class="t-card__company">Spotx</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-card__quote">Os cafés de vocês tem uma qualidade incomparável, junto com um atendimento de qualidade e rapidez que fizeram toda a diferença. Ainda pude presentear meus clientes com um kit que vocês montaram com muito carinho no fim do ano.</p>
+        <div class="t-card__author">
+          <div class="t-card__avatar">V</div>
+          <div>
+            <div class="t-card__name">Vitor Escocard</div>
+            <div class="t-card__company">Aport</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <p class="t-card__quote">A gente gosta muito de trabalhar com a Boden! Os cafés personalizados sempre chegam com muita qualidade, padrão e acabamento impecável. O atendimento é rápido, a personalização fica exatamente como pedimos.</p>
+        <div class="t-card__author">
+          <div class="t-card__avatar">A</div>
+          <div>
+            <div class="t-card__name">Andre Albertassi</div>
+            <div class="t-card__company">Morar Construtora</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FAQ ════ -->
+  <section class="faq">
+    <div class="container">
+      <div class="faq__header">
+        <h2 class="faq__title reveal">Perguntas frequentes</h2>
+      </div>
+      <div class="faq__list" id="faq-list">
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">O que é café personalizado? <span class="faq__icon">+</span></button>
+          <div class="faq__a">Café personalizado é a combinação do sabor autêntico dos cafés Boden com rótulos feitos especialmente para você. É uma ótima escolha para presentes ou eventos, onde o café carrega a identidade que você deseja transmitir.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">Quais os tipos de rótulos posso fazer? <span class="faq__icon">+</span></button>
+          <div class="faq__a">Na Boden, você tem duas opções: rótulo exclusivo para empresas, totalmente personalizado para destacar sua marca; e rótulo ilustrado, perfeito para ocasiões especiais como casamentos e aniversários.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">Posso pedir uma arte com a minha marca? <span class="faq__icon">+</span></button>
+          <div class="faq__a">Sim! Você pode escolher entre os formatos disponíveis: Drip Coffee ou pacotes. Ambos podem ser personalizados com a sua marca ou arte exclusiva. Você envia sua arte ou nossos designers criam.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">Qual é a quantidade mínima para pedidos? <span class="faq__icon">+</span></button>
+          <div class="faq__a">O pedido mínimo é de 100 unidades para Drip Coffee e 30 unidades para pacotes e kits. Ideal para pequenas ações ou eventos maiores!</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">Qual é o prazo de produção e entrega? <span class="faq__icon">+</span></button>
+          <div class="faq__a">Após a aprovação da arte, nossa equipe inicia a produção e envia em cerca de 10 a 15 dias. Recomendamos confirmar a arte o quanto antes para garantir agilidade. Entregamos para todo o Brasil.</div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" aria-expanded="false">Como funciona o pagamento? <span class="faq__icon">+</span></button>
+          <div class="faq__a">Pode ser pago por Pix, cartão ou boleto (sujeito a análise de CNPJ). Tudo é conversado diretamente pelo WhatsApp na hora da venda!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FORM ════ -->
+  <section class="form-sec" id="form">
+    <div class="container">
+      <div class="form-sec__inner">
+        <div class="reveal">
+          <p class="form-sec__eyebrow">Vamos começar</p>
+          <h2 class="form-sec__title">Faça seu pedido ou orçamento</h2>
+          <p class="form-sec__body">Nossa equipe entra em contato rapidamente pelo WhatsApp para finalizar os detalhes do seu pedido personalizado.</p>
+          <div class="form-sec__contacts">
+            <div class="form-sec__contact-item">
+              <div class="form-sec__ci">✉</div>
+              contato@bodenclub.com.br
+            </div>
+            <div class="form-sec__contact-item">
+              <div class="form-sec__ci">📱</div>
+              (27) 99739-9467
+            </div>
+            <div class="form-sec__contact-item">
+              <div class="form-sec__ci">📍</div>
+              Vitória – ES (entrega em todo o Brasil)
+            </div>
+            <div class="form-sec__contact-item">
+              <div class="form-sec__ci">🕐</div>
+              Atendimento: seg a sex, 10h às 18h
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-d2">
+          <div class="form-box">
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-name">Nome</label>
+                  <input id="f-name" type="text" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                  <label for="f-company">Empresa</label>
+                  <input id="f-company" type="text" placeholder="Nome da empresa">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-email">E-mail</label>
+                  <input id="f-email" type="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="f-phone">WhatsApp</label>
+                  <input id="f-phone" type="tel" placeholder="(27) 99999-9999" required>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:14px">
+                <label for="f-product">Produto de interesse</label>
+                <select id="f-product">
+                  <option value="">Selecione...</option>
+                  <option>Drip Coffee (sachê 10g)</option>
+                  <option>Café Moído (pacote)</option>
+                  <option>Café em Grãos (pacote)</option>
+                  <option>Kit de Cafés</option>
+                  <option>Ainda não sei — quero orientação</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label for="f-msg">Mensagem (opcional)</label>
+                <textarea id="f-msg" placeholder="Quantidade estimada, data do evento, detalhes do rótulo..."></textarea>
+              </div>
+              <div class="form-box__foot">
+                <button type="submit" class="btn btn-primary btn-lg btn-full">Enviar solicitação</button>
+              </div>
+              <p class="form-box__alt">Prefere agilidade? <a href="https://api.whatsapp.com/send/?phone=5527997399467&text=Ei!%20Tenho%20interesse%20nos%20caf%C3%A9s%20personalizados" target="_blank" rel="noopener">Fale direto pelo WhatsApp</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">Boden</div>
+          <p class="footer__desc">Cafés especiais das Montanhas Capixabas, personalizados com a identidade da sua marca.</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/BodenClub/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/boden.club/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Menu</p>
+          <ul class="footer__col-list">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#embalagens">Embalagens</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#produtos">Produtos</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Produtos</p>
+          <ul class="footer__col-list">
+            <li><a href="#form">Drip Coffee</a></li>
+            <li><a href="#form">Café Moído</a></li>
+            <li><a href="#form">Café em Grãos</a></li>
+            <li><a href="#form">Kit de Cafés</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Fale conosco</p>
+          <ul class="footer__col-list">
+            <li><a href="mailto:contato@bodenclub.com.br">contato@bodenclub.com.br</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=5527997399467&text=Ei!%20Tenho%20interesse%20nos%20caf%C3%A9s%20personalizados" target="_blank">(27) 99739-9467</a></li>
+            <li>Seg a Sex, 10h às 18h</li>
+            <li>Av. Nossa Sra. da Penha, 1830<br>5º Andar — Vitória, ES</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>Copyright © 2026 Boden Club. CNPJ: 36.626.605/0001-30</span>
+        <span>Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp float -->
+  <a class="wa-float" href="https://api.whatsapp.com/send/?phone=5527997399467&text=Ei!%20Tenho%20interesse%20nos%20caf%C3%A9s%20personalizados" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- ════ SCRIPTS ════ -->
+  <script>
+    'use strict';
+
+    /* ── Nav scroll behavior ── */
+    var nav = document.getElementById('main-nav');
+    var navCta = document.getElementById('nav-cta');
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY > 60;
+      nav.classList.toggle('scrolled', scrolled);
+      if (navCta) navCta.style.display = scrolled ? 'inline-flex' : 'none';
+    }, { passive: true });
+
+    /* ── Hamburger / Mobile menu ── */
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', function () {
+      var open = hamburger.classList.toggle('is-open');
+      mobileMenu.classList.toggle('is-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeMobileMenu() {
+      hamburger.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    mobileMenu.addEventListener('click', function (e) {
+      if (e.target === mobileMenu) closeMobileMenu();
+    });
+
+    /* ── Scroll reveal (IntersectionObserver) ── */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(function (el) { observer.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    /* ── FAQ accordion ── */
+    var faqItems = document.querySelectorAll('.faq__item');
+    faqItems.forEach(function (item) {
+      var btn = item.querySelector('.faq__q');
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+        faqItems.forEach(function (i) {
+          i.classList.remove('is-open');
+          i.querySelector('.faq__q').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ── Form submit (redirect to WhatsApp) ── */
+    var form = document.getElementById('contact-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name    = document.getElementById('f-name').value.trim();
+      var phone   = document.getElementById('f-phone').value.trim();
+      var product = document.getElementById('f-product').value;
+      var msg     = document.getElementById('f-msg').value.trim();
+
+      if (!name || !phone) {
+        alert('Por favor, preencha seu nome e WhatsApp.');
+        return;
+      }
+
+      var text = 'Olá! Gostaria de fazer um pedido de café personalizado.\n\n' +
+        'Nome: ' + name + '\n' +
+        (product ? 'Produto: ' + product + '\n' : '') +
+        (msg ? 'Detalhes: ' + msg : '');
+
+      window.open(
+        'https://api.whatsapp.com/send/?phone=5527997399467&text=' + encodeURIComponent(text),
+        '_blank'
+      );
+    });
+
+    /* ── Marquee: duplicate for seamless infinite scroll ── */
+    (function () {
+      var track = document.querySelector('.marquee__track');
+      if (!track) return;
+      track.style.width = 'max-content';
+    })();
+  </script>
+</body>
+</html>
